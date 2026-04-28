@@ -1,0 +1,4 @@
+feature_row_id,session_id,window_label,window_start,window_end,synthetic_hrv_index,synthetic_eda_level,synthetic_interaction_latency_ms,synthetic_human_state_cost_proxy,public_data_status,note
+SYN-FEAT-001,SYN-SESSION-001,synthetic_baseline,2026-04-28T09:01:00Z,2026-04-28T09:05:00Z,0.72,0.20,800,0.18,synthetic,Synthetic feature row only
+SYN-FEAT-002,SYN-SESSION-001,synthetic_task_ai_interaction,2026-04-28T09:05:00Z,2026-04-28T09:15:00Z,0.55,0.48,1100,0.46,synthetic,Synthetic feature row only
+SYN-FEAT-003,SYN-SESSION-001,synthetic_recovery,2026-04-28T09:16:00Z,2026-04-28T09:20:00Z,0.66,0.30,900,0.25,synthetic,Synthetic feature row only
