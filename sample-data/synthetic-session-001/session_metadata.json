@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "session_id": "SYN-SESSION-001",
+  "dataset_type": "synthetic",
+  "session_date": "2026-04-28",
+  "participant_code": "SYN-P001",
+  "condition_label": "synthetic_ai_interaction_demo",
+  "task_context": "Synthetic demonstration of a bounded Human-State-Aware AI interaction benchmark session. No real human participant data is included.",
+  "signals": [
+    {
+      "signal_name": "synthetic_ecg",
+      "device": "synthetic_generator",
+      "sampling_rate_hz": 250,
+      "timestamp_source": "synthetic_clock",
+      "quality_flag": "pass",
+      "dropout_note": "No real signal. Synthetic demonstration only."
+    },
+    {
+      "signal_name": "synthetic_eda",
+      "device": "synthetic_generator",
+      "sampling_rate_hz": 32,
+      "timestamp_source": "synthetic_clock",
+      "quality_flag": "pass",
+      "dropout_note": "No real signal. Synthetic demonstration only."
+    },
+    {
+      "signal_name": "synthetic_interaction_events",
+      "device": "synthetic_event_logger",
+      "sampling_rate_hz": 1,
+      "timestamp_source": "synthetic_clock",
+      "quality_flag": "pass",
+      "dropout_note": "No real interaction log. Synthetic demonstration only."
+    }
+  ],
+  "event_marker_file": "events.csv",
+  "sync_method": "synthetic_shared_timestamp",
+  "preprocessing_version": "synthetic-preprocess-v0.1",
+  "model_version": "baseline-skeleton-v0.1",
+  "data_boundary": {
+    "raw_human_data_public": false,
+    "public_release_allowed": true,
+    "release_note": "Synthetic demonstration file only. No raw human data, no participant identifiers, no clinical data, no Sal-Meter input data."
+  },
+  "leakage_review": {
+    "reviewed": true,
+    "known_risks": [
+      "Synthetic condition labels should not be used as evidence.",
+      "Filenames must not be treated as hidden labels in real benchmark use.",
+      "This file demonstrates structure only."
+    ],
+    "split_strategy": "synthetic_session_holdout_demo"
+  },
+  "deviation_note": "No deviation. Synthetic sample package created for repository structure demonstration."
+}
