@@ -1,1 +1,74 @@
-
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SICS Human-State Proxy Benchmark Event Markers v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "session_id",
+    "events"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event_id",
+          "timestamp",
+          "event_type"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Use ISO 8601 or a documented local timestamp convention."
+          },
+          "event_type": {
+            "type": "string",
+            "enum": [
+              "session_start",
+              "baseline_start",
+              "task_start",
+              "ai_interaction_start",
+              "feedback_event",
+              "task_end",
+              "recovery_start",
+              "session_end",
+              "annotation",
+              "deviation"
+            ]
+          },
+          "condition_label": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "operator",
+              "device",
+              "software",
+              "simulator",
+              "ai-system",
+              "manual",
+              "synthetic"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
