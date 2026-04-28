@@ -1,1 +1,125 @@
-
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SICS Human-State Proxy Benchmark Session Metadata v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "session_id",
+    "dataset_type",
+    "session_date",
+    "participant_code",
+    "signals",
+    "event_marker_file",
+    "sync_method",
+    "data_boundary",
+    "leakage_review"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "dataset_type": {
+      "type": "string",
+      "enum": ["synthetic", "sample", "private-human", "internal-test"]
+    },
+    "session_date": {
+      "type": "string",
+      "description": "Use YYYY-MM-DD when appropriate. Public synthetic data may use fictional dates."
+    },
+    "participant_code": {
+      "type": "string",
+      "description": "No direct identifier. Use coded or synthetic subject ID only."
+    },
+    "condition_label": {
+      "type": "string"
+    },
+    "task_context": {
+      "type": "string"
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["signal_name", "device", "sampling_rate_hz", "timestamp_source"],
+        "additionalProperties": false,
+        "properties": {
+          "signal_name": {
+            "type": "string"
+          },
+          "device": {
+            "type": "string"
+          },
+          "sampling_rate_hz": {
+            "type": "number"
+          },
+          "timestamp_source": {
+            "type": "string"
+          },
+          "quality_flag": {
+            "type": "string",
+            "enum": ["pass", "review", "fail", "unknown"]
+          },
+          "dropout_note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "event_marker_file": {
+      "type": "string"
+    },
+    "sync_method": {
+      "type": "string"
+    },
+    "preprocessing_version": {
+      "type": "string"
+    },
+    "model_version": {
+      "type": "string"
+    },
+    "data_boundary": {
+      "type": "object",
+      "required": ["raw_human_data_public", "public_release_allowed"],
+      "additionalProperties": false,
+      "properties": {
+        "raw_human_data_public": {
+          "type": "boolean",
+          "const": false
+        },
+        "public_release_allowed": {
+          "type": "boolean"
+        },
+        "release_note": {
+          "type": "string"
+        }
+      }
+    },
+    "leakage_review": {
+      "type": "object",
+      "required": ["reviewed", "known_risks", "split_strategy"],
+      "additionalProperties": false,
+      "properties": {
+        "reviewed": {
+          "type": "boolean"
+        },
+        "known_risks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "split_strategy": {
+          "type": "string"
+        }
+      }
+    },
+    "deviation_note": {
+      "type": "string"
+    }
+  }
+}
