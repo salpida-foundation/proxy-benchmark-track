@@ -1,0 +1,218 @@
+Creative Commons Attribution-ShareAlike 4.0 International
+SICS Human-State Proxy Benchmark Track — Public Technical Helper Repository
+
+Copyright (c) 2026 Jinho Lee
+Salpida Institute of Consciousness Science (SICS)
+
+This repository is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0), unless otherwise stated.
+
+License URL:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Legal Code:
+https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+
+---
+
+1. Licensed Materials
+
+Unless otherwise stated, this license applies to the public helper materials in this repository, including:
+
+- README files
+- documentation files
+- public boundary helper files
+- metadata schema examples
+- synthetic sample-data structures
+- reproducibility checklists
+- leakage-control helper materials
+- dashboard mockup documentation
+- closed-loop demo-lite documentation
+- non-identifying example files
+- public research coordination materials
+
+This repository is a public technical helper surface for the SICS Human-State Proxy Benchmark Track.
+
+It is not the canonical authority layer.
+
+---
+
+2. Attribution Requirement
+
+When using, sharing, adapting, or redistributing materials from this repository, attribution should include:
+
+Author:
+Jinho Lee
+
+Affiliation:
+Salpida Institute of Consciousness Science (SICS)
+
+Repository:
+SICS Human-State Proxy Benchmark Track — Public Technical Helper Repository
+
+Repository URL:
+https://github.com/salpida-foundation/proxy-benchmark-track
+
+Preferred citation:
+Lee, Jinho. SICS Human-State Proxy Benchmark Track: Public Boundary and Program Charter v0.1. Zenodo. https://doi.org/10.5281/zenodo.19837423
+
+Companion record:
+Lee, Jinho. SICS Human-State Proxy Benchmark Track: Scientific Rationale and Research Value v0.1. Zenodo. https://doi.org/10.5281/zenodo.19837971
+
+License:
+Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+
+---
+
+3. ShareAlike Requirement
+
+If you remix, transform, translate, adapt, extend, or build upon licensed materials from this repository, you must distribute your contributions under the same license or a license compatible with CC BY-SA 4.0, as required by the Creative Commons Attribution-ShareAlike 4.0 International License.
+
+---
+
+4. Canonical Authority Boundary
+
+This GitHub repository does not replace DOI-registered SICS / CAIS / Sal-Meter / CCF records.
+
+Canonical and public boundary authority remains with DOI-registered records, including but not limited to:
+
+- SICS Human-State Proxy Benchmark Track: Public Boundary and Program Charter v0.1
+  Version DOI: https://doi.org/10.5281/zenodo.19837423
+  Concept DOI: https://doi.org/10.5281/zenodo.19837422
+
+- SICS Human-State Proxy Benchmark Track: Scientific Rationale and Research Value v0.1
+  Version DOI: https://doi.org/10.5281/zenodo.19837971
+  Concept DOI: https://doi.org/10.5281/zenodo.19837970
+
+If any material in this repository conflicts with a higher-level DOI-registered SICS / CAIS / Sal-Meter / CCF canonical or public boundary record, the higher-level DOI-registered record prevails automatically.
+
+---
+
+5. No Grant of CAIS / Sal-Meter Status
+
+This license does not grant:
+
+- CAIS compliance
+- Sal-Meter designation
+- Sal-Meter validation
+- Sal-Meter certification
+- SICS certification
+- conformance recognition
+- mark usage rights
+- authorized-user status
+- commercial-device validation status
+- clinical status
+- diagnostic status
+- therapeutic status
+- medical-device status
+- regulatory clearance
+- authority to speak for SICS
+- authority to reinterpret DOI-registered canonical records
+
+Use of this repository does not make any system, dataset, dashboard, model, laboratory, implementation, publication, or derivative project CAIS-compliant or Sal-Meter-designated.
+
+---
+
+6. No Trademark, Certification Mark, Patent, or Branding Grant
+
+This license covers copyrightable public helper materials only.
+
+It does not grant any trademark, certification mark, service mark, institutional name, logo, branding, patent, trade secret, controlled designation, endorsement, approval, certification, or compliance right.
+
+Names such as SICS, Salpida Institute of Consciousness Science, Salpida Foundation, CAIS, Sal-Meter, Human-State Proxy Benchmark Track, and related controlled designations may be subject to separate governance, naming, certification, and mark-usage rules.
+
+---
+
+7. Non-Clinical and Non-Diagnostic Boundary
+
+This repository is research-stage, non-clinical, non-diagnostic, non-therapeutic, non-surveillance, non-coercive, pre-device, pre-certification, and pre-compliance.
+
+Materials in this repository must not be used to claim:
+
+- diagnosis
+- treatment
+- disease monitoring
+- prevention
+- clinical decision support
+- psychiatric scoring
+- medical stress scoring
+- consciousness truth scoring
+- psychological safety scoring
+- employment ranking
+- insurance ranking
+- educational ranking
+- legal eligibility assessment
+- human surveillance scoring
+- validated Sal-Meter performance
+- CAIS compliance
+
+Human-State Cost, if referenced, is a non-diagnostic benchmark construct for comparing interaction conditions.
+
+It is not a score for ranking, diagnosing, classifying, or governing human beings.
+
+---
+
+8. Raw Human Data Boundary
+
+No raw human data is licensed or published through this repository.
+
+This repository is not a place to publish:
+
+- raw human biosignals
+- identifiable participant data
+- raw video from real human sessions
+- raw audio from real human sessions
+- face data
+- private session logs
+- clinical records
+- consent forms containing personal information
+- internal lab packages
+- unpublished human-subject files
+
+Public examples should use only:
+
+- synthetic data
+- toy data
+- mock data
+- schema-only examples
+- non-identifying demonstration files
+
+---
+
+9. Repository Role
+
+This repository exists to demonstrate how the SICS Human-State Proxy Benchmark Track boundary can become technical helper structure.
+
+It may support:
+
+- synchronized multimodal benchmark design
+- metadata discipline
+- leakage-safe evaluation
+- synthetic/sample data structure
+- baseline model skeletons
+- dashboard mockups
+- closed-loop demo-lite planning
+- future comparison with Sal-Meter I/G-channel inputs
+
+It does not define CAIS.
+
+It does not define Sal-Meter.
+
+It does not validate Sal-Meter.
+
+It does not publish raw human data.
+
+It does not replace DOI-registered SICS / CAIS / Sal-Meter / CCF records.
+
+---
+
+10. Final Boundary Sentence
+
+Proxy first as benchmark.
+
+Sal-Meter later as core input.
+
+Claims never ahead of evidence.
+
+This repository exists to prepare the comparison layer without confusing it with the molecular-electrochemical Sal-Meter core.
