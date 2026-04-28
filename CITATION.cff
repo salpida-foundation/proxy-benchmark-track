@@ -1,0 +1,95 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the DOI-registered public boundary record listed below. This GitHub repository is a public technical helper surface, not the canonical authority layer."
+
+title: "SICS Human-State Proxy Benchmark Track — Public Technical Helper Repository"
+
+abstract: "This repository is a research-stage public technical helper surface for the SICS Human-State Proxy Benchmark Track. It supports synchronized multimodal proxy benchmark infrastructure, metadata discipline, leakage-safe evaluation, synthetic/sample data structure, baseline model skeletons, dashboard mockups, bounded closed-loop demo-lite planning, and future comparison with Sal-Meter I/G-channel inputs. It is not the Sal-Meter core signal track, not a CAIS-compliant device implementation, not a clinical, diagnostic, therapeutic, surveillance, or certification surface, and not a place to publish raw human data."
+
+authors:
+  - family-names: "Lee"
+    given-names: "Jinho"
+    name-particle: ""
+    orcid: "https://orcid.org/0009-0005-3809-4588"
+    affiliation: "Salpida Institute of Consciousness Science (SICS)"
+
+version: "0.1.0"
+date-released: "2026-04-28"
+
+license: "CC-BY-SA-4.0"
+
+url: "https://github.com/salpida-foundation/proxy-benchmark-track"
+repository-code: "https://github.com/salpida-foundation/proxy-benchmark-track"
+
+keywords:
+  - "Human-State-Aware AI Interaction"
+  - "proxy benchmark"
+  - "human-state"
+  - "multimodal benchmark"
+  - "biosignal"
+  - "metadata discipline"
+  - "leakage-safe evaluation"
+  - "synthetic data"
+  - "benchmark support"
+  - "Sal-Meter comparison"
+  - "SICS"
+  - "Salpida Foundation"
+  - "research-stage"
+  - "non-clinical"
+  - "non-diagnostic"
+  - "non-therapeutic"
+
+identifiers:
+  - type: "doi"
+    value: "10.5281/zenodo.19837423"
+    description: "Version DOI for SICS Human-State Proxy Benchmark Track: Public Boundary and Program Charter v0.1."
+  - type: "doi"
+    value: "10.5281/zenodo.19837422"
+    description: "Concept DOI / all versions DOI for SICS Human-State Proxy Benchmark Track: Public Boundary and Program Charter."
+  - type: "doi"
+    value: "10.5281/zenodo.19837971"
+    description: "Version DOI for SICS Human-State Proxy Benchmark Track: Scientific Rationale and Research Value v0.1."
+  - type: "doi"
+    value: "10.5281/zenodo.19837970"
+    description: "Concept DOI / all versions DOI for SICS Human-State Proxy Benchmark Track: Scientific Rationale and Research Value."
+
+preferred-citation:
+  type: "report"
+  title: "SICS Human-State Proxy Benchmark Track: Public Boundary and Program Charter v0.1"
+  authors:
+    - family-names: "Lee"
+      given-names: "Jinho"
+      orcid: "https://orcid.org/0009-0005-3809-4588"
+      affiliation: "Salpida Institute of Consciousness Science (SICS)"
+  doi: "10.5281/zenodo.19837423"
+  year: 2026
+  month: 4
+  date-released: "2026-04-27"
+  publisher:
+    name: "Zenodo"
+
+references:
+  - type: "report"
+    title: "SICS Human-State Proxy Benchmark Track: Public Boundary and Program Charter v0.1"
+    authors:
+      - family-names: "Lee"
+        given-names: "Jinho"
+        orcid: "https://orcid.org/0009-0005-3809-4588"
+    doi: "10.5281/zenodo.19837423"
+    year: 2026
+    month: 4
+    date-released: "2026-04-27"
+    publisher:
+      name: "Zenodo"
+
+  - type: "report"
+    title: "SICS Human-State Proxy Benchmark Track: Scientific Rationale and Research Value v0.1"
+    authors:
+      - family-names: "Lee"
+        given-names: "Jinho"
+        orcid: "https://orcid.org/0009-0005-3809-4588"
+    doi: "10.5281/zenodo.19837971"
+    year: 2026
+    month: 4
+    date-released: "2026-04-28"
+    publisher:
+      name: "Zenodo"
