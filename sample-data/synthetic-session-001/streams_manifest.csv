@@ -1,0 +1,4 @@
+stream_id,session_id,signal_name,source_type,device,sampling_rate_hz,start_time,end_time,timestamp_source,quality_flag,dropout_count,missing_data_note,public_data_status
+SYN-STR-001,SYN-SESSION-001,synthetic_ecg,synthetic_signal,synthetic_generator,250,2026-04-28T09:00:00Z,2026-04-28T09:20:00Z,synthetic_clock,pass,0,Synthetic signal only,synthetic
+SYN-STR-002,SYN-SESSION-001,synthetic_eda,synthetic_signal,synthetic_generator,32,2026-04-28T09:00:00Z,2026-04-28T09:20:00Z,synthetic_clock,pass,0,Synthetic signal only,synthetic
+SYN-STR-003,SYN-SESSION-001,synthetic_interaction_events,synthetic_event_log,synthetic_event_logger,1,2026-04-28T09:00:00Z,2026-04-28T09:20:00Z,synthetic_clock,pass,0,Synthetic interaction log only,synthetic
