@@ -1,0 +1,9 @@
+event_id,session_id,timestamp,event_type,condition_label,source,note
+SYN-EVT-001,SYN-SESSION-001,2026-04-28T09:00:00Z,session_start,synthetic_ai_interaction_demo,synthetic,Synthetic session start
+SYN-EVT-002,SYN-SESSION-001,2026-04-28T09:01:00Z,baseline_start,synthetic_baseline,synthetic,Synthetic baseline window begins
+SYN-EVT-003,SYN-SESSION-001,2026-04-28T09:05:00Z,task_start,synthetic_task,synthetic,Synthetic task window begins
+SYN-EVT-004,SYN-SESSION-001,2026-04-28T09:07:30Z,ai_interaction_start,synthetic_ai_interaction,synthetic,Synthetic AI interaction begins
+SYN-EVT-005,SYN-SESSION-001,2026-04-28T09:10:00Z,feedback_event,synthetic_feedback,synthetic,Synthetic non-coercive feedback timing adjustment
+SYN-EVT-006,SYN-SESSION-001,2026-04-28T09:15:00Z,task_end,synthetic_task,synthetic,Synthetic task window ends
+SYN-EVT-007,SYN-SESSION-001,2026-04-28T09:16:00Z,recovery_start,synthetic_recovery,synthetic,Synthetic recovery window begins
+SYN-EVT-008,SYN-SESSION-001,2026-04-28T09:20:00Z,session_end,synthetic_ai_interaction_demo,synthetic,Synthetic session end
