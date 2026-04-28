@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1",
+  "dataset_type": "synthetic",
+  "split_file_role": "structure_demo_only",
+  "split_strategy": "synthetic_session_holdout_demo",
+  "raw_human_data_present": false,
+  "splits": {
+    "train": [
+      "SYN-SESSION-001"
+    ],
+    "validation": [],
+    "test": []
+  },
+  "leakage_notes": [
+    "This split file is a synthetic structure demonstration only.",
+    "A real benchmark must not tune on the final holdout set.",
+    "A real benchmark should consider participant, day, device, session, condition, and operator holdout rules.",
+    "Labels must not be embedded in filenames, folder names, device IDs, or session order."
+  ],
+  "boundary": "Synthetic example only. Not benchmark evidence. Not Sal-Meter validation. Not CAIS compliance."
+}
