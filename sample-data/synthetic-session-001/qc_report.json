@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1",
+  "session_id": "SYN-SESSION-001",
+  "dataset_type": "synthetic",
+  "qc_status": "pass_for_structure_demo",
+  "raw_human_data_present": false,
+  "identifiable_data_present": false,
+  "clinical_data_present": false,
+  "face_voice_video_audio_present": false,
+  "sal_meter_input_present": false,
+  "cais_compliance_claim_present": false,
+  "synthetic_status_declared": true,
+  "stream_checks": [
+    {
+      "stream_id": "SYN-STR-001",
+      "signal_name": "synthetic_ecg",
+      "timestamp_check": "pass",
+      "dropout_check": "pass",
+      "public_release_check": "pass"
+    },
+    {
+      "stream_id": "SYN-STR-002",
+      "signal_name": "synthetic_eda",
+      "timestamp_check": "pass",
+      "dropout_check": "pass",
+      "public_release_check": "pass"
+    },
+    {
+      "stream_id": "SYN-STR-003",
+      "signal_name": "synthetic_interaction_events",
+      "timestamp_check": "pass",
+      "dropout_check": "pass",
+      "public_release_check": "pass"
+    }
+  ],
+  "leakage_review": {
+    "reviewed": true,
+    "notes": [
+      "This package is synthetic and should not be used as benchmark evidence.",
+      "No participant identifier is included.",
+      "No real biosignal, face, voice, video, audio, or clinical data is included.",
+      "Condition labels are visible for demonstration and must not be used as a real benchmark pattern."
+    ]
+  },
+  "final_boundary": "Synthetic structure demonstration only. Not evidence. Not Sal-Meter. Not CAIS compliance."
+}
