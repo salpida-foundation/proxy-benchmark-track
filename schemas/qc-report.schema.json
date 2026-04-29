@@ -1,1 +1,215 @@
-
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salpida-foundation/proxy-benchmark-track/schemas/qc-report.schema.json",
+  "title": "SICS Human-State Proxy Benchmark QC Report Schema v0.1",
+  "description": "Schema for validating qc_report.json in the SICS Human-State Proxy Benchmark Track synthetic/sample package. This schema is for public helper use only. It does not define CAIS, does not define Sal-Meter, does not grant compliance, does not validate benchmark performance, and does not create diagnostic, therapeutic, clinical, surveillance, employment, insurance, educational, legal, or eligibility authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "session_id",
+    "dataset_type",
+    "qc_status",
+    "raw_human_data_present",
+    "identifiable_data_present",
+    "clinical_data_present",
+    "face_voice_video_audio_present",
+    "sal_meter_input_present",
+    "cais_compliance_claim_present",
+    "synthetic_status_declared",
+    "stream_checks",
+    "leakage_review",
+    "final_boundary"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Schema version for this QC report structure.",
+      "enum": [
+        "0.1"
+      ]
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Synthetic session identifier.",
+      "pattern": "^SYN-SESSION-[0-9]{3}$"
+    },
+    "dataset_type": {
+      "type": "string",
+      "description": "Dataset class. Public sample data must be synthetic or structure-demo only.",
+      "enum": [
+        "synthetic",
+        "sample_structure_only",
+        "mock",
+        "placeholder"
+      ]
+    },
+    "qc_status": {
+      "type": "string",
+      "description": "Overall QC status for public helper release. This is not a benchmark performance status.",
+      "enum": [
+        "pass_for_structure_demo",
+        "pass_synthetic_only",
+        "usable_with_documented_deviation",
+        "exploratory_only",
+        "rejected_from_benchmark_evaluation"
+      ]
+    },
+    "raw_human_data_present": {
+      "type": "boolean",
+      "description": "Public synthetic/sample packages must not contain raw human data.",
+      "const": false
+    },
+    "identifiable_data_present": {
+      "type": "boolean",
+      "description": "Public synthetic/sample packages must not contain identifiable data.",
+      "const": false
+    },
+    "clinical_data_present": {
+      "type": "boolean",
+      "description": "Public synthetic/sample packages must not contain clinical data.",
+      "const": false
+    },
+    "face_voice_video_audio_present": {
+      "type": "boolean",
+      "description": "Public synthetic/sample packages must not contain real face, voice, video, or audio data.",
+      "const": false
+    },
+    "sal_meter_input_present": {
+      "type": "boolean",
+      "description": "Current proxy sample packages must not contain Sal-Meter input data.",
+      "const": false
+    },
+    "cais_compliance_claim_present": {
+      "type": "boolean",
+      "description": "Public helper files must not contain CAIS compliance claims.",
+      "const": false
+    },
+    "synthetic_status_declared": {
+      "type": "boolean",
+      "description": "Whether synthetic/sample status is explicitly declared.",
+      "const": true
+    },
+    "stream_checks": {
+      "type": "array",
+      "description": "Per-stream QC checks for timestamp, dropout, and public release boundaries.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "stream_id",
+          "signal_name",
+          "timestamp_check",
+          "dropout_check",
+          "public_release_check"
+        ],
+        "properties": {
+          "stream_id": {
+            "type": "string",
+            "description": "Synthetic stream identifier.",
+            "pattern": "^SYN-STR-[0-9]{3}$"
+          },
+          "signal_name": {
+            "type": "string",
+            "description": "Synthetic or mock stream name.",
+            "enum": [
+              "synthetic_ecg",
+              "synthetic_hrv",
+              "synthetic_eda",
+              "synthetic_ppg",
+              "synthetic_eye_gaze",
+              "synthetic_interaction_events",
+              "synthetic_task_events",
+              "synthetic_feedback_events",
+              "synthetic_metadata"
+            ]
+          },
+          "timestamp_check": {
+            "type": "string",
+            "description": "Timestamp QC result.",
+            "enum": [
+              "pass",
+              "warn",
+              "fail",
+              "not_applicable"
+            ]
+          },
+          "dropout_check": {
+            "type": "string",
+            "description": "Dropout or missing-data QC result.",
+            "enum": [
+              "pass",
+              "warn",
+              "fail",
+              "not_applicable"
+            ]
+          },
+          "public_release_check": {
+            "type": "string",
+            "description": "Public release boundary check result.",
+            "enum": [
+              "pass",
+              "warn",
+              "fail",
+              "not_applicable"
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "description": "Optional stream-level QC note. Must not contain participant identifiers, clinical interpretation, Sal-Meter validation claims, or CAIS compliance claims."
+          }
+        }
+      }
+    },
+    "leakage_review": {
+      "type": "object",
+      "description": "Leakage review for synthetic/sample release. This is not a locked benchmark validation review.",
+      "additionalProperties": false,
+      "required": [
+        "reviewed",
+        "notes"
+      ],
+      "properties": {
+        "reviewed": {
+          "type": "boolean",
+          "description": "Whether leakage review was performed.",
+          "const": true
+        },
+        "notes": {
+          "type": "array",
+          "description": "Leakage and boundary notes.",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "metadata_completeness_status": {
+      "type": "string",
+      "description": "Optional metadata completeness status.",
+      "enum": [
+        "complete_for_synthetic_demo",
+        "usable_with_documented_deviation",
+        "exploratory_only",
+        "incomplete",
+        "not_applicable"
+      ]
+    },
+    "public_release_status": {
+      "type": "string",
+      "description": "Optional final public release status.",
+      "enum": [
+        "approved_for_synthetic_public_release",
+        "hold",
+        "reject",
+        "internal_only"
+      ]
+    },
+    "final_boundary": {
+      "type": "string",
+      "description": "Final boundary statement. Must state that the package is synthetic/sample only and not evidence, not Sal-Meter validation, and not CAIS compliance."
+    }
+  }
+}
