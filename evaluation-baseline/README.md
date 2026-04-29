@@ -1,6 +1,6 @@
 # Evaluation Baseline
 
-This folder contains baseline evaluation skeletons and helper-structure validation tools for the SICS Human-State Proxy Benchmark Track.
+This folder contains baseline evaluation skeletons and helper-structure validation tools for the **SICS Human-State Proxy Benchmark Track**.
 
 This is a research-stage, non-clinical, non-diagnostic, non-therapeutic benchmark support folder.
 
@@ -16,7 +16,7 @@ It does not create clinical, diagnostic, therapeutic, surveillance, employment, 
 
 ## Purpose
 
-The purpose of this folder is to demonstrate how synthetic proxy benchmark data may be loaded, checked, split, and passed into transparent baseline modeling code.
+The purpose of this folder is to demonstrate how public synthetic proxy benchmark data may be loaded, checked, split, and passed into transparent baseline modeling code.
 
 The first goal is not high model performance.
 
@@ -31,7 +31,8 @@ This folder is designed to support:
 - transparent baseline pipeline scaffolding;
 - leakage-safe split demonstration;
 - reproducibility helper workflows;
-- public/private data boundary discipline.
+- public/private data boundary discipline;
+- future benchmark-support infrastructure.
 
 It is not designed to support:
 
@@ -127,7 +128,7 @@ They do not validate CAIS compliance.
 
 ---
 
-## How to install dependencies
+## Dependency installation
 
 From the repository root:
 
@@ -135,13 +136,24 @@ From the repository root:
 pip install -r evaluation-baseline/requirements.txt
 ```
 
-If `jsonschema` is not already included in the local environment, install it directly:
+The validator requires `jsonschema`.
+
+If `jsonschema` is not already included in the local environment or in `requirements.txt`, install it directly:
 
 ```bash
 pip install jsonschema
 ```
 
-The validator uses `jsonschema` for helper schema checks.
+Recommended dependency posture:
+
+```text
+numpy
+pandas
+scikit-learn
+jsonschema
+```
+
+For automated validation, `jsonschema` should be available in the execution environment.
 
 ---
 
@@ -204,6 +216,7 @@ The system is CAIS-compliant.
 - raw human data flags are false;
 - identifiable data flags are false;
 - clinical data flags are false;
+- face, voice, video, and audio public-data flags are false where declared;
 - Sal-Meter input flags are false;
 - CAIS compliance claim flags are false;
 - operator log contains expected boundary language.
@@ -264,6 +277,7 @@ The package proves human-state measurement.
 The package proves AI-state response safety.
 The package proves Sal-Meter readiness.
 The package proves CAIS compliance.
+The package proves scientific validity.
 ```
 
 ---
@@ -303,8 +317,10 @@ is a toy baseline pipeline skeleton.
 It may be used to demonstrate:
 
 - loading synthetic feature rows;
-- joining synthetic labels;
-- separating features and labels;
+- loading synthetic metadata;
+- loading synthetic QC boundary declarations;
+- enforcing public boundary fields;
+- separating synthetic feature columns;
 - sketching a transparent baseline flow;
 - identifying where leakage-safe split logic belongs.
 
@@ -316,6 +332,18 @@ It must not be used to claim:
 - diagnostic status;
 - Sal-Meter validation;
 - CAIS compliance.
+
+Run from the repository root:
+
+```bash
+python evaluation-baseline/baseline_pipeline_skeleton.py
+```
+
+For the current tiny synthetic sample, the baseline model may be skipped.
+
+That is expected.
+
+The current file demonstrates structure, not model performance.
 
 ---
 
@@ -340,11 +368,36 @@ It supports the principle that real benchmark evaluation must avoid hidden leaka
 - preprocessing artifacts;
 - train/validation/test contamination.
 
+Run from the repository root:
+
+```bash
+python evaluation-baseline/leakage_safe_split_example.py
+```
+
 The current synthetic session is intentionally small and visible.
 
 It is for structure demonstration only.
 
 A real benchmark package must use stricter split rules.
+
+---
+
+## Recommended real split hierarchy
+
+For future controlled benchmark work, prefer leakage-safe split rules in this order:
+
+```text
+1. participant holdout
+2. day holdout
+3. device holdout
+4. session holdout
+5. condition holdout
+6. operator holdout
+```
+
+Do not tune on the final holdout set.
+
+Do not use filenames, folder names, condition names, session order, device IDs, or operator IDs as hidden labels.
 
 ---
 
@@ -397,6 +450,9 @@ a clinical score
 a consciousness score
 a psychological safety score
 an employee monitoring score
+a student ranking score
+an insurance risk score
+a legal eligibility score
 a user dependence diagnosis
 a human-ranking measure
 a certified benchmark output
@@ -424,6 +480,12 @@ Sal-Meter result
 CAIS-compliant output
 consciousness measurement
 human truth score
+```
+
+Correct boundary sentence:
+
+```text
+Human-State Cost evaluates the interaction condition, not the person.
 ```
 
 ---
@@ -513,9 +575,160 @@ helper-structure validation
 
 ---
 
+## GitHub Actions workflow
+
+A workflow file may run the validator automatically from:
+
+```text
+.github/workflows/validate-synthetic-sample.yml
+```
+
+The intended workflow role is:
+
+```text
+Run validate_sample_package.py automatically on push, pull request, or manual dispatch.
+```
+
+The workflow is a repository hygiene helper.
+
+It is not a benchmark validator.
+
+It is not a Sal-Meter validator.
+
+It is not a CAIS compliance validator.
+
+It does not create clinical, diagnostic, therapeutic, surveillance, certification, or human-ranking authority.
+
+If GitHub Actions access is restricted at account level, the workflow file may exist while workflow execution remains blocked.
+
+In that case, local validation remains the fallback:
+
+```bash
+python evaluation-baseline/validate_sample_package.py
+```
+
+---
+
+## Troubleshooting
+
+### Missing dependency
+
+Possible output:
+
+```text
+FAIL: Missing dependency: jsonschema
+```
+
+Fix:
+
+```bash
+pip install jsonschema
+```
+
+Recommended repository fix:
+
+```text
+Add jsonschema to evaluation-baseline/requirements.txt
+```
+
+---
+
+### Missing sample directory
+
+Possible output:
+
+```text
+sample directory not found
+```
+
+Check that this folder exists:
+
+```text
+sample-data/synthetic-session-001/
+```
+
+---
+
+### Missing schema directory
+
+Possible output:
+
+```text
+schemas directory not found
+```
+
+Check that this folder exists:
+
+```text
+schemas/
+```
+
+---
+
+### Missing required file
+
+Possible output:
+
+```text
+missing required sample file
+```
+
+Check that the sample package contains:
+
+```text
+session_metadata.json
+streams_manifest.csv
+events.csv
+labels.csv
+qc_report.json
+features_baseline.csv
+splits.json
+operator_log.md
+```
+
+---
+
+### Boundary flag failure
+
+Possible output:
+
+```text
+must be false
+```
+
+This means a public boundary field is not locked correctly.
+
+Public sample files must keep these conditions false:
+
+```text
+raw_human_data_present == false
+identifiable_data_present == false
+clinical_data_present == false
+sal_meter_input_present == false
+cais_compliance_claim_present == false
+```
+
+---
+
+### Synthetic status failure
+
+Possible output:
+
+```text
+dataset_type should be 'synthetic'
+```
+
+For the current public sample package, `dataset_type` must remain:
+
+```text
+synthetic
+```
+
+---
+
 ## P1-3 issue alignment
 
-This README addresses the open issue:
+This README addresses:
 
 ```text
 [P1-3] Improve evaluation baseline README and validator usability
@@ -526,10 +739,34 @@ The issue is complete when this README clearly explains:
 - what the validator does;
 - how to run the validator;
 - how to install dependencies;
-- what PASS means;
-- what FAIL usually means;
+- what `PASS` means;
+- what `FAIL` usually means;
 - what the validator does not validate;
 - why the output is helper-structure validation only.
+
+---
+
+## P1-5 release-readiness alignment
+
+This README supports:
+
+```text
+[P1-5] Prepare v0.1.0 release readiness package
+```
+
+Relevant P1-5 checklist item:
+
+```text
+Confirm evaluation-baseline/README.md explains validator usage and PASS / FAIL interpretation
+```
+
+This checklist item is satisfied when this file clearly states:
+
+```text
+PASS means helper-structure validation only.
+FAIL means structure or boundary mismatch.
+Neither PASS nor FAIL is scientific validation.
+```
 
 ---
 
@@ -539,6 +776,7 @@ From the repository root:
 
 ```bash
 pip install -r evaluation-baseline/requirements.txt
+pip install jsonschema
 python evaluation-baseline/validate_sample_package.py
 python evaluation-baseline/baseline_pipeline_skeleton.py
 python evaluation-baseline/leakage_safe_split_example.py
@@ -555,6 +793,18 @@ None of these outputs are benchmark evidence.
 
 ---
 
+## Authority rule
+
+This folder is a GitHub helper surface.
+
+It is not a canonical authority layer.
+
+DOI-registered SICS / CAIS / Sal-Meter / CCF records remain the authority layer.
+
+If this folder conflicts with a higher-level DOI-registered canonical record, the higher-level canonical record prevails automatically.
+
+---
+
 ## Final rule
 
 A result that cannot be replayed is not benchmark evidence.
@@ -563,7 +813,7 @@ A result that leaks labels is not evidence.
 
 A result based on synthetic data is structure demonstration, not scientific proof.
 
-A validator PASS is a structure signal, not a scientific claim.
+A validator `PASS` is a structure signal, not a scientific claim.
 
 This folder remains:
 
@@ -577,4 +827,8 @@ Not Sal-Meter.
 Not CAIS compliance.
 Not benchmark evidence.
 No raw human data.
+No identifiable data.
+No clinical data.
+No Sal-Meter input.
+No CAIS compliance claim.
 ```
