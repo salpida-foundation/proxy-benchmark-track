@@ -1,1 +1,166 @@
-
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salpida-foundation/proxy-benchmark-track/schemas/splits.schema.json",
+  "title": "SICS Human-State Proxy Benchmark Splits Schema v0.1",
+  "description": "Schema for validating splits.json in the SICS Human-State Proxy Benchmark Track synthetic/sample package. This schema is for public helper use only. It does not define CAIS, does not define Sal-Meter, does not grant compliance, does not validate benchmark performance, and does not create diagnostic, therapeutic, clinical, surveillance, employment, insurance, educational, legal, or eligibility authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "dataset_type",
+    "split_file_role",
+    "split_strategy",
+    "raw_human_data_present",
+    "splits",
+    "leakage_notes",
+    "boundary"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Schema version for this split definition structure.",
+      "enum": [
+        "0.1"
+      ]
+    },
+    "dataset_type": {
+      "type": "string",
+      "description": "Dataset class. Public sample data must be synthetic or structure-demo only.",
+      "enum": [
+        "synthetic",
+        "sample_structure_only",
+        "mock",
+        "placeholder"
+      ]
+    },
+    "split_file_role": {
+      "type": "string",
+      "description": "Role of this split file. Current public package is structure demonstration only.",
+      "enum": [
+        "structure_demo_only",
+        "synthetic_example_only",
+        "sample_split_only",
+        "placeholder_only"
+      ]
+    },
+    "split_strategy": {
+      "type": "string",
+      "description": "Declared split strategy. The current synthetic package uses a structure-only session holdout demonstration.",
+      "enum": [
+        "synthetic_session_holdout_demo",
+        "participant_holdout",
+        "day_holdout",
+        "device_holdout",
+        "operator_holdout",
+        "condition_holdout",
+        "locked_test_split",
+        "exploratory_random_split",
+        "not_applicable"
+      ]
+    },
+    "raw_human_data_present": {
+      "type": "boolean",
+      "description": "Public synthetic/sample split files must not contain raw human data.",
+      "const": false
+    },
+    "splits": {
+      "type": "object",
+      "description": "Train, validation, and test session assignments. In the current synthetic package this demonstrates structure only and must not be treated as benchmark evidence.",
+      "additionalProperties": false,
+      "required": [
+        "train",
+        "validation",
+        "test"
+      ],
+      "properties": {
+        "train": {
+          "type": "array",
+          "description": "Synthetic training session identifiers.",
+          "items": {
+            "type": "string",
+            "pattern": "^SYN-SESSION-[0-9]{3}$"
+          },
+          "uniqueItems": true
+        },
+        "validation": {
+          "type": "array",
+          "description": "Synthetic validation session identifiers.",
+          "items": {
+            "type": "string",
+            "pattern": "^SYN-SESSION-[0-9]{3}$"
+          },
+          "uniqueItems": true
+        },
+        "test": {
+          "type": "array",
+          "description": "Synthetic test session identifiers. Empty test arrays are allowed in structure-demo files.",
+          "items": {
+            "type": "string",
+            "pattern": "^SYN-SESSION-[0-9]{3}$"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "holdout_flags": {
+      "type": "object",
+      "description": "Optional explicit holdout flags for future non-public benchmark planning. These flags do not validate benchmark performance.",
+      "additionalProperties": false,
+      "properties": {
+        "participant_holdout": {
+          "type": "boolean"
+        },
+        "day_holdout": {
+          "type": "boolean"
+        },
+        "device_holdout": {
+          "type": "boolean"
+        },
+        "operator_holdout": {
+          "type": "boolean"
+        },
+        "condition_holdout": {
+          "type": "boolean"
+        },
+        "locked_before_modeling": {
+          "type": "boolean"
+        },
+        "preprocessing_fit_on_training_only": {
+          "type": "boolean"
+        }
+      }
+    },
+    "leakage_notes": {
+      "type": "array",
+      "description": "Leakage and split-boundary notes. These notes must make clear that synthetic split examples are not benchmark evidence.",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "boundary": {
+      "type": "string",
+      "description": "Final boundary statement. Must state that the split file is synthetic/sample only and not benchmark evidence, not Sal-Meter validation, and not CAIS compliance."
+    },
+    "public_release_status": {
+      "type": "string",
+      "description": "Optional public release status for this split file.",
+      "enum": [
+        "approved_for_synthetic_public_release",
+        "hold",
+        "reject",
+        "internal_only"
+      ]
+    },
+    "sal_meter_input_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. Current proxy sample split files must not contain Sal-Meter input data.",
+      "const": false
+    },
+    "cais_compliance_claim_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. Public helper files must not contain CAIS compliance claims.",
+      "const": false
+    }
+  }
+}
