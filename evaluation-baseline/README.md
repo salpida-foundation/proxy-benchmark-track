@@ -1,6 +1,6 @@
 # Evaluation Baseline
 
-This folder contains baseline evaluation skeletons for the SICS Human-State Proxy Benchmark Track.
+This folder contains baseline evaluation skeletons and helper-structure validation tools for the SICS Human-State Proxy Benchmark Track.
 
 This is a research-stage, non-clinical, non-diagnostic, non-therapeutic benchmark support folder.
 
@@ -22,6 +22,28 @@ The first goal is not high model performance.
 
 The first goal is an auditable evaluation skeleton.
 
+The second goal is a validator that confirms whether the public synthetic/sample package follows the expected helper structure.
+
+This folder is designed to support:
+
+- synthetic/sample package validation;
+- schema-aligned file checks;
+- transparent baseline pipeline scaffolding;
+- leakage-safe split demonstration;
+- reproducibility helper workflows;
+- public/private data boundary discipline.
+
+It is not designed to support:
+
+- benchmark validation;
+- clinical interpretation;
+- diagnostic scoring;
+- therapeutic feedback;
+- surveillance scoring;
+- Sal-Meter validation;
+- CAIS compliance claims;
+- certified benchmark claims.
+
 ---
 
 ## Current files
@@ -32,21 +54,34 @@ evaluation-baseline/
   requirements.txt
   baseline_pipeline_skeleton.py
   leakage_safe_split_example.py
+  validate_sample_package.py
 ```
+
+| File | Role | Status |
+|---|---|---|
+| `requirements.txt` | Python dependency list for helper scripts | Present |
+| `baseline_pipeline_skeleton.py` | Toy baseline pipeline skeleton for synthetic/sample features | Present |
+| `leakage_safe_split_example.py` | Demonstration of leakage-aware split logic | Present |
+| `validate_sample_package.py` | Structural validator for the public synthetic sample package | Present |
+| `README.md` | Folder-level documentation and boundary notice | Current file |
 
 ---
 
 ## Expected sample input
 
-The current skeleton expects the synthetic sample package:
+The current helper scripts are designed around the public synthetic sample package:
 
 ```text
 sample-data/synthetic-session-001/
+  README.md
   session_metadata.json
-  features_baseline.csv
+  streams_manifest.csv
+  events.csv
   labels.csv
-  splits.json
   qc_report.json
+  features_baseline.csv
+  splits.json
+  operator_log.md
 ```
 
 This input is synthetic only.
@@ -61,47 +96,363 @@ It is not CAIS-compliant output.
 
 ---
 
-## Boundary
+## Schema alignment
 
-Allowed:
+The validator checks the sample package against helper schemas in:
 
-- synthetic feature loading
-- toy baseline processing
-- leakage-safe split demonstration
-- schema and file-structure checking
-- transparent model skeletons
-- reproducibility examples
+```text
+schemas/
+  session-metadata.schema.json
+  event-markers.schema.json
+  streams-manifest.schema.json
+  labels.schema.json
+  qc-report.schema.json
+  features-baseline.schema.json
+  splits.schema.json
+```
 
-Not allowed:
+These schemas validate structure only.
 
-- raw human data
-- real participant data
-- real webcam data
-- real audio data
-- face data
-- clinical data
-- diagnostic claims
-- therapeutic claims
-- human ranking
-- surveillance scoring
-- Sal-Meter validation claims
-- CAIS compliance claims
+They do not validate scientific truth.
+
+They do not validate human-state inference.
+
+They do not validate model reliability.
+
+They do not validate benchmark performance.
+
+They do not validate Sal-Meter input.
+
+They do not validate CAIS compliance.
 
 ---
 
-## How to run locally
+## How to install dependencies
 
 From the repository root:
 
 ```bash
 pip install -r evaluation-baseline/requirements.txt
-python evaluation-baseline/baseline_pipeline_skeleton.py
-python evaluation-baseline/leakage_safe_split_example.py
 ```
 
-The current synthetic sample contains only a tiny number of rows.
+If `jsonschema` is not already included in the local environment, install it directly:
 
-Therefore, the scripts are designed to demonstrate structure and safety checks, not meaningful model performance.
+```bash
+pip install jsonschema
+```
+
+The validator uses `jsonschema` for helper schema checks.
+
+---
+
+## How to run the validator
+
+From the repository root:
+
+```bash
+python evaluation-baseline/validate_sample_package.py
+```
+
+Expected successful output:
+
+```text
+SICS Human-State Proxy Benchmark Track
+Synthetic Sample Package Validator v0.1
+
+PASS: sample-data/synthetic-session-001 follows the current public helper structure.
+
+Boundary status:
+- synthetic/sample structure validation only
+- no raw human data validation
+- no Sal-Meter input validation
+- no CAIS compliance validation
+- no diagnostic, therapeutic, or clinical validation
+- no benchmark performance validation
+```
+
+A successful validator run means only:
+
+```text
+The public synthetic/sample package follows the expected helper structure.
+```
+
+A successful validator run does not mean:
+
+```text
+The data is real evidence.
+The benchmark is validated.
+The model is reliable.
+The system is diagnostic.
+The system is Sal-Meter.
+The system is CAIS-compliant.
+```
+
+---
+
+## What the validator checks
+
+`validate_sample_package.py` checks:
+
+- required sample package files exist;
+- JSON files can be parsed;
+- CSV files can be parsed;
+- schema files can be loaded;
+- JSON files align with their helper schemas;
+- CSV rows align with their helper row schemas;
+- synthetic status is declared;
+- public boundary fields are present;
+- raw human data flags are false;
+- identifiable data flags are false;
+- clinical data flags are false;
+- Sal-Meter input flags are false;
+- CAIS compliance claim flags are false;
+- operator log contains expected boundary language.
+
+The validator is a structure gate.
+
+It is not an evidence gate.
+
+It is not a science gate.
+
+It is not a performance gate.
+
+It is not a clinical gate.
+
+It is not a CAIS compliance gate.
+
+---
+
+## What the validator does not check
+
+The validator does not check:
+
+- real physiological validity;
+- real psychological validity;
+- true human-state inference;
+- clinical interpretation;
+- diagnostic correctness;
+- therapeutic effect;
+- model performance;
+- benchmark reliability;
+- external reproducibility;
+- Sal-Meter signal validity;
+- CAIS compliance;
+- certification readiness;
+- device readiness.
+
+The validator may return `PASS` even though the package contains only synthetic/toy values.
+
+That is expected.
+
+The validator exists to verify structure, not truth.
+
+---
+
+## Common PASS interpretation
+
+A `PASS` means:
+
+```text
+The synthetic sample package is internally consistent enough for public helper demonstration.
+```
+
+A `PASS` does not mean:
+
+```text
+The package proves a benchmark.
+The package proves human-state measurement.
+The package proves AI-state response safety.
+The package proves Sal-Meter readiness.
+The package proves CAIS compliance.
+```
+
+---
+
+## Common FAIL causes
+
+A `FAIL` usually means one of the following:
+
+- a required file is missing;
+- a JSON file cannot be parsed;
+- a CSV file has missing or mismatched column names;
+- a schema file is invalid;
+- a sample file does not match its schema;
+- `dataset_type` is not `synthetic`;
+- a required public boundary field is missing;
+- a boundary flag expected to be `false` is not false;
+- `synthetic_status_declared` is missing or not true;
+- the operator log is missing expected boundary phrases;
+- filenames, field names, or enum values drifted from the helper schemas.
+
+A `FAIL` is not a scientific failure.
+
+A `FAIL` is a structure or boundary mismatch.
+
+---
+
+## Baseline pipeline skeleton
+
+The file:
+
+```text
+baseline_pipeline_skeleton.py
+```
+
+is a toy baseline pipeline skeleton.
+
+It may be used to demonstrate:
+
+- loading synthetic feature rows;
+- joining synthetic labels;
+- separating features and labels;
+- sketching a transparent baseline flow;
+- identifying where leakage-safe split logic belongs.
+
+It must not be used to claim:
+
+- validated model performance;
+- real human-state classification;
+- clinical interpretation;
+- diagnostic status;
+- Sal-Meter validation;
+- CAIS compliance.
+
+---
+
+## Leakage-safe split example
+
+The file:
+
+```text
+leakage_safe_split_example.py
+```
+
+is a helper demonstration of leakage-aware split thinking.
+
+It supports the principle that real benchmark evaluation must avoid hidden leakage through:
+
+- participant identity;
+- day/session order;
+- device identity;
+- operator identity;
+- condition labels;
+- filenames;
+- preprocessing artifacts;
+- train/validation/test contamination.
+
+The current synthetic session is intentionally small and visible.
+
+It is for structure demonstration only.
+
+A real benchmark package must use stricter split rules.
+
+---
+
+## Boundary
+
+Allowed:
+
+- synthetic feature loading;
+- toy baseline processing;
+- leakage-safe split demonstration;
+- schema and file-structure checking;
+- transparent model skeletons;
+- reproducibility examples;
+- public helper validation;
+- non-diagnostic benchmark-support language.
+
+Not allowed:
+
+- raw human data;
+- real participant data;
+- real webcam data;
+- real audio data;
+- real face data;
+- real voice data;
+- identity mapping files;
+- private consent records;
+- clinical data;
+- diagnostic claims;
+- therapeutic claims;
+- human ranking;
+- surveillance scoring;
+- Sal-Meter validation claims;
+- CAIS compliance claims;
+- certified benchmark claims.
+
+---
+
+## Human-State Cost proxy boundary
+
+Synthetic feature files may include a Human-State Cost proxy field.
+
+In this repository, Human-State Cost is only a non-diagnostic benchmark construct example.
+
+It must not be presented as:
+
+```text
+a medical score
+a psychiatric score
+a clinical score
+a consciousness score
+a psychological safety score
+an employee monitoring score
+a user dependence diagnosis
+a human-ranking measure
+a certified benchmark output
+a Sal-Meter output
+a CAIS output
+```
+
+Acceptable language:
+
+```text
+Human-State Cost proxy example value
+non-diagnostic benchmark construct
+synthetic/sample helper field
+proxy burden comparison construct
+```
+
+Prohibited language:
+
+```text
+diagnostic score
+clinical score
+validated human-state score
+certified benchmark output
+Sal-Meter result
+CAIS-compliant output
+consciousness measurement
+human truth score
+```
+
+---
+
+## How to interpret synthetic results
+
+Synthetic results are allowed to show structure.
+
+Synthetic results are not allowed to imply evidence.
+
+A result from synthetic data may demonstrate:
+
+- file loading;
+- schema alignment;
+- preprocessing flow;
+- baseline code structure;
+- leakage-control logic;
+- reporting format.
+
+A result from synthetic data must not claim:
+
+- biological validity;
+- physiological validity;
+- psychological validity;
+- clinical validity;
+- diagnostic validity;
+- benchmark validity;
+- Sal-Meter validity;
+- CAIS compliance.
 
 ---
 
@@ -111,23 +462,23 @@ Initial baselines should be boring.
 
 Preferred properties:
 
-- transparent
-- reproducible
-- leakage-aware
-- metadata-aware
-- synthetic-safe
-- easy to audit
-- explicit about limitations
+- transparent;
+- reproducible;
+- leakage-aware;
+- metadata-aware;
+- synthetic-safe;
+- easy to audit;
+- explicit about limitations.
 
 Avoid:
 
-- leaderboard framing
-- deep learning performance claims
-- clinical scoring
-- diagnostic interpretation
-- hidden preprocessing
-- tuning on final holdout data
-- reporting synthetic output as evidence
+- leaderboard framing;
+- deep learning performance claims;
+- clinical scoring;
+- diagnostic interpretation;
+- hidden preprocessing;
+- tuning on final holdout data;
+- reporting synthetic output as evidence.
 
 ---
 
@@ -157,6 +508,49 @@ toy evaluation example
 leakage-safe split demonstration
 research-stage proxy benchmark helper
 non-diagnostic benchmark support
+helper-structure validation
+```
+
+---
+
+## P1-3 issue alignment
+
+This README addresses the open issue:
+
+```text
+[P1-3] Improve evaluation baseline README and validator usability
+```
+
+The issue is complete when this README clearly explains:
+
+- what the validator does;
+- how to run the validator;
+- how to install dependencies;
+- what PASS means;
+- what FAIL usually means;
+- what the validator does not validate;
+- why the output is helper-structure validation only.
+
+---
+
+## Recommended local check sequence
+
+From the repository root:
+
+```bash
+pip install -r evaluation-baseline/requirements.txt
+python evaluation-baseline/validate_sample_package.py
+python evaluation-baseline/baseline_pipeline_skeleton.py
+python evaluation-baseline/leakage_safe_split_example.py
+```
+
+Expected posture:
+
+```text
+The validator checks structure.
+The baseline skeleton demonstrates flow.
+The leakage example demonstrates split discipline.
+None of these outputs are benchmark evidence.
 ```
 
 ---
@@ -168,3 +562,19 @@ A result that cannot be replayed is not benchmark evidence.
 A result that leaks labels is not evidence.
 
 A result based on synthetic data is structure demonstration, not scientific proof.
+
+A validator PASS is a structure signal, not a scientific claim.
+
+This folder remains:
+
+```text
+Research-stage.
+Synthetic/sample helper only.
+Non-diagnostic.
+Non-clinical.
+Non-therapeutic.
+Not Sal-Meter.
+Not CAIS compliance.
+Not benchmark evidence.
+No raw human data.
+```
