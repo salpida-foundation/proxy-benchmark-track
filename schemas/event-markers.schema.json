@@ -1,74 +1,133 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "SICS Human-State Proxy Benchmark Event Markers v0.1",
+  "$id": "https://github.com/salpida-foundation/proxy-benchmark-track/schemas/event-markers.schema.json",
+  "title": "SICS Human-State Proxy Benchmark Event Markers Schema v0.1",
+  "description": "Schema for validating one row object from events.csv in the SICS Human-State Proxy Benchmark Track synthetic/sample package. This schema is for public helper use only. It does not define CAIS, does not define Sal-Meter, does not grant compliance, does not validate benchmark performance, and does not create diagnostic, therapeutic, clinical, surveillance, employment, insurance, educational, legal, or eligibility authority.",
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "schema_version",
+    "event_id",
     "session_id",
-    "events"
+    "event_type",
+    "event_timestamp",
+    "event_source",
+    "event_description",
+    "operator_confirmed"
   ],
   "properties": {
-    "schema_version": {
+    "event_id": {
       "type": "string",
-      "const": "0.1"
+      "description": "Unique event marker identifier within the synthetic/sample session.",
+      "pattern": "^SYN-EVT-[0-9]{3}$"
     },
     "session_id": {
-      "type": "string"
+      "type": "string",
+      "description": "Synthetic session identifier.",
+      "pattern": "^SYN-SESSION-[0-9]{3}$"
     },
-    "events": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "event_id",
-          "timestamp",
-          "event_type"
-        ],
-        "properties": {
-          "event_id": {
-            "type": "string"
-          },
-          "timestamp": {
-            "type": "string",
-            "description": "Use ISO 8601 or a documented local timestamp convention."
-          },
-          "event_type": {
-            "type": "string",
-            "enum": [
-              "session_start",
-              "baseline_start",
-              "task_start",
-              "ai_interaction_start",
-              "feedback_event",
-              "task_end",
-              "recovery_start",
-              "session_end",
-              "annotation",
-              "deviation"
-            ]
-          },
-          "condition_label": {
-            "type": "string"
-          },
-          "source": {
-            "type": "string",
-            "enum": [
-              "operator",
-              "device",
-              "software",
-              "simulator",
-              "ai-system",
-              "manual",
-              "synthetic"
-            ]
-          },
-          "note": {
-            "type": "string"
-          }
+    "event_type": {
+      "type": "string",
+      "description": "Synthetic or research-stage event marker type. These are timing markers only and are not diagnostic labels.",
+      "enum": [
+        "session_start",
+        "baseline_start",
+        "task_start",
+        "ai_interaction_start",
+        "feedback_event",
+        "task_end",
+        "recovery_start",
+        "session_end",
+        "annotation",
+        "deviation"
+      ]
+    },
+    "event_timestamp": {
+      "type": "string",
+      "description": "Event timestamp in ISO 8601 UTC-like format for the synthetic session.",
+      "pattern": "^2026-04-28T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "event_source": {
+      "type": "string",
+      "description": "Source that generated or recorded the event marker.",
+      "enum": [
+        "operator",
+        "device",
+        "software",
+        "simulator",
+        "ai_system",
+        "manual",
+        "synthetic",
+        "task_script"
+      ]
+    },
+    "event_description": {
+      "type": "string",
+      "description": "Human-readable event description. Must not contain participant identifiers, clinical interpretation, Sal-Meter validation claims, or CAIS compliance claims."
+    },
+    "operator_confirmed": {
+      "description": "Whether the event marker was operator-confirmed. CSV readers may load this as a string.",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "true",
+            "false"
+          ]
         }
-      }
+      ]
+    },
+    "condition_label": {
+      "type": "string",
+      "description": "Optional non-diagnostic condition marker associated with the event.",
+      "enum": [
+        "synthetic_baseline",
+        "synthetic_task_ai_interaction",
+        "synthetic_recovery",
+        "synthetic_feedback",
+        "not_applicable"
+      ]
+    },
+    "public_data_status": {
+      "type": "string",
+      "description": "Optional public data boundary marker.",
+      "enum": [
+        "synthetic",
+        "sample_structure_only",
+        "mock",
+        "placeholder"
+      ]
+    },
+    "raw_human_data_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. For public sample data this must be false.",
+      "const": false
+    },
+    "identifiable_data_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. For public sample data this must be false.",
+      "const": false
+    },
+    "clinical_data_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. For public sample data this must be false.",
+      "const": false
+    },
+    "sal_meter_input_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. For current proxy sample data this must be false.",
+      "const": false
+    },
+    "cais_compliance_claim_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. For public helper files this must be false.",
+      "const": false
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional boundary note. Must not contain participant identifiers, clinical interpretation, Sal-Meter validation claims, or CAIS compliance claims."
     }
   }
 }
