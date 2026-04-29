@@ -3,9 +3,11 @@
   "session_id": "SYN-SESSION-001",
   "dataset_type": "synthetic",
   "session_date": "2026-04-28",
-  "participant_code": "SYN-P001",
-  "condition_label": "synthetic_ai_interaction_demo",
+  "participant_code": "SYN-PARTICIPANT-001",
+  "condition_label": "synthetic_multiphase_demo",
   "task_context": "Synthetic demonstration of a bounded Human-State-Aware AI interaction benchmark session. No real human participant data is included.",
+  "session_start": "2026-04-28T09:00:00Z",
+  "session_end": "2026-04-28T09:20:00Z",
   "signals": [
     {
       "signal_name": "synthetic_ecg",
@@ -33,22 +35,33 @@
     }
   ],
   "event_marker_file": "events.csv",
-  "sync_method": "synthetic_shared_timestamp",
+  "sync_method": "synthetic_timestamp_alignment",
   "preprocessing_version": "synthetic-preprocess-v0.1",
   "model_version": "baseline-skeleton-v0.1",
+  "synthetic_status_declared": true,
   "data_boundary": {
     "raw_human_data_public": false,
+    "identifiable_data_public": false,
+    "clinical_data_public": false,
+    "sal_meter_input_present": false,
+    "cais_compliance_claim_present": false,
     "public_release_allowed": true,
-    "release_note": "Synthetic demonstration file only. No raw human data, no participant identifiers, no clinical data, no Sal-Meter input data."
+    "release_note": "Synthetic demonstration file only. No raw human data, no participant identifiers, no clinical data, no Sal-Meter input, and no CAIS compliance claim."
   },
   "leakage_review": {
     "reviewed": true,
     "known_risks": [
-      "Synthetic condition labels should not be used as evidence.",
+      "Synthetic condition labels are visible for demonstration clarity.",
       "Filenames must not be treated as hidden labels in real benchmark use.",
       "This file demonstrates structure only."
     ],
-    "split_strategy": "synthetic_session_holdout_demo"
+    "split_strategy": "synthetic_session_holdout_demo",
+    "labels_visible_for_demo": true,
+    "notes": [
+      "This public sample is synthetic and must not be used as benchmark evidence.",
+      "A real benchmark package must enforce leakage-safe participant, day, device, session, condition, and operator holdout rules."
+    ]
   },
-  "deviation_note": "No deviation. Synthetic sample package created for repository structure demonstration."
+  "deviation_note": "No deviation. Synthetic sample package created for repository structure demonstration.",
+  "final_boundary": "Synthetic sample metadata only. Not benchmark evidence. Not Sal-Meter validation. Not CAIS compliance. Not clinical data."
 }
