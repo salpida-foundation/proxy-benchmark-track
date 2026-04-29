@@ -1,6 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "SICS Human-State Proxy Benchmark Session Metadata v0.1",
+  "$id": "https://github.com/salpida-foundation/proxy-benchmark-track/schemas/session-metadata.schema.json",
+  "title": "SICS Human-State Proxy Benchmark Session Metadata Schema v0.1",
+  "description": "Schema for validating session_metadata.json in the SICS Human-State Proxy Benchmark Track synthetic/sample package. This schema is for public helper use only. It does not define CAIS, does not define Sal-Meter, does not grant compliance, does not validate benchmark performance, and does not create diagnostic, therapeutic, clinical, surveillance, employment, insurance, educational, legal, or eligibility authority.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -18,108 +20,292 @@
   "properties": {
     "schema_version": {
       "type": "string",
+      "description": "Schema version for this session metadata structure.",
       "const": "0.1"
     },
     "session_id": {
-      "type": "string"
+      "type": "string",
+      "description": "Synthetic or coded session identifier.",
+      "pattern": "^SYN-SESSION-[0-9]{3}$"
     },
     "dataset_type": {
       "type": "string",
-      "enum": ["synthetic", "sample", "private-human", "internal-test"]
+      "description": "Dataset class. Public repository examples should normally use synthetic or sample only.",
+      "enum": [
+        "synthetic",
+        "sample",
+        "internal-test",
+        "private-human"
+      ]
     },
     "session_date": {
       "type": "string",
-      "description": "Use YYYY-MM-DD when appropriate. Public synthetic data may use fictional dates."
+      "description": "Session date. Public synthetic data may use fictional dates.",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
     },
     "participant_code": {
       "type": "string",
-      "description": "No direct identifier. Use coded or synthetic subject ID only."
+      "description": "No direct identifier. Use a coded or synthetic participant/session subject code only.",
+      "pattern": "^(SYN-PARTICIPANT-[0-9]{3}|PSEUDO-[A-Z0-9_-]{3,32}|NONE)$"
     },
     "condition_label": {
-      "type": "string"
+      "type": "string",
+      "description": "Optional non-diagnostic condition label for the session.",
+      "enum": [
+        "synthetic_baseline",
+        "synthetic_task_ai_interaction",
+        "synthetic_recovery",
+        "synthetic_multiphase_demo",
+        "not_applicable"
+      ]
     },
     "task_context": {
-      "type": "string"
+      "type": "string",
+      "description": "Short non-diagnostic description of the synthetic or research task context."
+    },
+    "session_start": {
+      "type": "string",
+      "description": "Optional session start timestamp in ISO 8601 UTC-like format.",
+      "pattern": "^2026-04-28T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "session_end": {
+      "type": "string",
+      "description": "Optional session end timestamp in ISO 8601 UTC-like format.",
+      "pattern": "^2026-04-28T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
     },
     "signals": {
       "type": "array",
+      "description": "List of synthetic/sample streams or signal placeholders associated with the session.",
+      "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["signal_name", "device", "sampling_rate_hz", "timestamp_source"],
         "additionalProperties": false,
+        "required": [
+          "signal_name",
+          "device",
+          "sampling_rate_hz",
+          "timestamp_source"
+        ],
         "properties": {
           "signal_name": {
-            "type": "string"
+            "type": "string",
+            "description": "Synthetic or proxy signal name.",
+            "enum": [
+              "synthetic_ecg",
+              "synthetic_hrv",
+              "synthetic_eda",
+              "synthetic_ppg",
+              "synthetic_eye_gaze",
+              "synthetic_interaction_events",
+              "synthetic_task_events",
+              "synthetic_feedback_events",
+              "ecg",
+              "hrv",
+              "eda",
+              "ppg",
+              "eye_gaze",
+              "optional_eeg",
+              "respiration",
+              "imu_motion",
+              "skin_temperature",
+              "behavioral_events",
+              "task_events",
+              "ai_interaction_events",
+              "feedback_events"
+            ]
           },
           "device": {
-            "type": "string"
+            "type": "string",
+            "description": "Device, mock generator, or placeholder source. Public synthetic data should identify synthetic/mock generators rather than real participant devices."
           },
           "sampling_rate_hz": {
-            "type": "number"
+            "description": "Sampling rate in Hz. JSON or CSV conversion may represent this as number or string.",
+            "oneOf": [
+              {
+                "type": "number",
+                "minimum": 0
+              },
+              {
+                "type": "string",
+                "pattern": "^[0-9]+(\\.[0-9]+)?$"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "event_based",
+                  "not_applicable"
+                ]
+              }
+            ]
           },
           "timestamp_source": {
-            "type": "string"
+            "type": "string",
+            "description": "Timestamp source or synchronization reference.",
+            "enum": [
+              "synthetic_clock",
+              "lsl_clock",
+              "device_clock",
+              "software_clock",
+              "operator_marker",
+              "not_applicable"
+            ]
           },
           "quality_flag": {
             "type": "string",
-            "enum": ["pass", "review", "fail", "unknown"]
+            "description": "Signal quality flag. This is QC only and not a diagnostic quality statement.",
+            "enum": [
+              "pass",
+              "review",
+              "fail",
+              "unknown",
+              "synthetic_pass"
+            ]
           },
           "dropout_note": {
-            "type": "string"
+            "type": "string",
+            "description": "Optional dropout or missing-data note."
           }
         }
       }
     },
     "event_marker_file": {
-      "type": "string"
+      "type": "string",
+      "description": "Relative filename for the event marker file.",
+      "enum": [
+        "events.csv",
+        "event_markers.json",
+        "not_applicable"
+      ]
     },
     "sync_method": {
-      "type": "string"
+      "type": "string",
+      "description": "Synchronization method or placeholder method used for the session.",
+      "enum": [
+        "synthetic_timestamp_alignment",
+        "lsl",
+        "manual_alignment",
+        "device_timestamp_alignment",
+        "software_event_alignment",
+        "not_applicable"
+      ]
     },
     "preprocessing_version": {
-      "type": "string"
+      "type": "string",
+      "description": "Optional preprocessing version. Public examples may use placeholder values."
     },
     "model_version": {
-      "type": "string"
+      "type": "string",
+      "description": "Optional model version. Public examples should avoid implying validated benchmark performance."
+    },
+    "synthetic_status_declared": {
+      "type": "boolean",
+      "description": "Whether synthetic/sample status is explicitly declared.",
+      "const": true
     },
     "data_boundary": {
       "type": "object",
-      "required": ["raw_human_data_public", "public_release_allowed"],
+      "description": "Public/private data boundary for this session metadata file.",
       "additionalProperties": false,
+      "required": [
+        "raw_human_data_public",
+        "identifiable_data_public",
+        "clinical_data_public",
+        "sal_meter_input_present",
+        "cais_compliance_claim_present",
+        "public_release_allowed"
+      ],
       "properties": {
         "raw_human_data_public": {
           "type": "boolean",
+          "description": "Public helper packages must not publish raw human data.",
+          "const": false
+        },
+        "identifiable_data_public": {
+          "type": "boolean",
+          "description": "Public helper packages must not publish identifiable data.",
+          "const": false
+        },
+        "clinical_data_public": {
+          "type": "boolean",
+          "description": "Public helper packages must not publish clinical data.",
+          "const": false
+        },
+        "sal_meter_input_present": {
+          "type": "boolean",
+          "description": "Current proxy sample packages must not contain Sal-Meter input.",
+          "const": false
+        },
+        "cais_compliance_claim_present": {
+          "type": "boolean",
+          "description": "Public helper packages must not contain CAIS compliance claims.",
           "const": false
         },
         "public_release_allowed": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether this metadata object is allowed for public synthetic/sample release."
         },
         "release_note": {
-          "type": "string"
+          "type": "string",
+          "description": "Boundary note for release. Must not contain participant identifiers, clinical interpretation, Sal-Meter validation claims, or CAIS compliance claims."
         }
       }
     },
     "leakage_review": {
       "type": "object",
-      "required": ["reviewed", "known_risks", "split_strategy"],
+      "description": "Leakage review for session-level metadata. This is not benchmark validation.",
       "additionalProperties": false,
+      "required": [
+        "reviewed",
+        "known_risks",
+        "split_strategy"
+      ],
       "properties": {
         "reviewed": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether leakage review was performed."
         },
         "known_risks": {
           "type": "array",
+          "description": "Known leakage risks or limitations.",
           "items": {
             "type": "string"
           }
         },
         "split_strategy": {
-          "type": "string"
+          "type": "string",
+          "description": "Declared split strategy or placeholder strategy.",
+          "enum": [
+            "synthetic_session_holdout_demo",
+            "participant_holdout",
+            "day_holdout",
+            "device_holdout",
+            "operator_holdout",
+            "condition_holdout",
+            "locked_test_split",
+            "exploratory_random_split",
+            "not_applicable"
+          ]
+        },
+        "labels_visible_for_demo": {
+          "type": "boolean",
+          "description": "Whether labels are intentionally visible for synthetic structure demonstration."
+        },
+        "notes": {
+          "type": "array",
+          "description": "Optional leakage review notes.",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
     "deviation_note": {
-      "type": "string"
+      "type": "string",
+      "description": "Optional deviation note. Must not contain participant identifiers, clinical interpretation, Sal-Meter validation claims, or CAIS compliance claims."
+    },
+    "final_boundary": {
+      "type": "string",
+      "description": "Optional final boundary statement. Should state that the metadata is synthetic/sample only and not benchmark evidence, not Sal-Meter validation, and not CAIS compliance."
     }
   }
 }
