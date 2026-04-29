@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salpida-foundation/proxy-benchmark-track/schemas/features-baseline.schema.json",
+  "title": "SICS Human-State Proxy Benchmark Baseline Features Schema v0.1",
+  "description": "Schema for validating one row object from features_baseline.csv in the SICS Human-State Proxy Benchmark Track synthetic/sample package. This schema is for public helper use only. It does not define CAIS, does not define Sal-Meter, does not grant compliance, does not validate benchmark performance, and does not create diagnostic, therapeutic, clinical, surveillance, employment, insurance, educational, legal, or eligibility authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "feature_row_id",
+    "session_id",
+    "window_label",
+    "window_start",
+    "window_end",
+    "synthetic_hrv_index",
+    "synthetic_eda_level",
+    "synthetic_interaction_latency_ms",
+    "synthetic_human_state_cost_proxy",
+    "public_data_status",
+    "note"
+  ],
+  "properties": {
+    "feature_row_id": {
+      "type": "string",
+      "description": "Unique synthetic feature row identifier.",
+      "pattern": "^SYN-FEAT-[0-9]{3}$"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Synthetic session identifier.",
+      "pattern": "^SYN-SESSION-[0-9]{3}$"
+    },
+    "window_label": {
+      "type": "string",
+      "description": "Synthetic or research-stage feature window label. This is not a diagnosis, not a clinical label, not a Sal-Meter output, and not a CAIS index.",
+      "enum": [
+        "synthetic_baseline",
+        "synthetic_task_ai_interaction",
+        "synthetic_recovery",
+        "synthetic_feedback",
+        "exploratory_only",
+        "excluded"
+      ]
+    },
+    "window_start": {
+      "type": "string",
+      "description": "Feature window start timestamp in ISO 8601 UTC-like format.",
+      "pattern": "^2026-04-28T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "window_end": {
+      "type": "string",
+      "description": "Feature window end timestamp in ISO 8601 UTC-like format.",
+      "pattern": "^2026-04-28T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "synthetic_hrv_index": {
+      "description": "Synthetic HRV-like proxy feature. This is a toy/sample feature only and is not physiological evidence.",
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "string",
+          "pattern": "^(0(\\.[0-9]+)?|1(\\.0+)?)$"
+        }
+      ]
+    },
+    "synthetic_eda_level": {
+      "description": "Synthetic EDA-like proxy feature. This is a toy/sample feature only and is not physiological evidence.",
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "string",
+          "pattern": "^(0(\\.[0-9]+)?|1(\\.0+)?)$"
+        }
+      ]
+    },
+    "synthetic_interaction_latency_ms": {
+      "description": "Synthetic interaction latency in milliseconds. This is a toy/sample feature only.",
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9]+(\\.[0-9]+)?$"
+        }
+      ]
+    },
+    "synthetic_human_state_cost_proxy": {
+      "description": "Synthetic Human-State Cost proxy example value. This is a non-diagnostic benchmark construct example only. It is not a medical score, psychiatric score, clinical score, consciousness score, Sal-Meter output, CAIS output, certified benchmark, or human-ranking measure.",
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "string",
+          "pattern": "^(0(\\.[0-9]+)?|1(\\.0+)?)$"
+        }
+      ]
+    },
+    "public_data_status": {
+      "type": "string",
+      "description": "Public data boundary marker.",
+      "enum": [
+        "synthetic",
+        "sample_structure_only",
+        "mock",
+        "placeholder"
+      ]
+    },
+    "note": {
+      "type": "string",
+      "description": "Boundary note. Must not contain participant identifiers, clinical interpretation, Sal-Meter validation claims, or CAIS compliance claims."
+    },
+    "raw_human_data_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. For public sample data this must be false.",
+      "const": false
+    },
+    "identifiable_data_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. For public sample data this must be false.",
+      "const": false
+    },
+    "clinical_data_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. For public sample data this must be false.",
+      "const": false
+    },
+    "sal_meter_input_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. For current proxy sample data this must be false.",
+      "const": false
+    },
+    "cais_compliance_claim_present": {
+      "type": "boolean",
+      "description": "Optional explicit declaration. For public helper files this must be false.",
+      "const": false
+    }
+  }
+}
