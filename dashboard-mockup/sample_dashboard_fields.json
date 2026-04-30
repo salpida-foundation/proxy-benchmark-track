@@ -1,0 +1,603 @@
+{
+  "document_type": "sample_dashboard_fields",
+  "document_version": "0.1.0",
+  "repository": "salpida-foundation/proxy-benchmark-track",
+  "folder": "dashboard-mockup",
+  "file": "dashboard-mockup/sample_dashboard_fields.json",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "status": "research-stage-public-helper",
+  "data_status": "synthetic-sample-only",
+  "authority_status": "helper-surface-only",
+  "canonical_authority": "DOI-registered SICS / CAIS / Sal-Meter / CCF records remain the authority layer.",
+  "purpose": "Define safe synthetic/sample dashboard fields for public helper dashboard mockups without implying benchmark validation, Sal-Meter validation, CAIS compliance, clinical interpretation, therapeutic feedback, surveillance readiness, certification, or human-ranking authority.",
+  "required_visible_disclaimer": [
+    "Research-stage proxy benchmark helper view.",
+    "Synthetic/sample data only.",
+    "Not diagnostic.",
+    "Not clinical.",
+    "Not therapeutic.",
+    "Not surveillance.",
+    "Not certification.",
+    "Not Sal-Meter.",
+    "Not CAIS compliance.",
+    "Not human ranking."
+  ],
+  "boundary_flags": {
+    "raw_human_data_present": false,
+    "identifiable_data_present": false,
+    "clinical_data_present": false,
+    "diagnostic_claim_present": false,
+    "therapeutic_claim_present": false,
+    "surveillance_claim_present": false,
+    "certification_claim_present": false,
+    "employment_claim_present": false,
+    "insurance_claim_present": false,
+    "educational_claim_present": false,
+    "legal_claim_present": false,
+    "eligibility_claim_present": false,
+    "human_ranking_claim_present": false,
+    "sal_meter_input_present": false,
+    "sal_meter_validation_claim_present": false,
+    "cais_compliance_claim_present": false,
+    "benchmark_validation_claim_present": false,
+    "scientific_evidence_claim_present": false
+  },
+  "dashboard_sections": [
+    {
+      "section_id": "boundary_banner",
+      "display_title": "Boundary Banner",
+      "allowed": true,
+      "purpose": "Display the research-stage, synthetic/sample, non-diagnostic, non-clinical, non-therapeutic, non-surveillance, non-certification, non-human-ranking boundary near the top of the mockup.",
+      "must_not_claim": [
+        "validation",
+        "diagnosis",
+        "therapy",
+        "surveillance",
+        "certification",
+        "CAIS compliance",
+        "Sal-Meter validation",
+        "human ranking"
+      ]
+    },
+    {
+      "section_id": "synthetic_session_summary",
+      "display_title": "Synthetic Session Summary",
+      "allowed": true,
+      "purpose": "Show synthetic session-level identifiers and boundary status.",
+      "must_not_claim": [
+        "real participant status",
+        "clinical status",
+        "diagnostic status",
+        "human truth"
+      ]
+    },
+    {
+      "section_id": "synthetic_event_timeline",
+      "display_title": "Synthetic Event Timeline",
+      "allowed": true,
+      "purpose": "Show synthetic event markers and timestamp alignment status.",
+      "must_not_claim": [
+        "causality",
+        "harm proof",
+        "therapy effect",
+        "diagnostic timing"
+      ]
+    },
+    {
+      "section_id": "proxy_feature_summary",
+      "display_title": "Proxy Feature Summary",
+      "allowed": true,
+      "purpose": "Show synthetic proxy feature fields for structure demonstration.",
+      "must_not_claim": [
+        "physiological truth",
+        "clinical state",
+        "validated signal",
+        "Sal-Meter signal"
+      ]
+    },
+    {
+      "section_id": "human_state_cost_proxy",
+      "display_title": "Human-State Cost Proxy Field",
+      "allowed": true,
+      "purpose": "Show a bounded proxy construct for interaction-condition comparison only.",
+      "must_not_claim": [
+        "person score",
+        "diagnostic score",
+        "therapeutic score",
+        "surveillance score",
+        "certification score",
+        "consciousness score",
+        "Sal-Meter score",
+        "CAIS score"
+      ]
+    },
+    {
+      "section_id": "metadata_completeness",
+      "display_title": "Metadata Completeness",
+      "allowed": true,
+      "purpose": "Show whether required helper metadata fields are present.",
+      "must_not_claim": [
+        "scientific validity",
+        "benchmark validity",
+        "clinical validity"
+      ]
+    },
+    {
+      "section_id": "timestamp_alignment",
+      "display_title": "Timestamp Alignment",
+      "allowed": true,
+      "purpose": "Show whether timestamp and sync helper fields are present and reviewable.",
+      "must_not_claim": [
+        "causality",
+        "device validation",
+        "human-state truth"
+      ]
+    },
+    {
+      "section_id": "leakage_review",
+      "display_title": "Leakage Review",
+      "allowed": true,
+      "purpose": "Show leakage review status for synthetic/sample helper structure.",
+      "must_not_claim": [
+        "model validity",
+        "scientific validity",
+        "clinical validity"
+      ]
+    },
+    {
+      "section_id": "qc_structure_summary",
+      "display_title": "QC Structure Summary",
+      "allowed": true,
+      "purpose": "Show helper QC structure status only.",
+      "must_not_claim": [
+        "device readiness",
+        "certification readiness",
+        "clinical readiness"
+      ]
+    },
+    {
+      "section_id": "future_sal_meter_ab_placeholder",
+      "display_title": "Future Sal-Meter A/B Placeholder",
+      "allowed": true,
+      "active": false,
+      "purpose": "Reserve a visibly inactive placeholder for future proxy/core comparison only if Sal-Meter core inputs become available under separate governance.",
+      "must_not_claim": [
+        "active Sal-Meter input",
+        "Sal-Meter validation",
+        "CAIS compliance",
+        "ground truth",
+        "consciousness measurement"
+      ]
+    },
+    {
+      "section_id": "future_dyadic_mediation_placeholder",
+      "display_title": "Future Dyadic / Conflict Mediation Benchmark Placeholder",
+      "allowed": true,
+      "active": false,
+      "purpose": "Reserve a visibly inactive placeholder for future synthetic dyadic or conflict mediation benchmark mockups only.",
+      "must_not_claim": [
+        "legal mediation",
+        "therapy",
+        "counseling",
+        "relationship diagnosis",
+        "fault assignment",
+        "who-is-right determination",
+        "who-is-wrong determination",
+        "person ranking",
+        "surveillance scoring"
+      ]
+    }
+  ],
+  "sample_fields": [
+    {
+      "field_name": "dashboard_view_status",
+      "display_label": "Dashboard View Status",
+      "data_type": "string",
+      "example_value": "synthetic_sample_helper_view",
+      "allowed_values": [
+        "synthetic_sample_helper_view",
+        "mockup_only",
+        "structure_demo_only"
+      ],
+      "section": "boundary_banner",
+      "public_status": "allowed",
+      "boundary_note": "Identifies the dashboard as a helper mockup only."
+    },
+    {
+      "field_name": "boundary_notice",
+      "display_label": "Boundary Notice",
+      "data_type": "string",
+      "example_value": "Research-stage proxy benchmark helper view. Synthetic/sample data only.",
+      "section": "boundary_banner",
+      "public_status": "required",
+      "boundary_note": "Must be visible near the top of the dashboard."
+    },
+    {
+      "field_name": "session_id",
+      "display_label": "Synthetic Session ID",
+      "data_type": "string",
+      "example_value": "SYN-SESSION-001",
+      "section": "synthetic_session_summary",
+      "public_status": "allowed",
+      "boundary_note": "Synthetic session identifier only. Not a participant identifier."
+    },
+    {
+      "field_name": "dataset_type",
+      "display_label": "Dataset Type",
+      "data_type": "string",
+      "example_value": "synthetic",
+      "allowed_values": [
+        "synthetic",
+        "sample",
+        "mock",
+        "toy",
+        "placeholder",
+        "sample-structure-only"
+      ],
+      "section": "synthetic_session_summary",
+      "public_status": "required",
+      "boundary_note": "Public dashboard data must be synthetic, sample, mock, toy, placeholder, or sample-structure-only."
+    },
+    {
+      "field_name": "public_data_status",
+      "display_label": "Public Data Status",
+      "data_type": "string",
+      "example_value": "public_helper_synthetic",
+      "allowed_values": [
+        "public_helper_synthetic",
+        "public_sample_only",
+        "mock_only",
+        "not_public"
+      ],
+      "section": "synthetic_session_summary",
+      "public_status": "required",
+      "boundary_note": "Clarifies whether data are public helper examples only."
+    },
+    {
+      "field_name": "window_label",
+      "display_label": "Window Label",
+      "data_type": "string",
+      "example_value": "synthetic_task_ai_interaction",
+      "section": "synthetic_event_timeline",
+      "public_status": "allowed",
+      "boundary_note": "Window labels mark structure only. They must not become diagnosis or person judgment."
+    },
+    {
+      "field_name": "event_marker_id",
+      "display_label": "Event Marker ID",
+      "data_type": "string",
+      "example_value": "SYN-EVENT-003",
+      "section": "synthetic_event_timeline",
+      "public_status": "allowed",
+      "boundary_note": "Synthetic event marker only. Does not prove causality."
+    },
+    {
+      "field_name": "event_type",
+      "display_label": "Event Type",
+      "data_type": "string",
+      "example_value": "synthetic_ai_prompt",
+      "section": "synthetic_event_timeline",
+      "public_status": "allowed",
+      "boundary_note": "Synthetic event type only. Not clinical or diagnostic."
+    },
+    {
+      "field_name": "timestamp_source",
+      "display_label": "Timestamp Source",
+      "data_type": "string",
+      "example_value": "synthetic_clock",
+      "section": "timestamp_alignment",
+      "public_status": "allowed",
+      "boundary_note": "Timestamp source supports reviewability only."
+    },
+    {
+      "field_name": "timestamp_sync_status",
+      "display_label": "Timestamp Alignment Status",
+      "data_type": "string",
+      "example_value": "review_required",
+      "allowed_values": [
+        "synthetic_aligned",
+        "review_required",
+        "not_applicable",
+        "placeholder"
+      ],
+      "section": "timestamp_alignment",
+      "public_status": "allowed",
+      "boundary_note": "Sync status does not prove causality or validity."
+    },
+    {
+      "field_name": "known_offset_ms",
+      "display_label": "Known Offset ms",
+      "data_type": "integer",
+      "example_value": 0,
+      "section": "timestamp_alignment",
+      "public_status": "allowed",
+      "boundary_note": "Synthetic offset field for timing review only."
+    },
+    {
+      "field_name": "synthetic_hrv_index",
+      "display_label": "Synthetic HRV-like Index",
+      "data_type": "number",
+      "example_value": 0.72,
+      "section": "proxy_feature_summary",
+      "public_status": "allowed",
+      "boundary_note": "Synthetic proxy feature. Not physiological truth, not clinical state."
+    },
+    {
+      "field_name": "synthetic_eda_level",
+      "display_label": "Synthetic EDA-like Level",
+      "data_type": "number",
+      "example_value": 0.18,
+      "section": "proxy_feature_summary",
+      "public_status": "allowed",
+      "boundary_note": "Synthetic proxy feature. Not stress diagnosis or clinical measurement."
+    },
+    {
+      "field_name": "synthetic_interaction_latency_ms",
+      "display_label": "Synthetic Interaction Latency ms",
+      "data_type": "integer",
+      "example_value": 410,
+      "section": "proxy_feature_summary",
+      "public_status": "allowed",
+      "boundary_note": "Synthetic interaction timing field only."
+    },
+    {
+      "field_name": "synthetic_human_state_cost_proxy",
+      "display_label": "Human-State Cost Proxy Field",
+      "data_type": "number",
+      "example_value": 0.2,
+      "section": "human_state_cost_proxy",
+      "public_status": "allowed",
+      "boundary_note": "Bounded proxy construct only. Not a person score, diagnosis, therapy score, surveillance score, Sal-Meter output, or CAIS compliance marker."
+    },
+    {
+      "field_name": "human_state_cost_construct_version",
+      "display_label": "Construct Version",
+      "data_type": "string",
+      "example_value": "draft-helper-v0.1",
+      "section": "human_state_cost_proxy",
+      "public_status": "allowed",
+      "boundary_note": "Versioning supports audit. It does not validate the construct."
+    },
+    {
+      "field_name": "metadata_completeness_status",
+      "display_label": "Metadata Completeness Status",
+      "data_type": "string",
+      "example_value": "complete_for_sample_structure",
+      "allowed_values": [
+        "complete_for_sample_structure",
+        "incomplete",
+        "review_required",
+        "not_applicable"
+      ],
+      "section": "metadata_completeness",
+      "public_status": "allowed",
+      "boundary_note": "Metadata completeness makes a package reviewable. It does not prove validity."
+    },
+    {
+      "field_name": "schema_alignment_status",
+      "display_label": "Schema Alignment Status",
+      "data_type": "string",
+      "example_value": "aligned_for_sample_structure",
+      "allowed_values": [
+        "aligned_for_sample_structure",
+        "not_aligned",
+        "review_required",
+        "not_applicable"
+      ],
+      "section": "metadata_completeness",
+      "public_status": "allowed",
+      "boundary_note": "Schema alignment checks structure only."
+    },
+    {
+      "field_name": "leakage_review_status",
+      "display_label": "Leakage Review Status",
+      "data_type": "string",
+      "example_value": "reviewed_for_sample_structure",
+      "allowed_values": [
+        "reviewed_for_sample_structure",
+        "review_required",
+        "not_reviewed",
+        "not_applicable"
+      ],
+      "section": "leakage_review",
+      "public_status": "allowed",
+      "boundary_note": "Leakage review status is a helper review field, not benchmark validation."
+    },
+    {
+      "field_name": "qc_status",
+      "display_label": "QC Structure Status",
+      "data_type": "string",
+      "example_value": "sample_structure_pass",
+      "allowed_values": [
+        "sample_structure_pass",
+        "sample_structure_fail",
+        "review_required",
+        "not_applicable"
+      ],
+      "section": "qc_structure_summary",
+      "public_status": "allowed",
+      "boundary_note": "QC status refers to sample structure only."
+    },
+    {
+      "field_name": "validator_status",
+      "display_label": "Validator Status",
+      "data_type": "string",
+      "example_value": "blocked_by_github_actions_user_restriction",
+      "allowed_values": [
+        "not_run",
+        "passed_for_helper_structure",
+        "failed_for_helper_structure",
+        "blocked_by_github_actions_user_restriction",
+        "manual_review_required"
+      ],
+      "section": "qc_structure_summary",
+      "public_status": "allowed",
+      "boundary_note": "Validator status reports helper-structure validation only. It does not validate benchmark performance."
+    },
+    {
+      "field_name": "future_sal_meter_input_placeholder",
+      "display_label": "Future Sal-Meter Input Placeholder",
+      "data_type": "string",
+      "example_value": "not_present",
+      "allowed_values": [
+        "not_present",
+        "future_placeholder",
+        "not_public",
+        "not_validated_here"
+      ],
+      "section": "future_sal_meter_ab_placeholder",
+      "public_status": "allowed_as_inactive_placeholder_only",
+      "boundary_note": "No Sal-Meter input is present in this repository. Placeholder only."
+    },
+    {
+      "field_name": "future_proxy_core_comparison_status",
+      "display_label": "Future Proxy/Core Comparison Status",
+      "data_type": "string",
+      "example_value": "not_active",
+      "allowed_values": [
+        "not_active",
+        "future_placeholder_only",
+        "hold_until_separate_governance"
+      ],
+      "section": "future_sal_meter_ab_placeholder",
+      "public_status": "allowed_as_inactive_placeholder_only",
+      "boundary_note": "Future A/B comparison is not active in this repository."
+    },
+    {
+      "field_name": "future_dyadic_mediation_status",
+      "display_label": "Future Dyadic / Conflict Mediation Benchmark Status",
+      "data_type": "string",
+      "example_value": "not_active",
+      "allowed_values": [
+        "not_active",
+        "future_placeholder_only",
+        "synthetic_mockup_only",
+        "hold_until_boundary_review"
+      ],
+      "section": "future_dyadic_mediation_placeholder",
+      "public_status": "allowed_as_inactive_placeholder_only",
+      "boundary_note": "Future dyadic or conflict mediation benchmark mockups must not provide legal mediation, therapy, counseling, relationship diagnosis, fault assignment, surveillance, or human ranking."
+    }
+  ],
+  "allowed_badges": [
+    "Synthetic",
+    "Sample",
+    "Mock",
+    "Structure Only",
+    "Research Stage",
+    "Review Required",
+    "Metadata Check",
+    "Sync Check",
+    "Leakage Review",
+    "QC Structure Check",
+    "Not Sal-Meter",
+    "Not CAIS Compliance",
+    "Not Diagnostic",
+    "Not Clinical",
+    "Not Therapeutic",
+    "Not Surveillance",
+    "Not Certification",
+    "Not Human Ranking"
+  ],
+  "prohibited_badges": [
+    "Validated",
+    "Certified",
+    "Approved",
+    "Official",
+    "CAIS-Compliant",
+    "Sal-Meter Validated",
+    "Clinical Grade",
+    "Diagnostic",
+    "Therapeutic",
+    "Safe Person",
+    "Unsafe Person",
+    "High Risk Person",
+    "Low Risk Person",
+    "Consciousness Score",
+    "Truth Score",
+    "Employee Score",
+    "Patient Score"
+  ],
+  "allowed_dashboard_actions": [
+    "Review metadata",
+    "Review sync",
+    "Review leakage",
+    "View boundary note",
+    "Open sample file",
+    "Open schema reference",
+    "Review QC structure"
+  ],
+  "prohibited_dashboard_actions": [
+    "Diagnose",
+    "Treat",
+    "Intervene",
+    "Monitor person",
+    "Escalate user",
+    "Certify result",
+    "Approve CAIS",
+    "Validate Sal-Meter",
+    "Rank participant",
+    "Assign blame",
+    "Determine who is right",
+    "Determine who is wrong"
+  ],
+  "allowed_tooltip_examples": [
+    "Synthetic/sample field only. Not evidence.",
+    "Helper-structure status only. Not validation.",
+    "Proxy construct only. Not a person score.",
+    "Future placeholder only. No Sal-Meter input present.",
+    "Research-stage mockup only. Not diagnostic, clinical, therapeutic, surveillance, certification, or human ranking."
+  ],
+  "prohibited_tooltip_examples": [
+    "This score measures human safety.",
+    "This signal validates Sal-Meter.",
+    "This output confirms clinical recovery.",
+    "This dashboard diagnoses the participant.",
+    "This field determines who caused the conflict."
+  ],
+  "required_review_checklist": [
+    "Dashboard clearly marked as research-stage.",
+    "Dashboard clearly marked as synthetic/sample when public.",
+    "Dashboard clearly states it is not Sal-Meter.",
+    "Dashboard clearly states it does not define CAIS.",
+    "Dashboard clearly states it does not grant CAIS compliance.",
+    "Dashboard clearly states it does not validate benchmark performance.",
+    "Diagnostic language absent.",
+    "Clinical language absent.",
+    "Therapeutic language absent.",
+    "Surveillance language absent.",
+    "Certification language absent.",
+    "Human-ranking language absent.",
+    "Scores named as proxy/helper fields only.",
+    "Colors and badges are non-authoritative.",
+    "Alerts framed as review prompts, not action commands.",
+    "Future dyadic or mediation references are inactive and bounded, if present.",
+    "Future Sal-Meter A/B comparison placeholders are clearly marked as future only.",
+    "Raw human data excluded.",
+    "Identifiable data excluded.",
+    "Clinical data excluded."
+  ],
+  "safe_interpretation": [
+    "This JSON defines sample dashboard fields for synthetic/sample helper mockups.",
+    "These fields support dashboard structure review.",
+    "These fields do not validate benchmark performance.",
+    "These fields do not validate Sal-Meter.",
+    "These fields do not grant CAIS compliance.",
+    "These fields do not create diagnostic, clinical, therapeutic, surveillance, certification, or human-ranking authority."
+  ],
+  "unsafe_interpretation": [
+    "The dashboard measures real human state.",
+    "The dashboard validates Sal-Meter.",
+    "The dashboard provides CAIS-compliant output.",
+    "The dashboard diagnoses a person.",
+    "The dashboard provides therapeutic feedback.",
+    "The dashboard monitors or ranks people.",
+    "The dashboard decides who is right or wrong in conflict."
+  ],
+  "p2_2_issue_alignment": {
+    "issue": "[P2-2] Add dashboard mockup boundary pack",
+    "satisfies_task": "Create dashboard-mockup/sample_dashboard_fields.json",
+    "completion_status": "sample_dashboard_fields_json_prepared"
+  },
+  "final_rule": "Dashboard fields may clarify structure. Dashboard fields must not become verdicts."
+}
