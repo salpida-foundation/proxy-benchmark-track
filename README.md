@@ -2,7 +2,7 @@
 
 Research-stage proxy benchmark support track for **Human-State-Aware AI Interaction**.
 
-This repository prepares a public technical helper surface for synchronized multimodal proxy benchmark infrastructure, metadata discipline, leakage-safe evaluation, synthetic/sample package structure, baseline evaluation scaffolding, dashboard mockup boundaries, closed-loop demo-lite scaffolding, replication guide checklists, and future comparison with Sal-Meter core inputs.
+This repository prepares a public technical helper surface for synchronized multimodal proxy benchmark infrastructure, metadata discipline, leakage-safe evaluation, synthetic/sample package structure, baseline evaluation scaffolding, dashboard mockup boundaries, closed-loop demo-lite scaffolding, replication guide checklists, contributor issue/PR boundary gates, and future comparison with Sal-Meter core inputs.
 
 **This repository is not the Sal-Meter core signal track.**
 
@@ -64,7 +64,7 @@ DOI records govern authority.
 
 ## One sentence
 
-The Proxy Benchmark Track builds a comparison layer around the Sal-Meter kernel program: synchronized human-state proxy data, metadata discipline, leakage-safe evaluation, baseline models, synthetic/sample package structure, dashboard mockup boundaries, closed-loop demo-lite scaffolding, replication checklists, and future comparison with Sal-Meter core inputs.
+The Proxy Benchmark Track builds a comparison layer around the Sal-Meter kernel program: synchronized human-state proxy data, metadata discipline, leakage-safe evaluation, baseline models, synthetic/sample package structure, dashboard mockup boundaries, closed-loop demo-lite scaffolding, replication checklists, contributor issue/PR boundary gates, and future comparison with Sal-Meter core inputs.
 
 ---
 
@@ -86,6 +86,7 @@ The purpose is to prepare:
 - safe dashboard mockup boundaries;
 - local closed-loop demo-lite boundary scaffolding;
 - replication and release-readiness checklists;
+- contributor issue/PR boundary gates;
 - replayable validation skeletons;
 - bounded real-time feedback-loop demonstrations at a later stage;
 - future A/B comparison against Sal-Meter core inputs.
@@ -120,7 +121,7 @@ It does not grant:
 - production monitoring status;
 - human-ranking authority.
 
-ECG, HRV, EDA, PPG, EEG, eye tracking, webcam markers, interaction timing, behavioral logs, task events, AI feedback logs, dashboard review states, and closed-loop demo-lite placeholders do not become Sal-Meter by being combined.
+ECG, HRV, EDA, PPG, EEG, eye tracking, webcam markers, interaction timing, behavioral logs, task events, AI feedback logs, dashboard review states, issue templates, PR templates, and closed-loop demo-lite placeholders do not become Sal-Meter by being combined.
 
 They remain **proxy benchmark signals and helper structures**.
 
@@ -156,7 +157,7 @@ https://github.com/salpida-foundation/sal-meter-kernel-program
 
 The Proxy Benchmark Track prepares a comparison and interaction layer.
 
-It builds synchronized multimodal baselines, leakage-safe evaluation rules, dataset structure, baseline modeling, dashboard boundary rules, closed-loop demo-lite scaffolding, replication checklists, and future comparison logic that can later serve as a comparison lane for Sal-Meter inputs.
+It builds synchronized multimodal baselines, leakage-safe evaluation rules, dataset structure, baseline modeling, dashboard boundary rules, closed-loop demo-lite scaffolding, replication checklists, contributor issue/PR boundary gates, and future comparison logic that can later serve as a comparison lane for Sal-Meter inputs.
 
 The proxy track supports the core track.
 
@@ -170,7 +171,7 @@ This track exists for five reasons.
 
 1. To build human-state-aware AI interaction infrastructure before Sal-Meter I/G-channel signals become available.
 2. To create a disciplined comparison baseline for future Sal-Meter A/B testing.
-3. To fix timestamp, metadata, leakage-prevention, holdout, dashboard, feedback-log, audit trail, and baseline modeling architecture early.
+3. To fix timestamp, metadata, leakage-prevention, holdout, dashboard, feedback-log, audit trail, contribution-review, and baseline modeling architecture early.
 4. To enable non-clinical closed-loop demonstration of human-state-aware feedback in software, dashboard, simulator, and local AI interaction environments at a later stage.
 5. To create an independent Human-AI Interaction research lane comparing AI task performance with measurable human-state impact.
 
@@ -184,7 +185,7 @@ This track makes that tradeoff visible under bounded, non-diagnostic, research-s
 
 This repository is currently in a public helper implementation stage for the SICS Human-State Proxy Benchmark Track.
 
-It provides schema, synthetic/sample data, validation scaffolding, dashboard mockup boundaries, protocol helper rules, closed-loop demo-lite boundary scaffolding, replication guide checklists, and repository hygiene workflow scaffolding for structure demonstration only.
+It provides schema, synthetic/sample data, validation scaffolding, dashboard mockup boundaries, protocol helper rules, closed-loop demo-lite boundary scaffolding, replication guide checklists, contributor issue/PR templates, and repository hygiene workflow scaffolding for structure demonstration only.
 
 It does not provide benchmark evidence.
 
@@ -208,12 +209,13 @@ It does not validate Sal-Meter.
 | Dashboard mockup boundary pack | Done | `dashboard-mockup/` defines dashboard claim, field, and wireframe boundaries |
 | Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` defines feedback-loop boundaries, event-log schema, and local placeholder code |
 | Replication guide pack | Done | `replication-guide/` defines reproducibility, metadata completeness, audit trail, and public release-readiness checklists |
+| Issue / PR template pack | Done | `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` define contributor boundary gates for boundary correction, schema request, sample-data issue, leakage-risk report, and PR review |
 | GitHub Actions validator workflow | Present / Blocked | `.github/workflows/validate-synthetic-sample.yml` exists, but execution is currently blocked by GitHub account-level Actions restriction |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
 | Sal-Meter input | Not present | This repository is not Sal-Meter and does not contain Sal-Meter signal data |
 | CAIS compliance claim | Not present | This repository does not grant CAIS compliance |
-| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, or benchmark result is validated by this repository |
+| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, template, PR, or benchmark result is validated by this repository |
 | Release status | Not published | `v0.1.0` is a release-readiness target only until validator execution can run successfully |
 
 ---
@@ -224,7 +226,7 @@ It does not validate Sal-Meter.
 |---|---|---|
 | P1-1 Schema completion | Done | Schema folder contains helper schemas and `schemas/README.md` |
 | P1-2 Synthetic sample package validator | Done | Validator file exists under `evaluation-baseline/validate_sample_package.py` |
-| P1-3 Evaluation baseline README and validator usability | Done | Evaluation baseline README explains local usage and boundary interpretation |
+| P1-3 Evaluation baseline README and validator usability | Done | Evaluation baseline README explains local usage, PASS / FAIL meaning, dependency installation, and validator boundaries |
 | P1-4 GitHub Actions validator workflow | Open / Blocked | Workflow exists but cannot currently run because GitHub Actions is disabled at the user-account level |
 | P1-5 v0.1.0 release readiness package | In progress / Hold publication | Repository is being checked for bounded public helper release readiness; actual release must remain unpublished until P1-4 can run successfully |
 
@@ -238,7 +240,7 @@ It does not validate Sal-Meter.
 | P2-2 Dashboard mockup boundary pack | Done | `dashboard-mockup/` contains README, claim boundary, sample dashboard fields, and mockup wireframe |
 | P2-3 Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` contains README, feedback-loop boundary, feedback event-log schema, and local placeholder code |
 | P2-4 Replication guide pack | Done | `replication-guide/` contains README, reproducibility package checklist, metadata completeness checklist, audit trail checklist, and public release checklist |
-| P2-5 Issue / PR template pack | Not started | Should be created after core public helper folders are stable |
+| P2-5 Issue / PR template pack | Done | `.github/ISSUE_TEMPLATE/` contains boundary correction, schema request, sample-data issue, and leakage-risk report templates; `.github/pull_request_template.md` defines PR boundary review |
 
 ---
 
@@ -251,8 +253,16 @@ proxy-benchmark-track/
   CITATION.cff
 
   .github/
+    ISSUE_TEMPLATE/
+      boundary_correction.md
+      schema_request.md
+      sample_data_issue.md
+      leakage_risk_report.md
+
     workflows/
       validate-synthetic-sample.yml
+
+    pull_request_template.md
 
   docs/
     data-boundary.md
@@ -343,6 +353,7 @@ A public helper surface may:
 - show dashboard mockup boundaries;
 - show closed-loop demo-lite boundaries;
 - show replication and release-readiness checklists;
+- provide issue and pull request boundary templates;
 - prepare future contributor orientation.
 
 A public helper surface must not:
@@ -356,6 +367,7 @@ A public helper surface must not:
 - imply CAIS compliance;
 - imply benchmark validation;
 - imply closed-loop intervention readiness;
+- imply contributor submissions create authority;
 - imply diagnostic, therapeutic, clinical, surveillance, certification, or human-ranking authority.
 
 ---
@@ -1026,6 +1038,98 @@ It does not claim that the crossing has already happened.
 
 ---
 
+## Contributor issue / PR boundary gate pack
+
+`.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` contain contributor-facing boundary gates for the SICS Human-State Proxy Benchmark Track.
+
+This pack exists to prevent future public contributions from drifting into overclaim, raw human data disclosure, Sal-Meter implication, CAIS compliance implication, benchmark validation implication, clinical framing, surveillance framing, certification framing, or human-ranking authority.
+
+It is an entry gate.
+
+It is not a release.
+
+It is not validation.
+
+It is not canonical authority.
+
+Current files:
+
+```text
+.github/
+  ISSUE_TEMPLATE/
+    boundary_correction.md
+    schema_request.md
+    sample_data_issue.md
+    leakage_risk_report.md
+
+  pull_request_template.md
+```
+
+File roles:
+
+```text
+boundary_correction.md
+  Issue template for reporting overclaims, naming drift, data-boundary drift, DOI authority confusion, Sal-Meter implication, CAIS compliance implication, benchmark validation implication, or prohibited language.
+
+schema_request.md
+  Issue template for requesting bounded helper-schema additions or corrections without implying benchmark validation, Sal-Meter validation, or CAIS compliance.
+
+sample_data_issue.md
+  Issue template for reporting synthetic/sample package structure problems, missing files, malformed fields, validator failures, ambiguous sample-data status, or public/private boundary problems.
+
+leakage_risk_report.md
+  Issue template for reporting possible leakage through labels, filenames, folder names, timestamps, metadata, session identity, device identity, operator identity, dashboard fields, feedback event logs, split definitions, or preprocessing artifacts.
+
+pull_request_template.md
+  Pull request template requiring scope, affected files, public/private data review, prohibited-claim review, DOI authority review, validation-versus-readiness distinction, leakage-risk review, validator impact, release impact, and Go / Hold / No-Go merge decision.
+```
+
+The contributor template pack supports:
+
+```text
+boundary correction requests
+schema helper requests
+synthetic/sample data issue reports
+leakage-risk reports
+pull request boundary review
+public/private data review
+DOI authority review
+validation-versus-readiness review
+prohibited-claim review
+release impact review
+```
+
+It does not support:
+
+```text
+raw human data submission
+identifiable data submission
+clinical data submission
+private user data submission
+Sal-Meter input submission
+CAIS compliance submission
+benchmark validation claims
+scientific validation claims
+clinical validation claims
+diagnostic validation claims
+therapeutic validation claims
+surveillance readiness claims
+certification readiness claims
+device readiness claims
+human-ranking claims
+production deployment claims
+```
+
+A contributor template may open a door.
+
+It must make the door narrow.
+
+It lets useful corrections enter.
+
+It keeps false authority outside.
+
+---
+
 ## Human-State Cost boundary
 
 Human-State Cost may appear in this repository only as a bounded, research-stage proxy construct.
@@ -1174,7 +1278,7 @@ Future comparison must remain future until separate governance, data rights, con
 
 This repository treats leakage control as a first-class benchmark requirement.
 
-A model, dashboard, feedback-loop placeholder, release-readiness review, or evaluation pipeline must not learn labels from hidden shortcuts such as:
+A model, dashboard, feedback-loop placeholder, release-readiness review, pull request, issue report, or evaluation pipeline must not learn labels from hidden shortcuts such as:
 
 - participant identity;
 - day or session order;
@@ -1224,6 +1328,7 @@ A reviewable package needs:
 - dashboard boundary notes;
 - closed-loop demo-lite boundary notes, if applicable;
 - feedback event-log boundary, if applicable;
+- issue/PR boundary notes, if applicable;
 - file mapping;
 - audit trail;
 - raw data handover boundary, if applicable under private governance.
@@ -1247,6 +1352,16 @@ What changed?
 Who reviewed it?
 What is still blocked?
 What must not be claimed?
+```
+
+Every contribution should answer:
+
+```text
+Which issue or PR introduced this change?
+Which boundary did it preserve?
+Which data did it exclude?
+Which authority did it not create?
+Which validation did it not claim?
 ```
 
 An audit trail is not decoration.
@@ -1506,6 +1621,55 @@ It must not declare the mountain conquered.
 
 ---
 
+## Contributor template boundary
+
+Allowed contributor-template language:
+
+```text
+boundary correction
+schema helper request
+synthetic/sample data issue
+leakage risk report
+pull request boundary review
+public/private data review
+DOI authority review
+validation-versus-readiness distinction
+not validation
+not Sal-Meter
+not CAIS compliance
+not diagnostic
+not clinical
+not therapeutic
+not surveillance
+not certification
+not human ranking
+```
+
+Prohibited contributor-template language:
+
+```text
+submit raw human data
+submit clinical data
+submit Sal-Meter input
+request CAIS compliance approval
+validate benchmark
+validate Sal-Meter
+certify package
+approve device
+deploy intervention
+rank humans
+```
+
+Issue templates are gates.
+
+Pull request templates are locks.
+
+The gate allows correction.
+
+The lock prevents false authority.
+
+---
+
 ## Suggested local stack
 
 This repository is currently a public helper documentation and scaffold repository.
@@ -1546,6 +1710,7 @@ A public release must not be published until:
 - dashboard boundaries are visible;
 - closed-loop demo-lite boundaries are visible, if included;
 - replication guide checklists are visible;
+- issue / PR boundary templates are visible;
 - audit trail expectations are visible;
 - public release checklist is passed;
 - `CITATION.cff` points to DOI-registered public records;
@@ -1614,6 +1779,10 @@ Public helper materials may support release-readiness review.
 
 They must not publish authority.
 
+Public helper materials may receive contributor requests.
+
+They must not convert contributor requests into validation claims.
+
 Public helper materials may recruit builders.
 
 They must not imply clinical, therapeutic, diagnostic, surveillance, certification, intervention, or human-ranking authority.
@@ -1638,6 +1807,11 @@ reproducibility package checklist
 metadata completeness checklist
 audit trail checklist
 public release checklist
+boundary correction issue template
+schema request issue template
+sample data issue template
+leakage risk report issue template
+pull request boundary review template
 helper-structure validator
 future Sal-Meter A/B comparison placeholder
 ```
@@ -1678,7 +1852,13 @@ Potential contributors should first understand:
 4. whether your work could be mistaken for diagnosis, therapy, surveillance, certification, intervention, or human ranking;
 5. whether your work implies Sal-Meter validation;
 6. whether your work implies CAIS compliance;
-7. whether the relevant DOI-registered boundary record is preserved.
+7. whether the relevant DOI-registered boundary record is preserved;
+8. whether the appropriate issue template is being used;
+9. whether a pull request preserves public/private data boundary, prohibited-claim discipline, DOI authority distinction, and validation-versus-readiness distinction.
+
+Issue templates are gates.
+
+Pull request templates are locks.
 
 Do not send broad partnership material first.
 
@@ -1734,8 +1914,12 @@ It prepares future feedback-loop discipline.
 
 It prepares reproducibility and release-readiness review.
 
+It prepares contributor boundary gates.
+
 It does not claim that future comparison has already been validated.
 
 It does not claim that a closed loop is ready to act on human beings.
+
+It does not claim that issue or PR templates create scientific authority.
 
 It does not claim that a public release would create scientific, clinical, CAIS, or Sal-Meter authority.
