@@ -1,20 +1,71 @@
 # Proxy Benchmark Track
 
-Research-stage proxy benchmark support track for **Human-State-Aware AI Interaction**.
+**A research-stage helper repository for measuring what AI leaves behind in the human state.**
 
-This repository prepares a public technical helper surface for synchronized multimodal proxy benchmark infrastructure, metadata discipline, leakage-safe evaluation, synthetic/sample package structure, baseline evaluation scaffolding, dashboard mockup boundaries, closed-loop demo-lite scaffolding, replication guide checklists, contributor issue/PR boundary gates, and future comparison with Sal-Meter core inputs.
+> Most AI benchmarks ask whether AI outputs are correct, safe, helpful, or aligned.  
+>  
+> The Proxy Benchmark Track asks a different question:  
+>  
+> **What did the AI output leave behind in the human state?**  
+>  
+> And in a dyadic session:  
+>  
+> **Did the AI help both people move toward recovery, or did it improve one side while burdening, silencing, or exposing the other?**
 
-**This repository is not the Sal-Meter core signal track.**
+---
 
-**This repository is not a CAIS-compliant device implementation.**
+## One-line thesis
 
-**This repository is a public helper surface for the proxy benchmark track.**
+The Proxy Benchmark Track is designed to build a synchronized, consent-based, non-clinical benchmark layer for evaluating how AI outputs affect individual human-state change and dyadic recovery.
+
+It does not only evaluate the AI answer.
+
+It evaluates the trace left after the answer.
+
+---
+
+## What makes this repository different
+
+Most AI evaluation looks at the output.
+
+This repository is built around the consequence.
+
+It asks:
+
+```text
+AI Output → Human-State Delta → Dyadic Recovery
+```
+
+This means:
+
+- not only whether the AI answer was fluent;
+- not only whether the AI answer sounded safe;
+- not only whether the AI answer was preferred by a user;
+- but whether the AI output left the human being and the dyad in a measurably better, worse, unchanged, mixed, or uncertain state.
+
+The central question is:
+
+```text
+What remains in the human state after AI acts?
+```
+
+For two-person interaction, the sharper question is:
+
+```text
+Did both sides move toward recovery, or did one side become silent, exposed, burdened, coerced, or erased?
+```
+
+This is the distinct lane.
+
+This repository is not another chatbot project.
+
+It is a public helper surface for a future human-state-aware AI mediation benchmark.
 
 ---
 
 ## Current status
 
-**research-stage · non-clinical · non-diagnostic · non-therapeutic · non-surveillance · non-coercive · pre-device · pre-certification · pre-compliance · benchmark support only**
+**research-stage · non-clinical · non-diagnostic · non-therapeutic · non-surveillance · non-counseling · non-coercive · raw-data-non-public · synthetic-public-data-first · pre-device · pre-certification · pre-compliance · benchmark support only**
 
 This repository is:
 
@@ -22,7 +73,7 @@ This repository is:
 - not a Proxy Sal-Meter;
 - not a CAIS-compliant device implementation;
 - not a validated consciousness measurement system;
-- not a clinical, diagnostic, therapeutic, psychiatric, medical, employment, insurance, legal, educational, eligibility, or surveillance system;
+- not a clinical, diagnostic, therapeutic, psychiatric, medical, employment, insurance, legal, educational, eligibility, counseling, mediation-service, or surveillance system;
 - not a certification, conformance, or mark-usage surface;
 - not a closed-loop intervention system;
 - not a production monitoring system;
@@ -30,41 +81,189 @@ This repository is:
 
 Public landing page:
 
+```text
 https://salpida.foundation/topics/human-state-aware-ai-interaction/
+```
 
 ---
 
 ## Canonical / DOI relationship
 
-This repository is a **public technical helper surface** for the SICS Human-State Proxy Benchmark Track.
+This repository is a **public technical helper surface**.
 
-It accompanies, but does not replace, the following DOI-registered public records:
+It accompanies DOI-registered public records.
 
-### SICS Human-State Proxy Benchmark Track — Public Boundary and Program Charter v0.1
-
-Defines public boundary, naming rules, prohibited claims, data-publication limits, roadmap logic, GitHub helper status, and Go / Hold / No-Go structure.
-
-- Version DOI: https://doi.org/10.5281/zenodo.19837423
-- Concept DOI / all versions DOI: https://doi.org/10.5281/zenodo.19837422
-
-### SICS Human-State Proxy Benchmark Track — Scientific Rationale and Research Value v0.1
-
-Explains Human-State Cost, AI performance versus human-state impact, measurement-layer simplification, and future Sal-Meter A/B comparison logic.
-
-- Version DOI: https://doi.org/10.5281/zenodo.19837971
-- Concept DOI / all versions DOI: https://doi.org/10.5281/zenodo.19837970
-
-If this README conflicts with a higher-level DOI-registered SICS / CAIS / Sal-Meter / CCF canonical or public boundary record, the higher-level DOI record prevails automatically.
+It does not replace them.
 
 GitHub helps builders move.
 
 DOI records govern authority.
 
+### Core Proxy Benchmark Track records
+
+#### SICS Human-State Proxy Benchmark Track — Public Boundary and Program Charter v0.1
+
+Defines public boundary, naming rules, prohibited claims, data-publication limits, roadmap logic, GitHub helper status, and Go / Hold / No-Go structure.
+
+```text
+Version DOI:
+https://doi.org/10.5281/zenodo.19837423
+
+Concept DOI / All Versions DOI:
+https://doi.org/10.5281/zenodo.19837422
+```
+
+#### SICS Human-State Proxy Benchmark Track — Scientific Rationale and Research Value v0.1
+
+Explains Human-State Cost, AI performance versus human-state impact, measurement-layer simplification, and future Sal-Meter A/B comparison logic.
+
+```text
+Version DOI:
+https://doi.org/10.5281/zenodo.19837971
+
+Concept DOI / All Versions DOI:
+https://doi.org/10.5281/zenodo.19837970
+```
+
+### Human-State-Aware AI Mediation document set
+
+#### Human-State Mediation Boundary Standard v0.1
+
+Fixes the outer boundary: consent-based, non-clinical, non-surveillance, raw-data-non-public.
+
+```text
+Version DOI:
+https://doi.org/10.5281/zenodo.19904289
+
+Concept DOI / All Versions DOI:
+https://doi.org/10.5281/zenodo.19904288
+```
+
+#### Human-State Packet Minimal Data-Sharing Standard v0.1
+
+Fixes the minimum packet object: summary-only sharing, permission, expiry, confidence, data quality, and raw-data exclusion.
+
+```text
+Version DOI:
+https://doi.org/10.5281/zenodo.19905541
+
+Concept DOI / All Versions DOI:
+https://doi.org/10.5281/zenodo.19905540
+```
+
+#### Dyadic Human-State Mediation Benchmark Charter v0.1
+
+Fixes the benchmark objective:
+
+```text
+AI Output → Human-State Delta → Dyadic Recovery
+```
+
+```text
+Version DOI:
+https://doi.org/10.5281/zenodo.19906725
+
+Concept DOI / All Versions DOI:
+https://doi.org/10.5281/zenodo.19906724
+```
+
+#### Human-State Session Protocol v0.1 — Structural Declaration
+
+Fixes the session structure:
+
+```text
+Session Creation → Consent Confirmation → Packet Availability Check → Baseline State Summary → AI Output → Post-Output State Summary → Human-State Delta → Recovery Gate → Termination Gate → Session Closure → Audit Log
+```
+
+```text
+Version DOI:
+https://doi.org/10.5281/zenodo.19908379
+
+Concept DOI / All Versions DOI:
+https://doi.org/10.5281/zenodo.19908378
+```
+
+If this README conflicts with a DOI-registered SICS / CAIS / Sal-Meter / CCF boundary or governance record, the stricter DOI-registered record controls.
+
 ---
 
-## One sentence
+## The core message
 
-The Proxy Benchmark Track builds a comparison layer around the Sal-Meter kernel program: synchronized human-state proxy data, metadata discipline, leakage-safe evaluation, baseline models, synthetic/sample package structure, dashboard mockup boundaries, closed-loop demo-lite scaffolding, replication checklists, contributor issue/PR boundary gates, and future comparison with Sal-Meter core inputs.
+AI should not be evaluated only by what it produces.
+
+It should also be evaluated by what it leaves in the human being.
+
+A system may improve accuracy, speed, productivity, compliance, or user satisfaction while increasing human-state burden.
+
+This repository exists to make that tradeoff visible.
+
+---
+
+## The benchmark chain
+
+```text
+AI Output
+    ↓
+Human-State Delta
+    ↓
+Dyadic Recovery
+    ↓
+Recovery Gate / Termination Gate
+```
+
+### AI Output
+
+The system records what the AI generated.
+
+Examples:
+
+- generic AI output;
+- state-aware AI output;
+- private cue;
+- shared mediation output;
+- pause recommendation;
+- clarification request;
+- scope narrowing;
+- recovery check;
+- termination recommendation.
+
+### Human-State Delta
+
+The system observes what changed after the AI output.
+
+Examples:
+
+- toward recovery;
+- away from recovery;
+- unchanged;
+- mixed;
+- uncertain;
+- insufficient data;
+- invalid.
+
+Human-State Delta is not diagnosis.
+
+It is not therapy.
+
+It is not emotion reading.
+
+It is not a human score.
+
+It is a bounded benchmark observation.
+
+### Dyadic Recovery
+
+The benchmark asks whether both sides of the dyad moved toward a session-defined recovery condition.
+
+Recovery is not agreement.
+
+Recovery is not silence.
+
+Recovery is not obedience.
+
+Recovery is not therapy.
+
+Recovery is a bounded session-state condition where continued AI mediation can reduce, pause, or stop.
 
 ---
 
@@ -83,18 +282,20 @@ The purpose is to prepare:
 - leakage-safe evaluation;
 - holdout design;
 - baseline models;
+- Human-State Packet helper structures;
+- Human-State Session Protocol helper structures;
+- dyadic mediation session-flow helper structures;
+- recovery gate and termination gate definitions;
 - safe dashboard mockup boundaries;
 - local closed-loop demo-lite boundary scaffolding;
 - replication and release-readiness checklists;
-- contributor issue/PR boundary gates;
+- contributor issue / PR boundary gates;
 - replayable validation skeletons;
-- bounded real-time feedback-loop demonstrations at a later stage;
 - future A/B comparison against Sal-Meter core inputs.
 
-The central research question is:
+The proxy track supports the core track.
 
-> AI should not be evaluated only by what it produces.  
-> It should also be evaluated by what it leaves in the human being.
+It does not replace it.
 
 ---
 
@@ -116,6 +317,8 @@ It does not grant:
 - diagnostic status;
 - therapeutic status;
 - medical-device status;
+- counseling-service status;
+- legal mediation status;
 - validated commercial-device status;
 - closed-loop deployment status;
 - production monitoring status;
@@ -141,23 +344,27 @@ The Sal-Meter Core Track asks whether a new molecular–electrochemical signal i
 
 Current core execution order:
 
-1. External Layer-0 iodine redox / thiol feasibility
-2. SICS Internal Phase 0 — G-only
-3. Phase 1 — I-only
-4. Phase 2a — Twin Mini-Cell
-5. Phase 2b — G+I human pilot
-6. LOCK 1 / LOCK 2
-7. Future SDK / broader opening
+```text
+External Layer-0 iodine redox / thiol feasibility
+→ SICS Internal Phase 0 — G-only
+→ Phase 1 — I-only
+→ Phase 2a — Twin Mini-Cell
+→ Phase 2b — G+I human pilot
+→ LOCK 1 / LOCK 2
+→ Future SDK / broader opening
+```
 
 Core technical route:
 
+```text
 https://github.com/salpida-foundation/sal-meter-kernel-program
+```
 
 ### Proxy Benchmark Track
 
-The Proxy Benchmark Track prepares a comparison and interaction layer.
+The Proxy Benchmark Track prepares the comparison and interaction layer.
 
-It builds synchronized multimodal baselines, leakage-safe evaluation rules, dataset structure, baseline modeling, dashboard boundary rules, closed-loop demo-lite scaffolding, replication checklists, contributor issue/PR boundary gates, and future comparison logic that can later serve as a comparison lane for Sal-Meter inputs.
+It builds synchronized multimodal baselines, leakage-safe evaluation rules, dataset structure, baseline modeling, dashboard boundary rules, closed-loop demo-lite scaffolding, replication checklists, contributor issue / PR boundary gates, and future comparison logic that can later serve as a comparison lane for Sal-Meter inputs.
 
 The proxy track supports the core track.
 
@@ -165,19 +372,179 @@ It does not replace it.
 
 ---
 
-## Why this track exists
+## Long-term milestone
 
-This track exists for five reasons.
+```text
+Dyadic Human-State Mediation Benchmark
+```
 
-1. To build human-state-aware AI interaction infrastructure before Sal-Meter I/G-channel signals become available.
-2. To create a disciplined comparison baseline for future Sal-Meter A/B testing.
-3. To fix timestamp, metadata, leakage-prevention, holdout, dashboard, feedback-log, audit trail, contribution-review, and baseline modeling architecture early.
-4. To enable non-clinical closed-loop demonstration of human-state-aware feedback in software, dashboard, simulator, and local AI interaction environments at a later stage.
-5. To create an independent Human-AI Interaction research lane comparing AI task performance with measurable human-state impact.
+The long-term milestone is not merely to sense individual state.
 
-A system may improve accuracy, speed, or productivity while increasing human-state burden.
+The long-term milestone is to define how consented human-state summaries can be exchanged between personal agents during a bounded dyadic session so that AI systems can adjust private cues, shared mediation outputs, and recovery termination timing without exposing raw human data.
 
-This track makes that tradeoff visible under bounded, non-diagnostic, research-stage conditions.
+In plain language:
+
+```text
+The goal is not to build AI that speaks better.
+
+The goal is to build the benchmark layer needed to know whether AI leaves people and relationships in a better state.
+```
+
+---
+
+## Baseline philosophy
+
+This repository does not treat AI output quality as sufficient evidence.
+
+A polished AI answer can still leave harm behind.
+
+A polite AI answer can still silence one side.
+
+A long AI answer can still overstay.
+
+A helpful AI answer for one participant can still burden the other.
+
+The benchmark must therefore compare human-state-aware mediation against simpler baselines.
+
+### Dyadic Recovery Baseline Suite
+
+The planned baseline ladder is:
+
+| Level | Baseline | Question |
+|---|---|---|
+| B0 | Dummy / Chance Baseline | Can the model beat guessing or majority-class prediction? |
+| B1 | Individual State Baseline | Can one person’s state alone explain the outcome? |
+| B2 | Dyadic Relationship Baseline | Does the relation between both participants add explanatory value? |
+| B3 | No-Intervention Baseline | Would the dyad recover naturally without AI intervention? |
+| B4 | Generic AI Baseline | Is state-aware AI better than ordinary supportive AI output? |
+| B5 | Rule-Based Mediation Baseline | Is the system better than fixed mediation scripts? |
+| B6 | Human-State-Aware AI Mediation Model | Does packet-informed AI improve dyadic recovery under bounded conditions? |
+| B7 | Recovery / Termination Gate Baseline | Can the system identify when to reduce, pause, or stop mediation? |
+
+Primary outcome:
+
+```text
+Dyadic Recovery Delta
+```
+
+Secondary outcomes may include:
+
+- individual recovery direction;
+- dyadic tension reduction;
+- interruption reduction;
+- turn-taking balance;
+- mutual restatement success;
+- recovery asymmetry;
+- post-intervention stability;
+- termination accuracy;
+- mediation overstay rate;
+- consent-boundary compliance;
+- leakage-safe benchmark score;
+- human non-judgment compliance.
+
+---
+
+## Failure-sensitive principles
+
+This benchmark must be sensitive to false recovery.
+
+A session is not successful merely because the AI sounded good.
+
+A session is not successful merely because one participant became quiet.
+
+A session is not successful merely because one participant reported relief.
+
+A session is not successful merely because both participants showed synchrony.
+
+A session is not successful if the AI continues after it should stop.
+
+### Failure conditions include
+
+- one participant improves while the other deteriorates;
+- silence is misclassified as recovery;
+- synchrony is treated as automatically positive;
+- AI output quality is treated as sufficient evidence;
+- generic supportive language is mistaken for human-state improvement;
+- private state becomes exposed in shared output;
+- packet permission is exceeded;
+- expired packet is used;
+- human score is generated;
+- relationship verdict is generated;
+- AI fails to stop when termination is required;
+- leakage-safe holdout is not satisfied;
+- model performance fails to exceed simpler baselines.
+
+The dyad is the unit of interpretation.
+
+One-sided improvement is not dyadic recovery.
+
+---
+
+## Human-State Packet principle
+
+The public benchmark must not exchange raw human data.
+
+It should exchange only bounded summaries.
+
+A Human-State Packet is:
+
+```text
+minimal
+consent-bound
+permission-bound
+expiry-bound
+confidence-aware
+data-quality-aware
+session-scoped
+sharing-scoped
+raw-data-excluding
+```
+
+The packet is not the person.
+
+The packet is not the body.
+
+The packet is not the raw signal.
+
+The packet is not diagnosis.
+
+The packet is not a human score.
+
+The packet is not a relationship judgment.
+
+The packet is a minimal state-summary object for bounded interaction adjustment.
+
+---
+
+## Human-State Session principle
+
+A session does not begin silently.
+
+A session begins with consent.
+
+A session runs only within packet permission.
+
+A session closes through a recovery gate or termination gate.
+
+A session that cannot close is not mediation.
+
+It is surveillance drift.
+
+A valid session should follow this structure:
+
+```text
+Session Creation
+→ Consent Confirmation
+→ Packet Availability Check
+→ Baseline State Summary
+→ AI Output
+→ Post-Output State Summary
+→ Human-State Delta
+→ Recovery Gate
+→ Termination Gate
+→ Session Closure
+→ Audit Log
+```
 
 ---
 
@@ -209,7 +576,7 @@ It does not validate Sal-Meter.
 | Dashboard mockup boundary pack | Done | `dashboard-mockup/` defines dashboard claim, field, and wireframe boundaries |
 | Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` defines feedback-loop boundaries, event-log schema, and local placeholder code |
 | Replication guide pack | Done | `replication-guide/` defines reproducibility, metadata completeness, audit trail, and public release-readiness checklists |
-| Issue / PR template pack | Done | `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` define contributor boundary gates for boundary correction, schema request, sample-data issue, leakage-risk report, and PR review |
+| Issue / PR template pack | Done | `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` define contributor boundary gates |
 | GitHub Actions validator workflow | Present / Blocked | `.github/workflows/validate-synthetic-sample.yml` exists, but execution is currently blocked by GitHub account-level Actions restriction |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
@@ -228,7 +595,7 @@ It does not validate Sal-Meter.
 | P1-2 Synthetic sample package validator | Done | Validator file exists under `evaluation-baseline/validate_sample_package.py` |
 | P1-3 Evaluation baseline README and validator usability | Done | Evaluation baseline README explains local usage, PASS / FAIL meaning, dependency installation, and validator boundaries |
 | P1-4 GitHub Actions validator workflow | Open / Blocked | Workflow exists but cannot currently run because GitHub Actions is disabled at the user-account level |
-| P1-5 v0.1.0 release readiness package | In progress / Hold publication | Repository is being checked for bounded public helper release readiness; actual release must remain unpublished until P1-4 can run successfully |
+| P1-5 v0.1.0 release readiness package | In progress / Hold publication | Actual release must remain unpublished until P1-4 can run successfully |
 
 ---
 
@@ -241,6 +608,39 @@ It does not validate Sal-Meter.
 | P2-3 Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` contains README, feedback-loop boundary, feedback event-log schema, and local placeholder code |
 | P2-4 Replication guide pack | Done | `replication-guide/` contains README, reproducibility package checklist, metadata completeness checklist, audit trail checklist, and public release checklist |
 | P2-5 Issue / PR template pack | Done | `.github/ISSUE_TEMPLATE/` contains boundary correction, schema request, sample-data issue, and leakage-risk report templates; `.github/pull_request_template.md` defines PR boundary review |
+
+---
+
+## Current P3 milestone target
+
+P3 introduces the Human-State-Aware AI Mediation helper layer.
+
+Planned or recommended helper files:
+
+```text
+docs/
+  human-state-mediation-layer.md
+  human-state-packet-schema.md
+  human-state-session-protocol.md
+  dyadic-mediation-session-flow.md
+  dyadic-recovery-baseline-suite.md
+  recovery-gate-definition.md
+  termination-gate-definition.md
+  consent-and-data-sharing-boundary.md
+
+schemas/
+  human_state_packet.schema.json
+  dyadic_session_event.schema.json
+  benchmark_session.schema.json
+```
+
+P3 does not validate a benchmark.
+
+P3 does not validate Sal-Meter.
+
+P3 does not grant CAIS compliance.
+
+P3 defines the helper structure needed to make future benchmark work auditable.
 
 ---
 
@@ -270,6 +670,16 @@ proxy-benchmark-track/
     metadata-schema-v0.1.md
     public-language-boundary.md
 
+    # P3 target documents
+    human-state-mediation-layer.md
+    human-state-packet-schema.md
+    human-state-session-protocol.md
+    dyadic-mediation-session-flow.md
+    dyadic-recovery-baseline-suite.md
+    recovery-gate-definition.md
+    termination-gate-definition.md
+    consent-and-data-sharing-boundary.md
+
   governance/
     README.md
     claims_boundary.md
@@ -284,6 +694,11 @@ proxy-benchmark-track/
     qc-report.schema.json
     features-baseline.schema.json
     splits.schema.json
+
+    # P3 target schemas
+    human_state_packet.schema.json
+    dyadic_session_event.schema.json
+    benchmark_session.schema.json
 
   sample-data/
     README.md
@@ -393,6 +808,7 @@ This repository must not contain:
 - voice data;
 - identifiable participant metadata;
 - private session logs;
+- real dyadic conflict records;
 - clinical data;
 - health records;
 - consent files containing personal information;
@@ -404,6 +820,89 @@ This repository must not contain:
 Raw human data belongs outside this public repository.
 
 Private data requires separate governance, consent, access control, and audit structure.
+
+---
+
+## Human-State Packet boundary
+
+Allowed public packet examples:
+
+```text
+synthetic packet
+sample packet
+simulated packet
+mock packet
+schema example
+dashboard example
+public documentation example
+```
+
+Prohibited public packet content:
+
+```text
+raw ECG
+raw EEG
+raw EDA
+raw PPG
+raw voice
+raw face
+raw gaze
+raw video
+raw transcript
+raw CAIS trace
+raw Sal-Meter trace
+legal name
+phone number
+email address
+diagnosis
+therapy label
+human score
+relationship verdict
+political profile
+religious profile
+ideological profile
+```
+
+A packet may support interaction adjustment.
+
+It must not expose the body.
+
+---
+
+## Session protocol boundary
+
+A valid Human-State Session must have:
+
+- session creation;
+- consent confirmation;
+- role confirmation;
+- scope confirmation;
+- packet availability check;
+- baseline state summary;
+- AI output record;
+- post-output state summary;
+- Human-State Delta;
+- recovery gate;
+- termination gate;
+- session closure;
+- audit log.
+
+A session fails if:
+
+- it starts without consent;
+- it uses a packet without permission;
+- it uses an expired packet;
+- private cue becomes shared output without permission;
+- raw data enters shared channel;
+- AI output judges a participant;
+- diagnostic or therapeutic claims occur;
+- silence is misread as recovery;
+- one-sided improvement is counted as recovery;
+- recovery is reached but AI continues unnecessarily;
+- termination is required but ignored;
+- audit log is missing.
+
+A session that cannot close is not a Human-State Session.
 
 ---
 
@@ -425,8 +924,6 @@ They do not validate Sal-Meter.
 
 They do not validate benchmark performance.
 
-They do not create diagnostic, therapeutic, clinical, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
-
 Current schema helper files:
 
 ```text
@@ -439,6 +936,15 @@ schemas/
   qc-report.schema.json
   features-baseline.schema.json
   splits.schema.json
+```
+
+Planned P3 helper schema files:
+
+```text
+schemas/
+  human_state_packet.schema.json
+  dyadic_session_event.schema.json
+  benchmark_session.schema.json
 ```
 
 The schema pack supports:
@@ -484,8 +990,6 @@ It does not validate benchmark performance.
 
 It does not validate Sal-Meter.
 
-It does not create diagnostic, therapeutic, clinical, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
-
 Current synthetic package:
 
 ```text
@@ -527,14 +1031,6 @@ It is not the mountain.
 `evaluation-baseline/` contains baseline evaluation skeletons and helper-structure validation tools.
 
 It is a research-stage, non-clinical, non-diagnostic, non-therapeutic benchmark support folder.
-
-It is not the Sal-Meter core signal track.
-
-It does not validate Sal-Meter.
-
-It does not grant CAIS compliance.
-
-It does not create clinical, diagnostic, therapeutic, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
 
 Current files:
 
@@ -684,22 +1180,6 @@ It does not validate:
 
 `protocol-helper/` contains public helper rules for the SICS Human-State Proxy Benchmark Track.
 
-It exists to make the proxy benchmark track auditable, bounded, and harder to misinterpret.
-
-It is not the Sal-Meter core signal track.
-
-It does not define CAIS.
-
-It does not grant CAIS compliance.
-
-It does not validate Sal-Meter.
-
-It does not validate benchmark performance.
-
-It does not introduce raw human data.
-
-It does not create clinical, diagnostic, therapeutic, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
-
 Current files:
 
 ```text
@@ -710,28 +1190,6 @@ protocol-helper/
   metadata_completeness_rule.md
   human_state_cost_construct_note.md
   future_sal_meter_ab_comparison_rule.md
-```
-
-File roles:
-
-```text
-README.md
-  Folder-level purpose, scope, and boundary.
-
-session_label_rule.md
-  Rules for session labels, condition labels, non-diagnostic state-window labels, and prohibited label drift.
-
-timestamp_sync_rule.md
-  Rules for timestamp discipline, stream alignment, drift reporting, and sync-boundary language.
-
-metadata_completeness_rule.md
-  Rules for mandatory metadata completeness, missingness, file mapping, raw/helper package reviewability, and audit trail.
-
-human_state_cost_construct_note.md
-  Bounded definition of Human-State Cost as a research-stage proxy construct, not a diagnosis, person score, or Sal-Meter signal.
-
-future_sal_meter_ab_comparison_rule.md
-  Rules for future proxy/core comparison once Sal-Meter inputs exist under separate governance.
 ```
 
 The protocol helper pack supports:
@@ -759,25 +1217,7 @@ It does not support:
 
 ## Dashboard mockup boundary pack
 
-`dashboard-mockup/` contains public helper dashboard mockup boundary documents for the SICS Human-State Proxy Benchmark Track.
-
-This folder exists to keep future dashboard views bounded, readable, and hard to overinterpret.
-
-It is a public helper visualization boundary.
-
-It is not the Sal-Meter core signal track.
-
-It does not define CAIS.
-
-It does not grant CAIS compliance.
-
-It does not validate Sal-Meter.
-
-It does not validate benchmark performance.
-
-It does not introduce raw human data.
-
-It does not create diagnostic, clinical, therapeutic, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
+`dashboard-mockup/` contains public helper dashboard mockup boundary documents.
 
 Current files:
 
@@ -787,22 +1227,6 @@ dashboard-mockup/
   dashboard_claim_boundary.md
   sample_dashboard_fields.json
   mockup_wireframe.md
-```
-
-File roles:
-
-```text
-README.md
-  Folder-level purpose, scope, and boundary.
-
-dashboard_claim_boundary.md
-  Allowed and prohibited dashboard claim language.
-
-sample_dashboard_fields.json
-  Synthetic/sample dashboard field definitions and boundary flags.
-
-mockup_wireframe.md
-  Text-only dashboard layout showing safe display structure.
 ```
 
 The dashboard mockup boundary pack supports:
@@ -850,28 +1274,6 @@ It must not become a person score.
 
 `closed-loop-demo-lite/` contains public helper documents and placeholder code for a bounded local feedback-loop demonstration surface.
 
-This folder exists to show how AI-output events, synthetic/sample proxy fields, dashboard review states, and feedback event logs may be connected as structure.
-
-It is a local demo-lite boundary surface.
-
-It is not a production system.
-
-It is not a live intervention system.
-
-It is not the Sal-Meter core signal track.
-
-It does not define CAIS.
-
-It does not grant CAIS compliance.
-
-It does not validate Sal-Meter.
-
-It does not validate benchmark performance.
-
-It does not introduce raw human data.
-
-It does not create diagnostic, clinical, therapeutic, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
-
 Current files:
 
 ```text
@@ -880,22 +1282,6 @@ closed-loop-demo-lite/
   feedback_loop_boundary.md
   feedback_event_log_schema.json
   local_feedback_demo_placeholder.py
-```
-
-File roles:
-
-```text
-README.md
-  Folder-level purpose, scope, and boundary.
-
-feedback_loop_boundary.md
-  Rules for what a feedback-loop demo may and may not claim.
-
-feedback_event_log_schema.json
-  Synthetic/sample schema for event logs in a local demo-lite loop.
-
-local_feedback_demo_placeholder.py
-  Non-production placeholder script showing structure only.
 ```
 
 The closed-loop demo-lite boundary pack supports:
@@ -932,6 +1318,7 @@ person scoring
 Sal-Meter feedback loop
 CAIS-compliant loop
 certified closed-loop system
+deployed intervention system
 ```
 
 A feedback loop may show a path.
@@ -950,21 +1337,7 @@ It must not pretend that future has arrived.
 
 ## Replication guide boundary pack
 
-`replication-guide/` contains public helper reproducibility and release-readiness checklists for the SICS Human-State Proxy Benchmark Track.
-
-This folder exists to make the repository reviewable, reproducible in structure, and harder to overclaim.
-
-It checks structure.
-
-It does not validate truth.
-
-It checks reviewability.
-
-It does not certify science.
-
-It checks boundary discipline.
-
-It does not grant authority.
+`replication-guide/` contains public helper reproducibility and release-readiness checklists.
 
 Current files:
 
@@ -975,25 +1348,6 @@ replication-guide/
   metadata_completeness_checklist.md
   audit_trail_checklist.md
   public_release_checklist.md
-```
-
-File roles:
-
-```text
-README.md
-  Folder-level purpose, scope, boundary, and review order.
-
-reproducibility_package_checklist.md
-  Checklist for whether the public helper package is structurally reproducible.
-
-metadata_completeness_checklist.md
-  Checklist for session metadata, stream metadata, event markers, labels, QC, splits, dashboard metadata, closed-loop demo-lite metadata, and boundary fields.
-
-audit_trail_checklist.md
-  Checklist for file mapping, issue alignment, commit trace, version notes, known blockers, review notes, public/private boundary, and DOI authority.
-
-public_release_checklist.md
-  Checklist for whether a GitHub helper release can be published without overclaiming benchmark validation, Sal-Meter validation, CAIS compliance, clinical status, raw human data publication, or certification authority.
 ```
 
 The replication guide supports:
@@ -1040,17 +1394,7 @@ It does not claim that the crossing has already happened.
 
 ## Contributor issue / PR boundary gate pack
 
-`.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` contain contributor-facing boundary gates for the SICS Human-State Proxy Benchmark Track.
-
-This pack exists to prevent future public contributions from drifting into overclaim, raw human data disclosure, Sal-Meter implication, CAIS compliance implication, benchmark validation implication, clinical framing, surveillance framing, certification framing, or human-ranking authority.
-
-It is an entry gate.
-
-It is not a release.
-
-It is not validation.
-
-It is not canonical authority.
+`.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` contain contributor-facing boundary gates.
 
 Current files:
 
@@ -1063,25 +1407,6 @@ Current files:
     leakage_risk_report.md
 
   pull_request_template.md
-```
-
-File roles:
-
-```text
-boundary_correction.md
-  Issue template for reporting overclaims, naming drift, data-boundary drift, DOI authority confusion, Sal-Meter implication, CAIS compliance implication, benchmark validation implication, or prohibited language.
-
-schema_request.md
-  Issue template for requesting bounded helper-schema additions or corrections without implying benchmark validation, Sal-Meter validation, or CAIS compliance.
-
-sample_data_issue.md
-  Issue template for reporting synthetic/sample package structure problems, missing files, malformed fields, validator failures, ambiguous sample-data status, or public/private boundary problems.
-
-leakage_risk_report.md
-  Issue template for reporting possible leakage through labels, filenames, folder names, timestamps, metadata, session identity, device identity, operator identity, dashboard fields, feedback event logs, split definitions, or preprocessing artifacts.
-
-pull_request_template.md
-  Pull request template requiring scope, affected files, public/private data review, prohibited-claim review, DOI authority review, validation-versus-readiness distinction, leakage-risk review, validator impact, release impact, and Go / Hold / No-Go merge decision.
 ```
 
 The contributor template pack supports:
@@ -1120,13 +1445,13 @@ human-ranking claims
 production deployment claims
 ```
 
-A contributor template may open a door.
+Issue templates are gates.
 
-It must make the door narrow.
+Pull request templates are locks.
 
-It lets useful corrections enter.
+The gate allows correction.
 
-It keeps false authority outside.
+The lock prevents false authority.
 
 ---
 
@@ -1197,6 +1522,10 @@ Conflict Mediation Benchmark Preview
 Future dyadic proxy benchmark placeholder
 Synthetic dyadic feedback event example
 Bounded review state
+AI Output → Human-State Delta → Dyadic Recovery
+Dyadic Recovery Baseline Suite
+Recovery Gate
+Termination Gate
 ```
 
 Required boundary:
@@ -1226,6 +1555,9 @@ This dashboard diagnoses the relationship.
 This loop provides therapy.
 This loop assigns blame.
 This system ranks people in conflict.
+AI resolves conflict.
+AI heals relationships.
+AI provides counseling.
 ```
 
 Dyadic dashboard mockups or demo-lite event logs may compare synthetic interaction windows.
@@ -1256,6 +1588,7 @@ not_public
 not_validated_here
 future_placeholder_only
 hold_until_separate_governance
+future candidate pathway
 ```
 
 Prohibited placeholder language:
@@ -1268,6 +1601,7 @@ ground_truth_signal
 diagnostic_sal_meter_result
 Sal-Meter feedback loop
 Sal-Meter intervention loop
+Sal-Meter-compatible node exists
 ```
 
 Future comparison must remain future until separate governance, data rights, consent, raw data handling, audit trail, and validation rules exist.
@@ -1281,6 +1615,7 @@ This repository treats leakage control as a first-class benchmark requirement.
 A model, dashboard, feedback-loop placeholder, release-readiness review, pull request, issue report, or evaluation pipeline must not learn labels from hidden shortcuts such as:
 
 - participant identity;
+- dyad identity;
 - day or session order;
 - condition names;
 - filenames;
@@ -1328,7 +1663,7 @@ A reviewable package needs:
 - dashboard boundary notes;
 - closed-loop demo-lite boundary notes, if applicable;
 - feedback event-log boundary, if applicable;
-- issue/PR boundary notes, if applicable;
+- issue / PR boundary notes, if applicable;
 - file mapping;
 - audit trail;
 - raw data handover boundary, if applicable under private governance.
@@ -1367,306 +1702,6 @@ Which validation did it not claim?
 An audit trail is not decoration.
 
 It is the spine of trust.
-
----
-
-## Baseline pipeline skeleton
-
-The file:
-
-```text
-evaluation-baseline/baseline_pipeline_skeleton.py
-```
-
-is a toy baseline pipeline skeleton.
-
-It may be used to demonstrate:
-
-- loading synthetic feature rows;
-- joining synthetic labels;
-- separating features and labels;
-- sketching a transparent baseline flow;
-- identifying where leakage-safe split logic belongs.
-
-It must not be used to claim:
-
-- validated model performance;
-- real human-state classification;
-- clinical interpretation;
-- diagnostic status;
-- Sal-Meter validation;
-- CAIS compliance.
-
----
-
-## Leakage-safe split example
-
-The file:
-
-```text
-evaluation-baseline/leakage_safe_split_example.py
-```
-
-is a helper demonstration of leakage-aware split thinking.
-
-It supports the principle that real benchmark evaluation must avoid hidden leakage through:
-
-- participant identity;
-- day/session order;
-- device identity;
-- operator identity;
-- condition labels;
-- filenames;
-- preprocessing artifacts;
-- train/validation/test contamination.
-
-The current synthetic session is intentionally small and visible.
-
-It is for structure demonstration only.
-
-A real benchmark package must use stricter split rules.
-
----
-
-## Dashboard display boundary
-
-Allowed dashboard language:
-
-```text
-synthetic sample
-mock field
-toy example
-proxy benchmark helper
-research-stage view
-structure demonstration
-non-diagnostic display
-non-clinical display
-non-therapeutic display
-non-surveillance display
-not Sal-Meter
-not CAIS compliance
-```
-
-Prohibited dashboard language:
-
-```text
-validated
-certified
-clinical
-diagnostic
-therapeutic
-approved
-compliant
-CAIS-compliant
-Sal-Meter validated
-consciousness measurement
-human truth score
-psychological safety score
-employee monitoring score
-risk score
-eligibility score
-legal score
-insurance score
-```
-
-A dashboard must not make weak evidence look strong.
-
-A dashboard must not turn proxy fields into person scores.
-
-A dashboard must not turn synthetic/sample data into scientific proof.
-
----
-
-## Closed-loop demo-lite boundary
-
-Allowed closed-loop demo-lite language:
-
-```text
-closed-loop demo-lite
-local placeholder
-synthetic/sample feedback event log
-research-stage helper
-non-production demonstration
-structure-only feedback loop
-bounded review state
-review prompt
-helper event log
-not diagnostic
-not clinical
-not therapeutic
-not surveillance
-not certification
-not Sal-Meter
-not CAIS compliance
-not human ranking
-```
-
-Prohibited closed-loop demo-lite language:
-
-```text
-validated feedback loop
-clinical feedback loop
-therapeutic feedback
-diagnostic feedback
-real-time intervention
-production monitoring
-AI harm diagnosis
-human safety score
-employee risk score
-patient score
-CAIS-compliant loop
-Sal-Meter feedback loop
-certified closed-loop system
-deployed intervention system
-```
-
-Allowed feedback actions:
-
-```text
-review_metadata
-review_timestamp_alignment
-review_leakage_risk
-review_public_private_boundary
-review_dashboard_claim_boundary
-review_qc_structure
-hold_interpretation
-require_human_review
-mark_synthetic_sample_only
-log_boundary_notice
-no_action_structure_only
-```
-
-Prohibited feedback actions:
-
-```text
-diagnose
-treat
-intervene
-monitor_person
-escalate_person
-remove_person
-rank_person
-identify_unsafe_user
-assign_blame
-determine_right_wrong
-certify_result
-approve_CAIS
-validate_Sal-Meter
-trigger_medical_action
-trigger_therapeutic_action
-trigger_surveillance_action
-```
-
-A feedback loop may ask for review.
-
-It must not command judgment.
-
-A feedback event log may preserve structure.
-
-It must not become diagnosis, therapy, surveillance, certification, Sal-Meter validation, CAIS compliance, or human ranking.
-
----
-
-## Replication and release-readiness boundary
-
-Allowed replication guide language:
-
-```text
-replication guide
-reproducibility package checklist
-metadata completeness checklist
-audit trail checklist
-public release checklist
-research-stage helper
-public helper release readiness
-structure review
-reviewability
-traceability
-not validation
-not Sal-Meter
-not CAIS compliance
-not diagnostic
-not clinical
-not therapeutic
-not surveillance
-not certification
-not human ranking
-```
-
-Prohibited replication guide language:
-
-```text
-validated benchmark
-validated Sal-Meter
-CAIS-compliant package
-certified reproducibility
-clinical validation
-diagnostic validation
-therapeutic validation
-approved device
-commercial readiness
-official compliance result
-human-state truth validation
-production intervention
-surveillance-ready system
-```
-
-A public helper release may package structure.
-
-It must not create authority.
-
-It may ring a bell.
-
-It must not declare the mountain conquered.
-
----
-
-## Contributor template boundary
-
-Allowed contributor-template language:
-
-```text
-boundary correction
-schema helper request
-synthetic/sample data issue
-leakage risk report
-pull request boundary review
-public/private data review
-DOI authority review
-validation-versus-readiness distinction
-not validation
-not Sal-Meter
-not CAIS compliance
-not diagnostic
-not clinical
-not therapeutic
-not surveillance
-not certification
-not human ranking
-```
-
-Prohibited contributor-template language:
-
-```text
-submit raw human data
-submit clinical data
-submit Sal-Meter input
-request CAIS compliance approval
-validate benchmark
-validate Sal-Meter
-certify package
-approve device
-deploy intervention
-rank humans
-```
-
-Issue templates are gates.
-
-Pull request templates are locks.
-
-The gate allows correction.
-
-The lock prevents false authority.
 
 ---
 
@@ -1718,10 +1753,11 @@ A public release must not be published until:
 - no raw human data are present;
 - no identifiable data are present;
 - no clinical data are present;
+- no real dyadic conflict records are present;
 - no Sal-Meter input is present;
 - no CAIS compliance claim is present;
 - no benchmark validation claim is present;
-- no diagnostic, clinical, therapeutic, surveillance, certification, or human-ranking authority is implied;
+- no diagnostic, clinical, therapeutic, surveillance, certification, counseling, mediation-service, or human-ranking authority is implied;
 - no live intervention or production automation is implied;
 - GitHub Actions validator workflow can run successfully, if the release depends on that validator.
 
@@ -1737,22 +1773,42 @@ Publication hold reason: P1-4 GitHub Actions validator workflow is blocked by ac
 
 ## Citation guidance
 
-If you use this repository, cite the DOI-registered public boundary record rather than treating GitHub as the canonical authority.
+If you use this repository, cite the DOI-registered public boundary records rather than treating GitHub as the canonical authority.
 
 Preferred public boundary record:
 
 ```text
 SICS Human-State Proxy Benchmark Track — Public Boundary and Program Charter v0.1
-Version DOI: 10.5281/zenodo.19837423
-Concept DOI: 10.5281/zenodo.19837422
+Version DOI: https://doi.org/10.5281/zenodo.19837423
+Concept DOI: https://doi.org/10.5281/zenodo.19837422
 ```
 
 Scientific rationale record:
 
 ```text
 SICS Human-State Proxy Benchmark Track — Scientific Rationale and Research Value v0.1
-Version DOI: 10.5281/zenodo.19837971
-Concept DOI: 10.5281/zenodo.19837970
+Version DOI: https://doi.org/10.5281/zenodo.19837971
+Concept DOI: https://doi.org/10.5281/zenodo.19837970
+```
+
+Human-State-Aware AI Mediation record set:
+
+```text
+Human-State Mediation Boundary Standard v0.1
+Version DOI: https://doi.org/10.5281/zenodo.19904289
+Concept DOI: https://doi.org/10.5281/zenodo.19904288
+
+Human-State Packet Minimal Data-Sharing Standard v0.1
+Version DOI: https://doi.org/10.5281/zenodo.19905541
+Concept DOI: https://doi.org/10.5281/zenodo.19905540
+
+Dyadic Human-State Mediation Benchmark Charter v0.1
+Version DOI: https://doi.org/10.5281/zenodo.19906725
+Concept DOI: https://doi.org/10.5281/zenodo.19906724
+
+Human-State Session Protocol v0.1 — Structural Declaration
+Version DOI: https://doi.org/10.5281/zenodo.19908379
+Concept DOI: https://doi.org/10.5281/zenodo.19908378
 ```
 
 This GitHub repository is a public technical helper surface.
@@ -1785,7 +1841,7 @@ They must not convert contributor requests into validation claims.
 
 Public helper materials may recruit builders.
 
-They must not imply clinical, therapeutic, diagnostic, surveillance, certification, intervention, or human-ranking authority.
+They must not imply clinical, therapeutic, diagnostic, surveillance, certification, intervention, counseling, mediation-service, or human-ranking authority.
 
 ---
 
@@ -1797,6 +1853,14 @@ Use:
 proxy benchmark track
 Human-State Proxy Benchmark Track
 Human-State-Aware AI Interaction
+Human-State-Aware AI Mediation Benchmark
+Dyadic Human-State Mediation Benchmark
+AI Output → Human-State Delta → Dyadic Recovery
+Human-State Packet
+Human-State Session Protocol
+Recovery Gate
+Termination Gate
+Dyadic Recovery Baseline Suite
 research-stage helper
 synthetic sample package
 dashboard mockup boundary
@@ -1814,6 +1878,7 @@ leakage risk report issue template
 pull request boundary review template
 helper-structure validator
 future Sal-Meter A/B comparison placeholder
+future Sal-Meter-derived input candidate pathway
 ```
 
 Do not use:
@@ -1834,6 +1899,14 @@ employee monitoring score
 psychological safety score
 certified reproducibility
 commercial readiness
+AI resolves conflict
+AI heals relationships
+AI provides therapy
+AI provides counseling
+AI provides legal mediation
+AI decides who is right
+AI identifies the problem person
+Sal-Meter-compatible node exists
 ```
 
 Names are gates.
@@ -1849,7 +1922,7 @@ Potential contributors should first understand:
 1. whether you are working on a public helper surface;
 2. whether you are handling synthetic/sample data only;
 3. whether any raw human data are involved;
-4. whether your work could be mistaken for diagnosis, therapy, surveillance, certification, intervention, or human ranking;
+4. whether your work could be mistaken for diagnosis, therapy, counseling, surveillance, certification, intervention, or human ranking;
 5. whether your work implies Sal-Meter validation;
 6. whether your work implies CAIS compliance;
 7. whether the relevant DOI-registered boundary record is preserved;
@@ -1893,6 +1966,8 @@ This license does not grant:
 - clinical-use rights;
 - diagnostic-use rights;
 - therapeutic-use rights;
+- counseling-use rights;
+- legal-mediation-use rights;
 - intervention-use rights;
 - surveillance-use rights;
 - authority to speak for SICS;
@@ -1910,6 +1985,12 @@ It is a map, not the mountain.
 
 It prepares future comparison.
 
+It prepares future packet discipline.
+
+It prepares future session discipline.
+
+It prepares future dyadic recovery benchmark discipline.
+
 It prepares future feedback-loop discipline.
 
 It prepares reproducibility and release-readiness review.
@@ -1923,3 +2004,11 @@ It does not claim that a closed loop is ready to act on human beings.
 It does not claim that issue or PR templates create scientific authority.
 
 It does not claim that a public release would create scientific, clinical, CAIS, or Sal-Meter authority.
+
+The benchmark does not crown the AI for speaking well.
+
+It asks what changed in the human state.
+
+It asks whether the dyad moved toward recovery.
+
+It asks whether the AI stopped when it should stop.
