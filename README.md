@@ -2,7 +2,7 @@
 
 Research-stage proxy benchmark support track for **Human-State-Aware AI Interaction**.
 
-This repository prepares a public technical helper surface for synchronized multimodal proxy benchmark infrastructure, metadata discipline, leakage-safe evaluation, synthetic/sample package structure, baseline evaluation scaffolding, dashboard mockup boundaries, and future comparison with Sal-Meter core inputs.
+This repository prepares a public technical helper surface for synchronized multimodal proxy benchmark infrastructure, metadata discipline, leakage-safe evaluation, synthetic/sample package structure, baseline evaluation scaffolding, dashboard mockup boundaries, closed-loop demo-lite scaffolding, and future comparison with Sal-Meter core inputs.
 
 **This repository is not the Sal-Meter core signal track.**
 
@@ -24,6 +24,7 @@ This repository is:
 - not a validated consciousness measurement system;
 - not a clinical, diagnostic, therapeutic, psychiatric, medical, employment, insurance, legal, educational, eligibility, or surveillance system;
 - not a certification, conformance, or mark-usage surface;
+- not a closed-loop intervention system;
 - not a place to publish raw human data.
 
 Public landing page:
@@ -62,7 +63,7 @@ DOI records govern authority.
 
 ## One sentence
 
-The Proxy Benchmark Track builds a comparison layer around the Sal-Meter kernel program: synchronized human-state proxy data, metadata discipline, leakage-safe evaluation, baseline models, synthetic/sample package structure, dashboard mockup boundaries, and future comparison with Sal-Meter core inputs.
+The Proxy Benchmark Track builds a comparison layer around the Sal-Meter kernel program: synchronized human-state proxy data, metadata discipline, leakage-safe evaluation, baseline models, synthetic/sample package structure, dashboard mockup boundaries, closed-loop demo-lite scaffolding, and future comparison with Sal-Meter core inputs.
 
 ---
 
@@ -82,6 +83,7 @@ The purpose is to prepare:
 - holdout design;
 - baseline models;
 - safe dashboard mockup boundaries;
+- local closed-loop demo-lite boundary scaffolding;
 - replayable validation skeletons;
 - bounded real-time feedback-loop demonstrations at a later stage;
 - future A/B comparison against Sal-Meter core inputs.
@@ -111,11 +113,12 @@ It does not grant:
 - diagnostic status;
 - therapeutic status;
 - medical-device status;
-- validated commercial-device status.
+- validated commercial-device status;
+- closed-loop deployment status.
 
-ECG, HRV, EDA, PPG, EEG, eye tracking, webcam markers, interaction timing, behavioral logs, task events, and AI feedback logs do not become Sal-Meter by being combined.
+ECG, HRV, EDA, PPG, EEG, eye tracking, webcam markers, interaction timing, behavioral logs, task events, AI feedback logs, and dashboard review states do not become Sal-Meter by being combined.
 
-They remain **proxy benchmark signals**.
+They remain **proxy benchmark signals and helper structures**.
 
 ---
 
@@ -149,7 +152,7 @@ https://github.com/salpida-foundation/sal-meter-kernel-program
 
 The Proxy Benchmark Track prepares a comparison and interaction layer.
 
-It builds synchronized multimodal baselines, leakage-safe evaluation rules, dataset structure, baseline modeling, dashboard boundary rules, and future closed-loop demo-lite scaffolding that can later serve as a comparison lane for Sal-Meter inputs.
+It builds synchronized multimodal baselines, leakage-safe evaluation rules, dataset structure, baseline modeling, dashboard boundary rules, closed-loop demo-lite scaffolding, and future comparison logic that can later serve as a comparison lane for Sal-Meter inputs.
 
 The proxy track supports the core track.
 
@@ -163,7 +166,7 @@ This track exists for five reasons.
 
 1. To build human-state-aware AI interaction infrastructure before Sal-Meter I/G-channel signals become available.
 2. To create a disciplined comparison baseline for future Sal-Meter A/B testing.
-3. To fix timestamp, metadata, leakage-prevention, holdout, dashboard, and baseline modeling architecture early.
+3. To fix timestamp, metadata, leakage-prevention, holdout, dashboard, feedback-log, and baseline modeling architecture early.
 4. To enable non-clinical closed-loop demonstration of human-state-aware feedback in software, dashboard, simulator, and local AI interaction environments at a later stage.
 5. To create an independent Human-AI Interaction research lane comparing AI task performance with measurable human-state impact.
 
@@ -177,7 +180,7 @@ This track makes that tradeoff visible under bounded, non-diagnostic, research-s
 
 This repository is currently in a public helper implementation stage for the SICS Human-State Proxy Benchmark Track.
 
-It provides schema, synthetic/sample data, validation scaffolding, dashboard mockup boundaries, protocol helper rules, and repository hygiene workflow scaffolding for structure demonstration only.
+It provides schema, synthetic/sample data, validation scaffolding, dashboard mockup boundaries, protocol helper rules, closed-loop demo-lite boundary scaffolding, and repository hygiene workflow scaffolding for structure demonstration only.
 
 It does not provide benchmark evidence.
 
@@ -198,13 +201,14 @@ It does not validate Sal-Meter.
 | Sample package validator | Present | `evaluation-baseline/validate_sample_package.py` provides helper-structure validation |
 | Evaluation baseline README | Done | `evaluation-baseline/README.md` explains validator usage, PASS / FAIL interpretation, dependency installation, and validation boundaries |
 | Protocol helper boundary pack | Done | `protocol-helper/` defines label, timestamp, metadata, Human-State Cost, and future Sal-Meter A/B comparison boundaries |
-| Dashboard mockup boundary pack | Present | `dashboard-mockup/` defines dashboard claim, field, and wireframe boundaries |
+| Dashboard mockup boundary pack | Done | `dashboard-mockup/` defines dashboard claim, field, and wireframe boundaries |
+| Closed-loop demo-lite boundary pack | Present | `closed-loop-demo-lite/` defines feedback-loop boundaries, event-log schema, and local placeholder code |
 | GitHub Actions validator workflow | Present / Blocked | `.github/workflows/validate-synthetic-sample.yml` exists, but execution is currently blocked by GitHub account-level Actions restriction |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
 | Sal-Meter input | Not present | This repository is not Sal-Meter and does not contain Sal-Meter signal data |
 | CAIS compliance claim | Not present | This repository does not grant CAIS compliance |
-| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, or benchmark result is validated by this repository |
+| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, or benchmark result is validated by this repository |
 | Release status | Not published | `v0.1.0` is a release-readiness target only until validator execution can run successfully |
 
 ---
@@ -226,8 +230,8 @@ It does not validate Sal-Meter.
 | Milestone | Status | Notes |
 |---|---|---|
 | P2-1 Protocol helper boundary pack | Done | `protocol-helper/` contains bounded helper rules for labels, timestamps, metadata completeness, Human-State Cost, and future Sal-Meter A/B comparison |
-| P2-2 Dashboard mockup boundary pack | Ready to close after root README update | `dashboard-mockup/` contains README, claim boundary, sample dashboard fields, and mockup wireframe |
-| P2-3 Closed-loop demo-lite boundary pack | Not started | Should begin only after P2-2 is closed |
+| P2-2 Dashboard mockup boundary pack | Done | `dashboard-mockup/` contains README, claim boundary, sample dashboard fields, and mockup wireframe |
+| P2-3 Closed-loop demo-lite boundary pack | Ready to close after root README update | `closed-loop-demo-lite/` contains README, feedback-loop boundary, feedback event-log schema, and local placeholder code |
 | P2-4 Replication guide pack | Not started | Should follow closed-loop demo-lite or release-readiness stabilization |
 | P2-5 Issue / PR template pack | Not started | Should be created after core public helper folders are stable |
 
@@ -300,6 +304,12 @@ proxy-benchmark-track/
     dashboard_claim_boundary.md
     sample_dashboard_fields.json
     mockup_wireframe.md
+
+  closed-loop-demo-lite/
+    README.md
+    feedback_loop_boundary.md
+    feedback_event_log_schema.json
+    local_feedback_demo_placeholder.py
 ```
 
 If an exact file is not present in the repository, that file name should be treated as a planned or helper-reference path until created.
@@ -319,6 +329,7 @@ A public helper surface may:
 - demonstrate validator logic;
 - demonstrate leakage-aware split thinking;
 - show dashboard mockup boundaries;
+- show closed-loop demo-lite boundaries;
 - prepare future contributor orientation.
 
 A public helper surface must not:
@@ -331,6 +342,7 @@ A public helper surface must not:
 - imply Sal-Meter validation;
 - imply CAIS compliance;
 - imply benchmark validation;
+- imply closed-loop intervention readiness;
 - imply diagnostic, therapeutic, clinical, surveillance, certification, or human-ranking authority.
 
 ---
@@ -361,7 +373,8 @@ This repository must not contain:
 - consent files containing personal information;
 - internal lab packages;
 - Sal-Meter raw input;
-- CAIS compliance dossiers.
+- CAIS compliance dossiers;
+- production feedback logs.
 
 Raw human data belongs outside this public repository.
 
@@ -823,6 +836,128 @@ It must not become a person score.
 
 ---
 
+## Closed-loop demo-lite boundary pack
+
+`closed-loop-demo-lite/` contains public helper documents and placeholder code for a bounded local feedback-loop demonstration surface.
+
+This folder exists to show how AI-output events, synthetic/sample proxy fields, dashboard review states, and feedback event logs may be connected as structure.
+
+It is a local demo-lite boundary surface.
+
+It is not a production system.
+
+It is not a live intervention system.
+
+It is not the Sal-Meter core signal track.
+
+It does not define CAIS.
+
+It does not grant CAIS compliance.
+
+It does not validate Sal-Meter.
+
+It does not validate benchmark performance.
+
+It does not introduce raw human data.
+
+It does not create diagnostic, clinical, therapeutic, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
+
+Current files:
+
+```text
+closed-loop-demo-lite/
+  README.md
+  feedback_loop_boundary.md
+  feedback_event_log_schema.json
+  local_feedback_demo_placeholder.py
+```
+
+File roles:
+
+```text
+README.md
+  Folder-level purpose, scope, and boundary.
+
+feedback_loop_boundary.md
+  Rules for what a feedback-loop demo may and may not claim.
+
+feedback_event_log_schema.json
+  Synthetic/sample schema for event logs in a local demo-lite loop.
+
+local_feedback_demo_placeholder.py
+  Non-production placeholder script showing structure only.
+```
+
+The closed-loop demo-lite boundary pack supports:
+
+```text
+local placeholder structure
+synthetic/sample feedback event logs
+dashboard-to-log structure demonstration
+AI-output event marker examples
+synthetic proxy-field review examples
+bounded feedback-policy placeholder logic
+human-review-required placeholder states
+boundary-preserving event logs
+audit-friendly local demo structure
+```
+
+It does not support:
+
+```text
+live intervention
+real-time monitoring
+production automation
+diagnosis
+therapy
+clinical decision support
+medical feedback
+surveillance scoring
+employee monitoring
+insurance scoring
+education scoring
+legal eligibility scoring
+human ranking
+person scoring
+Sal-Meter feedback loop
+CAIS-compliant loop
+certified closed-loop system
+```
+
+Current closed-loop demo-lite status:
+
+```text
+Closed-loop demo-lite boundary pack: present
+Feedback-loop boundary: present
+Feedback event-log schema: present
+Local feedback demo placeholder: present
+Raw human data: not present
+Identifiable data: not present
+Clinical data: not present
+Private user data: not present
+Sal-Meter input: not present
+CAIS compliance claim: not present
+Benchmark validation claim: not present
+Live intervention: not present
+Production automation: not present
+Diagnostic / clinical / therapeutic authority: not present
+Surveillance / certification / human-ranking authority: not present
+```
+
+A feedback loop may show a path.
+
+It must not move a human being.
+
+A log may remember structure.
+
+It must not become evidence.
+
+A placeholder may point to a future.
+
+It must not pretend that future has arrived.
+
+---
+
 ## Human-State Cost boundary
 
 Human-State Cost may appear in this repository only as a bounded, research-stage proxy construct.
@@ -888,6 +1023,8 @@ Allowed future wording:
 Synthetic dyadic interaction mockup
 Conflict Mediation Benchmark Preview
 Future dyadic proxy benchmark placeholder
+Synthetic dyadic feedback event example
+Bounded review state
 ```
 
 Required boundary:
@@ -910,14 +1047,16 @@ Not allowed wording:
 
 ```text
 This dashboard decides who is right.
+This feedback loop decides who is right.
 This dashboard identifies the unsafe partner.
+This loop identifies the unsafe partner.
 This dashboard diagnoses the relationship.
-This dashboard provides therapy.
-This dashboard assigns blame.
-This dashboard ranks people in conflict.
+This loop provides therapy.
+This loop assigns blame.
+This system ranks people in conflict.
 ```
 
-Dyadic dashboard mockups may compare interaction conditions.
+Dyadic dashboard mockups or demo-lite event logs may compare synthetic interaction windows.
 
 They must not judge humans.
 
@@ -955,6 +1094,8 @@ CAIS_compliant_signal
 official_consciousness_signal
 ground_truth_signal
 diagnostic_sal_meter_result
+Sal-Meter feedback loop
+Sal-Meter intervention loop
 ```
 
 Future comparison must remain future until separate governance, data rights, consent, raw data handling, audit trail, and validation rules exist.
@@ -965,7 +1106,7 @@ Future comparison must remain future until separate governance, data rights, con
 
 This repository treats leakage control as a first-class benchmark requirement.
 
-A model, dashboard, or evaluation pipeline must not learn labels from hidden shortcuts such as:
+A model, dashboard, feedback-loop placeholder, or evaluation pipeline must not learn labels from hidden shortcuts such as:
 
 - participant identity;
 - day or session order;
@@ -977,8 +1118,9 @@ A model, dashboard, or evaluation pipeline must not learn labels from hidden sho
 - preprocessing artifacts;
 - timestamp artifacts;
 - metadata fields that encode labels;
-- train/validation/test contamination;
-- dashboard-visible labels leaking into model input.
+- dashboard-visible labels leaking into model input;
+- feedback-log fields leaking the target label;
+- train/validation/test contamination.
 
 Synthetic data may expose labels for demonstration.
 
@@ -1011,6 +1153,7 @@ A reviewable package needs:
 - drift notes;
 - missingness notes;
 - leakage review notes;
+- feedback event-log boundary, if applicable;
 - file mapping;
 - audit trail;
 - raw data handover boundary, if applicable under private governance.
@@ -1128,6 +1271,96 @@ A dashboard must not turn synthetic/sample data into scientific proof.
 
 ---
 
+## Closed-loop demo-lite boundary
+
+Allowed closed-loop demo-lite language:
+
+```text
+closed-loop demo-lite
+local placeholder
+synthetic/sample feedback event log
+research-stage helper
+non-production demonstration
+structure-only feedback loop
+bounded review state
+review prompt
+helper event log
+not diagnostic
+not clinical
+not therapeutic
+not surveillance
+not certification
+not Sal-Meter
+not CAIS compliance
+not human ranking
+```
+
+Prohibited closed-loop demo-lite language:
+
+```text
+validated feedback loop
+clinical feedback loop
+therapeutic feedback
+diagnostic feedback
+real-time intervention
+production monitoring
+AI harm diagnosis
+human safety score
+employee risk score
+patient score
+CAIS-compliant loop
+Sal-Meter feedback loop
+certified closed-loop system
+deployed intervention system
+```
+
+Allowed feedback actions:
+
+```text
+review_metadata
+review_timestamp_alignment
+review_leakage_risk
+review_public_private_boundary
+review_dashboard_claim_boundary
+review_qc_structure
+hold_interpretation
+require_human_review
+mark_synthetic_sample_only
+log_boundary_notice
+no_action_structure_only
+```
+
+Prohibited feedback actions:
+
+```text
+diagnose
+treat
+intervene
+monitor_person
+escalate_person
+remove_person
+rank_person
+identify_unsafe_user
+assign_blame
+determine_right_wrong
+certify_result
+approve_CAIS
+validate_Sal_Meter
+trigger_medical_action
+trigger_therapeutic_action
+trigger_surveillance_action
+```
+
+A feedback loop may ask for review.
+
+It must not command judgment.
+
+A feedback event log may preserve structure.
+
+It must not become diagnosis, therapy, surveillance, certification, Sal-Meter validation, CAIS compliance, or human ranking.
+
+---
+
 ## Suggested local stack
 
 This repository is currently a public helper documentation and scaffold repository.
@@ -1153,6 +1386,8 @@ This stack does not create Sal-Meter.
 
 This stack does not grant CAIS compliance.
 
+This stack does not create a production closed-loop intervention system.
+
 ---
 
 ## Public release boundary
@@ -1164,6 +1399,7 @@ A public release must not be published until:
 - schema references are correct;
 - evaluator / validator documentation is clear;
 - dashboard boundaries are visible;
+- closed-loop demo-lite boundaries are visible, if included;
 - `CITATION.cff` points to DOI-registered public records;
 - `README.md` clearly states the repository is a helper surface;
 - no raw human data are present;
@@ -1172,6 +1408,7 @@ A public release must not be published until:
 - no Sal-Meter input is present;
 - no CAIS compliance claim is present;
 - no diagnostic, clinical, therapeutic, surveillance, certification, or human-ranking authority is implied;
+- no live intervention or production automation is implied;
 - GitHub Actions validator workflow can run successfully, if the release depends on that validator.
 
 Current release status:
@@ -1226,7 +1463,7 @@ They must not claim validation.
 
 Public helper materials may recruit builders.
 
-They must not imply clinical, therapeutic, diagnostic, surveillance, certification, or human-ranking authority.
+They must not imply clinical, therapeutic, diagnostic, surveillance, certification, intervention, or human-ranking authority.
 
 ---
 
@@ -1241,6 +1478,8 @@ Human-State-Aware AI Interaction
 research-stage helper
 synthetic sample package
 dashboard mockup boundary
+closed-loop demo-lite
+local feedback demo placeholder
 helper-structure validator
 future Sal-Meter A/B comparison placeholder
 ```
@@ -1253,7 +1492,10 @@ CAIS-compliant device
 clinical dashboard
 diagnostic dashboard
 therapeutic dashboard
+clinical feedback loop
+therapeutic feedback loop
 certified benchmark
+certified closed-loop system
 official consciousness measurement
 human truth score
 employee monitoring score
@@ -1273,7 +1515,7 @@ Potential contributors should first understand:
 1. whether you are working on a public helper surface;
 2. whether you are handling synthetic/sample data only;
 3. whether any raw human data are involved;
-4. whether your work could be mistaken for diagnosis, therapy, surveillance, certification, or human ranking;
+4. whether your work could be mistaken for diagnosis, therapy, surveillance, certification, intervention, or human ranking;
 5. whether your work implies Sal-Meter validation;
 6. whether your work implies CAIS compliance;
 7. whether the relevant DOI-registered boundary record is preserved.
@@ -1293,8 +1535,8 @@ P1-4 remains open:
 P1-5 remains open:
   v0.1.0 release readiness is prepared, but release must remain unpublished until P1-4 can run successfully.
 
-P2-2 can be closed after:
-  root README.md is updated to reference dashboard-mockup/ as a public helper visualization boundary.
+P2-3 can be closed after:
+  root README.md is updated to reference closed-loop-demo-lite/ as a public helper boundary folder.
 ```
 
 ---
@@ -1314,6 +1556,8 @@ This license does not grant:
 - clinical-use rights;
 - diagnostic-use rights;
 - therapeutic-use rights;
+- intervention-use rights;
+- surveillance-use rights;
 - authority to speak for SICS;
 - authority to reinterpret DOI-registered canonical records.
 
@@ -1329,4 +1573,8 @@ It is a map, not the mountain.
 
 It prepares future comparison.
 
+It prepares future feedback-loop discipline.
+
 It does not claim that future comparison has already been validated.
+
+It does not claim that a closed loop is ready to act on human beings.
