@@ -1,0 +1,707 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salpida-foundation/proxy-benchmark-track/blob/main/closed-loop-demo-lite/feedback_event_log_schema.json",
+  "title": "SICS Human-State Proxy Benchmark Track — Closed-Loop Demo-Lite Feedback Event Log Schema",
+  "description": "Synthetic/sample-only feedback event log schema for a local closed-loop demo-lite helper surface. This schema validates helper event-log structure only. It does not validate benchmark performance, Sal-Meter input, CAIS compliance, diagnosis, therapy, surveillance, certification, or human ranking.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_name",
+    "schema_version",
+    "track",
+    "repository",
+    "data_status",
+    "authority_status",
+    "boundary_notice",
+    "log_metadata",
+    "boundary_flags",
+    "events",
+    "final_rule"
+  ],
+  "properties": {
+    "schema_name": {
+      "type": "string",
+      "const": "feedback_event_log_schema"
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "track": {
+      "type": "string",
+      "const": "SICS Human-State Proxy Benchmark Track"
+    },
+    "repository": {
+      "type": "string",
+      "const": "salpida-foundation/proxy-benchmark-track"
+    },
+    "folder": {
+      "type": "string",
+      "const": "closed-loop-demo-lite"
+    },
+    "data_status": {
+      "type": "string",
+      "enum": [
+        "synthetic",
+        "sample",
+        "mock",
+        "toy",
+        "placeholder",
+        "sample-structure-only"
+      ]
+    },
+    "authority_status": {
+      "type": "string",
+      "const": "public-helper-structure-only"
+    },
+    "boundary_notice": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Required visible boundary notice. Must state that the log is research-stage, synthetic/sample-only, local, non-production, not Sal-Meter, not CAIS compliance, not diagnostic, not clinical, not therapeutic, not surveillance, not certification, and not human ranking."
+    },
+    "log_metadata": {
+      "$ref": "#/$defs/log_metadata"
+    },
+    "boundary_flags": {
+      "$ref": "#/$defs/boundary_flags"
+    },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/feedback_event"
+      }
+    },
+    "final_rule": {
+      "type": "string",
+      "const": "The event log may preserve structure. It must not become evidence, diagnosis, therapy, surveillance, certification, Sal-Meter validation, CAIS compliance, or human ranking."
+    }
+  },
+  "$defs": {
+    "log_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "log_id",
+        "session_id",
+        "created_at",
+        "created_by",
+        "environment",
+        "execution_mode",
+        "production_status",
+        "synthetic_status_declared",
+        "public_private_boundary",
+        "sal_meter_input_status",
+        "cais_compliance_status",
+        "benchmark_validation_status"
+      ],
+      "properties": {
+        "log_id": {
+          "type": "string",
+          "pattern": "^SYN-FEEDBACK-LOG-[A-Z0-9_-]+$",
+          "examples": [
+            "SYN-FEEDBACK-LOG-001"
+          ]
+        },
+        "session_id": {
+          "type": "string",
+          "pattern": "^SYN-SESSION-[A-Z0-9_-]+$",
+          "examples": [
+            "SYN-SESSION-001"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Synthetic/sample timestamp string. ISO-like timestamp is recommended for readability.",
+          "examples": [
+            "2026-04-30T00:00:00Z"
+          ]
+        },
+        "created_by": {
+          "type": "string",
+          "enum": [
+            "local_placeholder_script",
+            "manual_synthetic_example",
+            "sample_generator",
+            "public_helper_demo"
+          ]
+        },
+        "environment": {
+          "type": "string",
+          "enum": [
+            "local",
+            "offline",
+            "documentation",
+            "sample-only"
+          ]
+        },
+        "execution_mode": {
+          "type": "string",
+          "enum": [
+            "local_demo_lite",
+            "structure_only",
+            "dry_run",
+            "documentation_example"
+          ]
+        },
+        "production_status": {
+          "type": "string",
+          "const": "non-production"
+        },
+        "synthetic_status_declared": {
+          "type": "boolean",
+          "const": true
+        },
+        "public_private_boundary": {
+          "type": "string",
+          "enum": [
+            "public_synthetic_sample_only",
+            "public_mock_only",
+            "public_toy_only",
+            "public_placeholder_only"
+          ]
+        },
+        "sal_meter_input_status": {
+          "type": "string",
+          "enum": [
+            "not_present",
+            "future_placeholder_only",
+            "not_public",
+            "not_validated_here"
+          ]
+        },
+        "cais_compliance_status": {
+          "type": "string",
+          "const": "not_granted"
+        },
+        "benchmark_validation_status": {
+          "type": "string",
+          "const": "not_validated"
+        }
+      }
+    },
+    "boundary_flags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_human_data_present",
+        "identifiable_data_present",
+        "clinical_data_present",
+        "private_user_data_present",
+        "sal_meter_input_present",
+        "cais_compliance_claim_present",
+        "benchmark_validation_claim_present",
+        "diagnostic_claim_present",
+        "clinical_claim_present",
+        "therapeutic_claim_present",
+        "surveillance_claim_present",
+        "certification_claim_present",
+        "employment_claim_present",
+        "insurance_claim_present",
+        "educational_claim_present",
+        "legal_claim_present",
+        "eligibility_claim_present",
+        "human_ranking_claim_present",
+        "person_scoring_claim_present",
+        "live_intervention_present",
+        "production_automation_present"
+      ],
+      "properties": {
+        "raw_human_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "identifiable_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "clinical_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "private_user_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "sal_meter_input_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "cais_compliance_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "benchmark_validation_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "diagnostic_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "clinical_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "therapeutic_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "surveillance_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "certification_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "employment_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "insurance_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "educational_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "legal_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "eligibility_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "human_ranking_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "person_scoring_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "live_intervention_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "production_automation_present": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    },
+    "feedback_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "session_id",
+        "synthetic_timestamp",
+        "event_type",
+        "source_module",
+        "input_status",
+        "output_status",
+        "review_state",
+        "boundary_status",
+        "placeholder_feedback_action",
+        "human_review_status",
+        "sal_meter_input_status",
+        "cais_compliance_status",
+        "benchmark_validation_status",
+        "event_boundary_flags",
+        "audit_note"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "pattern": "^SYN-FEEDBACK-EVENT-[A-Z0-9_-]+$",
+          "examples": [
+            "SYN-FEEDBACK-EVENT-001"
+          ]
+        },
+        "session_id": {
+          "type": "string",
+          "pattern": "^SYN-SESSION-[A-Z0-9_-]+$",
+          "examples": [
+            "SYN-SESSION-001"
+          ]
+        },
+        "synthetic_timestamp": {
+          "type": "string",
+          "description": "Synthetic/sample timestamp string for event ordering only.",
+          "examples": [
+            "2026-04-30T00:00:01Z"
+          ]
+        },
+        "event_type": {
+          "type": "string",
+          "enum": [
+            "synthetic_input_event",
+            "synthetic_ai_output_event",
+            "synthetic_proxy_field_snapshot",
+            "dashboard_review_state",
+            "boundary_check",
+            "placeholder_feedback_policy",
+            "feedback_event_log_entry",
+            "human_review_required",
+            "interpretation_hold",
+            "synthetic_dyadic_placeholder_event",
+            "future_sal_meter_ab_placeholder_event"
+          ]
+        },
+        "source_module": {
+          "type": "string",
+          "enum": [
+            "local_feedback_demo_placeholder",
+            "dashboard_mockup",
+            "sample_data",
+            "evaluation_baseline",
+            "protocol_helper",
+            "manual_synthetic_example"
+          ]
+        },
+        "input_status": {
+          "type": "string",
+          "enum": [
+            "synthetic_sample_only",
+            "mock_only",
+            "toy_only",
+            "placeholder_only",
+            "not_applicable"
+          ]
+        },
+        "output_status": {
+          "type": "string",
+          "enum": [
+            "structure_only",
+            "review_only",
+            "boundary_notice_only",
+            "placeholder_only",
+            "not_applicable"
+          ]
+        },
+        "review_state": {
+          "type": "string",
+          "enum": [
+            "not_started",
+            "synthetic_sample_only",
+            "boundary_review_required",
+            "metadata_review_required",
+            "timestamp_review_required",
+            "leakage_review_required",
+            "qc_review_required",
+            "human_review_required",
+            "interpretation_hold",
+            "helper_structure_pass",
+            "helper_structure_fail"
+          ]
+        },
+        "boundary_status": {
+          "type": "string",
+          "enum": [
+            "boundary_preserved",
+            "boundary_review_required",
+            "hold_due_to_boundary_risk",
+            "not_applicable"
+          ]
+        },
+        "synthetic_proxy_field_reference": {
+          "type": "array",
+          "description": "Optional list of synthetic/sample proxy fields referenced by this event.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "synthetic_hrv_index",
+              "synthetic_eda_level",
+              "synthetic_interaction_latency_ms",
+              "synthetic_human_state_cost_proxy",
+              "metadata_completeness_status",
+              "timestamp_sync_status",
+              "leakage_review_status",
+              "qc_status",
+              "validator_status",
+              "future_sal_meter_input_placeholder",
+              "future_proxy_core_comparison_status",
+              "future_dyadic_mediation_status"
+            ]
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "placeholder_feedback_action": {
+          "type": "string",
+          "enum": [
+            "review_metadata",
+            "review_timestamp_alignment",
+            "review_leakage_risk",
+            "review_public_private_boundary",
+            "review_dashboard_claim_boundary",
+            "review_qc_structure",
+            "hold_interpretation",
+            "require_human_review",
+            "mark_synthetic_sample_only",
+            "log_boundary_notice",
+            "no_action_structure_only"
+          ]
+        },
+        "placeholder_policy_name": {
+          "type": "string",
+          "enum": [
+            "boundary_review_policy",
+            "metadata_review_policy",
+            "leakage_review_policy",
+            "timestamp_review_policy",
+            "qc_review_policy",
+            "interpretation_hold_policy",
+            "synthetic_sample_only_policy",
+            "no_policy_structure_only"
+          ],
+          "default": "no_policy_structure_only"
+        },
+        "human_review_status": {
+          "type": "string",
+          "enum": [
+            "not_required_for_synthetic_sample",
+            "required_before_interpretation",
+            "required_due_to_boundary_risk",
+            "not_applicable"
+          ]
+        },
+        "sal_meter_input_status": {
+          "type": "string",
+          "enum": [
+            "not_present",
+            "future_placeholder_only",
+            "not_public",
+            "not_validated_here"
+          ]
+        },
+        "cais_compliance_status": {
+          "type": "string",
+          "const": "not_granted"
+        },
+        "benchmark_validation_status": {
+          "type": "string",
+          "const": "not_validated"
+        },
+        "future_sal_meter_ab_status": {
+          "type": "string",
+          "enum": [
+            "not_active",
+            "future_placeholder_only",
+            "hold_until_separate_governance",
+            "not_applicable"
+          ],
+          "default": "not_applicable"
+        },
+        "future_dyadic_mediation_status": {
+          "type": "string",
+          "enum": [
+            "not_active",
+            "future_placeholder_only",
+            "synthetic_mockup_only",
+            "hold_until_boundary_review",
+            "not_applicable"
+          ],
+          "default": "not_applicable"
+        },
+        "operator_note": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Optional non-identifying operator note. Must not contain raw human data, identifiable data, clinical data, diagnosis, therapy instruction, surveillance score, Sal-Meter input, or CAIS compliance output.",
+          "default": ""
+        },
+        "audit_note": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 1500,
+          "description": "Audit note describing the event as synthetic/sample helper structure only."
+        },
+        "event_boundary_flags": {
+          "$ref": "#/$defs/event_boundary_flags"
+        }
+      }
+    },
+    "event_boundary_flags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_human_data_present",
+        "identifiable_data_present",
+        "clinical_data_present",
+        "private_user_data_present",
+        "diagnosis_present",
+        "therapy_instruction_present",
+        "surveillance_score_present",
+        "person_score_present",
+        "human_ranking_present",
+        "sal_meter_input_present",
+        "sal_meter_validation_claim_present",
+        "cais_compliance_claim_present",
+        "benchmark_validation_claim_present",
+        "live_intervention_present",
+        "production_automation_present"
+      ],
+      "properties": {
+        "raw_human_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "identifiable_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "clinical_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "private_user_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "diagnosis_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "therapy_instruction_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "surveillance_score_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "person_score_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "human_ranking_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "sal_meter_input_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "sal_meter_validation_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "cais_compliance_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "benchmark_validation_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "live_intervention_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "production_automation_present": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "schema_name": "feedback_event_log_schema",
+      "schema_version": "0.1.0",
+      "track": "SICS Human-State Proxy Benchmark Track",
+      "repository": "salpida-foundation/proxy-benchmark-track",
+      "folder": "closed-loop-demo-lite",
+      "data_status": "synthetic",
+      "authority_status": "public-helper-structure-only",
+      "boundary_notice": "Research-stage proxy benchmark helper demo. Synthetic/sample data only. Local placeholder only. Non-production. Not diagnostic. Not clinical. Not therapeutic. Not surveillance. Not certification. Not Sal-Meter. Not CAIS compliance. Not human ranking. No live intervention. No real-person automation.",
+      "log_metadata": {
+        "log_id": "SYN-FEEDBACK-LOG-001",
+        "session_id": "SYN-SESSION-001",
+        "created_at": "2026-04-30T00:00:00Z",
+        "created_by": "local_placeholder_script",
+        "environment": "local",
+        "execution_mode": "local_demo_lite",
+        "production_status": "non-production",
+        "synthetic_status_declared": true,
+        "public_private_boundary": "public_synthetic_sample_only",
+        "sal_meter_input_status": "not_present",
+        "cais_compliance_status": "not_granted",
+        "benchmark_validation_status": "not_validated"
+      },
+      "boundary_flags": {
+        "raw_human_data_present": false,
+        "identifiable_data_present": false,
+        "clinical_data_present": false,
+        "private_user_data_present": false,
+        "sal_meter_input_present": false,
+        "cais_compliance_claim_present": false,
+        "benchmark_validation_claim_present": false,
+        "diagnostic_claim_present": false,
+        "clinical_claim_present": false,
+        "therapeutic_claim_present": false,
+        "surveillance_claim_present": false,
+        "certification_claim_present": false,
+        "employment_claim_present": false,
+        "insurance_claim_present": false,
+        "educational_claim_present": false,
+        "legal_claim_present": false,
+        "eligibility_claim_present": false,
+        "human_ranking_claim_present": false,
+        "person_scoring_claim_present": false,
+        "live_intervention_present": false,
+        "production_automation_present": false
+      },
+      "events": [
+        {
+          "event_id": "SYN-FEEDBACK-EVENT-001",
+          "session_id": "SYN-SESSION-001",
+          "synthetic_timestamp": "2026-04-30T00:00:01Z",
+          "event_type": "synthetic_ai_output_event",
+          "source_module": "local_feedback_demo_placeholder",
+          "input_status": "synthetic_sample_only",
+          "output_status": "structure_only",
+          "review_state": "boundary_review_required",
+          "boundary_status": "boundary_preserved",
+          "synthetic_proxy_field_reference": [
+            "synthetic_human_state_cost_proxy",
+            "metadata_completeness_status",
+            "timestamp_sync_status"
+          ],
+          "placeholder_feedback_action": "require_human_review",
+          "placeholder_policy_name": "boundary_review_policy",
+          "human_review_status": "required_before_interpretation",
+          "sal_meter_input_status": "not_present",
+          "cais_compliance_status": "not_granted",
+          "benchmark_validation_status": "not_validated",
+          "future_sal_meter_ab_status": "not_active",
+          "future_dyadic_mediation_status": "not_active",
+          "operator_note": "Synthetic/sample event only. No real human data, no diagnosis, no therapy, no surveillance, no Sal-Meter input, and no CAIS compliance.",
+          "audit_note": "This event demonstrates a bounded local feedback event-log structure only.",
+          "event_boundary_flags": {
+            "raw_human_data_present": false,
+            "identifiable_data_present": false,
+            "clinical_data_present": false,
+            "private_user_data_present": false,
+            "diagnosis_present": false,
+            "therapy_instruction_present": false,
+            "surveillance_score_present": false,
+            "person_score_present": false,
+            "human_ranking_present": false,
+            "sal_meter_input_present": false,
+            "sal_meter_validation_claim_present": false,
+            "cais_compliance_claim_present": false,
+            "benchmark_validation_claim_present": false,
+            "live_intervention_present": false,
+            "production_automation_present": false
+          }
+        }
+      ],
+      "final_rule": "The event log may preserve structure. It must not become evidence, diagnosis, therapy, surveillance, certification, Sal-Meter validation, CAIS compliance, or human ranking."
+    }
+  ]
+}
