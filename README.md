@@ -2,7 +2,7 @@
 
 Research-stage proxy benchmark support track for **Human-State-Aware AI Interaction**.
 
-This repository prepares a public technical helper surface for synchronized multimodal proxy benchmark infrastructure, metadata discipline, leakage-safe evaluation, synthetic/sample package structure, baseline evaluation scaffolding, dashboard mockup boundaries, closed-loop demo-lite scaffolding, and future comparison with Sal-Meter core inputs.
+This repository prepares a public technical helper surface for synchronized multimodal proxy benchmark infrastructure, metadata discipline, leakage-safe evaluation, synthetic/sample package structure, baseline evaluation scaffolding, dashboard mockup boundaries, closed-loop demo-lite scaffolding, replication guide checklists, and future comparison with Sal-Meter core inputs.
 
 **This repository is not the Sal-Meter core signal track.**
 
@@ -25,6 +25,7 @@ This repository is:
 - not a clinical, diagnostic, therapeutic, psychiatric, medical, employment, insurance, legal, educational, eligibility, or surveillance system;
 - not a certification, conformance, or mark-usage surface;
 - not a closed-loop intervention system;
+- not a production monitoring system;
 - not a place to publish raw human data.
 
 Public landing page:
@@ -63,7 +64,7 @@ DOI records govern authority.
 
 ## One sentence
 
-The Proxy Benchmark Track builds a comparison layer around the Sal-Meter kernel program: synchronized human-state proxy data, metadata discipline, leakage-safe evaluation, baseline models, synthetic/sample package structure, dashboard mockup boundaries, closed-loop demo-lite scaffolding, and future comparison with Sal-Meter core inputs.
+The Proxy Benchmark Track builds a comparison layer around the Sal-Meter kernel program: synchronized human-state proxy data, metadata discipline, leakage-safe evaluation, baseline models, synthetic/sample package structure, dashboard mockup boundaries, closed-loop demo-lite scaffolding, replication checklists, and future comparison with Sal-Meter core inputs.
 
 ---
 
@@ -84,6 +85,7 @@ The purpose is to prepare:
 - baseline models;
 - safe dashboard mockup boundaries;
 - local closed-loop demo-lite boundary scaffolding;
+- replication and release-readiness checklists;
 - replayable validation skeletons;
 - bounded real-time feedback-loop demonstrations at a later stage;
 - future A/B comparison against Sal-Meter core inputs.
@@ -114,9 +116,11 @@ It does not grant:
 - therapeutic status;
 - medical-device status;
 - validated commercial-device status;
-- closed-loop deployment status.
+- closed-loop deployment status;
+- production monitoring status;
+- human-ranking authority.
 
-ECG, HRV, EDA, PPG, EEG, eye tracking, webcam markers, interaction timing, behavioral logs, task events, AI feedback logs, and dashboard review states do not become Sal-Meter by being combined.
+ECG, HRV, EDA, PPG, EEG, eye tracking, webcam markers, interaction timing, behavioral logs, task events, AI feedback logs, dashboard review states, and closed-loop demo-lite placeholders do not become Sal-Meter by being combined.
 
 They remain **proxy benchmark signals and helper structures**.
 
@@ -152,7 +156,7 @@ https://github.com/salpida-foundation/sal-meter-kernel-program
 
 The Proxy Benchmark Track prepares a comparison and interaction layer.
 
-It builds synchronized multimodal baselines, leakage-safe evaluation rules, dataset structure, baseline modeling, dashboard boundary rules, closed-loop demo-lite scaffolding, and future comparison logic that can later serve as a comparison lane for Sal-Meter inputs.
+It builds synchronized multimodal baselines, leakage-safe evaluation rules, dataset structure, baseline modeling, dashboard boundary rules, closed-loop demo-lite scaffolding, replication checklists, and future comparison logic that can later serve as a comparison lane for Sal-Meter inputs.
 
 The proxy track supports the core track.
 
@@ -166,7 +170,7 @@ This track exists for five reasons.
 
 1. To build human-state-aware AI interaction infrastructure before Sal-Meter I/G-channel signals become available.
 2. To create a disciplined comparison baseline for future Sal-Meter A/B testing.
-3. To fix timestamp, metadata, leakage-prevention, holdout, dashboard, feedback-log, and baseline modeling architecture early.
+3. To fix timestamp, metadata, leakage-prevention, holdout, dashboard, feedback-log, audit trail, and baseline modeling architecture early.
 4. To enable non-clinical closed-loop demonstration of human-state-aware feedback in software, dashboard, simulator, and local AI interaction environments at a later stage.
 5. To create an independent Human-AI Interaction research lane comparing AI task performance with measurable human-state impact.
 
@@ -180,7 +184,7 @@ This track makes that tradeoff visible under bounded, non-diagnostic, research-s
 
 This repository is currently in a public helper implementation stage for the SICS Human-State Proxy Benchmark Track.
 
-It provides schema, synthetic/sample data, validation scaffolding, dashboard mockup boundaries, protocol helper rules, closed-loop demo-lite boundary scaffolding, and repository hygiene workflow scaffolding for structure demonstration only.
+It provides schema, synthetic/sample data, validation scaffolding, dashboard mockup boundaries, protocol helper rules, closed-loop demo-lite boundary scaffolding, replication guide checklists, and repository hygiene workflow scaffolding for structure demonstration only.
 
 It does not provide benchmark evidence.
 
@@ -202,7 +206,8 @@ It does not validate Sal-Meter.
 | Evaluation baseline README | Done | `evaluation-baseline/README.md` explains validator usage, PASS / FAIL interpretation, dependency installation, and validation boundaries |
 | Protocol helper boundary pack | Done | `protocol-helper/` defines label, timestamp, metadata, Human-State Cost, and future Sal-Meter A/B comparison boundaries |
 | Dashboard mockup boundary pack | Done | `dashboard-mockup/` defines dashboard claim, field, and wireframe boundaries |
-| Closed-loop demo-lite boundary pack | Present | `closed-loop-demo-lite/` defines feedback-loop boundaries, event-log schema, and local placeholder code |
+| Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` defines feedback-loop boundaries, event-log schema, and local placeholder code |
+| Replication guide pack | Done | `replication-guide/` defines reproducibility, metadata completeness, audit trail, and public release-readiness checklists |
 | GitHub Actions validator workflow | Present / Blocked | `.github/workflows/validate-synthetic-sample.yml` exists, but execution is currently blocked by GitHub account-level Actions restriction |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
@@ -231,8 +236,8 @@ It does not validate Sal-Meter.
 |---|---|---|
 | P2-1 Protocol helper boundary pack | Done | `protocol-helper/` contains bounded helper rules for labels, timestamps, metadata completeness, Human-State Cost, and future Sal-Meter A/B comparison |
 | P2-2 Dashboard mockup boundary pack | Done | `dashboard-mockup/` contains README, claim boundary, sample dashboard fields, and mockup wireframe |
-| P2-3 Closed-loop demo-lite boundary pack | Ready to close after root README update | `closed-loop-demo-lite/` contains README, feedback-loop boundary, feedback event-log schema, and local placeholder code |
-| P2-4 Replication guide pack | Not started | Should follow closed-loop demo-lite or release-readiness stabilization |
+| P2-3 Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` contains README, feedback-loop boundary, feedback event-log schema, and local placeholder code |
+| P2-4 Replication guide pack | Done | `replication-guide/` contains README, reproducibility package checklist, metadata completeness checklist, audit trail checklist, and public release checklist |
 | P2-5 Issue / PR template pack | Not started | Should be created after core public helper folders are stable |
 
 ---
@@ -310,6 +315,13 @@ proxy-benchmark-track/
     feedback_loop_boundary.md
     feedback_event_log_schema.json
     local_feedback_demo_placeholder.py
+
+  replication-guide/
+    README.md
+    reproducibility_package_checklist.md
+    metadata_completeness_checklist.md
+    audit_trail_checklist.md
+    public_release_checklist.md
 ```
 
 If an exact file is not present in the repository, that file name should be treated as a planned or helper-reference path until created.
@@ -330,6 +342,7 @@ A public helper surface may:
 - demonstrate leakage-aware split thinking;
 - show dashboard mockup boundaries;
 - show closed-loop demo-lite boundaries;
+- show replication and release-readiness checklists;
 - prepare future contributor orientation.
 
 A public helper surface must not:
@@ -811,21 +824,6 @@ CAIS compliance claims
 Sal-Meter validation claims
 ```
 
-Current dashboard status:
-
-```text
-Dashboard mockup boundary pack: present
-Dashboard claim boundary: present
-Sample dashboard fields: present
-Mockup wireframe: present
-Raw human data: not present
-Sal-Meter input: not present
-CAIS compliance claim: not present
-Benchmark validation claim: not present
-Diagnostic / clinical / therapeutic authority: not present
-Surveillance / certification / human-ranking authority: not present
-```
-
 A dashboard may show a window.
 
 It must not become a courtroom.
@@ -924,26 +922,6 @@ CAIS-compliant loop
 certified closed-loop system
 ```
 
-Current closed-loop demo-lite status:
-
-```text
-Closed-loop demo-lite boundary pack: present
-Feedback-loop boundary: present
-Feedback event-log schema: present
-Local feedback demo placeholder: present
-Raw human data: not present
-Identifiable data: not present
-Clinical data: not present
-Private user data: not present
-Sal-Meter input: not present
-CAIS compliance claim: not present
-Benchmark validation claim: not present
-Live intervention: not present
-Production automation: not present
-Diagnostic / clinical / therapeutic authority: not present
-Surveillance / certification / human-ranking authority: not present
-```
-
 A feedback loop may show a path.
 
 It must not move a human being.
@@ -955,6 +933,96 @@ It must not become evidence.
 A placeholder may point to a future.
 
 It must not pretend that future has arrived.
+
+---
+
+## Replication guide boundary pack
+
+`replication-guide/` contains public helper reproducibility and release-readiness checklists for the SICS Human-State Proxy Benchmark Track.
+
+This folder exists to make the repository reviewable, reproducible in structure, and harder to overclaim.
+
+It checks structure.
+
+It does not validate truth.
+
+It checks reviewability.
+
+It does not certify science.
+
+It checks boundary discipline.
+
+It does not grant authority.
+
+Current files:
+
+```text
+replication-guide/
+  README.md
+  reproducibility_package_checklist.md
+  metadata_completeness_checklist.md
+  audit_trail_checklist.md
+  public_release_checklist.md
+```
+
+File roles:
+
+```text
+README.md
+  Folder-level purpose, scope, boundary, and review order.
+
+reproducibility_package_checklist.md
+  Checklist for whether the public helper package is structurally reproducible.
+
+metadata_completeness_checklist.md
+  Checklist for session metadata, stream metadata, event markers, labels, QC, splits, dashboard metadata, closed-loop demo-lite metadata, and boundary fields.
+
+audit_trail_checklist.md
+  Checklist for file mapping, issue alignment, commit trace, version notes, known blockers, review notes, public/private boundary, and DOI authority.
+
+public_release_checklist.md
+  Checklist for whether a GitHub helper release can be published without overclaiming benchmark validation, Sal-Meter validation, CAIS compliance, clinical status, raw human data publication, or certification authority.
+```
+
+The replication guide supports:
+
+```text
+structure review
+reproducibility readiness review
+metadata completeness review
+audit trail review
+public helper release-readiness review
+Go / Conditional Go / Hold / No-Go decision language
+DOI authority versus GitHub helper distinction
+validation versus readiness distinction
+```
+
+It does not support:
+
+```text
+benchmark validation
+scientific validation
+Sal-Meter validation
+CAIS compliance
+clinical validation
+diagnostic validation
+therapeutic validation
+surveillance readiness
+certification readiness
+device readiness
+commercial readiness
+production deployment
+human-state truth validation
+human ranking
+```
+
+Reproducibility is the bridge.
+
+Validation is the crossing.
+
+This guide builds the bridge.
+
+It does not claim that the crossing has already happened.
 
 ---
 
@@ -1106,7 +1174,7 @@ Future comparison must remain future until separate governance, data rights, con
 
 This repository treats leakage control as a first-class benchmark requirement.
 
-A model, dashboard, feedback-loop placeholder, or evaluation pipeline must not learn labels from hidden shortcuts such as:
+A model, dashboard, feedback-loop placeholder, release-readiness review, or evaluation pipeline must not learn labels from hidden shortcuts such as:
 
 - participant identity;
 - day or session order;
@@ -1153,6 +1221,8 @@ A reviewable package needs:
 - drift notes;
 - missingness notes;
 - leakage review notes;
+- dashboard boundary notes;
+- closed-loop demo-lite boundary notes, if applicable;
 - feedback event-log boundary, if applicable;
 - file mapping;
 - audit trail;
@@ -1161,6 +1231,27 @@ A reviewable package needs:
 A package without metadata cannot be audited.
 
 A package that cannot be audited cannot become benchmark evidence.
+
+---
+
+## Audit trail principles
+
+Every public helper package should answer:
+
+```text
+What file exists?
+Why does it exist?
+What schema does it align with?
+What boundary applies?
+What changed?
+Who reviewed it?
+What is still blocked?
+What must not be claimed?
+```
+
+An audit trail is not decoration.
+
+It is the spine of trust.
 
 ---
 
@@ -1345,7 +1436,7 @@ assign_blame
 determine_right_wrong
 certify_result
 approve_CAIS
-validate_Sal_Meter
+validate_Sal-Meter
 trigger_medical_action
 trigger_therapeutic_action
 trigger_surveillance_action
@@ -1358,6 +1449,60 @@ It must not command judgment.
 A feedback event log may preserve structure.
 
 It must not become diagnosis, therapy, surveillance, certification, Sal-Meter validation, CAIS compliance, or human ranking.
+
+---
+
+## Replication and release-readiness boundary
+
+Allowed replication guide language:
+
+```text
+replication guide
+reproducibility package checklist
+metadata completeness checklist
+audit trail checklist
+public release checklist
+research-stage helper
+public helper release readiness
+structure review
+reviewability
+traceability
+not validation
+not Sal-Meter
+not CAIS compliance
+not diagnostic
+not clinical
+not therapeutic
+not surveillance
+not certification
+not human ranking
+```
+
+Prohibited replication guide language:
+
+```text
+validated benchmark
+validated Sal-Meter
+CAIS-compliant package
+certified reproducibility
+clinical validation
+diagnostic validation
+therapeutic validation
+approved device
+commercial readiness
+official compliance result
+human-state truth validation
+production intervention
+surveillance-ready system
+```
+
+A public helper release may package structure.
+
+It must not create authority.
+
+It may ring a bell.
+
+It must not declare the mountain conquered.
 
 ---
 
@@ -1400,6 +1545,9 @@ A public release must not be published until:
 - evaluator / validator documentation is clear;
 - dashboard boundaries are visible;
 - closed-loop demo-lite boundaries are visible, if included;
+- replication guide checklists are visible;
+- audit trail expectations are visible;
+- public release checklist is passed;
 - `CITATION.cff` points to DOI-registered public records;
 - `README.md` clearly states the repository is a helper surface;
 - no raw human data are present;
@@ -1407,6 +1555,7 @@ A public release must not be published until:
 - no clinical data are present;
 - no Sal-Meter input is present;
 - no CAIS compliance claim is present;
+- no benchmark validation claim is present;
 - no diagnostic, clinical, therapeutic, surveillance, certification, or human-ranking authority is implied;
 - no live intervention or production automation is implied;
 - GitHub Actions validator workflow can run successfully, if the release depends on that validator.
@@ -1461,6 +1610,10 @@ Public helper materials may demonstrate structure.
 
 They must not claim validation.
 
+Public helper materials may support release-readiness review.
+
+They must not publish authority.
+
 Public helper materials may recruit builders.
 
 They must not imply clinical, therapeutic, diagnostic, surveillance, certification, intervention, or human-ranking authority.
@@ -1480,6 +1633,11 @@ synthetic sample package
 dashboard mockup boundary
 closed-loop demo-lite
 local feedback demo placeholder
+replication guide
+reproducibility package checklist
+metadata completeness checklist
+audit trail checklist
+public release checklist
 helper-structure validator
 future Sal-Meter A/B comparison placeholder
 ```
@@ -1500,6 +1658,8 @@ official consciousness measurement
 human truth score
 employee monitoring score
 psychological safety score
+certified reproducibility
+commercial readiness
 ```
 
 Names are gates.
@@ -1534,9 +1694,6 @@ P1-4 remains open:
 
 P1-5 remains open:
   v0.1.0 release readiness is prepared, but release must remain unpublished until P1-4 can run successfully.
-
-P2-3 can be closed after:
-  root README.md is updated to reference closed-loop-demo-lite/ as a public helper boundary folder.
 ```
 
 ---
@@ -1575,6 +1732,10 @@ It prepares future comparison.
 
 It prepares future feedback-loop discipline.
 
+It prepares reproducibility and release-readiness review.
+
 It does not claim that future comparison has already been validated.
 
 It does not claim that a closed loop is ready to act on human beings.
+
+It does not claim that a public release would create scientific, clinical, CAIS, or Sal-Meter authority.
