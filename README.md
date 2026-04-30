@@ -2,7 +2,7 @@
 
 Research-stage proxy benchmark support track for **Human-State-Aware AI Interaction**.
 
-This repository prepares a public technical helper surface for synchronized multimodal proxy benchmark infrastructure, metadata discipline, leakage-safe evaluation, synthetic/sample package structure, baseline evaluation scaffolding, and future comparison with Sal-Meter core inputs.
+This repository prepares a public technical helper surface for synchronized multimodal proxy benchmark infrastructure, metadata discipline, leakage-safe evaluation, synthetic/sample package structure, baseline evaluation scaffolding, dashboard mockup boundaries, and future comparison with Sal-Meter core inputs.
 
 **This repository is not the Sal-Meter core signal track.**
 
@@ -62,7 +62,7 @@ DOI records govern authority.
 
 ## One sentence
 
-The Proxy Benchmark Track builds a comparison layer around the Sal-Meter kernel program: synchronized human-state proxy data, metadata discipline, leakage-safe evaluation, baseline models, synthetic/sample package structure, and future comparison with Sal-Meter core inputs.
+The Proxy Benchmark Track builds a comparison layer around the Sal-Meter kernel program: synchronized human-state proxy data, metadata discipline, leakage-safe evaluation, baseline models, synthetic/sample package structure, dashboard mockup boundaries, and future comparison with Sal-Meter core inputs.
 
 ---
 
@@ -81,7 +81,7 @@ The purpose is to prepare:
 - leakage-safe evaluation;
 - holdout design;
 - baseline models;
-- local dashboards at a later stage;
+- safe dashboard mockup boundaries;
 - replayable validation skeletons;
 - bounded real-time feedback-loop demonstrations at a later stage;
 - future A/B comparison against Sal-Meter core inputs.
@@ -149,7 +149,7 @@ https://github.com/salpida-foundation/sal-meter-kernel-program
 
 The Proxy Benchmark Track prepares a comparison and interaction layer.
 
-It builds synchronized multimodal baselines, leakage-safe evaluation rules, dataset structure, baseline modeling, and future closed-loop demo-lite scaffolding that can later serve as a comparison lane for Sal-Meter inputs.
+It builds synchronized multimodal baselines, leakage-safe evaluation rules, dataset structure, baseline modeling, dashboard boundary rules, and future closed-loop demo-lite scaffolding that can later serve as a comparison lane for Sal-Meter inputs.
 
 The proxy track supports the core track.
 
@@ -163,7 +163,7 @@ This track exists for five reasons.
 
 1. To build human-state-aware AI interaction infrastructure before Sal-Meter I/G-channel signals become available.
 2. To create a disciplined comparison baseline for future Sal-Meter A/B testing.
-3. To fix timestamp, metadata, leakage-prevention, holdout, and baseline modeling architecture early.
+3. To fix timestamp, metadata, leakage-prevention, holdout, dashboard, and baseline modeling architecture early.
 4. To enable non-clinical closed-loop demonstration of human-state-aware feedback in software, dashboard, simulator, and local AI interaction environments at a later stage.
 5. To create an independent Human-AI Interaction research lane comparing AI task performance with measurable human-state impact.
 
@@ -177,7 +177,7 @@ This track makes that tradeoff visible under bounded, non-diagnostic, research-s
 
 This repository is currently in a public helper implementation stage for the SICS Human-State Proxy Benchmark Track.
 
-It provides schema, synthetic/sample data, validation scaffolding, and repository hygiene workflow scaffolding for structure demonstration only.
+It provides schema, synthetic/sample data, validation scaffolding, dashboard mockup boundaries, protocol helper rules, and repository hygiene workflow scaffolding for structure demonstration only.
 
 It does not provide benchmark evidence.
 
@@ -197,6 +197,8 @@ It does not validate Sal-Meter.
 | Synthetic session README | Done | The synthetic package includes a local README explaining file roles and boundaries |
 | Sample package validator | Present | `evaluation-baseline/validate_sample_package.py` provides helper-structure validation |
 | Evaluation baseline README | Done | `evaluation-baseline/README.md` explains validator usage, PASS / FAIL interpretation, dependency installation, and validation boundaries |
+| Protocol helper boundary pack | Done | `protocol-helper/` defines label, timestamp, metadata, Human-State Cost, and future Sal-Meter A/B comparison boundaries |
+| Dashboard mockup boundary pack | Present | `dashboard-mockup/` defines dashboard claim, field, and wireframe boundaries |
 | GitHub Actions validator workflow | Present / Blocked | `.github/workflows/validate-synthetic-sample.yml` exists, but execution is currently blocked by GitHub account-level Actions restriction |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
@@ -215,7 +217,19 @@ It does not validate Sal-Meter.
 | P1-2 Synthetic sample package validator | Done | Validator file exists under `evaluation-baseline/validate_sample_package.py` |
 | P1-3 Evaluation baseline README and validator usability | Done | Evaluation baseline README explains local usage and boundary interpretation |
 | P1-4 GitHub Actions validator workflow | Open / Blocked | Workflow exists but cannot currently run because GitHub Actions is disabled at the user-account level |
-| P1-5 v0.1.0 release readiness package | In progress | Repository is being checked for bounded public helper release readiness |
+| P1-5 v0.1.0 release readiness package | In progress / Hold publication | Repository is being checked for bounded public helper release readiness; actual release must remain unpublished until P1-4 can run successfully |
+
+---
+
+## Current P2 milestone state
+
+| Milestone | Status | Notes |
+|---|---|---|
+| P2-1 Protocol helper boundary pack | Done | `protocol-helper/` contains bounded helper rules for labels, timestamps, metadata completeness, Human-State Cost, and future Sal-Meter A/B comparison |
+| P2-2 Dashboard mockup boundary pack | Ready to close after root README update | `dashboard-mockup/` contains README, claim boundary, sample dashboard fields, and mockup wireframe |
+| P2-3 Closed-loop demo-lite boundary pack | Not started | Should begin only after P2-2 is closed |
+| P2-4 Replication guide pack | Not started | Should follow closed-loop demo-lite or release-readiness stabilization |
+| P2-5 Issue / PR template pack | Not started | Should be created after core public helper folders are stable |
 
 ---
 
@@ -238,15 +252,15 @@ proxy-benchmark-track/
     public-language-boundary.md
 
   governance/
+    README.md
     claims_boundary.md
     public_private_data_boundary.md
-    prohibited_claims.md
 
   schemas/
     README.md
     session-metadata.schema.json
-    event-markers.schema.json
     streams-manifest.schema.json
+    event-markers.schema.json
     labels.schema.json
     qc-report.schema.json
     features-baseline.schema.json
@@ -254,6 +268,7 @@ proxy-benchmark-track/
 
   sample-data/
     README.md
+
     synthetic-session-001/
       README.md
       session_metadata.json
@@ -267,21 +282,265 @@ proxy-benchmark-track/
 
   evaluation-baseline/
     README.md
-    baseline_pipeline_skeleton.py
-    leakage_safe_split_example.py
     requirements.txt
     validate_sample_package.py
+    baseline_pipeline_skeleton.py
+    leakage_safe_split_example.py
+
+  protocol-helper/
+    README.md
+    session_label_rule.md
+    timestamp_sync_rule.md
+    metadata_completeness_rule.md
+    human_state_cost_construct_note.md
+    future_sal_meter_ab_comparison_rule.md
+
+  dashboard-mockup/
+    README.md
+    dashboard_claim_boundary.md
+    sample_dashboard_fields.json
+    mockup_wireframe.md
 ```
 
-This structure is intentionally small.
-
-Do not build a large public platform before metadata, synchronization, leakage control, and data boundary rules are stable.
+If an exact file is not present in the repository, that file name should be treated as a planned or helper-reference path until created.
 
 ---
 
-## Current validation path
+## Public helper surfaces
 
-The current public synthetic/sample package can be structurally checked locally with:
+This repository contains public helper surfaces.
+
+A public helper surface may:
+
+- describe scope;
+- explain boundaries;
+- provide synthetic/sample data structures;
+- define helper schemas;
+- demonstrate validator logic;
+- demonstrate leakage-aware split thinking;
+- show dashboard mockup boundaries;
+- prepare future contributor orientation.
+
+A public helper surface must not:
+
+- create canonical authority;
+- replace DOI-registered records;
+- publish raw human data;
+- publish identifiable data;
+- publish clinical data;
+- imply Sal-Meter validation;
+- imply CAIS compliance;
+- imply benchmark validation;
+- imply diagnostic, therapeutic, clinical, surveillance, certification, or human-ranking authority.
+
+---
+
+## Data boundary
+
+Public examples in this repository must remain:
+
+- synthetic;
+- sample;
+- mock;
+- placeholder;
+- toy;
+- sample-structure-only;
+- non-identifying.
+
+This repository must not contain:
+
+- raw human biosignals;
+- raw human video;
+- raw human audio;
+- face data;
+- voice data;
+- identifiable participant metadata;
+- private session logs;
+- clinical data;
+- health records;
+- consent files containing personal information;
+- internal lab packages;
+- Sal-Meter raw input;
+- CAIS compliance dossiers.
+
+Raw human data belongs outside this public repository.
+
+Private data requires separate governance, consent, access control, and audit structure.
+
+---
+
+## Schema helper pack
+
+`schemas/` contains public helper schemas for synthetic/sample package structure.
+
+The schemas are provided to document and validate structure.
+
+They are not canonical authority.
+
+They do not define CAIS.
+
+They do not define Sal-Meter.
+
+They do not grant CAIS compliance.
+
+They do not validate Sal-Meter.
+
+They do not validate benchmark performance.
+
+They do not create diagnostic, therapeutic, clinical, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
+
+Current schema helper files:
+
+```text
+schemas/
+  README.md
+  session-metadata.schema.json
+  streams-manifest.schema.json
+  event-markers.schema.json
+  labels.schema.json
+  qc-report.schema.json
+  features-baseline.schema.json
+  splits.schema.json
+```
+
+The schema pack supports:
+
+- synthetic/sample data structure checks;
+- metadata consistency;
+- timestamp and event marker discipline;
+- public/private data separation;
+- leakage-risk awareness;
+- helper validation.
+
+It does not support:
+
+- benchmark validation;
+- Sal-Meter validation;
+- CAIS compliance validation;
+- diagnostic validation;
+- clinical validation;
+- therapeutic validation;
+- surveillance validation;
+- certification validation;
+- human-ranking validation.
+
+---
+
+## Synthetic sample package
+
+`sample-data/synthetic-session-001/` contains a public synthetic/sample package.
+
+It is provided for structure demonstration only.
+
+It does not contain raw human data.
+
+It does not contain identifiable data.
+
+It does not contain clinical data.
+
+It does not contain Sal-Meter input data.
+
+It does not grant CAIS compliance.
+
+It does not validate benchmark performance.
+
+It does not validate Sal-Meter.
+
+It does not create diagnostic, therapeutic, clinical, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
+
+Current synthetic package:
+
+```text
+sample-data/synthetic-session-001/
+  README.md
+  session_metadata.json
+  streams_manifest.csv
+  events.csv
+  labels.csv
+  qc_report.json
+  features_baseline.csv
+  splits.json
+  operator_log.md
+```
+
+This package demonstrates:
+
+- session-level metadata structure;
+- stream inventory structure;
+- event marker structure;
+- label window structure;
+- synthetic baseline feature structure;
+- QC report structure;
+- split definition structure;
+- operator log structure;
+- public/private data boundary language;
+- leakage-risk awareness.
+
+A public sample package is a lantern.
+
+It lights the path.
+
+It is not the mountain.
+
+---
+
+## Evaluation baseline
+
+`evaluation-baseline/` contains baseline evaluation skeletons and helper-structure validation tools.
+
+It is a research-stage, non-clinical, non-diagnostic, non-therapeutic benchmark support folder.
+
+It is not the Sal-Meter core signal track.
+
+It does not validate Sal-Meter.
+
+It does not grant CAIS compliance.
+
+It does not create clinical, diagnostic, therapeutic, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
+
+Current files:
+
+```text
+evaluation-baseline/
+  README.md
+  requirements.txt
+  baseline_pipeline_skeleton.py
+  leakage_safe_split_example.py
+  validate_sample_package.py
+```
+
+Purpose:
+
+- load public synthetic proxy benchmark data;
+- check structure;
+- check required files;
+- check JSON parsing;
+- check CSV parsing;
+- check schema alignment;
+- check synthetic status;
+- check public boundary fields;
+- check operator log boundary language;
+- demonstrate leakage-aware split logic;
+- provide transparent baseline scaffolding.
+
+It does not validate:
+
+- model performance;
+- benchmark performance;
+- scientific truth;
+- clinical state;
+- diagnostic labels;
+- therapeutic feedback;
+- Sal-Meter input;
+- CAIS compliance;
+- certification readiness;
+- device readiness.
+
+---
+
+## How to run the local validator
+
+From the repository root:
 
 ```bash
 pip install -r evaluation-baseline/requirements.txt
@@ -294,691 +553,755 @@ Expected successful output:
 PASS: sample-data/synthetic-session-001 follows the current public helper structure.
 ```
 
-This means only:
+A `PASS` means:
 
 ```text
-The public synthetic/sample package follows the expected helper structure.
+The synthetic sample package is internally consistent enough for public helper demonstration.
 ```
 
-It does not mean:
+A `PASS` does not mean:
 
 ```text
-The data is real evidence.
-The benchmark is validated.
-The model is reliable.
-The system is diagnostic.
-The system is Sal-Meter.
-The system is CAIS-compliant.
+The package proves a benchmark.
+The package proves human-state measurement.
+The package proves AI-state response safety.
+The package proves Sal-Meter readiness.
+The package proves CAIS compliance.
 ```
+
+A `FAIL` usually means one of the following:
+
+- a required file is missing;
+- a JSON file cannot be parsed;
+- a CSV file has missing or mismatched column names;
+- a schema file is invalid;
+- a sample file does not match its schema;
+- `dataset_type` is not `synthetic`;
+- a required public boundary field is missing;
+- a boundary flag expected to be `false` is not false;
+- `synthetic_status_declared` is missing or not true;
+- the operator log is missing expected boundary phrases;
+- filenames, field names, or enum values drifted from the helper schemas.
+
+A `FAIL` is not a scientific failure.
+
+A `FAIL` is a structure or boundary mismatch.
 
 ---
 
-## GitHub Actions status
+## GitHub Actions validator workflow
 
-A GitHub Actions workflow file has been added:
+A GitHub Actions workflow file exists at:
 
 ```text
 .github/workflows/validate-synthetic-sample.yml
 ```
 
-The workflow is intended to run the synthetic sample package validator automatically.
-
-Current status:
+The intended workflow name is:
 
 ```text
-Workflow file: present
-Workflow name: Validate Synthetic Sample Package
-Repository-level Actions setting: Allow all actions and reusable workflows
-Execution status: blocked by GitHub account-level Actions restriction
+Validate Synthetic Sample Package
 ```
 
-Until GitHub Actions access is restored, validation should be treated as local/manual helper-structure validation only.
+The intended workflow role is to run:
 
-This does not affect the repository boundary.
+```bash
+python evaluation-baseline/validate_sample_package.py
+```
 
-It does not validate benchmark performance.
+Current blocker:
 
-It does not validate Sal-Meter.
+```text
+Failed to queue workflow run: Bad request - Actions has been disabled for this user.
+```
+
+Repository-level Actions settings have already been checked and saved as:
+
+```text
+Allow all actions and reusable workflows
+```
+
+Therefore, P1-4 remains open until GitHub restores Actions access and the workflow can run successfully.
+
+This workflow is a repository hygiene and helper-structure validation workflow only.
+
+It does not validate:
+
+- benchmark performance;
+- scientific validity;
+- Sal-Meter input;
+- Sal-Meter validation;
+- CAIS compliance;
+- diagnostic labels;
+- clinical interpretation;
+- therapeutic feedback;
+- surveillance readiness;
+- certification readiness;
+- device readiness;
+- human-state truth measurement.
+
+---
+
+## Protocol helper boundary pack
+
+`protocol-helper/` contains public helper rules for the SICS Human-State Proxy Benchmark Track.
+
+It exists to make the proxy benchmark track auditable, bounded, and harder to misinterpret.
+
+It is not the Sal-Meter core signal track.
+
+It does not define CAIS.
 
 It does not grant CAIS compliance.
 
-It does not create diagnostic, therapeutic, clinical, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
+It does not validate Sal-Meter.
 
----
+It does not validate benchmark performance.
 
-## v0.1.0 release readiness posture
+It does not introduce raw human data.
 
-`v0.1.0` is the first bounded public helper release target.
+It does not create clinical, diagnostic, therapeutic, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
 
-It should not be published until the following are true:
-
-- root `README.md` reflects current implementation status;
-- `schemas/README.md` explains schema scope and boundary;
-- `sample-data/synthetic-session-001/README.md` explains the synthetic package boundary;
-- `evaluation-baseline/README.md` explains validator usage and PASS / FAIL interpretation;
-- `CITATION.cff` points to the correct public DOI records;
-- repository About text is aligned with the public DOI boundary;
-- repository Topics do not imply Sal-Meter validation, CAIS compliance, clinical use, or diagnostic authority;
-- no raw human data, identifiable data, clinical data, Sal-Meter input, or CAIS compliance claim is present;
-- repository language remains research-stage, non-clinical, non-diagnostic, non-therapeutic;
-- GitHub Actions can run the synthetic sample package validator successfully.
-
-Do not publish a release while P1-4 remains blocked.
-
----
-
-## What this repository supports
-
-This repository supports:
-
-- synchronized multimodal proxy benchmark infrastructure;
-- synthetic/sample package structure;
-- metadata schema discipline;
-- timestamp and event marker discipline;
-- leakage-safe split awareness;
-- baseline evaluation scaffolding;
-- public/private data separation;
-- helper-structure validation;
-- future A/B comparison support with Sal-Meter inputs;
-- non-diagnostic Human-State Cost proxy construct examples;
-- dashboard and closed-loop demo scaffolding at a later stage.
-
----
-
-## What this repository does not support
-
-This repository does not support:
-
-- raw human data publication;
-- clinical interpretation;
-- diagnostic labeling;
-- therapeutic claims;
-- surveillance scoring;
-- employment, insurance, educational, legal, or eligibility decisions;
-- CAIS compliance claims;
-- Sal-Meter validation claims;
-- certified benchmark claims;
-- human-ranking outputs;
-- psychological safety scoring;
-- consciousness measurement claims.
-
----
-
-## Public data boundary
-
-Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only.
-
-Public files must not contain:
-
-- raw human biosignal data;
-- raw human video;
-- raw face, voice, or audio data;
-- direct identifiers;
-- identity mapping files;
-- private consent records;
-- clinical interpretation;
-- diagnostic labels;
-- therapeutic recommendations;
-- Sal-Meter input data;
-- CAIS compliance claims;
-- certification claims.
-
-Boundary sentence:
-
-> No raw human data belongs in this repository.
-
----
-
-## Human-State Cost boundary
-
-**Human-State Cost** may appear in this repository only as a non-diagnostic benchmark construct or synthetic/example field.
-
-It may be used to compare measurable proxy burdens across AI interaction conditions.
-
-It must not be presented as:
-
-- a medical score;
-- a psychiatric score;
-- a clinical score;
-- a diagnostic score;
-- a consciousness score;
-- a psychological safety score;
-- an employee monitoring score;
-- a student ranking score;
-- an insurance risk score;
-- a legal or eligibility score;
-- a user dependence diagnosis;
-- a human-ranking measure;
-- a certified benchmark output;
-- a Sal-Meter output;
-- a CAIS output.
-
-Correct interpretation:
-
-```text
-Human-State Cost evaluates the interaction condition, not the person.
-```
-
-Permitted phrasing:
-
-```text
-Human-State Cost is a non-diagnostic benchmark construct used to compare measurable proxy burdens across AI interaction conditions.
-```
-
-Prohibited phrasing:
-
-```text
-Human-State Cost diagnoses the user’s psychological or physiological condition.
-```
-
----
-
-## Minimum metadata discipline
-
-Every future session-level benchmark package should be structured so that another reviewer can understand:
-
-- what was recorded;
-- when it was recorded;
-- how streams were synchronized;
-- which device generated each stream;
-- what event markers were used;
-- what state windows were labeled;
-- what preprocessing version was applied;
-- what data was excluded;
-- why any exclusion occurred;
-- what split strategy was used;
-- what leakage risks were checked;
-- what model version was used;
-- what evaluation script version was used.
-
-Minimum metadata families:
-
-- session fields;
-- participant-code fields;
-- signal fields;
-- event fields;
-- quality fields;
-- data-path fields;
-- preprocessing fields;
-- evaluation fields;
-- reviewer fields;
-- deviation fields.
-
-No direct identifiers should be stored in public materials.
-
----
-
-## Leakage control
-
-The Proxy Benchmark Track must prevent models from learning shortcuts instead of meaningful signal structure.
-
-Basic requirements:
-
-- separate train, validation, and test sessions;
-- avoid hidden labels in filenames, timestamps, folder names, device IDs, operator IDs, or session order;
-- keep preprocessing rules fixed before evaluation;
-- document all exclusions;
-- record failed and partial sessions;
-- keep raw data separate from processed data;
-- keep public sample data synthetic or non-identifying;
-- do not tune models on final holdout sets;
-- do not remove failed runs without a logged reason.
-
-Preferred holdout options:
-
-- participant holdout;
-- day holdout;
-- device holdout;
-- session holdout;
-- condition holdout;
-- operator holdout.
-
-Minimum reporting:
-
-- split strategy;
-- leakage risks checked;
-- missing data handling;
-- excluded sessions;
-- model version;
-- preprocessing version;
-- evaluation script version;
-- metric definition;
-- known limitations.
-
-Red flags:
-
-- unusually high accuracy without physiological plausibility;
-- model performance driven by session order;
-- condition labels embedded in filenames;
-- preprocessing performed after viewing labels;
-- same participant appearing in both train and test splits without disclosure;
-- manual exclusion of inconvenient samples without logged reason.
-
----
-
-## Evaluation baseline
-
-Initial benchmark models should be simple, replayable, and intentionally boring.
-
-Preferred first baseline:
-
-- fixed preprocessing;
-- fixed feature windows;
-- transparent feature extraction;
-- train / validation / test split;
-- leakage review before final scoring;
-- balanced accuracy or other pre-declared metrics where appropriate;
-- error analysis;
-- negative-result reporting;
-- limitation notes.
-
-Do not optimize for impressive scores before the leakage boundary is stable.
-
-The first goal is not leaderboard performance.
-
-The first goal is an auditable benchmark spine.
-
----
-
-## Validation posture
-
-The helper schemas and validator in this repository validate structure only.
-
-They may be used to check whether a synthetic/sample file has the expected fields, naming conventions, boundary markers, and public release constraints.
-
-They should not be used as proof that a dataset, model, dashboard, lab, device, software stack, or research result is validated.
-
-A valid file means:
-
-```text
-The file follows the expected helper structure.
-```
-
-A valid file does not mean:
-
-```text
-The data is evidence.
-The benchmark is validated.
-The model is reliable.
-The system is diagnostic.
-The system is Sal-Meter.
-The system is CAIS-compliant.
-```
-
----
-
-## Closed-loop demo-lite
-
-The closed-loop demo-lite is a future bounded software demonstration layer.
-
-It may show:
-
-- stream capture;
-- event marker logging;
-- simple state-window estimation;
-- dashboard visualization;
-- feedback timing adjustment;
-- UI pacing change;
-- simulator response adjustment;
-- local AI interaction pacing.
-
-It must not claim:
-
-- therapy;
-- diagnosis;
-- clinical monitoring;
-- psychological safety scoring;
-- medical stress detection;
-- human ranking;
-- employee surveillance;
-- student evaluation;
-- legal eligibility assessment;
-- Sal-Meter validation;
-- CAIS compliance.
-
-Closed-loop means interaction feedback.
-
-It does not mean clinical intervention.
-
----
-
-## Roles this repository should attract
-
-### PBEE
-
-**Physiological Biosignal & Edge Engineering**
-
-Good fit for contributors who can:
-
-- connect wearable sensors;
-- stream time-series data;
-- stabilize real-time acquisition;
-- handle LSL / BrainFlow / Timeflux-style flows;
-- document sensor QC;
-- build edge inference loops;
-- track sync errors and device dropouts.
-
-### MDE
-
-**Machine Learning / Data Engineering**
-
-Good fit for contributors who can:
-
-- design dataset schemas;
-- prevent leakage;
-- build baseline models;
-- manage holdout splits;
-- write replayable notebooks;
-- create evaluation skeletons;
-- build error-analysis reports;
-- maintain reproducibility packs.
-
-### HSOPM
-
-**Human-Session Operations / Protocol Management**
-
-Good fit for contributors who can:
-
-- manage consent pathways;
-- schedule sessions;
-- document participant flow;
-- maintain session labels;
-- protect raw human data;
-- enforce metadata completeness;
-- track deviations and exclusions.
-
-### ESL / EStL boundary
-
-ESL and EStL belong primarily to the **Sal-Meter core track**.
-
-- ESL owns physical consistency in the core signal path.
-- EStL owns evidence consistency, metadata discipline, QC, leakage prevention, audit trail, and reproducibility discipline.
-
-They may review future A/B integration.
-
-They do not redefine the proxy track.
-
-The proxy track does not redefine the molecular core.
-
----
-
-## What is open now
-
-Open now:
-
-- proxy benchmark README alignment;
-- metadata schema discipline;
-- data-boundary discipline;
-- leakage-control checklist;
-- synthetic sample data structure;
-- baseline-model skeleton;
-- synthetic sample package validator;
-- GitHub Actions validator workflow scaffold;
-- release-readiness preparation;
-- PBEE / MDE / HSOPM contributor mapping.
-
-Not open now:
-
-- raw human data publication;
-- public participant dataset release;
-- clinical use;
-- diagnostic use;
-- therapeutic use;
-- CAIS compliance claim;
-- Sal-Meter designation claim;
-- certified benchmark claim;
-- broad Sal-Meter competition framing;
-- validated commercial-device language.
-
----
-
-## Future expansion queue
-
-The following folders may be added after `v0.1.0` readiness is locked:
+Current files:
 
 ```text
 protocol-helper/
+  README.md
   session_label_rule.md
   timestamp_sync_rule.md
   metadata_completeness_rule.md
   human_state_cost_construct_note.md
   future_sal_meter_ab_comparison_rule.md
-
-dashboard-mockup/
-  README.md
-  dashboard_claim_boundary.md
-  mockup_wireframe.md
-  sample_dashboard_fields.json
-
-closed-loop-demo-lite/
-  README.md
-  feedback_loop_boundary.md
-  feedback_event_log_schema.json
-  local_feedback_demo_placeholder.py
-
-replication-guide/
-  README.md
-  reproducibility_package_checklist.md
-  metadata_completeness_checklist.md
-  audit_trail_checklist.md
-  public_release_checklist.md
-
-.github/
-  ISSUE_TEMPLATE/
-    boundary_correction.md
-    schema_request.md
-    sample_data_issue.md
-    leakage_risk_report.md
-  pull_request_template.md
 ```
 
-These are future helper surfaces only.
+File roles:
 
-They should not be added in a way that implies Sal-Meter validation, CAIS compliance, clinical use, diagnostic authority, or benchmark certification.
+```text
+README.md
+  Folder-level purpose, scope, and boundary.
+
+session_label_rule.md
+  Rules for session labels, condition labels, non-diagnostic state-window labels, and prohibited label drift.
+
+timestamp_sync_rule.md
+  Rules for timestamp discipline, stream alignment, drift reporting, and sync-boundary language.
+
+metadata_completeness_rule.md
+  Rules for mandatory metadata completeness, missingness, file mapping, raw/helper package reviewability, and audit trail.
+
+human_state_cost_construct_note.md
+  Bounded definition of Human-State Cost as a research-stage proxy construct, not a diagnosis, person score, or Sal-Meter signal.
+
+future_sal_meter_ab_comparison_rule.md
+  Rules for future proxy/core comparison once Sal-Meter inputs exist under separate governance.
+```
+
+The protocol helper pack supports:
+
+- label discipline;
+- timestamp discipline;
+- metadata completeness;
+- leakage awareness;
+- Human-State Cost construct boundaries;
+- future Sal-Meter A/B comparison boundaries;
+- non-diagnostic benchmark helper language.
+
+It does not support:
+
+- clinical labels;
+- diagnostic labels;
+- therapeutic feedback;
+- surveillance scoring;
+- human ranking;
+- person scoring;
+- Sal-Meter validation claims;
+- CAIS compliance claims.
 
 ---
 
-## Public language boundary
+## Dashboard mockup boundary pack
+
+`dashboard-mockup/` contains public helper dashboard mockup boundary documents for the SICS Human-State Proxy Benchmark Track.
+
+This folder exists to keep future dashboard views bounded, readable, and hard to overinterpret.
+
+It is a public helper visualization boundary.
+
+It is not the Sal-Meter core signal track.
+
+It does not define CAIS.
+
+It does not grant CAIS compliance.
+
+It does not validate Sal-Meter.
+
+It does not validate benchmark performance.
+
+It does not introduce raw human data.
+
+It does not create diagnostic, clinical, therapeutic, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
+
+Current files:
+
+```text
+dashboard-mockup/
+  README.md
+  dashboard_claim_boundary.md
+  sample_dashboard_fields.json
+  mockup_wireframe.md
+```
+
+File roles:
+
+```text
+README.md
+  Folder-level purpose, scope, and boundary.
+
+dashboard_claim_boundary.md
+  Allowed and prohibited dashboard claim language.
+
+sample_dashboard_fields.json
+  Synthetic/sample dashboard field definitions and boundary flags.
+
+mockup_wireframe.md
+  Text-only dashboard layout showing safe display structure.
+```
+
+The dashboard mockup boundary pack supports:
+
+```text
+safe dashboard language
+synthetic/sample field display
+non-diagnostic visualization
+non-clinical visualization
+non-therapeutic visualization
+non-surveillance visualization
+non-certification visualization
+non-human-ranking visualization
+future Sal-Meter A/B placeholder boundary
+future dyadic / conflict mediation placeholder boundary
+```
+
+It does not support:
+
+```text
+validated dashboard claims
+clinical dashboard claims
+diagnostic dashboard claims
+therapeutic dashboard claims
+surveillance dashboard claims
+employee monitoring claims
+insurance scoring claims
+legal eligibility claims
+human-ranking claims
+CAIS compliance claims
+Sal-Meter validation claims
+```
+
+Current dashboard status:
+
+```text
+Dashboard mockup boundary pack: present
+Dashboard claim boundary: present
+Sample dashboard fields: present
+Mockup wireframe: present
+Raw human data: not present
+Sal-Meter input: not present
+CAIS compliance claim: not present
+Benchmark validation claim: not present
+Diagnostic / clinical / therapeutic authority: not present
+Surveillance / certification / human-ranking authority: not present
+```
+
+A dashboard may show a window.
+
+It must not become a courtroom.
+
+It may show a proxy.
+
+It must not become a person score.
+
+---
+
+## Human-State Cost boundary
+
+Human-State Cost may appear in this repository only as a bounded, research-stage proxy construct.
+
+It must not be presented as:
+
+```text
+a medical score
+a psychiatric score
+a clinical score
+a consciousness score
+a psychological safety score
+an employee monitoring score
+a user dependence diagnosis
+a human-ranking measure
+a certified benchmark output
+a Sal-Meter output
+a CAIS output
+```
+
+Acceptable language:
+
+```text
+Human-State Cost proxy example value
+non-diagnostic benchmark construct
+synthetic/sample helper field
+proxy burden comparison construct
+Human-State Cost Proxy Field
+```
+
+Prohibited language:
+
+```text
+diagnostic score
+clinical score
+validated human-state score
+certified benchmark output
+Sal-Meter result
+CAIS-compliant output
+consciousness measurement
+human truth score
+```
+
+Human-State Cost must not become a person score.
+
+Human-State Cost must not become diagnosis.
+
+Human-State Cost must not become surveillance.
+
+Human-State Cost must not become Sal-Meter.
+
+Human-State Cost must not become CAIS compliance.
+
+---
+
+## Dyadic / conflict mediation boundary
+
+Future dyadic or conflict mediation work may be referenced only as a bounded research-stage proxy benchmark direction.
+
+Allowed future wording:
+
+```text
+Synthetic dyadic interaction mockup
+Conflict Mediation Benchmark Preview
+Future dyadic proxy benchmark placeholder
+```
+
+Required boundary:
+
+```text
+Not legal mediation.
+Not therapy.
+Not counseling.
+Not relationship diagnosis.
+Not fault assignment.
+Not who-is-right determination.
+Not who-is-wrong determination.
+Not surveillance.
+Not human ranking.
+Not Sal-Meter.
+Not CAIS compliance.
+```
+
+Not allowed wording:
+
+```text
+This dashboard decides who is right.
+This dashboard identifies the unsafe partner.
+This dashboard diagnoses the relationship.
+This dashboard provides therapy.
+This dashboard assigns blame.
+This dashboard ranks people in conflict.
+```
+
+Dyadic dashboard mockups may compare interaction conditions.
+
+They must not judge humans.
+
+---
+
+## Future Sal-Meter A/B comparison boundary
+
+This repository may later support future A/B comparison between proxy benchmark features and Sal-Meter core inputs.
+
+That future comparison is not active.
+
+No Sal-Meter input is present in this repository.
+
+No CAIS compliance is granted.
+
+No Sal-Meter validation is claimed.
+
+Allowed placeholder language:
+
+```text
+future_sal_meter_input_placeholder
+future_proxy_core_comparison_placeholder
+not_present
+not_public
+not_validated_here
+future_placeholder_only
+hold_until_separate_governance
+```
+
+Prohibited placeholder language:
+
+```text
+validated_sal_meter_input
+CAIS_compliant_signal
+official_consciousness_signal
+ground_truth_signal
+diagnostic_sal_meter_result
+```
+
+Future comparison must remain future until separate governance, data rights, consent, raw data handling, audit trail, and validation rules exist.
+
+---
+
+## Leakage-control principles
+
+This repository treats leakage control as a first-class benchmark requirement.
+
+A model, dashboard, or evaluation pipeline must not learn labels from hidden shortcuts such as:
+
+- participant identity;
+- day or session order;
+- condition names;
+- filenames;
+- folder names;
+- device identity;
+- operator identity;
+- preprocessing artifacts;
+- timestamp artifacts;
+- metadata fields that encode labels;
+- train/validation/test contamination;
+- dashboard-visible labels leaking into model input.
+
+Synthetic data may expose labels for demonstration.
+
+Real benchmark data must not.
+
+A result that leaks labels is not evidence.
+
+---
+
+## Metadata completeness principles
+
+A benchmark package must be reviewable.
+
+A reviewable package needs:
+
+- session ID;
+- dataset type;
+- synthetic or human-data status;
+- public/private data boundary;
+- stream manifest;
+- event markers;
+- label windows;
+- feature table;
+- QC report;
+- split definition;
+- operator log;
+- schema version;
+- timestamp source;
+- known offsets;
+- drift notes;
+- missingness notes;
+- leakage review notes;
+- file mapping;
+- audit trail;
+- raw data handover boundary, if applicable under private governance.
+
+A package without metadata cannot be audited.
+
+A package that cannot be audited cannot become benchmark evidence.
+
+---
+
+## Baseline pipeline skeleton
+
+The file:
+
+```text
+evaluation-baseline/baseline_pipeline_skeleton.py
+```
+
+is a toy baseline pipeline skeleton.
+
+It may be used to demonstrate:
+
+- loading synthetic feature rows;
+- joining synthetic labels;
+- separating features and labels;
+- sketching a transparent baseline flow;
+- identifying where leakage-safe split logic belongs.
+
+It must not be used to claim:
+
+- validated model performance;
+- real human-state classification;
+- clinical interpretation;
+- diagnostic status;
+- Sal-Meter validation;
+- CAIS compliance.
+
+---
+
+## Leakage-safe split example
+
+The file:
+
+```text
+evaluation-baseline/leakage_safe_split_example.py
+```
+
+is a helper demonstration of leakage-aware split thinking.
+
+It supports the principle that real benchmark evaluation must avoid hidden leakage through:
+
+- participant identity;
+- day/session order;
+- device identity;
+- operator identity;
+- condition labels;
+- filenames;
+- preprocessing artifacts;
+- train/validation/test contamination.
+
+The current synthetic session is intentionally small and visible.
+
+It is for structure demonstration only.
+
+A real benchmark package must use stricter split rules.
+
+---
+
+## Dashboard display boundary
+
+Allowed dashboard language:
+
+```text
+synthetic sample
+mock field
+toy example
+proxy benchmark helper
+research-stage view
+structure demonstration
+non-diagnostic display
+non-clinical display
+non-therapeutic display
+non-surveillance display
+not Sal-Meter
+not CAIS compliance
+```
+
+Prohibited dashboard language:
+
+```text
+validated
+certified
+clinical
+diagnostic
+therapeutic
+approved
+compliant
+CAIS-compliant
+Sal-Meter validated
+consciousness measurement
+human truth score
+psychological safety score
+employee monitoring score
+risk score
+eligibility score
+legal score
+insurance score
+```
+
+A dashboard must not make weak evidence look strong.
+
+A dashboard must not turn proxy fields into person scores.
+
+A dashboard must not turn synthetic/sample data into scientific proof.
+
+---
+
+## Suggested local stack
+
+This repository is currently a public helper documentation and scaffold repository.
+
+Potential future proxy benchmark implementation may use:
+
+- LSL for stream synchronization;
+- BrainFlow for biosignal interface abstraction;
+- Timeflux for real-time signal pipelines;
+- Python for data loading and evaluation;
+- scikit-learn for transparent baseline models;
+- PyTorch for later modeling experiments, if justified;
+- OpenFace or equivalent public vision-proxy tools for bounded, non-identifying examples only;
+- CARLA for simulator-linked interaction scenarios;
+- lightweight local web UI for dashboard mockups;
+- local NAS and versioned metadata store for private raw-data governance, if future human data are collected under separate approval.
+
+This stack is not required for the current public helper package.
+
+This stack does not validate the benchmark.
+
+This stack does not create Sal-Meter.
+
+This stack does not grant CAIS compliance.
+
+---
+
+## Public release boundary
+
+A public release must not be published until:
+
+- public helper boundary language is stable;
+- synthetic/sample data boundaries are clear;
+- schema references are correct;
+- evaluator / validator documentation is clear;
+- dashboard boundaries are visible;
+- `CITATION.cff` points to DOI-registered public records;
+- `README.md` clearly states the repository is a helper surface;
+- no raw human data are present;
+- no identifiable data are present;
+- no clinical data are present;
+- no Sal-Meter input is present;
+- no CAIS compliance claim is present;
+- no diagnostic, clinical, therapeutic, surveillance, certification, or human-ranking authority is implied;
+- GitHub Actions validator workflow can run successfully, if the release depends on that validator.
+
+Current release status:
+
+```text
+v0.1.0 release-readiness target only.
+Actual GitHub Release: not published.
+Publication hold reason: P1-4 GitHub Actions validator workflow is blocked by account-level Actions restriction.
+```
+
+---
+
+## Citation guidance
+
+If you use this repository, cite the DOI-registered public boundary record rather than treating GitHub as the canonical authority.
+
+Preferred public boundary record:
+
+```text
+SICS Human-State Proxy Benchmark Track — Public Boundary and Program Charter v0.1
+Version DOI: 10.5281/zenodo.19837423
+Concept DOI: 10.5281/zenodo.19837422
+```
+
+Scientific rationale record:
+
+```text
+SICS Human-State Proxy Benchmark Track — Scientific Rationale and Research Value v0.1
+Version DOI: 10.5281/zenodo.19837971
+Concept DOI: 10.5281/zenodo.19837970
+```
+
+This GitHub repository is a public technical helper surface.
+
+It is not the authority layer.
+
+---
+
+## Governance rule
+
+Public helper materials may explain.
+
+They must not overrule DOI-registered records.
+
+Public helper materials may guide implementation.
+
+They must not create compliance.
+
+Public helper materials may demonstrate structure.
+
+They must not claim validation.
+
+Public helper materials may recruit builders.
+
+They must not imply clinical, therapeutic, diagnostic, surveillance, certification, or human-ranking authority.
+
+---
+
+## Naming rule
 
 Use:
 
 ```text
-research-stage
 proxy benchmark track
-benchmark support
-human-state-aware interaction
-synchronized multimodal benchmark
-metadata discipline
-leakage-safe evaluation
-baseline models
-synthetic/sample helper structure
-closed-loop demo-lite
-Human-State Cost as non-diagnostic benchmark construct
-future comparison with Sal-Meter inputs
+Human-State Proxy Benchmark Track
+Human-State-Aware AI Interaction
+research-stage helper
+synthetic sample package
+dashboard mockup boundary
+helper-structure validator
+future Sal-Meter A/B comparison placeholder
 ```
 
 Do not use:
 
 ```text
-Proxy Sal-Meter
-non-molecular Sal-Meter
 validated Sal-Meter
-certified Sal-Meter
-CAIS-compliant proxy stack
 CAIS-compliant device
-validated consciousness measurement
-clinical stress system
-diagnostic stress system
-therapeutic feedback system
+clinical dashboard
+diagnostic dashboard
+therapeutic dashboard
+certified benchmark
+official consciousness measurement
+human truth score
+employee monitoring score
 psychological safety score
-employee wellbeing monitoring system
-student ranking system
-insurance risk score
-human-state diagnosis
-AI harm diagnosis
-medical device
-commercial validated device
 ```
 
----
+Names are gates.
 
-## Permitted public sentence
-
-SICS Human-State Proxy Benchmark Track is a research-stage, non-diagnostic, non-therapeutic benchmark support platform for synchronized multimodal human-state proxy sensing, metadata discipline, leakage-safe evaluation, baseline modeling, helper-structure validation, bounded AI feedback research, Human-State Cost comparison, and future comparison with Sal-Meter I/G-channel inputs.
+Bad names open bad doors.
 
 ---
 
-## Never shorten this into an overclaim
+## Contributor boundary
 
-Do not call this:
+Potential contributors should first understand:
 
-- Proxy Sal-Meter;
-- non-molecular Sal-Meter;
-- CAIS-compliant proxy stack;
-- certified benchmark;
-- validated consciousness measurement;
-- diagnostic stress system;
-- psychological safety score;
-- Human-State Cost score;
-- AI harm diagnosis;
-- employee wellbeing monitoring system.
+1. whether you are working on a public helper surface;
+2. whether you are handling synthetic/sample data only;
+3. whether any raw human data are involved;
+4. whether your work could be mistaken for diagnosis, therapy, surveillance, certification, or human ranking;
+5. whether your work implies Sal-Meter validation;
+6. whether your work implies CAIS compliance;
+7. whether the relevant DOI-registered boundary record is preserved.
 
-The proxy benchmark track is useful because it is bounded.
-
-Its power comes from restraint.
-
----
-
-## Useful public links
-
-### Public landing page
-
-https://salpida.foundation/topics/human-state-aware-ai-interaction/
-
-### Current program status
-
-https://salpida.foundation/status/
-
-### Sal-Meter core track
-
-https://salpida.foundation/topics/sal-meter/
-
-### CAIS topic
-
-https://salpida.foundation/topics/cais/
-
-### For PIs
-
-https://salpida.foundation/for-pis/
-
-### Publications hub
-
-https://salpida.foundation/publications/
-
-### Main GitHub organization
-
-https://github.com/salpida-foundation
-
-### Sal-Meter Kernel Program
-
-https://github.com/salpida-foundation/sal-meter-kernel-program
-
----
-
-## Recommended reading order
-
-1. Human-State-Aware AI Interaction public landing page  
-   https://salpida.foundation/topics/human-state-aware-ai-interaction/
-
-2. Current program status  
-   https://salpida.foundation/status/
-
-3. Public Boundary & Program Charter v0.1  
-   https://doi.org/10.5281/zenodo.19837423
-
-4. Scientific Rationale and Research Value v0.1  
-   https://doi.org/10.5281/zenodo.19837971
-
-5. Sal-Meter Core Track  
-   https://salpida.foundation/topics/sal-meter/
-
-6. Sal-Meter Kernel Program GitHub  
-   https://github.com/salpida-foundation/sal-meter-kernel-program
-
----
-
-## Contribution posture
-
-This repository is not yet a broad open development platform.
-
-Useful contributions should be bounded and practical.
-
-Good first contributions:
-
-- improve metadata schema clarity;
-- add synthetic sample data;
-- add leakage-risk examples;
-- add dashboard mockup notes after the release-readiness boundary is stable;
-- add baseline notebook skeletons after validator structure is stable;
-- add reproducibility checklist items;
-- improve public boundary wording;
-- identify ambiguous claims and correct them.
-
-Poor first contributions:
-
-- broad philosophy essays;
-- clinical claims;
-- diagnostic claims;
-- therapeutic claims;
-- raw human data uploads;
-- unbounded partnership pitches;
-- claims that proxy signals are Sal-Meter;
-- claims that this repository creates CAIS compliance.
-
----
-
-## Contact
-
-For serious bounded-fit inquiries:
-
-contact@salpida.foundation
-
-Suggested subject lines:
-
-```text
-Proxy benchmark support inquiry — [Name / Team]
-```
-
-```text
-PBEE candidate inquiry — [Name]
-```
-
-```text
-MDE candidate inquiry — [Name]
-```
-
-```text
-HSOPM candidate inquiry — [Name]
-```
-
-Your first message should include:
-
-1. who you are;
-2. which role or layer you fit;
-3. one capability you can actually own;
-4. one uncertainty you can reduce;
-5. whether a 30–90 day benchmark skeleton path is realistic;
-6. whether non-public raw human data handling rules are acceptable.
-
-Do not send a broad partnership pitch first.
+Do not send broad partnership material first.
 
 Send one bounded capability.
 
 ---
 
+## Current open holds
+
+```text
+P1-4 remains open:
+  GitHub Actions workflow exists but is blocked by account-level Actions restriction.
+
+P1-5 remains open:
+  v0.1.0 release readiness is prepared, but release must remain unpublished until P1-4 can run successfully.
+
+P2-2 can be closed after:
+  root README.md is updated to reference dashboard-mockup/ as a public helper visualization boundary.
+```
+
+---
+
 ## License
 
-Unless otherwise stated, public helper materials in this repository are intended to align with:
+Unless otherwise stated, public helper materials in this repository are provided under:
 
 **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**
 
@@ -998,6 +1321,12 @@ This license does not grant:
 
 ## Final boundary sentence
 
-**Proxy first as benchmark. Sal-Meter later as core input. Claims never ahead of evidence.**
+This repository is a public helper surface.
 
-This repository exists to prepare the comparison layer without confusing it with the molecular–electrochemical Sal-Meter core.
+It is a scaffold, not a verdict.
+
+It is a map, not the mountain.
+
+It prepares future comparison.
+
+It does not claim that future comparison has already been validated.
