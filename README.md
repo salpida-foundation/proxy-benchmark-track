@@ -717,6 +717,18 @@ It does not validate Sal-Meter.
 
 P3 introduces the Human-State-Aware AI Mediation helper layer.
 
+P3 helper documents and schemas have been completed through P3-11.
+
+P3-12 aligns this root README with the completed helper documents, helper schemas, and schema-folder README.
+
+This is still a public helper layer.
+
+It is not benchmark validation.
+
+It is not Sal-Meter validation.
+
+It is not CAIS compliance.
+
 | Milestone | Status | Notes |
 |---|---|---|
 | P3-1 Human-State Mediation Layer | Done | `docs/human-state-mediation-layer.md` defines the public helper concept connecting AI Output, Human-State Delta, Dyadic Recovery, Human-State Packet, Recovery Gate, and Termination Gate |
@@ -725,9 +737,15 @@ P3 introduces the Human-State-Aware AI Mediation helper layer.
 | P3-3 Dyadic Recovery Baseline Suite B0-B7 | Done | `docs/dyadic-recovery-baseline-suite.md` defines baseline comparison logic from chance through recovery/termination gate baselines |
 | P3-4 Recovery Gate Definition | Done | `docs/recovery-gate-definition.md` defines the gate for preventing false recovery and determining when mediation can reduce, pause, or stop |
 | P3-4 Termination Gate Definition | Done | `docs/termination-gate-definition.md` defines the gate for consent withdrawal, permission expiry, data quality failure, high uncertainty, overstay prevention, session closure, and auditability |
-| P3-5 README alignment | Done | Root README has been aligned with completed P3 helper documents |
+| P3-6 Human-State Session Protocol | Done | `docs/human-state-session-protocol.md` defines a bounded, consent-based, permission-bound, audit-ready session lifecycle |
+| P3-7 Dyadic Mediation Session Flow | Done | `docs/dyadic-mediation-session-flow.md` defines the dyadic session flow and preserves the rule that one-sided improvement is not dyadic recovery |
+| P3-8 Consent and Data-Sharing Boundary | Done | `docs/consent-and-data-sharing-boundary.md` defines consent, permission, sharing, expiry, withdrawal, public/private data boundary, raw-data-non-public rule, and audit boundary |
+| P3-9 Dyadic Session Event JSON helper schema | Done | `schemas/dyadic_session_event.schema.json` validates one public-safe synthetic/sample dyadic session boundary event |
+| P3-10 Benchmark Session JSON helper schema | Done | `schemas/benchmark_session.schema.json` validates one public-safe synthetic/sample benchmark session container |
+| P3-11 Schemas README alignment | Done | `schemas/README.md` now distinguishes packet object, dyadic session event object, and benchmark session container |
+| P3-12 Root README alignment | In progress | Root README is being aligned with completed P3 helper documents and schemas |
 
-### Completed P3 helper files
+### Completed P3 helper documents
 
 ```text
 docs/
@@ -736,31 +754,141 @@ docs/
   dyadic-recovery-baseline-suite.md
   recovery-gate-definition.md
   termination-gate-definition.md
-
-schemas/
-  human_state_packet.schema.json
-```
-
-Remaining planned helper files:
-
-```text
-docs/
   human-state-session-protocol.md
   dyadic-mediation-session-flow.md
   consent-and-data-sharing-boundary.md
-
-schemas/
-  dyadic_session_event.schema.json
-  benchmark_session.schema.json
 ```
 
-P3 does not validate a benchmark.
+### Completed P3 helper schemas
 
-P3 does not validate Sal-Meter.
+```text
+schemas/
+  human_state_packet.schema.json
+  dyadic_session_event.schema.json
+  benchmark_session.schema.json
+  README.md
+```
 
-P3 does not grant CAIS compliance.
+### P3 helper architecture
 
-P3 defines the helper structure needed to make future benchmark work auditable.
+```text
+AI Output
+→ Human-State Packet
+→ Human-State Session Protocol
+→ Dyadic Mediation Session Flow
+→ Human-State Delta A/B
+→ Dyadic Delta
+→ Recovery Gate
+→ Termination Gate
+→ Session Closure
+→ Audit Log
+```
+
+The Consent and Data-Sharing Boundary controls what may cross the arrows.
+
+### Object distinction
+
+#### Human-State Packet
+
+A Human-State Packet is a minimal consent-bound, permission-bound, expiry-bound, confidence-aware, data-quality-aware, session-scoped, sharing-scoped, raw-data-excluding state-summary object.
+
+It is not the body.
+
+It is not diagnosis.
+
+It is not Sal-Meter.
+
+It is not CAIS compliance.
+
+#### Dyadic Session Event
+
+A Dyadic Session Event is a public-safe synthetic/sample event object that records boundary events such as consent, permission, packet status, sharing scope, private cue status, shared output status, Human-State Delta A/B, Dyadic Delta, gate decisions, closure, and audit status.
+
+It records the boundary.
+
+It does not record the body.
+
+#### Benchmark Session Container
+
+A Benchmark Session Container is a public-safe synthetic/sample container that connects event references, baseline suite status, gate summaries, leakage review, holdout strategy, audit status, public release status, authority status, and final boundary status.
+
+It records the benchmark container.
+
+It does not validate the benchmark.
+
+### P3 public boundary
+
+P3 remains:
+
+```text
+research-stage
+non-clinical
+non-diagnostic
+non-therapeutic
+non-surveillance
+non-counseling
+raw-data-non-public
+synthetic-public-data-first
+public helper only
+not Sal-Meter
+not CAIS compliance
+not validated benchmark
+not validated mediation
+not production closed-loop intervention
+```
+
+P3 does not authorize:
+
+```text
+validated product
+validated benchmark
+validated mediation
+certified benchmark
+CAIS compliance
+Sal-Meter validation
+Sal-Meter-compatible node exists
+clinical readiness
+diagnostic readiness
+therapeutic readiness
+counseling service
+legal mediation service
+surveillance readiness
+production deployment
+human ranking
+relationship verdict
+official consciousness signal
+ground-truth signal
+```
+
+### Schema layer summary
+
+The schema layer now includes:
+
+```text
+Human-State Packet helper schema
+Dyadic Session Event helper schema
+Benchmark Session helper schema
+```
+
+Schemas validate public helper structure.
+
+They do not validate the human body.
+
+They do not validate Sal-Meter.
+
+They do not grant CAIS compliance.
+
+They do not crown a benchmark as validated.
+
+### Release boundary
+
+A GitHub Release is not ready.
+
+Public release packaging remains separate and should not proceed until the helper surfaces, validation scaffolds, and boundary language are reviewed.
+
+Raw human data must not enter the public repository.
+
+A closed session must stay closed.
 
 ---
 
