@@ -1,0 +1,541 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salpida-foundation/proxy-benchmark-track/schemas/benchmark_session.schema.json",
+  "title": "SICS Human-State Proxy Benchmark Track Benchmark Session Helper Schema v0.1",
+  "description": "Strict public helper schema for validating synthetic/sample benchmark session container objects. This schema is for public helper validation only. It does not define CAIS, does not validate Sal-Meter, does not validate a benchmark, and does not support clinical, diagnostic, therapeutic, counseling, legal mediation, surveillance, human-ranking, relationship-verdict, or production closed-loop intervention claims.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "benchmark_session_id",
+    "session_id",
+    "dataset_type",
+    "synthetic_status",
+    "benchmark_scope",
+    "benchmark_stage",
+    "session_type",
+    "participant_scope",
+    "modality_stack",
+    "event_schema_ref",
+    "session_event_refs",
+    "baseline_suite_status",
+    "primary_outcome",
+    "human_state_delta_summary",
+    "dyadic_delta_summary",
+    "recovery_gate_summary",
+    "termination_gate_summary",
+    "leakage_review_status",
+    "holdout_strategy",
+    "data_boundary_status",
+    "consent_boundary_status",
+    "sharing_boundary_status",
+    "audit_status",
+    "public_release_status",
+    "authority_status",
+    "boundary_flags",
+    "final_boundary_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1",
+      "description": "Schema version for this benchmark session helper schema."
+    },
+    "benchmark_session_id": {
+      "type": "string",
+      "pattern": "^BMS-[A-Z0-9_-]+$",
+      "description": "Synthetic or coded benchmark session identifier. Must not contain real participant identifiers."
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^(SYN-SESSION-[0-9]{3}|BMS-SESSION-[A-Z0-9_-]+|not_applicable)$",
+      "description": "Synthetic or coded session identifier. Must not identify real participants."
+    },
+    "dataset_type": {
+      "type": "string",
+      "enum": [
+        "synthetic",
+        "sample",
+        "mock",
+        "placeholder",
+        "structure_only"
+      ],
+      "description": "Public helper dataset type. Real human data is not allowed."
+    },
+    "synthetic_status": {
+      "type": "string",
+      "enum": [
+        "synthetic_only",
+        "sample_only",
+        "mock_only",
+        "placeholder_only",
+        "structure_only",
+        "not_real_human_data"
+      ],
+      "description": "Public-safe synthetic/sample status. Must not indicate real participant, clinical, production, raw Sal-Meter, or raw CAIS data."
+    },
+    "benchmark_scope": {
+      "type": "string",
+      "enum": [
+        "single_session_helper",
+        "dyadic_session_helper",
+        "proxy_benchmark_helper",
+        "recovery_gate_helper",
+        "termination_gate_helper",
+        "closed_loop_demo_lite_helper",
+        "synthetic_public_package",
+        "structure_only",
+        "not_applicable"
+      ],
+      "description": "Public helper benchmark scope. Must not imply validated benchmark status."
+    },
+    "benchmark_stage": {
+      "type": "string",
+      "enum": [
+        "P3_helper",
+        "P3_schema",
+        "P3_public_synthetic",
+        "future_candidate",
+        "not_validated",
+        "not_released",
+        "not_applicable"
+      ],
+      "description": "Benchmark helper stage. Must not imply validated, certified, CAIS-compliant, Sal-Meter-validated, production-ready, or clinical-ready status."
+    },
+    "session_type": {
+      "type": "string",
+      "enum": [
+        "single_participant_proxy_session",
+        "dyadic_proxy_session",
+        "mock_dyadic_mediation_session",
+        "synthetic_benchmark_session",
+        "closed_loop_demo_lite_session",
+        "structure_only_session",
+        "not_applicable"
+      ],
+      "description": "Public-safe helper session type. Must not imply clinical, therapeutic, counseling, legal mediation, or surveillance status."
+    },
+    "participant_scope": {
+      "type": "string",
+      "enum": [
+        "participant_A_only",
+        "participant_B_only",
+        "dyad",
+        "synthetic_dyad",
+        "system_only",
+        "audit_only",
+        "synthetic_public_example",
+        "not_applicable"
+      ],
+      "description": "Participant scope. Must prevent participant identity leakage."
+    },
+    "modality_stack": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "synthetic_event_markers",
+          "synthetic_hrv_proxy",
+          "synthetic_eda_proxy",
+          "synthetic_ppg_proxy",
+          "synthetic_eeg_proxy",
+          "synthetic_eye_gaze_proxy",
+          "synthetic_voice_proxy",
+          "synthetic_turn_taking",
+          "synthetic_behavioral_marker",
+          "synthetic_task_marker",
+          "synthetic_feedback_log",
+          "synthetic_dashboard_marker",
+          "mock_human_state_packet",
+          "mock_dyadic_delta",
+          "mock_recovery_gate",
+          "mock_termination_gate",
+          "not_applicable"
+        ]
+      },
+      "description": "Public-safe modality labels only. Must not imply raw data, Sal-Meter input, or CAIS compliance."
+    },
+    "event_schema_ref": {
+      "type": "string",
+      "const": "schemas/dyadic_session_event.schema.json",
+      "description": "Reference to the dyadic session event helper schema."
+    },
+    "session_event_refs": {
+      "type": "array",
+      "minItems": 0,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^DSE-[A-Z0-9_-]+$"
+      },
+      "description": "Synthetic or coded dyadic session event references only. Raw event payloads are not allowed here."
+    },
+    "baseline_suite_status": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "declared",
+        "partially_defined",
+        "B0_available",
+        "B1_available",
+        "B2_available",
+        "B3_available",
+        "B4_available",
+        "B5_available",
+        "B6_available",
+        "B7_available",
+        "complete_helper_suite",
+        "not_validated",
+        "not_applicable"
+      ],
+      "description": "Baseline suite status. Must not imply benchmark success."
+    },
+    "baseline_suite_version": {
+      "type": "string",
+      "pattern": "^(v0\\.1|not_applicable)$",
+      "default": "not_applicable",
+      "description": "Optional public helper baseline suite version."
+    },
+    "primary_outcome": {
+      "type": "string",
+      "enum": [
+        "dyadic_recovery_delta",
+        "human_state_delta",
+        "boundary_event_integrity",
+        "gate_decision_integrity",
+        "audit_completeness",
+        "leakage_control_integrity",
+        "synthetic_structure_validity",
+        "not_evidence",
+        "not_applicable"
+      ],
+      "description": "Public helper primary outcome. Must not be clinical, diagnostic, therapeutic, or a human score."
+    },
+    "human_state_delta_summary": {
+      "type": "string",
+      "enum": [
+        "toward_recovery",
+        "away_from_recovery",
+        "unchanged",
+        "mixed",
+        "uncertain",
+        "insufficient_data",
+        "invalid",
+        "not_applicable"
+      ],
+      "description": "Helper state-summary value only. Not diagnosis, therapy label, clinical state, human score, Sal-Meter output, or CAIS-compliant output."
+    },
+    "dyadic_delta_summary": {
+      "type": "string",
+      "enum": [
+        "dyad_toward_recovery",
+        "dyad_away_from_recovery",
+        "dyad_unchanged",
+        "dyad_mixed",
+        "one_sided_improvement",
+        "one_sided_deterioration",
+        "asymmetry_detected",
+        "silence_risk_detected",
+        "burden_risk_detected",
+        "coercion_risk_detected",
+        "private_state_exposure_risk",
+        "shared_output_risk",
+        "uncertain",
+        "insufficient_data",
+        "invalid",
+        "not_applicable"
+      ],
+      "description": "Helper dyadic delta summary. One-sided improvement is not dyadic recovery. Silence is not automatically recovery. Synchrony is not automatically positive."
+    },
+    "recovery_gate_summary": {
+      "type": "string",
+      "enum": [
+        "not_called",
+        "recovery_reached",
+        "recovery_not_reached",
+        "recovery_uncertain",
+        "false_positive_recovery_risk",
+        "false_negative_recovery_risk",
+        "one_sided_improvement_detected",
+        "shared_output_risk_detected",
+        "reduce_mediation_recommended",
+        "pause_recommended",
+        "terminate_recommended",
+        "private_cue_only",
+        "shared_output_blocked",
+        "human_review_required",
+        "invalid_due_to_data_quality",
+        "invalid_due_to_permission",
+        "invalid_due_to_scope",
+        "not_applicable"
+      ],
+      "description": "Recovery Gate helper summary. Recovery Gate must not crown the AI for speaking well."
+    },
+    "termination_gate_summary": {
+      "type": "string",
+      "enum": [
+        "not_called",
+        "continue_allowed",
+        "pause_required",
+        "narrow_scope_required",
+        "private_cue_only",
+        "shared_output_blocked",
+        "terminate_required",
+        "terminate_recommended",
+        "human_review_required",
+        "packet_channel_closed",
+        "dyadic_session_closed",
+        "audit_required",
+        "invalid_dyadic_session",
+        "not_applicable"
+      ],
+      "description": "Termination Gate helper summary. Termination Gate must prevent endless mediation."
+    },
+    "leakage_review_status": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "passed",
+        "passed_with_notes",
+        "needs_review",
+        "failed",
+        "invalid",
+        "not_applicable"
+      ],
+      "description": "Leakage review status for label, time, participant, condition, operator, device, session, metadata, public/private, raw data, identity, and Sal-Meter/CAIS overclaim leakage."
+    },
+    "holdout_strategy": {
+      "type": "string",
+      "enum": [
+        "synthetic_session_holdout_demo",
+        "participant_holdout",
+        "day_holdout",
+        "device_holdout",
+        "operator_holdout",
+        "condition_holdout",
+        "locked_test_split",
+        "exploratory_random_split",
+        "not_applicable"
+      ],
+      "description": "Helper holdout strategy. Not proof of model validity."
+    },
+    "data_boundary_status": {
+      "type": "string",
+      "enum": [
+        "raw_data_absent",
+        "synthetic_only",
+        "sample_only",
+        "mock_only",
+        "structure_only",
+        "raw_data_risk_detected",
+        "identity_risk_detected",
+        "clinical_data_risk_detected",
+        "invalid",
+        "not_applicable"
+      ],
+      "description": "Data boundary status. Public benchmark session objects must not contain raw human data."
+    },
+    "consent_boundary_status": {
+      "type": "string",
+      "enum": [
+        "consent_confirmed",
+        "consent_missing",
+        "consent_withdrawn",
+        "consent_expired",
+        "one_sided_consent",
+        "invalid_consent",
+        "synthetic_not_applicable",
+        "not_applicable"
+      ],
+      "description": "Consent boundary status. Consent is not permanent and is not ownership of the body."
+    },
+    "sharing_boundary_status": {
+      "type": "string",
+      "enum": [
+        "no_sharing",
+        "private_cue_only",
+        "shared_output_allowed",
+        "audit_log_only",
+        "synthetic_public_example_only",
+        "not_public",
+        "not_exportable",
+        "not_reusable_outside_session",
+        "sharing_scope_missing",
+        "sharing_scope_violated",
+        "invalid",
+        "not_applicable"
+      ],
+      "description": "Sharing boundary status. Sharing is not automatic. Private state is not social evidence."
+    },
+    "audit_status": {
+      "type": "string",
+      "enum": [
+        "audit_present",
+        "audit_missing",
+        "audit_incomplete",
+        "audit_boundary_only",
+        "audit_contains_prohibited_content",
+        "audit_required",
+        "invalid",
+        "not_applicable"
+      ],
+      "description": "Audit status. Audit should record boundary events, not the body."
+    },
+    "public_release_status": {
+      "type": "string",
+      "enum": [
+        "not_public",
+        "public_helper_only",
+        "public_synthetic_only",
+        "public_sample_only",
+        "public_mock_only",
+        "public_structure_only",
+        "release_blocked",
+        "public_release_ready_helper_only",
+        "invalid_public_release",
+        "not_applicable"
+      ],
+      "description": "Public release status. Public release must not imply benchmark validation."
+    },
+    "authority_status": {
+      "type": "string",
+      "enum": [
+        "github_helper_only",
+        "doi_authority_controls",
+        "canonical_record_required",
+        "non_authoritative_helper",
+        "conflict_requires_canonical_review",
+        "not_applicable"
+      ],
+      "description": "Authority status. GitHub is helper surface. DOI records remain authority layer."
+    },
+    "boundary_flags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_human_data_present",
+        "identifiable_data_present",
+        "clinical_data_present",
+        "private_state_exposure_risk",
+        "relationship_verdict_present",
+        "human_score_present",
+        "diagnostic_claim_present",
+        "therapeutic_claim_present",
+        "counseling_claim_present",
+        "legal_mediation_claim_present",
+        "surveillance_claim_present",
+        "sal_meter_validation_claim_present",
+        "cais_compliance_claim_present",
+        "production_intervention_claim_present",
+        "benchmark_validation_claim_present",
+        "synthetic_public_data_confirmed",
+        "audit_log_required"
+      ],
+      "properties": {
+        "raw_human_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "identifiable_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "clinical_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "private_state_exposure_risk": {
+          "type": "boolean",
+          "const": false
+        },
+        "relationship_verdict_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "human_score_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "diagnostic_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "therapeutic_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "counseling_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "legal_mediation_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "surveillance_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "sal_meter_validation_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "cais_compliance_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "production_intervention_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "benchmark_validation_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "synthetic_public_data_confirmed": {
+          "type": "boolean",
+          "const": true
+        },
+        "audit_log_required": {
+          "type": "boolean",
+          "const": true
+        }
+      },
+      "description": "Boundary flags for public helper validation. Prohibited leakage and overclaim flags must be false."
+    },
+    "final_boundary_status": {
+      "type": "string",
+      "enum": [
+        "boundary_valid",
+        "consent_missing",
+        "consent_withdrawn",
+        "permission_missing",
+        "permission_revoked",
+        "packet_expired",
+        "packet_invalid",
+        "sharing_scope_missing",
+        "sharing_scope_violated",
+        "private_state_exposure_risk",
+        "raw_data_exposure_risk",
+        "public_boundary_violation",
+        "synthetic_status_missing",
+        "data_quality_invalid",
+        "confidence_insufficient",
+        "audit_missing",
+        "release_blocked",
+        "closure_required",
+        "invalid_session",
+        "human_review_required"
+      ],
+      "description": "Final boundary condition. Must not blame, diagnose, judge, rank, score, or validate a benchmark."
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 700,
+      "pattern": "^[^@<>]*$",
+      "description": "Optional public-safe note. Must not contain participant identifiers, raw human data, clinical interpretation, diagnostic claims, therapeutic claims, counseling claims, legal mediation conclusions, relationship judgments, Sal-Meter validation claims, CAIS compliance claims, or benchmark validation claims."
+    }
+  }
+}
