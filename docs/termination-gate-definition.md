@@ -1125,3 +1125,353 @@ The packet is the interface.
 The body remains behind the boundary.
 
 When the packet expires, the gate must close.
+---
+
+## 41. Relationship to Session Protocol
+
+The Session Protocol defines how a session opens, proceeds, evaluates, terminates, closes, and records itself.
+
+A valid session must include:
+
+- session creation;
+- consent confirmation;
+- packet availability check;
+- baseline state summary;
+- AI output;
+- post-output state summary;
+- Human-State Delta;
+- Recovery Gate;
+- Termination Gate;
+- session closure;
+- audit log.
+
+The Termination Gate is not optional.
+
+Without Termination Gate, the session cannot prove that it can stop.
+
+Without Termination Gate, mediation can drift into continuous monitoring.
+
+A session that cannot close is not a Human-State Session.
+
+---
+
+## 42. Relationship to Dyadic Recovery Baseline Suite
+
+The Dyadic Recovery Baseline Suite tests whether AI-mediated interaction improves dyadic recovery beyond simpler baselines.
+
+The Termination Gate provides the session-level stop decision needed to test whether the system can reduce, pause, or terminate mediation at the right time.
+
+The baseline suite should test whether Termination Gate performance is better than:
+
+- fixed-time stop;
+- self-report-only stop;
+- packet-only stop;
+- behavior-only stop;
+- generic AI stop rule;
+- rule-based mediation stop rule;
+- combined human-state-aware termination gate.
+
+A Termination Gate must beat simpler stop rules before it deserves complexity.
+
+---
+
+## 43. Relationship to Proxy Benchmark Track
+
+The Proxy Benchmark Track may implement this Termination Gate using:
+
+- synthetic Human-State Packets;
+- mock dyadic session logs;
+- phone-only interaction markers;
+- voice proxy features;
+- turn-taking features;
+- interruption features;
+- self-check markers;
+- dashboard mockup fields;
+- closed-loop demo-lite logs;
+- future separately governed Sal-Meter-derived input candidates.
+
+The Proxy Benchmark Track is not Sal-Meter.
+
+It is not CAIS compliance.
+
+It is not a validated device.
+
+It is not a clinical system.
+
+It is a benchmark helper surface.
+
+---
+
+## 44. Relationship to Sal-Meter / CAIS
+
+This Termination Gate does not validate Sal-Meter.
+
+This Termination Gate does not define CAIS.
+
+This Termination Gate does not grant CAIS compliance.
+
+This Termination Gate does not create a Sal-Meter-compatible system.
+
+Future Sal-Meter-derived state summaries may become candidate inputs only after separate validation, governance, consent, data-rights, raw-data handling, audit-trail, and canonical boundary review.
+
+Allowed language:
+
+- future Sal-Meter-derived input candidate pathway;
+- future proxy-core comparison placeholder;
+- future separately governed comparison;
+- not present;
+- not public;
+- not validated here.
+
+Prohibited language:
+
+- validated Sal-Meter input;
+- CAIS-compliant signal;
+- official consciousness signal;
+- ground-truth signal;
+- Sal-Meter feedback loop;
+- Sal-Meter intervention loop;
+- Sal-Meter-compatible node exists.
+
+---
+
+## 45. Public repository boundary
+
+Public repository materials may include:
+
+- helper documents;
+- helper schemas;
+- synthetic termination gate examples;
+- mock termination gate decisions;
+- mock session closure records;
+- dashboard mockup fields;
+- audit log examples;
+- public-safe documentation.
+
+Public repository materials must not include:
+
+- real raw human data;
+- real raw biosignals;
+- raw audio;
+- raw video;
+- raw face data;
+- raw gaze data;
+- raw transcript;
+- real dyadic conflict records;
+- private participant labels;
+- identifiable participant records;
+- clinical data;
+- health records;
+- raw CAIS traces;
+- raw Sal-Meter traces;
+- production feedback logs;
+- diagnostic labels;
+- therapeutic labels;
+- human scores;
+- relationship verdicts.
+
+The public repository teaches the structure.
+
+It must not expose persons.
+
+---
+
+## 46. Suggested synthetic termination gate record
+
+A future synthetic example may include:
+
+- session_id;
+- termination_gate_id;
+- consent_status;
+- permission_status;
+- timestamp_expiry_status;
+- data_quality_status;
+- confidence_band;
+- sharing_scope;
+- session_scope;
+- participant_stop_request;
+- recovery_gate_decision;
+- private_state_exposure_risk;
+- raw_data_exposure_risk;
+- non_judgment_boundary_status;
+- prohibited_output_status;
+- mediation_overstay_risk;
+- audit_status;
+- decision;
+- recommended_next_action;
+- closure_status;
+- audit_timestamp;
+- synthetic_flag;
+- boundary_flags.
+
+All public examples must be synthetic or sample only.
+
+---
+
+## 47. Suggested decision values
+
+Suggested decision values include:
+
+- continue_allowed;
+- pause_required;
+- narrow_scope_required;
+- private_cue_only;
+- shared_output_blocked;
+- terminate_required;
+- terminate_recommended;
+- human_review_required;
+- packet_channel_closed;
+- session_closed;
+- audit_required;
+- invalid_session.
+
+These values are benchmark helper outputs.
+
+They are not clinical outputs.
+
+They are not therapeutic outputs.
+
+They are not legal mediation outputs.
+
+They are not surveillance outputs.
+
+---
+
+## 48. Go / Hold / No-Go rule
+
+### Go
+
+Go if the Termination Gate:
+
+- defines termination as session-boundary closure;
+- respects consent;
+- respects permission;
+- respects packet expiry;
+- respects session scope;
+- requires confidence and data quality;
+- preserves raw-data-non-public boundary;
+- blocks shared output when sharing scope fails;
+- closes packet use after expiry;
+- supports participant stop requests;
+- stops after recovery when continued output would overstay;
+- stops when non-judgment boundary fails;
+- stops when raw data exposure risk appears;
+- stops when private state exposure risk appears;
+- records an audit trail;
+- avoids diagnosis;
+- avoids therapy;
+- avoids counseling;
+- avoids legal mediation authority;
+- avoids surveillance;
+- avoids human scoring;
+- avoids relationship verdicts;
+- avoids Sal-Meter validation;
+- avoids CAIS compliance.
+
+### Hold
+
+Hold if the Termination Gate:
+
+- treats termination as failure;
+- ignores consent withdrawal;
+- ignores packet permission expiry;
+- ignores data quality failure;
+- ignores high uncertainty;
+- ignores participant stop request;
+- ignores recovery reached;
+- ignores non-judgment failure;
+- ignores raw data exposure risk;
+- ignores private state exposure risk;
+- ignores mediation overstay;
+- omits audit record;
+- blurs proxy track with Sal-Meter core track.
+
+### No-Go
+
+No-Go if the Termination Gate:
+
+- introduces raw human data;
+- introduces identifiable data;
+- claims diagnostic function;
+- claims therapeutic effect;
+- claims counseling service;
+- claims legal mediation authority;
+- assigns blame;
+- decides who is right;
+- ranks humans;
+- generates relationship verdicts;
+- claims CAIS compliance;
+- claims Sal-Meter designation;
+- claims validated mediation;
+- claims production closed-loop intervention.
+
+---
+
+## 49. Related helper documents
+
+- docs/human-state-mediation-layer.md
+- docs/human-state-packet-schema.md
+- docs/dyadic-recovery-baseline-suite.md
+- docs/recovery-gate-definition.md
+- docs/human-state-session-protocol.md
+- docs/dyadic-mediation-session-flow.md
+- docs/consent-and-data-sharing-boundary.md
+- schemas/human_state_packet.schema.json
+- schemas/dyadic_session_event.schema.json
+- schemas/benchmark_session.schema.json
+
+---
+
+## 50. Related canonical records
+
+Human-State Mediation Boundary Standard v0.1  
+Version DOI: https://doi.org/10.5281/zenodo.19904289  
+Concept DOI: https://doi.org/10.5281/zenodo.19904288
+
+Human-State Packet Minimal Data-Sharing Standard v0.1  
+Version DOI: https://doi.org/10.5281/zenodo.19905541  
+Concept DOI: https://doi.org/10.5281/zenodo.19905540
+
+Dyadic Human-State Mediation Benchmark Charter v0.1  
+Version DOI: https://doi.org/10.5281/zenodo.19906725  
+Concept DOI: https://doi.org/10.5281/zenodo.19906724
+
+Human-State Session Protocol v0.1 — Structural Declaration  
+Version DOI: https://doi.org/10.5281/zenodo.19908379  
+Concept DOI: https://doi.org/10.5281/zenodo.19908378
+
+SICS Human-State Proxy Benchmark Track — Public Boundary and Program Charter v0.1  
+Version DOI: https://doi.org/10.5281/zenodo.19837423  
+Concept DOI: https://doi.org/10.5281/zenodo.19837422
+
+SICS Human-State Proxy Benchmark Track — Scientific Rationale and Research Value v0.1  
+Version DOI: https://doi.org/10.5281/zenodo.19837971  
+Concept DOI: https://doi.org/10.5281/zenodo.19837970
+
+---
+
+## 51. Final boundary sentence
+
+The Termination Gate does not crown the AI for continuing.
+
+It asks whether the session must pause, narrow, or stop.
+
+It does not diagnose.
+
+It does not treat.
+
+It does not judge.
+
+It does not resolve conflict as a service claim.
+
+It prevents endless mediation.
+
+It prevents surveillance drift.
+
+It protects consent, permission, expiry, data quality, session scope, private state, raw human data, and auditability.
+
+If the session can no longer continue without crossing a boundary, the gate must close.
+
+A system that cannot stop is not mature.
+
+A closed session must stay closed.
