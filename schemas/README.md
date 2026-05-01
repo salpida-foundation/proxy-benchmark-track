@@ -509,7 +509,7 @@ Status:
 ```text
 Research-stage helper schemas.
 Synthetic/sample structure validation only.
-P3 helper schema alignment in progress.
+P3 helper schema alignment completed through P3-11.
 human_state_packet.schema.json exists.
 dyadic_session_event.schema.json exists.
 benchmark_session.schema.json exists.
