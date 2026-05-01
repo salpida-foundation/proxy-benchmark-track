@@ -1,0 +1,610 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salpida-foundation/proxy-benchmark-track/schemas/human_state_packet.schema.json",
+  "title": "Human-State Packet Helper Schema",
+  "description": "Research-stage public helper schema for synthetic Human-State Packets used in the SICS Human-State Proxy Benchmark Track. This schema validates structure only. It does not validate human-state measurement, Sal-Meter input, CAIS compliance, clinical status, diagnostic status, therapeutic effect, legal mediation status, surveillance readiness, or production closed-loop intervention.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_id",
+    "session_id",
+    "participant_role",
+    "timestamp_created",
+    "timestamp_expiry",
+    "time_window",
+    "state_summary",
+    "confidence_band",
+    "data_quality",
+    "permission_scope",
+    "sharing_scope",
+    "output_mode",
+    "session_scope",
+    "synthetic_flag",
+    "raw_data_excluded",
+    "audit_timestamp",
+    "boundary"
+  ],
+  "properties": {
+    "packet_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "pattern": "^[A-Za-z0-9._:-]+$",
+      "description": "Synthetic or pseudonymous packet identifier. Must not encode legal identity, diagnosis, relationship verdict, Sal-Meter validation, or CAIS compliance."
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "pattern": "^[A-Za-z0-9._:-]+$",
+      "description": "Synthetic or pseudonymous session identifier. Must not reveal participant identity or real dyadic conflict context."
+    },
+    "participant_role": {
+      "type": "string",
+      "enum": [
+        "participant_A",
+        "participant_B",
+        "private_agent_A",
+        "private_agent_B",
+        "observer_synthetic",
+        "simulator_actor_1",
+        "simulator_actor_2"
+      ],
+      "description": "Pseudonymous role label only. Not a legal name, patient ID, employee ID, student ID, or real relationship label."
+    },
+    "timestamp_created": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "description": "Creation timestamp or synthetic timestamp label."
+    },
+    "timestamp_expiry": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "description": "Expiry timestamp or synthetic timestamp label. Expired packets must not be used for mediation output."
+    },
+    "time_window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start_time",
+        "end_time",
+        "duration_sec"
+      ],
+      "properties": {
+        "start_time": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "end_time": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "duration_sec": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 3600
+        }
+      },
+      "description": "Synthetic or bounded time window summarized by the packet."
+    },
+    "state_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "arousal_band",
+        "regulation_trend",
+        "recovery_trend",
+        "overload_risk",
+        "withdrawal_risk",
+        "engagement_band",
+        "uncertainty_state"
+      ],
+      "properties": {
+        "arousal_band": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "medium_high",
+            "high",
+            "unknown",
+            "insufficient_data"
+          ]
+        },
+        "regulation_trend": {
+          "type": "string",
+          "enum": [
+            "improving",
+            "stable",
+            "worsening",
+            "mixed",
+            "unknown",
+            "insufficient_data"
+          ]
+        },
+        "recovery_trend": {
+          "type": "string",
+          "enum": [
+            "toward_recovery",
+            "away_from_recovery",
+            "unchanged",
+            "mixed",
+            "uncertain",
+            "insufficient_data",
+            "invalid"
+          ]
+        },
+        "overload_risk": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown",
+            "insufficient_data"
+          ]
+        },
+        "withdrawal_risk": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown",
+            "insufficient_data"
+          ]
+        },
+        "engagement_band": {
+          "type": "string",
+          "enum": [
+            "present",
+            "reduced",
+            "withdrawn",
+            "mixed",
+            "unknown",
+            "insufficient_data"
+          ]
+        },
+        "uncertainty_state": {
+          "type": "string",
+          "enum": [
+            "low_uncertainty",
+            "medium_uncertainty",
+            "high_uncertainty",
+            "insufficient_data",
+            "invalid"
+          ]
+        }
+      },
+      "description": "Bounded non-diagnostic state-summary object. Not a clinical label, diagnosis, therapeutic label, human score, or relationship verdict."
+    },
+    "confidence_band": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "insufficient",
+        "invalid"
+      ],
+      "description": "Packet-level confidence band. Confidence is not truth, clinical certainty, certification, or Sal-Meter validation."
+    },
+    "data_quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "quality_band",
+        "artifact_flag",
+        "missingness",
+        "sensor_availability",
+        "packet_completeness",
+        "review_required"
+      ],
+      "properties": {
+        "quality_band": {
+          "type": "string",
+          "enum": [
+            "usable",
+            "limited",
+            "poor",
+            "invalid",
+            "synthetic_demo"
+          ]
+        },
+        "artifact_flag": {
+          "type": "boolean"
+        },
+        "missingness": {
+          "type": "string",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "sensor_availability": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "phone",
+              "watch",
+              "glasses",
+              "voice_proxy",
+              "interaction_timing",
+              "self_check",
+              "synthetic_source",
+              "future_sal_meter_candidate_placeholder",
+              "none"
+            ]
+          }
+        },
+        "packet_completeness": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial",
+            "invalid"
+          ]
+        },
+        "review_required": {
+          "type": "boolean"
+        }
+      },
+      "description": "Data quality summary for helper validation. Does not validate benchmark performance, Sal-Meter, CAIS compliance, clinical truth, diagnosis, therapy, or surveillance readiness."
+    },
+    "permission_scope": {
+      "type": "string",
+      "enum": [
+        "private_cue_only",
+        "shared_output_allowed",
+        "dyadic_mediation_only",
+        "dashboard_mockup_only",
+        "audit_log_only",
+        "synthetic_example_only",
+        "no_sharing"
+      ],
+      "description": "Explicit permission scope. Permission must not be assumed."
+    },
+    "sharing_scope": {
+      "type": "string",
+      "enum": [
+        "local_only",
+        "personal_agent_only",
+        "dyadic_session",
+        "room_edge_hub_local",
+        "synthetic_public_example",
+        "audit_summary_only",
+        "no_sharing"
+      ],
+      "description": "Defines where the packet may travel. Public repository examples must be synthetic only."
+    },
+    "output_mode": {
+      "type": "string",
+      "enum": [
+        "no_output",
+        "private_cue",
+        "shared_mediation_output",
+        "recovery_check",
+        "termination_recommendation",
+        "audit_log_only"
+      ],
+      "description": "Allowed output mode connected to the packet. Must not generate diagnosis, therapy, legal mediation decision, blame, relationship verdict, participant ranking, or private state exposure."
+    },
+    "session_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_type",
+        "session_phase",
+        "permitted_use",
+        "closure_required",
+        "reuse_allowed"
+      ],
+      "properties": {
+        "session_type": {
+          "type": "string",
+          "enum": [
+            "synthetic_demo",
+            "phone_only_simulation",
+            "dyadic_mediation_research",
+            "dashboard_mockup",
+            "closed_loop_demo_lite",
+            "audit_only"
+          ]
+        },
+        "session_phase": {
+          "type": "string",
+          "enum": [
+            "created",
+            "consent_confirmed",
+            "baseline",
+            "ai_output",
+            "post_output",
+            "delta_review",
+            "recovery_gate",
+            "termination_gate",
+            "closed",
+            "synthetic_demo"
+          ]
+        },
+        "permitted_use": {
+          "type": "string",
+          "enum": [
+            "structure_demo",
+            "schema_validation",
+            "synthetic_packet_example",
+            "dashboard_mockup",
+            "audit_reference",
+            "research_stage_helper"
+          ]
+        },
+        "closure_required": {
+          "type": "boolean"
+        },
+        "reuse_allowed": {
+          "type": "boolean",
+          "const": false,
+          "description": "Public helper packets must not be silently reused across sessions."
+        }
+      }
+    },
+    "synthetic_flag": {
+      "type": "boolean",
+      "const": true,
+      "description": "Public repository packet examples must be synthetic."
+    },
+    "raw_data_excluded": {
+      "type": "boolean",
+      "const": true,
+      "description": "Raw human data must be excluded from public helper packets."
+    },
+    "audit_timestamp": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "description": "Audit timestamp or synthetic audit timestamp label."
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "research_stage",
+        "non_clinical",
+        "non_diagnostic",
+        "non_therapeutic",
+        "non_surveillance",
+        "non_counseling",
+        "raw_data_non_public",
+        "not_sal_meter",
+        "not_cais_compliance",
+        "not_validated_mediation",
+        "not_production_intervention",
+        "no_human_ranking",
+        "no_relationship_verdict"
+      ],
+      "properties": {
+        "research_stage": {
+          "type": "boolean",
+          "const": true
+        },
+        "non_clinical": {
+          "type": "boolean",
+          "const": true
+        },
+        "non_diagnostic": {
+          "type": "boolean",
+          "const": true
+        },
+        "non_therapeutic": {
+          "type": "boolean",
+          "const": true
+        },
+        "non_surveillance": {
+          "type": "boolean",
+          "const": true
+        },
+        "non_counseling": {
+          "type": "boolean",
+          "const": true
+        },
+        "raw_data_non_public": {
+          "type": "boolean",
+          "const": true
+        },
+        "not_sal_meter": {
+          "type": "boolean",
+          "const": true
+        },
+        "not_cais_compliance": {
+          "type": "boolean",
+          "const": true
+        },
+        "not_validated_mediation": {
+          "type": "boolean",
+          "const": true
+        },
+        "not_production_intervention": {
+          "type": "boolean",
+          "const": true
+        },
+        "no_human_ranking": {
+          "type": "boolean",
+          "const": true
+        },
+        "no_relationship_verdict": {
+          "type": "boolean",
+          "const": true
+        }
+      },
+      "description": "Machine-checkable boundary flags for public helper packets."
+    },
+    "references": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ai_output_reference": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "pre_output_reference": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "post_output_reference": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "delta_reference": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "recovery_gate_reference": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "termination_gate_reference": {
+          "type": "string",
+          "maxLength": 120
+        }
+      },
+      "description": "Optional safe references to other synthetic/helper records. Must not point to raw human data."
+    },
+    "public_notes": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Public-safe notes only. Must not contain raw human data, identity data, diagnosis, therapy, relationship verdict, Sal-Meter validation, or CAIS compliance claims."
+    }
+  },
+  "allOf": [
+    {
+      "not": {
+        "anyOf": [
+          { "required": ["legal_name"] },
+          { "required": ["phone_number"] },
+          { "required": ["email"] },
+          { "required": ["address"] },
+          { "required": ["government_id"] },
+          { "required": ["patient_id"] },
+          { "required": ["employee_id"] },
+          { "required": ["student_id"] },
+          { "required": ["raw_voice"] },
+          { "required": ["raw_face"] },
+          { "required": ["raw_gaze"] },
+          { "required": ["raw_video"] },
+          { "required": ["raw_transcript"] },
+          { "required": ["raw_ecg"] },
+          { "required": ["raw_eeg"] },
+          { "required": ["raw_eda"] },
+          { "required": ["raw_ppg"] },
+          { "required": ["raw_cais_trace"] },
+          { "required": ["raw_sal_meter_trace"] },
+          { "required": ["diagnosis"] },
+          { "required": ["therapy_label"] },
+          { "required": ["psychiatric_label"] },
+          { "required": ["clinical_state"] },
+          { "required": ["human_score"] },
+          { "required": ["truth_score"] },
+          { "required": ["trust_score"] },
+          { "required": ["guilt_score"] },
+          { "required": ["morality_score"] },
+          { "required": ["psychological_safety_score"] },
+          { "required": ["employee_risk_score"] },
+          { "required": ["relationship_verdict"] },
+          { "required": ["fault_assignment"] },
+          { "required": ["who_is_right"] },
+          { "required": ["who_is_wrong"] },
+          { "required": ["unsafe_person"] },
+          { "required": ["political_profile"] },
+          { "required": ["religious_profile"] },
+          { "required": ["ideological_profile"] },
+          { "required": ["cais_compliance_status"] },
+          { "required": ["sal_meter_validation_status"] },
+          { "required": ["certification_status"] },
+          { "required": ["mark_usage_status"] }
+        ]
+      }
+    }
+  ],
+  "examples": [
+    {
+      "packet_id": "hsp_synthetic_0001",
+      "session_id": "session_synthetic_001",
+      "participant_role": "participant_A",
+      "timestamp_created": "synthetic_timestamp_created",
+      "timestamp_expiry": "synthetic_timestamp_expiry",
+      "time_window": {
+        "start_time": "synthetic_start_time",
+        "end_time": "synthetic_end_time",
+        "duration_sec": 10
+      },
+      "state_summary": {
+        "arousal_band": "medium_high",
+        "regulation_trend": "improving",
+        "recovery_trend": "toward_recovery",
+        "overload_risk": "medium",
+        "withdrawal_risk": "low",
+        "engagement_band": "present",
+        "uncertainty_state": "medium_uncertainty"
+      },
+      "confidence_band": "medium",
+      "data_quality": {
+        "quality_band": "usable",
+        "artifact_flag": false,
+        "missingness": "low",
+        "sensor_availability": [
+          "phone",
+          "voice_proxy",
+          "interaction_timing",
+          "synthetic_source"
+        ],
+        "packet_completeness": "complete",
+        "review_required": false
+      },
+      "permission_scope": "dyadic_mediation_only",
+      "sharing_scope": "synthetic_public_example",
+      "output_mode": "private_cue",
+      "session_scope": {
+        "session_type": "synthetic_demo",
+        "session_phase": "synthetic_demo",
+        "permitted_use": "synthetic_packet_example",
+        "closure_required": true,
+        "reuse_allowed": false
+      },
+      "synthetic_flag": true,
+      "raw_data_excluded": true,
+      "audit_timestamp": "synthetic_audit_timestamp",
+      "boundary": {
+        "research_stage": true,
+        "non_clinical": true,
+        "non_diagnostic": true,
+        "non_therapeutic": true,
+        "non_surveillance": true,
+        "non_counseling": true,
+        "raw_data_non_public": true,
+        "not_sal_meter": true,
+        "not_cais_compliance": true,
+        "not_validated_mediation": true,
+        "not_production_intervention": true,
+        "no_human_ranking": true,
+        "no_relationship_verdict": true
+      },
+      "references": {
+        "ai_output_reference": "synthetic_ai_output_001",
+        "pre_output_reference": "synthetic_pre_output_summary_001",
+        "post_output_reference": "synthetic_post_output_summary_001",
+        "delta_reference": "synthetic_delta_001",
+        "recovery_gate_reference": "synthetic_recovery_gate_001",
+        "termination_gate_reference": "synthetic_termination_gate_001"
+      },
+      "public_notes": "Synthetic public helper packet only. No raw human data. No diagnosis. No therapy. No Sal-Meter validation. No CAIS compliance."
+    }
+  ]
+}
