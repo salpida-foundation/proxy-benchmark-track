@@ -804,7 +804,7 @@ It is not CAIS compliance.
 | P3-14 v0.1.0 public helper release package | Done | `docs/v0.1.0-public-helper-release-package.md` prepares the bounded release package without publishing a GitHub Release |
 | P3-15 GitHub pre-release notes and publication gate | Done | `docs/v0.1.0-github-pre-release-notes-and-publication-gate.md` preserves release notes and publication gate language |
 | P3-16 GitHub pre-release draft correction | Done | GitHub draft dependence was treated as unreliable; publication must proceed only through a separate P3-17 authorization gate |
-| P3-17 Public pre-release publication authorization | Gate pending | P3-17 must authorize any `v0.1.0` public pre-release publication action |
+| P3-17 Public pre-release publication authorization | Done | P3-17 authorized v0.1.0 public helper pre-release publication; release published as pre-release with no manual binary assets
 
 ### Completed P3 helper documents
 
@@ -2310,10 +2310,11 @@ Current release status:
 
 ```text
 v0.1.0 public helper pre-release package: prepared.
-Actual GitHub Release: not yet published in this README state.
-Publication gate: P3-17 final authorization required.
-Publication mode, if authorized: GitHub pre-release.
-Binary assets: none unless separately approved.
+Actual GitHub Release: published as v0.1.0 public helper pre-release.
+Publication gate: P3-17 closed with Go.
+Publication mode: GitHub pre-release.
+Manual binary assets: none.
+GitHub auto-generated source archives: present as Source code (zip) and Source code (tar.gz).
 ```
 
 GitHub Actions validator status:
