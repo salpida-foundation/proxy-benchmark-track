@@ -65,7 +65,7 @@ It is a public helper surface for a future human-state-aware AI mediation benchm
 
 ## Current status
 
-**research-stage · non-clinical · non-diagnostic · non-therapeutic · non-surveillance · non-counseling · non-coercive · raw-data-non-public · synthetic-public-data-first · pre-device · pre-certification · pre-compliance · benchmark support only**
+**research-stage · non-clinical · non-diagnostic · non-therapeutic · non-surveillance · non-counseling · non-coercive · raw-data-non-public · synthetic-public-data-first · public helper only · pre-validation · pre-device · pre-certification · pre-compliance · benchmark support only**
 
 This repository is:
 
@@ -92,10 +92,18 @@ https://salpida.foundation/topics/human-state-aware-ai-interaction/
 The P3 Human-State-Aware AI Mediation helper layer now defines the public helper structure for:
 
 ```text
-Layer → Packet → Baseline → Recovery Gate → Termination Gate
+Layer
+→ Packet
+→ Session Protocol
+→ Dyadic Session Flow
+→ Baseline
+→ Recovery Gate
+→ Termination Gate
+→ Consent and Data-Sharing Boundary
+→ Session Closure / Audit Log
 ```
 
-Completed P3 helper files:
+Completed P3 helper documents:
 
 ```text
 docs/human-state-mediation-layer.md
@@ -103,10 +111,29 @@ docs/human-state-packet-schema.md
 docs/dyadic-recovery-baseline-suite.md
 docs/recovery-gate-definition.md
 docs/termination-gate-definition.md
-schemas/human_state_packet.schema.json
+docs/human-state-session-protocol.md
+docs/dyadic-mediation-session-flow.md
+docs/consent-and-data-sharing-boundary.md
 ```
 
-These helper documents do not validate a benchmark.
+Completed P3 boundary and release-preparation documents:
+
+```text
+docs/p3-final-boundary-audit.md
+docs/v0.1.0-public-helper-release-package.md
+docs/v0.1.0-github-pre-release-notes-and-publication-gate.md
+```
+
+Completed P3 helper schemas:
+
+```text
+schemas/human_state_packet.schema.json
+schemas/dyadic_session_event.schema.json
+schemas/benchmark_session.schema.json
+schemas/README.md
+```
+
+These helper documents and schemas do not validate a benchmark.
 
 They do not validate Sal-Meter.
 
@@ -336,6 +363,7 @@ The purpose is to prepare:
 - Human-State Packet helper structures;
 - Human-State Session Protocol helper structures;
 - dyadic mediation session-flow helper structures;
+- consent and data-sharing boundary structures;
 - Dyadic Recovery Baseline Suite;
 - Recovery Gate;
 - Termination Gate;
@@ -349,6 +377,7 @@ The purpose is to prepare:
 The proxy track supports the core track.
 
 It does not replace it.
+
 ---
 
 ## What this track is not
@@ -433,9 +462,12 @@ The architecture is:
 ```text
 Human-State Mediation Layer
 → Human-State Packet
+→ Human-State Session Protocol
+→ Dyadic Mediation Session Flow
 → Dyadic Recovery Baseline Suite
 → Recovery Gate
 → Termination Gate
+→ Consent and Data-Sharing Boundary
 → Session Closure / Audit Log
 ```
 
@@ -447,22 +479,28 @@ docs/human-state-packet-schema.md
 docs/dyadic-recovery-baseline-suite.md
 docs/recovery-gate-definition.md
 docs/termination-gate-definition.md
-schemas/human_state_packet.schema.json
-```
-
-Planned helper documents:
-
-```text
 docs/human-state-session-protocol.md
 docs/dyadic-mediation-session-flow.md
 docs/consent-and-data-sharing-boundary.md
+```
+
+Completed helper schemas:
+
+```text
+schemas/human_state_packet.schema.json
 schemas/dyadic_session_event.schema.json
 schemas/benchmark_session.schema.json
 ```
 
-Completed P3 documents are helper structures.
+Completed P3 boundary and release-preparation documents:
 
-Planned P3 documents remain planned until created.
+```text
+docs/p3-final-boundary-audit.md
+docs/v0.1.0-public-helper-release-package.md
+docs/v0.1.0-github-pre-release-notes-and-publication-gate.md
+```
+
+Completed P3 documents and schemas are helper structures.
 
 No P3 helper file validates a benchmark, validates Sal-Meter, grants CAIS compliance, or authorizes clinical, therapeutic, counseling, legal mediation, surveillance, human-ranking, or production deployment claims.
 
@@ -648,7 +686,7 @@ Session Creation
 
 This repository is currently in a public helper implementation stage for the SICS Human-State Proxy Benchmark Track.
 
-It provides schema, synthetic/sample data, validation scaffolding, dashboard mockup boundaries, protocol helper rules, closed-loop demo-lite boundary scaffolding, replication guide checklists, contributor issue/PR templates, Human-State-Aware AI Mediation helper documents, and repository hygiene workflow scaffolding for structure demonstration only.
+It provides schema, synthetic/sample data, validation scaffolding, dashboard mockup boundaries, protocol helper rules, closed-loop demo-lite boundary scaffolding, replication guide checklists, contributor issue/PR templates, Human-State-Aware AI Mediation helper documents, P3 helper schemas, P3 boundary audit documents, and repository hygiene workflow scaffolding for structure demonstration only.
 
 It does not provide benchmark evidence.
 
@@ -663,8 +701,10 @@ It does not validate Sal-Meter.
 | Work item | Status | Notes |
 |---|---|---|
 | Governance boundary files | Present | Public/private data boundary and prohibited-claim discipline are represented in the repository |
-| Schema completion | Done | `schemas/` contains public helper schemas for metadata, event markers, streams, labels, QC, features, splits, and Human-State Packet helper structure |
+| Schema completion | Done | `schemas/` contains public helper schemas for metadata, event markers, streams, labels, QC, features, splits, Human-State Packet, Dyadic Session Event, and Benchmark Session Container helper structures |
 | Human-State Packet JSON helper schema | Done | `schemas/human_state_packet.schema.json` defines a public helper schema for synthetic Human-State Packets |
+| Dyadic Session Event JSON helper schema | Done | `schemas/dyadic_session_event.schema.json` validates one public-safe synthetic/sample dyadic session boundary event |
+| Benchmark Session JSON helper schema | Done | `schemas/benchmark_session.schema.json` validates one public-safe synthetic/sample benchmark session container |
 | Synthetic sample package | Present | `sample-data/synthetic-session-001/` contains a public synthetic/sample structure package |
 | Synthetic session README | Done | The synthetic package includes a local README explaining file roles and boundaries |
 | Sample package validator | Present | `evaluation-baseline/validate_sample_package.py` provides helper-structure validation |
@@ -679,13 +719,19 @@ It does not validate Sal-Meter.
 | P3 Dyadic Recovery Baseline Suite | Done | `docs/dyadic-recovery-baseline-suite.md` defines the B0-B7 baseline ladder |
 | P3 Recovery Gate | Done | `docs/recovery-gate-definition.md` defines false recovery prevention and recovery decision boundaries |
 | P3 Termination Gate | Done | `docs/termination-gate-definition.md` defines stop, pause, closure, expiry, permission, and overstay boundaries |
+| P3 Human-State Session Protocol | Done | `docs/human-state-session-protocol.md` defines a bounded, consent-based, permission-bound, audit-ready session lifecycle |
+| P3 Dyadic Mediation Session Flow | Done | `docs/dyadic-mediation-session-flow.md` defines dyadic flow and the rule that one-sided improvement is not dyadic recovery |
+| P3 Consent and Data-Sharing Boundary | Done | `docs/consent-and-data-sharing-boundary.md` defines consent, permission, sharing, expiry, withdrawal, public/private data boundary, raw-data-non-public rule, and audit boundary |
+| P3 Final Boundary Audit | Done | `docs/p3-final-boundary-audit.md` records the final P3 boundary audit before release packaging |
+| v0.1.0 public helper release package | Prepared | `docs/v0.1.0-public-helper-release-package.md` prepares a bounded public helper package for later publication review |
+| v0.1.0 GitHub pre-release notes and publication gate | Prepared | `docs/v0.1.0-github-pre-release-notes-and-publication-gate.md` preserves release notes and gate language for later publication action |
 | GitHub Actions validator workflow | Present / Blocked | `.github/workflows/validate-synthetic-sample.yml` exists, but execution is currently blocked by GitHub account-level Actions restriction |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
 | Sal-Meter input | Not present | This repository is not Sal-Meter and does not contain Sal-Meter signal data |
 | CAIS compliance claim | Not present | This repository does not grant CAIS compliance |
 | Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, template, PR, or benchmark result is validated by this repository |
-| Release status | Not published | `v0.1.0` is a release-readiness target only until validator execution can run successfully |
+| Release status | Prepared / Pending P3-17 gate | `v0.1.0` public helper pre-release package is prepared; publication requires P3-17 authorization and must remain a pre-release helper package only |
 
 ---
 
@@ -697,7 +743,7 @@ It does not validate Sal-Meter.
 | P1-2 Synthetic sample package validator | Done | Validator file exists under `evaluation-baseline/validate_sample_package.py` |
 | P1-3 Evaluation baseline README and validator usability | Done | Evaluation baseline README explains local usage, PASS / FAIL meaning, dependency installation, and validator boundaries |
 | P1-4 GitHub Actions validator workflow | Open / Blocked | Workflow exists but cannot currently run because GitHub Actions is disabled at the user-account level |
-| P1-5 v0.1.0 release readiness package | In progress / Hold publication | Actual release must remain unpublished until P1-4 can run successfully |
+| P1-5 v0.1.0 release readiness package | Prepared / Gate pending | `v0.1.0` public helper pre-release package is prepared; publication requires P3-17 authorization and does not create benchmark validation, Sal-Meter validation, or CAIS compliance |
 
 ---
 
@@ -720,6 +766,16 @@ P3 introduces the Human-State-Aware AI Mediation helper layer.
 P3 helper documents and schemas have been completed through P3-11.
 
 P3-12 has aligned this root README with the completed helper documents, helper schemas, and schema-folder README.
+
+P3-13 records the final P3 boundary audit.
+
+P3-14 prepares the `v0.1.0` public helper release package.
+
+P3-15 preserves the exact GitHub pre-release notes and publication gate.
+
+P3-16 tested the GitHub draft path and corrected the process away from unreliable draft dependence.
+
+P3-17 is the final authorization gate for public pre-release publication.
 
 This is still a public helper layer.
 
@@ -744,6 +800,11 @@ It is not CAIS compliance.
 | P3-10 Benchmark Session JSON helper schema | Done | `schemas/benchmark_session.schema.json` validates one public-safe synthetic/sample benchmark session container |
 | P3-11 Schemas README alignment | Done | `schemas/README.md` now distinguishes packet object, dyadic session event object, and benchmark session container |
 | P3-12 Root README alignment | Done | Root README has been aligned with completed P3 helper documents and schemas |
+| P3-13 Final P3 boundary audit | Done | `docs/p3-final-boundary-audit.md` records the final P3 boundary audit before any release packaging |
+| P3-14 v0.1.0 public helper release package | Done | `docs/v0.1.0-public-helper-release-package.md` prepares the bounded release package without publishing a GitHub Release |
+| P3-15 GitHub pre-release notes and publication gate | Done | `docs/v0.1.0-github-pre-release-notes-and-publication-gate.md` preserves release notes and publication gate language |
+| P3-16 GitHub pre-release draft correction | Done | GitHub draft dependence was treated as unreliable; publication must proceed only through a separate P3-17 authorization gate |
+| P3-17 Public pre-release publication authorization | Gate pending | P3-17 must authorize any `v0.1.0` public pre-release publication action |
 
 ### Completed P3 helper documents
 
@@ -757,6 +818,15 @@ docs/
   human-state-session-protocol.md
   dyadic-mediation-session-flow.md
   consent-and-data-sharing-boundary.md
+```
+
+### Completed P3 boundary and release-preparation documents
+
+```text
+docs/
+  p3-final-boundary-audit.md
+  v0.1.0-public-helper-release-package.md
+  v0.1.0-github-pre-release-notes-and-publication-gate.md
 ```
 
 ### Completed P3 helper schemas
@@ -780,6 +850,7 @@ AI Output
 → Dyadic Delta
 → Recovery Gate
 → Termination Gate
+→ Consent and Data-Sharing Boundary
 → Session Closure
 → Audit Log
 ```
@@ -882,9 +953,50 @@ They do not crown a benchmark as validated.
 
 ### Release boundary
 
-A GitHub Release is not ready.
+A production release is not ready.
 
-Public release packaging remains separate and should not proceed until the helper surfaces, validation scaffolds, and boundary language are reviewed.
+A validated benchmark release is not ready.
+
+A Sal-Meter release is not ready.
+
+A CAIS-compliant release is not ready.
+
+A `v0.1.0` public helper pre-release package has been prepared.
+
+The `v0.1.0` public helper pre-release may proceed only through the P3-17 publication authorization gate.
+
+If published, it must remain:
+
+```text
+research-stage
+public helper only
+synthetic/sample-data-first
+raw-data-non-public
+non-clinical
+non-diagnostic
+non-therapeutic
+non-surveillance
+non-counseling
+pre-validation
+pre-device
+pre-certification
+pre-compliance
+not Sal-Meter
+not CAIS compliance
+not validated benchmark
+not validated mediation
+not production closed-loop intervention
+```
+
+GitHub Actions validation remains a known workflow blocker.
+
+That blocker does not create validation.
+
+That blocker does not create CAIS compliance.
+
+That blocker does not create Sal-Meter validation.
+
+That blocker does not authorize production use.
 
 Raw human data must not enter the public repository.
 
@@ -926,11 +1038,14 @@ proxy-benchmark-track/
     dyadic-recovery-baseline-suite.md
     recovery-gate-definition.md
     termination-gate-definition.md
-
-    # P3 planned helper documents
     human-state-session-protocol.md
     dyadic-mediation-session-flow.md
     consent-and-data-sharing-boundary.md
+
+    # P3 completed boundary and release-preparation documents
+    p3-final-boundary-audit.md
+    v0.1.0-public-helper-release-package.md
+    v0.1.0-github-pre-release-notes-and-publication-gate.md
 
   governance/
     README.md
@@ -946,9 +1061,9 @@ proxy-benchmark-track/
     qc-report.schema.json
     features-baseline.schema.json
     splits.schema.json
-    human_state_packet.schema.json
 
-    # P3 planned helper schemas
+    # P3 completed helper schemas
+    human_state_packet.schema.json
     dyadic_session_event.schema.json
     benchmark_session.schema.json
 
@@ -1001,7 +1116,17 @@ proxy-benchmark-track/
     public_release_checklist.md
 ```
 
-If an exact file is not present in the repository, that file name should be treated as a planned or helper-reference path until created.
+This repository structure documents helper surfaces.
+
+It does not create canonical authority.
+
+It does not create benchmark validation.
+
+It does not create Sal-Meter validation.
+
+It does not create CAIS compliance.
+
+If the live repository structure and this README diverge, the live repository should be corrected through an auditable issue / PR / commit path.
 
 ---
 
@@ -1131,6 +1256,8 @@ A valid Human-State Session must have:
 - role confirmation;
 - scope confirmation;
 - packet availability check;
+- packet permission check;
+- packet expiry check;
 - baseline state summary;
 - AI output record;
 - post-output state summary;
@@ -1156,6 +1283,8 @@ A session fails if:
 - audit log is missing.
 
 A session that cannot close is not a Human-State Session.
+
+It is surveillance drift.
 
 ---
 
@@ -1251,11 +1380,54 @@ A closed session must stay closed.
 
 ---
 
+## Consent and data-sharing boundary
+
+Consent is not permanent.
+
+Permission is not unlimited.
+
+Sharing is not automatic.
+
+A Human-State Packet is not the body.
+
+Private state is not social evidence.
+
+Raw human data must not enter the public repository.
+
+A valid consent and data-sharing boundary must preserve:
+
+- session-bound consent;
+- purpose-bound consent;
+- revocable consent;
+- non-coercive consent;
+- consent scope;
+- consent duration;
+- consent withdrawal;
+- packet permission;
+- packet expiry;
+- private cue permission;
+- shared output permission;
+- public/private data separation;
+- raw-data-non-public boundary;
+- audit log boundary.
+
+No consent, no session.
+
+No permission, no packet use.
+
+No sharing scope, no shared output.
+
+No expiry rule, no continued mediation.
+
+A closed session must stay closed.
+
+---
+
 ## Schema helper pack
 
 `schemas/` contains public helper schemas for synthetic/sample package structure.
 
-The schemas are provided to document and validate structure.
+The schemas are provided to document and validate public helper structure.
 
 They are not canonical authority.
 
@@ -1282,12 +1454,6 @@ schemas/
   features-baseline.schema.json
   splits.schema.json
   human_state_packet.schema.json
-```
-
-Planned P3 helper schema files:
-
-```text
-schemas/
   dyadic_session_event.schema.json
   benchmark_session.schema.json
 ```
@@ -1300,7 +1466,9 @@ The schema pack supports:
 - public/private data separation;
 - leakage-risk awareness;
 - helper validation;
-- Human-State Packet structure demonstration.
+- Human-State Packet structure demonstration;
+- Dyadic Session Event boundary-event demonstration;
+- Benchmark Session Container structure demonstration.
 
 It does not support:
 
@@ -1313,6 +1481,24 @@ It does not support:
 - surveillance validation;
 - certification validation;
 - human-ranking validation.
+
+The schema layer now includes:
+
+```text
+Human-State Packet
+→ Dyadic Session Event
+→ Benchmark Session Container
+```
+
+A schema validates structure.
+
+It does not validate the human body.
+
+It does not validate Sal-Meter.
+
+It does not grant CAIS compliance.
+
+It does not crown a benchmark as validated.
 
 ---
 
@@ -1369,6 +1555,7 @@ A public sample package is a lantern.
 It lights the path.
 
 It is not the mountain.
+
 ---
 
 ## Evaluation baseline
@@ -1518,6 +1705,16 @@ It does not validate:
 - certification readiness;
 - device readiness;
 - human-state truth measurement.
+
+The Actions blocker is a workflow-execution blocker.
+
+It is not benchmark evidence.
+
+It is not a CAIS compliance condition.
+
+It is not Sal-Meter validation.
+
+It must not be used as proof of readiness.
 
 ---
 
@@ -2082,7 +2279,7 @@ This stack does not create a production closed-loop intervention system.
 
 ## Public release boundary
 
-A public release must not be published until:
+A public helper pre-release must not be published until:
 
 - public helper boundary language is stable;
 - synthetic/sample data boundaries are clear;
@@ -2105,15 +2302,40 @@ A public release must not be published until:
 - no benchmark validation claim is present;
 - no diagnostic, clinical, therapeutic, surveillance, certification, counseling, mediation-service, or human-ranking authority is implied;
 - no live intervention or production automation is implied;
-- GitHub Actions validator workflow can run successfully, if the release depends on that validator.
+- GitHub pre-release status is selected, if a GitHub Release is published;
+- no binary assets are attached unless separately approved;
+- P3-17 closes with Go.
 
 Current release status:
 
 ```text
-v0.1.0 release-readiness target only.
-Actual GitHub Release: not published.
-Publication hold reason: P1-4 GitHub Actions validator workflow is blocked by account-level Actions restriction.
+v0.1.0 public helper pre-release package: prepared.
+Actual GitHub Release: not yet published in this README state.
+Publication gate: P3-17 final authorization required.
+Publication mode, if authorized: GitHub pre-release.
+Binary assets: none unless separately approved.
 ```
+
+GitHub Actions validator status:
+
+```text
+P1-4 GitHub Actions validator workflow remains blocked by account-level Actions restriction.
+This is a workflow-execution blocker.
+It is not benchmark validation.
+It is not Sal-Meter validation.
+It is not CAIS compliance.
+It does not authorize production use.
+```
+
+The `v0.1.0` public helper pre-release, if published, must remain a helper package.
+
+It must not become a validation claim.
+
+It must not become a compliance claim.
+
+It must not become a device claim.
+
+It must not become a clinical claim.
 
 ---
 
@@ -2208,6 +2430,7 @@ Human-State Mediation Layer
 Dyadic Recovery Baseline Suite
 Recovery Gate
 Termination Gate
+Consent and Data-Sharing Boundary
 research-stage helper
 synthetic sample package
 dashboard mockup boundary
@@ -2293,15 +2516,35 @@ Send one bounded capability.
 P1-4 remains open:
   GitHub Actions workflow exists but is blocked by account-level Actions restriction.
 
-P1-5 remains open:
-  v0.1.0 release readiness is prepared, but release must remain unpublished until P1-4 can run successfully.
+P1-4 meaning:
+  Workflow execution is blocked.
+  Benchmark validation is not claimed.
+  Sal-Meter validation is not claimed.
+  CAIS compliance is not claimed.
 
-P3 remaining helper files remain planned:
-  docs/human-state-session-protocol.md
-  docs/dyadic-mediation-session-flow.md
-  docs/consent-and-data-sharing-boundary.md
-  schemas/dyadic_session_event.schema.json
-  schemas/benchmark_session.schema.json
+P1-5 release readiness:
+  v0.1.0 public helper pre-release package has been prepared.
+  Publication may proceed only if P3-17 closes with Go.
+  Publication must use GitHub pre-release status.
+  Publication must not attach binary assets unless separately approved.
+  Publication must not imply validation, compliance, production readiness, or clinical use.
+
+P3 helper layer:
+  P3 helper documents are completed through P3-15.
+  P3 release publication authorization remains gated by P3-17.
+  P3 does not validate a benchmark.
+  P3 does not validate Sal-Meter.
+  P3 does not grant CAIS compliance.
+
+No raw human data is authorized.
+
+No identity-bearing data is authorized.
+
+No real dyadic conflict records are authorized.
+
+No raw Sal-Meter traces are authorized.
+
+No raw CAIS traces are authorized.
 ```
 
 ---
@@ -2345,6 +2588,8 @@ It prepares future packet discipline.
 It prepares future session discipline.
 
 It prepares future dyadic recovery benchmark discipline.
+
+It prepares future consent and data-sharing discipline.
 
 It prepares future recovery-gate discipline.
 
