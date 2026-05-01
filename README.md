@@ -719,7 +719,7 @@ P3 introduces the Human-State-Aware AI Mediation helper layer.
 
 P3 helper documents and schemas have been completed through P3-11.
 
-P3-12 aligns this root README with the completed helper documents, helper schemas, and schema-folder README.
+P3-12 has aligned this root README with the completed helper documents, helper schemas, and schema-folder README.
 
 This is still a public helper layer.
 
