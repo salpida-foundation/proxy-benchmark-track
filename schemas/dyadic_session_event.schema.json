@@ -1,0 +1,569 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salpida-foundation/proxy-benchmark-track/schemas/dyadic_session_event.schema.json",
+  "title": "SICS Human-State Proxy Benchmark Track Dyadic Session Event Helper Schema v0.1",
+  "description": "Strict public helper schema for validating synthetic/sample dyadic session boundary events. This schema is for public helper use only. It does not define CAIS, does not validate Sal-Meter, does not support clinical, diagnostic, therapeutic, counseling, legal mediation, surveillance, human-ranking, relationship-verdict, or production closed-loop intervention claims.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "dyadic_session_id",
+    "event_type",
+    "timestamp",
+    "dataset_type",
+    "synthetic_status",
+    "actor_role",
+    "participant_scope",
+    "session_scope_status",
+    "consent_status",
+    "permission_status",
+    "packet_status",
+    "sharing_scope",
+    "private_cue_status",
+    "shared_output_status",
+    "human_state_delta_A",
+    "human_state_delta_B",
+    "dyadic_delta",
+    "recovery_gate_decision",
+    "termination_gate_decision",
+    "closure_reason",
+    "data_quality_status",
+    "confidence_status",
+    "boundary_flags",
+    "audit_reference",
+    "final_boundary_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1",
+      "description": "Schema version for this dyadic session event helper schema."
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^DSE-[A-Z0-9_-]+$",
+      "description": "Synthetic or coded dyadic session event identifier. Must not contain real participant identifiers."
+    },
+    "dyadic_session_id": {
+      "type": "string",
+      "pattern": "^DYS-[A-Z0-9_-]+$",
+      "description": "Synthetic or coded dyadic session identifier. Must not identify real participants."
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "dyadic_session_created",
+        "participant_roles_confirmed",
+        "consent_confirmed",
+        "consent_withdrawn",
+        "shared_scope_confirmed",
+        "shared_scope_narrowed",
+        "packet_A_available",
+        "packet_B_available",
+        "packet_A_unavailable",
+        "packet_B_unavailable",
+        "packet_A_permission_confirmed",
+        "packet_B_permission_confirmed",
+        "packet_A_permission_unclear",
+        "packet_B_permission_unclear",
+        "packet_A_expired",
+        "packet_B_expired",
+        "private_cue_A_recorded",
+        "private_cue_B_recorded",
+        "shared_output_recorded",
+        "shared_output_blocked",
+        "baseline_dyadic_summary_recorded",
+        "post_output_summary_A_recorded",
+        "post_output_summary_B_recorded",
+        "human_state_delta_A_recorded",
+        "human_state_delta_B_recorded",
+        "dyadic_delta_recorded",
+        "asymmetry_detected",
+        "one_sided_improvement_detected",
+        "silence_risk_detected",
+        "synchrony_review_required",
+        "private_state_exposure_risk_detected",
+        "recovery_gate_called",
+        "termination_gate_called",
+        "pause_required",
+        "human_review_required",
+        "dyadic_session_closed",
+        "audit_recorded",
+        "invalid_dyadic_session"
+      ],
+      "description": "Public-safe dyadic session event type."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Synthetic or public-safe event timestamp in RFC3339 date-time format."
+    },
+    "dataset_type": {
+      "type": "string",
+      "enum": [
+        "synthetic",
+        "sample",
+        "mock",
+        "placeholder",
+        "structure_only"
+      ],
+      "description": "Public helper dataset type. Real human data is not allowed."
+    },
+    "synthetic_status": {
+      "type": "string",
+      "enum": [
+        "synthetic_only",
+        "sample_only",
+        "mock_only",
+        "placeholder_only",
+        "structure_only",
+        "not_real_human_data"
+      ],
+      "description": "Public-safe synthetic/sample status. Must not indicate real participant, clinical, production, raw Sal-Meter, or raw CAIS data."
+    },
+    "actor_role": {
+      "type": "string",
+      "enum": [
+        "participant_A",
+        "participant_B",
+        "personal_agent_A",
+        "personal_agent_B",
+        "shared_mediation_agent",
+        "system",
+        "reviewer",
+        "audit_process",
+        "synthetic_generator",
+        "not_applicable"
+      ],
+      "description": "Bounded helper actor role. Must not imply clinician, therapist, counselor, legal mediator, judge, certifier, Sal-Meter operator, or CAIS compliance authority."
+    },
+    "participant_scope": {
+      "type": "string",
+      "enum": [
+        "participant_A_only",
+        "participant_B_only",
+        "dyad",
+        "system_only",
+        "audit_only",
+        "synthetic_public_example",
+        "not_applicable"
+      ],
+      "description": "Participant scope for the event. One participant's state must not be exposed to another without permission."
+    },
+    "session_scope_status": {
+      "type": "string",
+      "enum": [
+        "scope_confirmed",
+        "scope_narrowed",
+        "scope_unclear",
+        "scope_violation",
+        "scope_expired",
+        "scope_closed",
+        "not_applicable"
+      ],
+      "description": "Session scope boundary status."
+    },
+    "consent_status": {
+      "type": "string",
+      "enum": [
+        "consent_confirmed_both",
+        "consent_confirmed_A_only",
+        "consent_confirmed_B_only",
+        "consent_pending",
+        "consent_missing",
+        "consent_withdrawn_A",
+        "consent_withdrawn_B",
+        "consent_withdrawn_both",
+        "consent_expired",
+        "invalid_consent",
+        "not_applicable"
+      ],
+      "description": "Consent status. One-sided consent must remain visible and must not be mistaken for shared permission."
+    },
+    "permission_status": {
+      "type": "string",
+      "enum": [
+        "permission_confirmed",
+        "permission_missing",
+        "permission_unclear",
+        "permission_revoked",
+        "permission_expired",
+        "private_cue_only",
+        "shared_output_allowed",
+        "audit_log_only",
+        "synthetic_public_example_only",
+        "invalid_permission",
+        "not_applicable"
+      ],
+      "description": "Permission status. Permission is narrower than consent."
+    },
+    "packet_status": {
+      "type": "string",
+      "enum": [
+        "packet_present",
+        "packet_absent",
+        "packet_A_present",
+        "packet_B_present",
+        "packet_A_absent",
+        "packet_B_absent",
+        "packet_expired",
+        "packet_invalid",
+        "packet_permission_unclear",
+        "packet_data_quality_insufficient",
+        "packet_private_cue_only",
+        "packet_audit_log_only",
+        "not_applicable"
+      ],
+      "description": "Human-State Packet status only. Raw packet content is not allowed."
+    },
+    "sharing_scope": {
+      "type": "string",
+      "enum": [
+        "no_sharing",
+        "private_cue_only",
+        "participant_specific_agent_only",
+        "shared_output_allowed",
+        "audit_log_only",
+        "synthetic_public_example_only",
+        "public_helper_documentation_only",
+        "not_public",
+        "not_exportable",
+        "not_reusable_outside_session",
+        "expired",
+        "withdrawn",
+        "invalid",
+        "not_applicable"
+      ],
+      "description": "Explicit sharing scope. Sharing is not automatic."
+    },
+    "private_cue_status": {
+      "type": "string",
+      "enum": [
+        "private_cue_not_used",
+        "private_cue_A_allowed",
+        "private_cue_B_allowed",
+        "private_cue_A_recorded",
+        "private_cue_B_recorded",
+        "private_cue_blocked",
+        "private_cue_expired",
+        "private_cue_invalid",
+        "not_applicable"
+      ],
+      "description": "Private cue status. Private cue must not become hidden control or expose another participant."
+    },
+    "shared_output_status": {
+      "type": "string",
+      "enum": [
+        "shared_output_not_used",
+        "shared_output_allowed",
+        "shared_output_recorded",
+        "shared_output_blocked",
+        "shared_output_risk_detected",
+        "shared_output_invalid",
+        "not_applicable"
+      ],
+      "description": "Shared output status. Shared output must not expose private state, assign blame, or generate relationship verdicts."
+    },
+    "baseline_dyadic_summary_ref": {
+      "type": "string",
+      "pattern": "^(REF-[A-Z0-9_-]+|not_applicable)$",
+      "default": "not_applicable",
+      "description": "Reference to a bounded baseline dyadic summary. Must not contain raw human data."
+    },
+    "post_output_summary_A_ref": {
+      "type": "string",
+      "pattern": "^(REF-[A-Z0-9_-]+|not_applicable)$",
+      "default": "not_applicable",
+      "description": "Reference to participant A bounded post-output summary. Must not expose private state."
+    },
+    "post_output_summary_B_ref": {
+      "type": "string",
+      "pattern": "^(REF-[A-Z0-9_-]+|not_applicable)$",
+      "default": "not_applicable",
+      "description": "Reference to participant B bounded post-output summary. Must not expose private state."
+    },
+    "human_state_delta_A": {
+      "type": "string",
+      "enum": [
+        "toward_recovery",
+        "away_from_recovery",
+        "unchanged",
+        "mixed",
+        "uncertain",
+        "insufficient_data",
+        "invalid",
+        "not_applicable"
+      ],
+      "description": "Participant A bounded state-summary delta. Not a diagnosis, therapy label, clinical state, human score, Sal-Meter output, or CAIS-compliant output."
+    },
+    "human_state_delta_B": {
+      "type": "string",
+      "enum": [
+        "toward_recovery",
+        "away_from_recovery",
+        "unchanged",
+        "mixed",
+        "uncertain",
+        "insufficient_data",
+        "invalid",
+        "not_applicable"
+      ],
+      "description": "Participant B bounded state-summary delta. Not a diagnosis, therapy label, clinical state, human score, Sal-Meter output, or CAIS-compliant output."
+    },
+    "dyadic_delta": {
+      "type": "string",
+      "enum": [
+        "dyad_toward_recovery",
+        "dyad_away_from_recovery",
+        "dyad_unchanged",
+        "dyad_mixed",
+        "one_sided_improvement",
+        "one_sided_deterioration",
+        "asymmetry_detected",
+        "silence_risk_detected",
+        "burden_risk_detected",
+        "coercion_risk_detected",
+        "private_state_exposure_risk",
+        "shared_output_risk",
+        "uncertain",
+        "insufficient_data",
+        "invalid",
+        "not_applicable"
+      ],
+      "description": "Bounded dyadic delta. One-sided improvement is not dyadic recovery. Silence is not automatically recovery. Synchrony is not automatically positive."
+    },
+    "recovery_gate_decision": {
+      "type": "string",
+      "enum": [
+        "not_called",
+        "recovery_reached",
+        "recovery_not_reached",
+        "recovery_uncertain",
+        "false_positive_recovery_risk",
+        "false_negative_recovery_risk",
+        "one_sided_improvement_detected",
+        "shared_output_risk_detected",
+        "reduce_mediation_recommended",
+        "pause_recommended",
+        "terminate_recommended",
+        "private_cue_only",
+        "shared_output_blocked",
+        "human_review_required",
+        "invalid_due_to_data_quality",
+        "invalid_due_to_permission",
+        "invalid_due_to_scope",
+        "not_applicable"
+      ],
+      "description": "Recovery Gate decision. The Recovery Gate must not crown the AI for speaking well."
+    },
+    "termination_gate_decision": {
+      "type": "string",
+      "enum": [
+        "not_called",
+        "continue_allowed",
+        "pause_required",
+        "narrow_scope_required",
+        "private_cue_only",
+        "shared_output_blocked",
+        "terminate_required",
+        "terminate_recommended",
+        "human_review_required",
+        "packet_channel_closed",
+        "dyadic_session_closed",
+        "audit_required",
+        "invalid_dyadic_session",
+        "not_applicable"
+      ],
+      "description": "Termination Gate decision. The Termination Gate prevents endless mediation."
+    },
+    "closure_reason": {
+      "type": "string",
+      "enum": [
+        "not_closed",
+        "recovery_reached",
+        "termination_required",
+        "participant_A_consent_withdrawn",
+        "participant_B_consent_withdrawn",
+        "participant_stop_request",
+        "packet_A_expired",
+        "packet_B_expired",
+        "packet_A_invalid",
+        "packet_B_invalid",
+        "packet_permission_revoked",
+        "packet_permission_unclear",
+        "data_quality_failure",
+        "high_uncertainty",
+        "scope_violation",
+        "sharing_scope_violation",
+        "private_state_exposure_risk",
+        "raw_data_exposure_risk",
+        "non_judgment_failure",
+        "prohibited_output",
+        "one_sided_improvement_risk",
+        "asymmetry_unresolved",
+        "silence_risk_unresolved",
+        "coercion_risk",
+        "burden_risk",
+        "mediation_overstay",
+        "missing_audit_trail",
+        "human_review_required",
+        "invalid_dyadic_session",
+        "not_applicable"
+      ],
+      "description": "Closure reason. Must describe the boundary condition and must not blame a participant."
+    },
+    "data_quality_status": {
+      "type": "string",
+      "enum": [
+        "sufficient",
+        "limited",
+        "weak",
+        "conflicting",
+        "missing",
+        "invalid",
+        "unknown",
+        "not_applicable"
+      ],
+      "description": "Data quality status. Data quality is not truth, diagnosis, or certification."
+    },
+    "confidence_status": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "uncertain",
+        "insufficient",
+        "invalid",
+        "not_applicable"
+      ],
+      "description": "Confidence status. Low confidence must not produce strong shared output."
+    },
+    "boundary_flags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_human_data_present",
+        "identifiable_data_present",
+        "clinical_data_present",
+        "private_state_exposure_risk",
+        "relationship_verdict_present",
+        "human_score_present",
+        "diagnostic_claim_present",
+        "therapeutic_claim_present",
+        "counseling_claim_present",
+        "legal_mediation_claim_present",
+        "surveillance_claim_present",
+        "sal_meter_validation_claim_present",
+        "cais_compliance_claim_present",
+        "production_intervention_claim_present",
+        "synthetic_public_data_confirmed",
+        "audit_log_required"
+      ],
+      "properties": {
+        "raw_human_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "identifiable_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "clinical_data_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "private_state_exposure_risk": {
+          "type": "boolean",
+          "const": false
+        },
+        "relationship_verdict_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "human_score_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "diagnostic_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "therapeutic_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "counseling_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "legal_mediation_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "surveillance_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "sal_meter_validation_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "cais_compliance_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "production_intervention_claim_present": {
+          "type": "boolean",
+          "const": false
+        },
+        "synthetic_public_data_confirmed": {
+          "type": "boolean",
+          "const": true
+        },
+        "audit_log_required": {
+          "type": "boolean",
+          "const": true
+        }
+      },
+      "description": "Boundary flags for public helper validation. Prohibited leakage and overclaim flags must be false."
+    },
+    "audit_reference": {
+      "type": "string",
+      "pattern": "^(AUD-[A-Z0-9_-]+|not_applicable)$",
+      "description": "Synthetic or coded audit reference. Must not expose raw human data."
+    },
+    "final_boundary_status": {
+      "type": "string",
+      "enum": [
+        "boundary_valid",
+        "consent_missing",
+        "consent_withdrawn",
+        "permission_missing",
+        "permission_revoked",
+        "packet_expired",
+        "packet_invalid",
+        "sharing_scope_missing",
+        "sharing_scope_violated",
+        "private_state_exposure_risk",
+        "raw_data_exposure_risk",
+        "public_boundary_violation",
+        "synthetic_status_missing",
+        "data_quality_invalid",
+        "confidence_insufficient",
+        "audit_missing",
+        "closure_required",
+        "invalid_session",
+        "human_review_required"
+      ],
+      "description": "Final boundary condition. Must not blame, diagnose, judge, rank, or score a participant."
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 500,
+      "pattern": "^[^@<>]*$",
+      "description": "Optional public-safe note. Must not contain participant identifiers, raw human data, clinical interpretation, diagnostic claims, therapeutic claims, counseling claims, legal mediation conclusions, relationship judgments, Sal-Meter validation claims, or CAIS compliance claims."
+    }
+  }
+}
