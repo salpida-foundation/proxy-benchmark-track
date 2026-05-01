@@ -725,8 +725,9 @@ P3 introduces the Human-State-Aware AI Mediation helper layer.
 | P3-3 Dyadic Recovery Baseline Suite B0-B7 | Done | `docs/dyadic-recovery-baseline-suite.md` defines baseline comparison logic from chance through recovery/termination gate baselines |
 | P3-4 Recovery Gate Definition | Done | `docs/recovery-gate-definition.md` defines the gate for preventing false recovery and determining when mediation can reduce, pause, or stop |
 | P3-4 Termination Gate Definition | Done | `docs/termination-gate-definition.md` defines the gate for consent withdrawal, permission expiry, data quality failure, high uncertainty, overstay prevention, session closure, and auditability |
-| P3-5 README alignment | In progress | Root README is being aligned with completed P3 helper documents |
-Completed P3 helper files:
+| P3-5 README alignment | Done | Root README has been aligned with completed P3 helper documents |
+
+### Completed P3 helper files
 
 ```text
 docs/
