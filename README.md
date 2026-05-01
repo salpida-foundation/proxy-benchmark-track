@@ -743,7 +743,7 @@ It is not CAIS compliance.
 | P3-9 Dyadic Session Event JSON helper schema | Done | `schemas/dyadic_session_event.schema.json` validates one public-safe synthetic/sample dyadic session boundary event |
 | P3-10 Benchmark Session JSON helper schema | Done | `schemas/benchmark_session.schema.json` validates one public-safe synthetic/sample benchmark session container |
 | P3-11 Schemas README alignment | Done | `schemas/README.md` now distinguishes packet object, dyadic session event object, and benchmark session container |
-| P3-12 Root README alignment | In progress | Root README is being aligned with completed P3 helper documents and schemas |
+| P3-12 Root README alignment | Done | Root README has been aligned with completed P3 helper documents and schemas |
 
 ### Completed P3 helper documents
 
