@@ -289,13 +289,15 @@ future Sal-Meter-derived input candidate pathway
 
 Not as:
 
-validated Sal-Meter input  
-CAIS-compliant signal  
-official consciousness signal  
-ground-truth signal  
-Sal-Meter feedback loop  
-Sal-Meter intervention loop  
+```text
+validated Sal-Meter input
+CAIS-compliant signal
+official consciousness signal
+ground-truth signal
+Sal-Meter feedback loop
+Sal-Meter intervention loop
 Sal-Meter-compatible node exists
+```
 ---
 
 ## 11. Relationship to CAIS
