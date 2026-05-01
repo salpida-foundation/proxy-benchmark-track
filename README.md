@@ -87,6 +87,37 @@ https://salpida.foundation/topics/human-state-aware-ai-interaction/
 
 ---
 
+## P3 helper layer completion statement
+
+The P3 Human-State-Aware AI Mediation helper layer now defines the public helper structure for:
+
+```text
+Layer → Packet → Baseline → Recovery Gate → Termination Gate
+```
+
+Completed P3 helper files:
+
+```text
+docs/human-state-mediation-layer.md
+docs/human-state-packet-schema.md
+docs/dyadic-recovery-baseline-suite.md
+docs/recovery-gate-definition.md
+docs/termination-gate-definition.md
+schemas/human_state_packet.schema.json
+```
+
+These helper documents do not validate a benchmark.
+
+They do not validate Sal-Meter.
+
+They do not grant CAIS compliance.
+
+They do not create a clinical, diagnostic, therapeutic, counseling, legal mediation, surveillance, human-ranking, or production closed-loop system.
+
+They define the public helper structure required for auditable future work.
+
+---
+
 ## Canonical / DOI relationship
 
 This repository is a **public technical helper surface**.
@@ -265,6 +296,26 @@ Recovery is not therapy.
 
 Recovery is a bounded session-state condition where continued AI mediation can reduce, pause, or stop.
 
+### Recovery Gate
+
+Recovery Gate asks whether the session-defined recovery condition has been reached.
+
+It prevents false success.
+
+It does not crown AI for speaking well.
+
+It does not treat silence, obedience, agreement, synchrony, or one-sided improvement as automatic recovery.
+
+### Termination Gate
+
+Termination Gate asks whether the session must pause, narrow, or stop.
+
+It prevents endless mediation.
+
+It protects consent, permission, expiry, data quality, session scope, private state, raw human data, and auditability.
+
+A closed session must stay closed.
+
 ---
 
 ## What this track is
@@ -285,7 +336,9 @@ The purpose is to prepare:
 - Human-State Packet helper structures;
 - Human-State Session Protocol helper structures;
 - dyadic mediation session-flow helper structures;
-- recovery gate and termination gate definitions;
+- Dyadic Recovery Baseline Suite;
+- Recovery Gate;
+- Termination Gate;
 - safe dashboard mockup boundaries;
 - local closed-loop demo-lite boundary scaffolding;
 - replication and release-readiness checklists;
@@ -296,7 +349,6 @@ The purpose is to prepare:
 The proxy track supports the core track.
 
 It does not replace it.
-
 ---
 
 ## What this track is not
@@ -372,6 +424,50 @@ It does not replace it.
 
 ---
 
+## Human-State-Aware AI Mediation helper architecture
+
+The current P3 helper layer defines the public helper spine for future Human-State-Aware AI Mediation work.
+
+The architecture is:
+
+```text
+Human-State Mediation Layer
+→ Human-State Packet
+→ Dyadic Recovery Baseline Suite
+→ Recovery Gate
+→ Termination Gate
+→ Session Closure / Audit Log
+```
+
+Completed helper documents:
+
+```text
+docs/human-state-mediation-layer.md
+docs/human-state-packet-schema.md
+docs/dyadic-recovery-baseline-suite.md
+docs/recovery-gate-definition.md
+docs/termination-gate-definition.md
+schemas/human_state_packet.schema.json
+```
+
+Planned helper documents:
+
+```text
+docs/human-state-session-protocol.md
+docs/dyadic-mediation-session-flow.md
+docs/consent-and-data-sharing-boundary.md
+schemas/dyadic_session_event.schema.json
+schemas/benchmark_session.schema.json
+```
+
+Completed P3 documents are helper structures.
+
+Planned P3 documents remain planned until created.
+
+No P3 helper file validates a benchmark, validates Sal-Meter, grants CAIS compliance, or authorizes clinical, therapeutic, counseling, legal mediation, surveillance, human-ranking, or production deployment claims.
+
+---
+
 ## Long-term milestone
 
 ```text
@@ -408,7 +504,7 @@ The benchmark must therefore compare human-state-aware mediation against simpler
 
 ### Dyadic Recovery Baseline Suite
 
-The planned baseline ladder is:
+The baseline ladder is:
 
 | Level | Baseline | Question |
 |---|---|---|
@@ -552,7 +648,7 @@ Session Creation
 
 This repository is currently in a public helper implementation stage for the SICS Human-State Proxy Benchmark Track.
 
-It provides schema, synthetic/sample data, validation scaffolding, dashboard mockup boundaries, protocol helper rules, closed-loop demo-lite boundary scaffolding, replication guide checklists, contributor issue/PR templates, and repository hygiene workflow scaffolding for structure demonstration only.
+It provides schema, synthetic/sample data, validation scaffolding, dashboard mockup boundaries, protocol helper rules, closed-loop demo-lite boundary scaffolding, replication guide checklists, contributor issue/PR templates, Human-State-Aware AI Mediation helper documents, and repository hygiene workflow scaffolding for structure demonstration only.
 
 It does not provide benchmark evidence.
 
@@ -567,7 +663,8 @@ It does not validate Sal-Meter.
 | Work item | Status | Notes |
 |---|---|---|
 | Governance boundary files | Present | Public/private data boundary and prohibited-claim discipline are represented in the repository |
-| Schema completion | Done | `schemas/` contains public helper schemas for metadata, event markers, streams, labels, QC, features, and splits |
+| Schema completion | Done | `schemas/` contains public helper schemas for metadata, event markers, streams, labels, QC, features, splits, and Human-State Packet helper structure |
+| Human-State Packet JSON helper schema | Done | `schemas/human_state_packet.schema.json` defines a public helper schema for synthetic Human-State Packets |
 | Synthetic sample package | Present | `sample-data/synthetic-session-001/` contains a public synthetic/sample structure package |
 | Synthetic session README | Done | The synthetic package includes a local README explaining file roles and boundaries |
 | Sample package validator | Present | `evaluation-baseline/validate_sample_package.py` provides helper-structure validation |
@@ -577,6 +674,11 @@ It does not validate Sal-Meter.
 | Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` defines feedback-loop boundaries, event-log schema, and local placeholder code |
 | Replication guide pack | Done | `replication-guide/` defines reproducibility, metadata completeness, audit trail, and public release-readiness checklists |
 | Issue / PR template pack | Done | `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` define contributor boundary gates |
+| P3 Human-State Mediation Layer | Done | `docs/human-state-mediation-layer.md` defines the interaction-adjustment helper layer |
+| P3 Human-State Packet helper document | Done | `docs/human-state-packet-schema.md` defines the human-readable packet boundary |
+| P3 Dyadic Recovery Baseline Suite | Done | `docs/dyadic-recovery-baseline-suite.md` defines the B0-B7 baseline ladder |
+| P3 Recovery Gate | Done | `docs/recovery-gate-definition.md` defines false recovery prevention and recovery decision boundaries |
+| P3 Termination Gate | Done | `docs/termination-gate-definition.md` defines stop, pause, closure, expiry, permission, and overstay boundaries |
 | GitHub Actions validator workflow | Present / Blocked | `.github/workflows/validate-synthetic-sample.yml` exists, but execution is currently blocked by GitHub account-level Actions restriction |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
@@ -611,25 +713,42 @@ It does not validate Sal-Meter.
 
 ---
 
-## Current P3 milestone target
+## Current P3 milestone state
 
 P3 introduces the Human-State-Aware AI Mediation helper layer.
 
-Planned or recommended helper files:
+| Milestone | Status | Notes |
+|---|---|---|
+| P3-1 Human-State Mediation Layer | Done | `docs/human-state-mediation-layer.md` defines the public helper concept connecting AI Output, Human-State Delta, Dyadic Recovery, Human-State Packet, Recovery Gate, and Termination Gate |
+| P3-2 Human-State Packet helper document | Done | `docs/human-state-packet-schema.md` defines the packet as a consent-bound, permission-bound, expiry-bound, confidence-aware, data-quality-aware, session-scoped, sharing-scoped, raw-data-excluding state-summary object |
+| P3-2 Human-State Packet JSON helper schema | Done | `schemas/human_state_packet.schema.json` defines the machine-readable helper structure for public synthetic/sample packet examples |
+| P3-3 Dyadic Recovery Baseline Suite B0-B7 | Done | `docs/dyadic-recovery-baseline-suite.md` defines baseline comparison logic from chance through recovery/termination gate baselines |
+| P3-4 Recovery Gate Definition | Done | `docs/recovery-gate-definition.md` defines the gate for preventing false recovery and determining when mediation can reduce, pause, or stop |
+| P3-4 Termination Gate Definition | Done | `docs/termination-gate-definition.md` defines the gate for consent withdrawal, permission expiry, data quality failure, high uncertainty, overstay prevention, session closure, and auditability |
+| P3-5 README alignment | In progress | Root README is being aligned with completed P3 helper documents |
+Completed P3 helper files:
 
 ```text
 docs/
   human-state-mediation-layer.md
   human-state-packet-schema.md
-  human-state-session-protocol.md
-  dyadic-mediation-session-flow.md
   dyadic-recovery-baseline-suite.md
   recovery-gate-definition.md
   termination-gate-definition.md
-  consent-and-data-sharing-boundary.md
 
 schemas/
   human_state_packet.schema.json
+```
+
+Remaining planned helper files:
+
+```text
+docs/
+  human-state-session-protocol.md
+  dyadic-mediation-session-flow.md
+  consent-and-data-sharing-boundary.md
+
+schemas/
   dyadic_session_event.schema.json
   benchmark_session.schema.json
 ```
@@ -665,19 +784,23 @@ proxy-benchmark-track/
     pull_request_template.md
 
   docs/
+    current-operating-model.md
     data-boundary.md
     leakage-control-checklist.md
     metadata-schema-v0.1.md
     public-language-boundary.md
+    reproducibility-checklist.md
 
-    # P3 target documents
+    # P3 completed helper documents
     human-state-mediation-layer.md
     human-state-packet-schema.md
-    human-state-session-protocol.md
-    dyadic-mediation-session-flow.md
     dyadic-recovery-baseline-suite.md
     recovery-gate-definition.md
     termination-gate-definition.md
+
+    # P3 planned helper documents
+    human-state-session-protocol.md
+    dyadic-mediation-session-flow.md
     consent-and-data-sharing-boundary.md
 
   governance/
@@ -694,9 +817,9 @@ proxy-benchmark-track/
     qc-report.schema.json
     features-baseline.schema.json
     splits.schema.json
-
-    # P3 target schemas
     human_state_packet.schema.json
+
+    # P3 planned helper schemas
     dyadic_session_event.schema.json
     benchmark_session.schema.json
 
@@ -769,7 +892,8 @@ A public helper surface may:
 - show closed-loop demo-lite boundaries;
 - show replication and release-readiness checklists;
 - provide issue and pull request boundary templates;
-- prepare future contributor orientation.
+- prepare future contributor orientation;
+- define Human-State-Aware AI Mediation helper structure.
 
 A public helper surface must not:
 
@@ -783,7 +907,7 @@ A public helper surface must not:
 - imply benchmark validation;
 - imply closed-loop intervention readiness;
 - imply contributor submissions create authority;
-- imply diagnostic, therapeutic, clinical, surveillance, certification, or human-ranking authority.
+- imply diagnostic, therapeutic, clinical, surveillance, certification, counseling, mediation-service, or human-ranking authority.
 
 ---
 
@@ -906,6 +1030,98 @@ A session that cannot close is not a Human-State Session.
 
 ---
 
+## Recovery Gate boundary
+
+Recovery Gate is a bounded, auditable session-level decision point that determines whether a Human-State-Aware AI Mediation session has reached a condition where AI mediation can reduce, pause, or terminate.
+
+Recovery Gate does not prove healing.
+
+Recovery Gate does not prove agreement.
+
+Recovery Gate does not prove therapy.
+
+Recovery Gate prevents false success.
+
+Recovery Gate must not treat the following as automatic recovery:
+
+- AI fluency;
+- politeness;
+- silence;
+- obedience;
+- agreement;
+- user satisfaction;
+- one-sided improvement;
+- synchrony.
+
+Recovery Gate may output:
+
+```text
+recovery_reached
+recovery_not_reached
+recovery_uncertain
+false_positive_risk
+false_negative_risk
+pause_recommended
+reduce_mediation_recommended
+terminate_recommended
+human_review_required
+invalid_due_to_data_quality
+invalid_due_to_permission
+invalid_due_to_scope
+```
+
+Recovery Gate must preserve consent, permission, expiry, data quality, confidence, sharing scope, non-judgment, and raw-data-non-public boundaries.
+
+---
+
+## Termination Gate boundary
+
+Termination Gate is a bounded, auditable session-level decision point that determines when a Human-State-Aware AI Mediation session must pause, narrow, or stop.
+
+Termination is not failure.
+
+Termination is a boundary function.
+
+A system that cannot stop is not mature.
+
+Termination Gate may be triggered by:
+
+- consent withdrawal;
+- packet permission expiry;
+- data quality failure;
+- session scope violation;
+- high uncertainty;
+- participant stop request;
+- recovery reached;
+- raw data exposure risk;
+- private state exposure risk;
+- non-judgment failure;
+- prohibited output;
+- mediation overstay;
+- missing audit trail;
+- Sal-Meter / CAIS overclaim risk.
+
+Termination Gate may output:
+
+```text
+continue_allowed
+pause_required
+narrow_scope_required
+private_cue_only
+shared_output_blocked
+terminate_required
+terminate_recommended
+human_review_required
+packet_channel_closed
+session_closed
+audit_required
+invalid_session
+```
+
+A closed session must stay closed.
+
+---
+
 ## Schema helper pack
 
 `schemas/` contains public helper schemas for synthetic/sample package structure.
@@ -936,13 +1152,13 @@ schemas/
   qc-report.schema.json
   features-baseline.schema.json
   splits.schema.json
+  human_state_packet.schema.json
 ```
 
 Planned P3 helper schema files:
 
 ```text
 schemas/
-  human_state_packet.schema.json
   dyadic_session_event.schema.json
   benchmark_session.schema.json
 ```
@@ -954,7 +1170,8 @@ The schema pack supports:
 - timestamp and event marker discipline;
 - public/private data separation;
 - leakage-risk awareness;
-- helper validation.
+- helper validation;
+- Human-State Packet structure demonstration.
 
 It does not support:
 
@@ -1023,7 +1240,6 @@ A public sample package is a lantern.
 It lights the path.
 
 It is not the mountain.
-
 ---
 
 ## Evaluation baseline
@@ -1589,6 +1805,7 @@ not_validated_here
 future_placeholder_only
 hold_until_separate_governance
 future candidate pathway
+future Sal-Meter-derived input candidate pathway
 ```
 
 Prohibited placeholder language:
@@ -1841,7 +2058,7 @@ They must not convert contributor requests into validation claims.
 
 Public helper materials may recruit builders.
 
-They must not imply clinical, therapeutic, diagnostic, surveillance, certification, intervention, counseling, mediation-service, or human-ranking authority.
+They must not imply clinical, therapeutic, diagnostic, surveillance, certification, intervention, counseling, mediation-service, legal mediation, or human-ranking authority.
 
 ---
 
@@ -1858,9 +2075,10 @@ Dyadic Human-State Mediation Benchmark
 AI Output → Human-State Delta → Dyadic Recovery
 Human-State Packet
 Human-State Session Protocol
+Human-State Mediation Layer
+Dyadic Recovery Baseline Suite
 Recovery Gate
 Termination Gate
-Dyadic Recovery Baseline Suite
 research-stage helper
 synthetic sample package
 dashboard mockup boundary
@@ -1886,6 +2104,7 @@ Do not use:
 ```text
 validated Sal-Meter
 CAIS-compliant device
+CAIS-compliant mediation layer
 clinical dashboard
 diagnostic dashboard
 therapeutic dashboard
@@ -1922,7 +2141,7 @@ Potential contributors should first understand:
 1. whether you are working on a public helper surface;
 2. whether you are handling synthetic/sample data only;
 3. whether any raw human data are involved;
-4. whether your work could be mistaken for diagnosis, therapy, counseling, surveillance, certification, intervention, or human ranking;
+4. whether your work could be mistaken for diagnosis, therapy, counseling, surveillance, certification, intervention, legal mediation, or human ranking;
 5. whether your work implies Sal-Meter validation;
 6. whether your work implies CAIS compliance;
 7. whether the relevant DOI-registered boundary record is preserved;
@@ -1947,6 +2166,13 @@ P1-4 remains open:
 
 P1-5 remains open:
   v0.1.0 release readiness is prepared, but release must remain unpublished until P1-4 can run successfully.
+
+P3 remaining helper files remain planned:
+  docs/human-state-session-protocol.md
+  docs/dyadic-mediation-session-flow.md
+  docs/consent-and-data-sharing-boundary.md
+  schemas/dyadic_session_event.schema.json
+  schemas/benchmark_session.schema.json
 ```
 
 ---
@@ -1991,6 +2217,10 @@ It prepares future session discipline.
 
 It prepares future dyadic recovery benchmark discipline.
 
+It prepares future recovery-gate discipline.
+
+It prepares future termination-gate discipline.
+
 It prepares future feedback-loop discipline.
 
 It prepares reproducibility and release-readiness review.
@@ -2012,3 +2242,7 @@ It asks what changed in the human state.
 It asks whether the dyad moved toward recovery.
 
 It asks whether the AI stopped when it should stop.
+
+If the session can no longer continue without crossing a boundary, the gate must close.
+
+A closed session must stay closed.
