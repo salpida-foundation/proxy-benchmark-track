@@ -1,4 +1,4 @@
-stream_id,session_id,signal_name,source_type,device,sampling_rate_hz,start_time,end_time,timestamp_source,quality_flag,dropout_count,missing_data_note,public_data_status
-SYN-STR-001,SYN-SESSION-001,synthetic_ecg,synthetic_signal,synthetic_generator,250,2026-04-28T09:00:00Z,2026-04-28T09:20:00Z,synthetic_clock,pass,0,Synthetic signal only,synthetic
-SYN-STR-002,SYN-SESSION-001,synthetic_eda,synthetic_signal,synthetic_generator,32,2026-04-28T09:00:00Z,2026-04-28T09:20:00Z,synthetic_clock,pass,0,Synthetic signal only,synthetic
-SYN-STR-003,SYN-SESSION-001,synthetic_interaction_events,synthetic_event_log,synthetic_event_logger,1,2026-04-28T09:00:00Z,2026-04-28T09:20:00Z,synthetic_clock,pass,0,Synthetic interaction log only,synthetic
+stream_id,session_id,sensor_type,device_model,sampling_rate,start_timestamp,end_timestamp,file_path,raw_or_processed,sync_status,packet_loss_estimate,notes,public_data_status
+SYN-STR-001,SYN-SESSION-001,synthetic_ecg,synthetic_generator,250,2026-04-28T09:00:00Z,2026-04-28T09:20:00Z,sample-data/synthetic-session-001/streams/synthetic_ecg.csv,synthetic,synthetic_aligned,0,Synthetic ECG signal only,synthetic
+SYN-STR-002,SYN-SESSION-001,synthetic_eda,synthetic_generator,32,2026-04-28T09:00:00Z,2026-04-28T09:20:00Z,sample-data/synthetic-session-001/streams/synthetic_eda.csv,synthetic,synthetic_aligned,0,Synthetic EDA signal only,synthetic
+SYN-STR-003,SYN-SESSION-001,synthetic_interaction_events,synthetic_event_logger,event_based,2026-04-28T09:00:00Z,2026-04-28T09:20:00Z,sample-data/synthetic-session-001/events.csv,event_only,synthetic_aligned,synthetic_zero,Synthetic interaction event log only,synthetic
