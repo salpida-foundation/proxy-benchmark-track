@@ -1,4 +1,4 @@
-label_id,session_id,start_time,end_time,window_label,label_source,public_data_status,note
+label_id,session_id,start_time,end_time,window_label,label_source,public_label_status,note
 SYN-LBL-001,SYN-SESSION-001,2026-04-28T09:01:00Z,2026-04-28T09:05:00Z,synthetic_baseline,synthetic,synthetic,Synthetic baseline window only
 SYN-LBL-002,SYN-SESSION-001,2026-04-28T09:05:00Z,2026-04-28T09:15:00Z,synthetic_task_ai_interaction,synthetic,synthetic,Synthetic task and AI interaction window only
 SYN-LBL-003,SYN-SESSION-001,2026-04-28T09:16:00Z,2026-04-28T09:20:00Z,synthetic_recovery,synthetic,synthetic,Synthetic recovery window only
