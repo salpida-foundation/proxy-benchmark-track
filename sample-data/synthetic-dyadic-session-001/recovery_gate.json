@@ -1,0 +1,149 @@
+{
+  "file_id": "RECOVERY-GATE-SYNTHETIC-001",
+  "session_id": "session_synthetic_dyadic_001",
+  "dyadic_session_id": "DYS-SYNTHETIC-001",
+  "dataset_type": "synthetic",
+  "synthetic_status": "synthetic_only",
+  "package_role": "p4_synthetic_dyadic_demo_recovery_gate",
+  "description": "Synthetic recovery gate object for a public-safe dyadic helper demo package. This object illustrates how a dyadic session should avoid false recovery when one participant improves while the other remains reduced in engagement.",
+  "linked_refs": {
+    "ai_output_primary": "synthetic_ai_output_002",
+    "ai_output_followup": "synthetic_ai_output_003",
+    "human_state_packet_A": "hsp_synthetic_A_001",
+    "human_state_packet_B": "hsp_synthetic_B_001",
+    "dyadic_delta": "synthetic_dyadic_delta_001",
+    "dyadic_session_event": "DSE-SYNTHETIC-001",
+    "benchmark_session_container": "BMS-SYNTHETIC-001"
+  },
+  "gate_context": {
+    "gate_id": "synthetic_recovery_gate_001",
+    "gate_type": "recovery_gate",
+    "gate_stage": "post_ai_output_review",
+    "timestamp": "2026-05-09T09:08:45Z",
+    "observation_window": {
+      "start_time": "2026-05-09T09:04:00Z",
+      "end_time": "2026-05-09T09:08:30Z",
+      "duration_sec": 270
+    }
+  },
+  "input_summary": {
+    "participant_A_direction": "toward_recovery",
+    "participant_B_direction": "mixed",
+    "dyadic_direction": "mixed",
+    "one_sided_improvement": true,
+    "two_sided_recovery_confirmed": false,
+    "false_recovery_risk": "medium",
+    "silence_risk_detected": true,
+    "private_state_exposure_risk_detected": false,
+    "synchrony_review_required": true,
+    "data_quality_status": "sufficient_for_synthetic_demo",
+    "confidence_status": "medium"
+  },
+  "gate_criteria": {
+    "requires_two_sided_recovery": true,
+    "requires_no_false_recovery_signal": true,
+    "requires_no_silence_as_recovery": true,
+    "requires_no_private_state_exposure": true,
+    "requires_consent_scope_active": true,
+    "requires_packet_permission_active": true,
+    "requires_data_quality_sufficient": true,
+    "requires_closure_path_available": true
+  },
+  "gate_checks": {
+    "participant_A_recovery_check": {
+      "status": "partial_pass",
+      "reason": "Synthetic Participant A shows movement toward recovery."
+    },
+    "participant_B_recovery_check": {
+      "status": "not_passed",
+      "reason": "Synthetic Participant B remains reduced in engagement and cannot be treated as recovered."
+    },
+    "dyadic_recovery_check": {
+      "status": "not_passed",
+      "reason": "Two-sided recovery is not confirmed."
+    },
+    "false_recovery_check": {
+      "status": "warning",
+      "reason": "One-sided improvement is present."
+    },
+    "silence_check": {
+      "status": "warning",
+      "reason": "Reduced engagement may be mistaken for recovery if not gated."
+    },
+    "private_state_exposure_check": {
+      "status": "passed",
+      "reason": "No private state exposure is represented in this synthetic helper object."
+    },
+    "consent_scope_check": {
+      "status": "passed",
+      "reason": "Synthetic consent scope remains active for this demo object."
+    },
+    "packet_permission_check": {
+      "status": "passed",
+      "reason": "Synthetic packet references remain within declared helper scope."
+    },
+    "data_quality_check": {
+      "status": "passed_with_synthetic_limit",
+      "reason": "Data quality is sufficient only for synthetic structure demonstration."
+    }
+  },
+  "gate_decision": {
+    "recovery_gate_status": "not_passed",
+    "recovery_decision": "do_not_mark_recovered",
+    "recommended_next_action": "pause_or_request_one_short_consent_bound_turn",
+    "continue_mediation_allowed": "conditional",
+    "requires_participant_B_check": true,
+    "requires_termination_gate_review": true,
+    "closure_allowed": true,
+    "decision_reason": "The dyad cannot be marked as recovered because synthetic recovery is asymmetric and Participant B remains reduced in engagement."
+  },
+  "allowed_output_after_gate": [
+    "State that recovery is not confirmed.",
+    "Avoid declaring the relationship resolved.",
+    "Ask whether both participants consent to one more short turn.",
+    "Offer a pause or closure path.",
+    "Avoid assigning blame.",
+    "Avoid exposing private state."
+  ],
+  "not_allowed_output_after_gate": [
+    "Declare the dyad recovered.",
+    "Treat silence as agreement.",
+    "Treat one-sided relief as success.",
+    "Score either participant.",
+    "Generate a relationship verdict.",
+    "Continue indefinitely without consent.",
+    "Claim mediation effectiveness.",
+    "Claim benchmark validation.",
+    "Claim Sal-Meter validation.",
+    "Claim CAIS compliance."
+  ],
+  "boundary": {
+    "synthetic_public_example": true,
+    "raw_human_data_present": false,
+    "identifiable_data_present": false,
+    "clinical_data_present": false,
+    "private_session_log_present": false,
+    "real_dyadic_conflict_present": false,
+    "raw_audio_present": false,
+    "raw_video_present": false,
+    "raw_transcript_present": false,
+    "raw_biosignal_present": false,
+    "sal_meter_input_present": false,
+    "cais_compliance_dossier_present": false,
+    "diagnostic_claim_present": false,
+    "therapeutic_claim_present": false,
+    "counseling_claim_present": false,
+    "surveillance_claim_present": false,
+    "legal_mediation_claim_present": false,
+    "benchmark_validation_claim_present": false,
+    "scientific_validation_claim_present": false,
+    "mediation_validation_claim_present": false,
+    "sal_meter_validation_claim_present": false,
+    "cais_compliance_claim_present": false,
+    "production_intervention_claim_present": false,
+    "human_ranking_claim_present": false,
+    "relationship_verdict_present": false
+  },
+  "final_boundary_status": "synthetic_helper_only",
+  "notes": "Synthetic recovery gate object only. It illustrates a not-passed recovery gate caused by asymmetric synthetic recovery. It contains no raw human data, no identifiable data, no clinical data, no Sal-Meter input, no CAIS compliance claim, no benchmark validation claim, no mediation validation claim, and no production intervention claim."
+}
