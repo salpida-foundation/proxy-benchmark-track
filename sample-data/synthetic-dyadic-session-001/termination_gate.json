@@ -1,0 +1,162 @@
+{
+  "file_id": "TERMINATION-GATE-SYNTHETIC-001",
+  "session_id": "session_synthetic_dyadic_001",
+  "dyadic_session_id": "DYS-SYNTHETIC-001",
+  "dataset_type": "synthetic",
+  "synthetic_status": "synthetic_only",
+  "package_role": "p4_synthetic_dyadic_demo_termination_gate",
+  "description": "Synthetic termination gate object for a public-safe dyadic helper demo package. This object illustrates when a synthetic dyadic session should pause, narrow, or close rather than continue mediation.",
+  "linked_refs": {
+    "ai_output_primary": "synthetic_ai_output_003",
+    "human_state_packet_A": "hsp_synthetic_A_001",
+    "human_state_packet_B": "hsp_synthetic_B_001",
+    "dyadic_delta": "synthetic_dyadic_delta_001",
+    "recovery_gate": "synthetic_recovery_gate_001",
+    "dyadic_session_event": "DSE-SYNTHETIC-001",
+    "benchmark_session_container": "BMS-SYNTHETIC-001"
+  },
+  "gate_context": {
+    "gate_id": "synthetic_termination_gate_001",
+    "gate_type": "termination_gate",
+    "gate_stage": "post_recovery_gate_review",
+    "timestamp": "2026-05-09T09:09:30Z",
+    "observation_window": {
+      "start_time": "2026-05-09T09:04:00Z",
+      "end_time": "2026-05-09T09:09:00Z",
+      "duration_sec": 300
+    }
+  },
+  "input_summary": {
+    "recovery_gate_status": "not_passed",
+    "dyadic_direction": "mixed",
+    "one_sided_improvement": true,
+    "two_sided_recovery_confirmed": false,
+    "false_recovery_risk": "medium",
+    "silence_risk_detected": true,
+    "overstay_risk": "medium_high",
+    "private_state_exposure_risk_detected": false,
+    "consent_scope_status": "active_but_requires_reconfirmation",
+    "packet_permission_status": "active_but_near_closure",
+    "data_quality_status": "sufficient_for_synthetic_demo",
+    "confidence_status": "medium"
+  },
+  "termination_criteria": {
+    "requires_stop_if_consent_withdrawn": true,
+    "requires_stop_if_permission_expired": true,
+    "requires_stop_if_data_quality_fails": true,
+    "requires_stop_if_private_state_exposure_risk_rises": true,
+    "requires_pause_if_recovery_uncertain": true,
+    "requires_pause_if_one_sided_improvement": true,
+    "requires_pause_if_silence_may_be_misread": true,
+    "requires_closure_if_session_overstay_risk": true,
+    "requires_audit_log_on_close": true
+  },
+  "termination_checks": {
+    "consent_withdrawal_check": {
+      "status": "not_triggered",
+      "reason": "No synthetic consent withdrawal is represented."
+    },
+    "permission_expiry_check": {
+      "status": "warning",
+      "reason": "Synthetic packet permission remains active but should not be extended without renewed consent."
+    },
+    "data_quality_check": {
+      "status": "passed_with_synthetic_limit",
+      "reason": "Data quality is sufficient only for synthetic structure demonstration."
+    },
+    "private_state_exposure_check": {
+      "status": "passed",
+      "reason": "No private state exposure is represented in this synthetic helper object."
+    },
+    "recovery_uncertainty_check": {
+      "status": "triggered",
+      "reason": "Recovery gate did not pass and dyadic recovery remains uncertain."
+    },
+    "one_sided_improvement_check": {
+      "status": "triggered",
+      "reason": "Participant A improves while Participant B remains reduced in engagement."
+    },
+    "silence_misread_check": {
+      "status": "triggered",
+      "reason": "Reduced engagement may be mistaken for recovery if mediation continues."
+    },
+    "overstay_check": {
+      "status": "triggered",
+      "reason": "Continuing the session may push beyond the bounded synthetic helper scope."
+    },
+    "auditability_check": {
+      "status": "passed",
+      "reason": "The termination decision can be represented in a synthetic audit log."
+    }
+  },
+  "gate_decision": {
+    "termination_gate_status": "passed",
+    "termination_decision": "pause_and_close_session",
+    "continue_mediation_allowed": false,
+    "new_session_required_for_future_continuation": true,
+    "closure_required": true,
+    "audit_log_required": true,
+    "decision_reason": "The synthetic session should pause and close because recovery is uncertain, one-sided improvement is present, and overstay risk is elevated."
+  },
+  "allowed_output_after_gate": [
+    "State that the session should pause.",
+    "State that recovery is not confirmed.",
+    "Close the current session cleanly.",
+    "Require a new consent-bound session for future continuation.",
+    "Preserve auditability.",
+    "Avoid assigning blame.",
+    "Avoid producing a relationship verdict."
+  ],
+  "not_allowed_output_after_gate": [
+    "Continue mediation indefinitely.",
+    "Push the dyad toward agreement.",
+    "Declare the conflict resolved.",
+    "Treat silence as consent.",
+    "Treat one-sided relief as success.",
+    "Score either participant.",
+    "Generate a relationship verdict.",
+    "Expose private state.",
+    "Claim mediation effectiveness.",
+    "Claim benchmark validation.",
+    "Claim Sal-Meter validation.",
+    "Claim CAIS compliance."
+  ],
+  "closure_packet": {
+    "closure_id": "synthetic_closure_001",
+    "closure_type": "synthetic_session_close",
+    "closure_reason": "recovery_uncertain_and_overstay_risk",
+    "closed_at": "2026-05-09T09:10:00Z",
+    "reopen_allowed": false,
+    "new_session_required": true,
+    "final_public_message": "This synthetic session is closed. Continued mediation would require a new consent-bound session."
+  },
+  "boundary": {
+    "synthetic_public_example": true,
+    "raw_human_data_present": false,
+    "identifiable_data_present": false,
+    "clinical_data_present": false,
+    "private_session_log_present": false,
+    "real_dyadic_conflict_present": false,
+    "raw_audio_present": false,
+    "raw_video_present": false,
+    "raw_transcript_present": false,
+    "raw_biosignal_present": false,
+    "sal_meter_input_present": false,
+    "cais_compliance_dossier_present": false,
+    "diagnostic_claim_present": false,
+    "therapeutic_claim_present": false,
+    "counseling_claim_present": false,
+    "surveillance_claim_present": false,
+    "legal_mediation_claim_present": false,
+    "benchmark_validation_claim_present": false,
+    "scientific_validation_claim_present": false,
+    "mediation_validation_claim_present": false,
+    "sal_meter_validation_claim_present": false,
+    "cais_compliance_claim_present": false,
+    "production_intervention_claim_present": false,
+    "human_ranking_claim_present": false,
+    "relationship_verdict_present": false
+  },
+  "final_boundary_status": "synthetic_helper_only",
+  "notes": "Synthetic termination gate object only. It illustrates a bounded pause-and-close decision after a failed recovery gate. It contains no raw human data, no identifiable data, no clinical data, no Sal-Meter input, no CAIS compliance claim, no benchmark validation claim, no mediation validation claim, and no production intervention claim."
+}
