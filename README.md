@@ -24,14 +24,6 @@ It evaluates the trace left after the answer.
 
 ```text
 AI Output → Human-State Delta → Dyadic Recovery
-| Manual binary release assets | None | GitHub may automatically provide source code archives |
-| Public data status | Synthetic/sample-data-first | No raw human data |
-| Authority status | GitHub helper surface only | DOI-registered SICS records remain the authority layer |
-
-Release route:
-
-```text
-https://github.com/salpida-foundation/proxy-benchmark-track/releases/tag/v0.1.1
 ```
 
 ---
@@ -261,6 +253,12 @@ It does not grant CAIS compliance.
 
 It does not certify any system, model, dataset, dashboard, laboratory, device, repository, schema, session protocol, implementation, or mediation system.
 
+Release route:
+
+```text
+https://github.com/salpida-foundation/proxy-benchmark-track/releases/tag/v0.1.1
+```
+
 ---
 
 ## Current implementation status
@@ -271,15 +269,16 @@ It provides:
 
 - schema helper structures;
 - synthetic/sample data;
+- P3 synthetic dyadic helper package;
 - validation scaffolding;
+- P3 helper-schema validation;
+- boundary language linting;
 - dashboard mockup boundaries;
 - protocol helper rules;
 - closed-loop demo-lite boundary scaffolding;
 - replication guide checklists;
 - contributor issue / PR templates;
 - Human-State-Aware AI Mediation helper documents;
-- P3 helper schemas;
-- P3 boundary audit documents;
 - GitHub Actions helper-structure validation workflow.
 
 It does not provide benchmark evidence.
@@ -304,20 +303,24 @@ It does not validate Sal-Meter.
 | Dyadic Session Event JSON helper schema | Done | `schemas/dyadic_session_event.schema.json` validates one public-safe synthetic/sample dyadic session boundary event |
 | Benchmark Session JSON helper schema | Done | `schemas/benchmark_session.schema.json` validates one public-safe synthetic/sample benchmark session container |
 | Synthetic sample package | Present / Passed validator | `sample-data/synthetic-session-001/` contains a public synthetic/sample structure package that passes helper-structure validation |
-| Synthetic session README | Done | The synthetic package includes a local README explaining file roles and boundaries |
-| Sample package validator | Present / Passed | `evaluation-baseline/validate_sample_package.py` provides helper-structure validation |
-| Evaluation baseline README | Done | `evaluation-baseline/README.md` explains validator usage, PASS / FAIL interpretation, dependency installation, and validation boundaries |
+| Synthetic dyadic helper package | Present / Passed P3 helper-schema validation | `sample-data/synthetic-dyadic-session-001/` contains Human-State Packet A/B, Dyadic Session Event, and Benchmark Session Container examples |
+| Synthetic session README | Done | The original synthetic package includes a local README explaining file roles and boundaries |
+| Synthetic dyadic session README | Done | The P3 synthetic dyadic package includes a local README explaining packet/event/container roles and boundaries |
+| Sample package validator | Present / Passed | `evaluation-baseline/validate_sample_package.py` provides helper-structure validation for the original synthetic package |
+| P3 helper-schema validator | Present / Passed | `evaluation-baseline/validate_p3_schemas.py` validates the public synthetic P3 dyadic helper files against the Human-State Packet, Dyadic Session Event, and Benchmark Session schemas |
+| Boundary language lint | Present / Passed advisory mode | `evaluation-baseline/boundary_lint.py` scans public helper wording for prohibited or risky boundary-language drift |
+| Evaluation baseline README | Done | `evaluation-baseline/README.md` explains validator usage, P3 helper-schema validation, PASS / FAIL interpretation, dependency installation, and validation boundaries |
 | Protocol helper boundary pack | Done | `protocol-helper/` defines label, timestamp, metadata, Human-State Cost, and future Sal-Meter A/B comparison boundaries |
 | Dashboard mockup boundary pack | Done | `dashboard-mockup/` defines dashboard claim, field, and wireframe boundaries |
 | Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` defines feedback-loop boundaries, event-log schema, and local placeholder code |
 | Replication guide pack | Done | `replication-guide/` defines reproducibility, metadata completeness, audit trail, and public release-readiness checklists |
 | Issue / PR template pack | Done | `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` define contributor boundary gates |
-| GitHub Actions validator workflow | Passed | `.github/workflows/validate-synthetic-sample.yml` successfully ran the synthetic sample package validator on the main branch |
+| GitHub Actions validator workflow | Passed | `.github/workflows/validate-synthetic-sample.yml` runs the original sample validator, P3 helper-schema validator, and boundary language lint |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
 | Sal-Meter input | Not present | This repository is not Sal-Meter and does not contain Sal-Meter signal data |
 | CAIS compliance claim | Not present | This repository does not grant CAIS compliance |
-| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, template, PR, or benchmark result is validated by this repository |
+| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, template, PR, validator, workflow, or benchmark result is validated by this repository |
 | Release status | `v0.1.1` published as pre-release | `v0.1.1` is the post-validator-pass public helper pre-release package |
 
 ---
@@ -383,6 +386,60 @@ It is not CAIS compliance.
 
 ---
 
+## Current P5 helper-validation state
+
+P5 adds automation and machine-checkable helper gates around the public Proxy Benchmark Track helper surface.
+
+This remains public-helper-only.
+
+It is not benchmark validation.
+
+It is not scientific validation.
+
+It is not Sal-Meter validation.
+
+It is not CAIS compliance.
+
+It is not mediation validation.
+
+| Milestone | Status | Notes |
+|---|---|---|
+| P5-0 Boundary language lint | Done / advisory mode | `evaluation-baseline/boundary_lint.py` and `evaluation-baseline/prohibited_terms.json` are implemented; GitHub Actions runs the boundary lint step in advisory mode |
+| P5-1 P3 helper-schema validator | Done / Passed | `evaluation-baseline/validate_p3_schemas.py` validates the synthetic P3 dyadic helper files against `human_state_packet.schema.json`, `dyadic_session_event.schema.json`, and `benchmark_session.schema.json` |
+| P5-1 synthetic dyadic helper package | Done / Passed | `sample-data/synthetic-dyadic-session-001/` contains `human_state_packet_A.json`, `human_state_packet_B.json`, `dyadic_session_event.json`, and `benchmark_session_container.json` |
+| P5-1 documentation alignment | Done | `schemas/README.md`, `sample-data/README.md`, `evaluation-baseline/README.md`, and root `README.md` explain P3 helper-schema validation as helper-structure validation only |
+
+Current P5 helper-validation chain:
+
+```text
+validate_sample_package.py
+→ validate_p3_schemas.py
+→ boundary_lint.py
+```
+
+A successful run means only:
+
+```text
+The public synthetic/sample helper files follow the expected helper structure and wording boundary checks.
+```
+
+A successful run does not mean:
+
+```text
+benchmark validation
+scientific validation
+mediation validation
+Sal-Meter validation
+CAIS compliance
+clinical readiness
+diagnostic readiness
+therapeutic readiness
+device readiness
+production readiness
+```
+
+---
+
 ## Completed P3 helper documents
 
 ```text
@@ -414,6 +471,24 @@ schemas/
   dyadic_session_event.schema.json
   benchmark_session.schema.json
   README.md
+```
+
+## Completed P5 helper-validation files
+
+```text
+evaluation-baseline/
+  boundary_lint.py
+  prohibited_terms.json
+  validate_p3_schemas.py
+  README.md
+
+sample-data/
+  synthetic-dyadic-session-001/
+    README.md
+    human_state_packet_A.json
+    human_state_packet_B.json
+    dyadic_session_event.json
+    benchmark_session_container.json
 ```
 
 ---
@@ -700,9 +775,9 @@ Session Creation
 
 ---
 
-## Synthetic sample package
+## Synthetic sample packages
 
-Current public sample package:
+### Original synthetic sample package
 
 ```text
 sample-data/synthetic-session-001/
@@ -720,6 +795,50 @@ features_baseline.csv
 splits.json
 operator_log.md
 README.md
+```
+
+This package is checked by:
+
+```text
+evaluation-baseline/validate_sample_package.py
+```
+
+### P3 synthetic dyadic helper package
+
+```text
+sample-data/synthetic-dyadic-session-001/
+```
+
+Required public helper files include:
+
+```text
+README.md
+human_state_packet_A.json
+human_state_packet_B.json
+dyadic_session_event.json
+benchmark_session_container.json
+```
+
+This package is checked by:
+
+```text
+evaluation-baseline/validate_p3_schemas.py
+```
+
+P3 validation mapping:
+
+```text
+human_state_packet_A.json
+  → schemas/human_state_packet.schema.json
+
+human_state_packet_B.json
+  → schemas/human_state_packet.schema.json
+
+dyadic_session_event.json
+  → schemas/dyadic_session_event.schema.json
+
+benchmark_session_container.json
+  → schemas/benchmark_session.schema.json
 ```
 
 Public sample data must remain:
@@ -759,15 +878,25 @@ The GitHub Actions workflow is:
 .github/workflows/validate-synthetic-sample.yml
 ```
 
-The validator is:
+Current intended workflow sequence:
+
+```text
+Run synthetic sample package validator
+Run P3 helper schema validator
+Run boundary language lint
+```
+
+Validation helpers:
 
 ```text
 evaluation-baseline/validate_sample_package.py
+evaluation-baseline/validate_p3_schemas.py
+evaluation-baseline/boundary_lint.py
 ```
 
-The workflow successfully ran on the main branch after GitHub Actions access was restored.
+The workflow successfully runs on the main branch.
 
-This confirms only public helper-structure validation.
+This confirms only public helper-structure validation and wording-boundary hygiene.
 
 It does not validate benchmark performance.
 
@@ -791,28 +920,31 @@ Install dependencies:
 pip install -r evaluation-baseline/requirements.txt
 ```
 
-Run validator:
+Run validators:
 
 ```bash
 python evaluation-baseline/validate_sample_package.py
+python evaluation-baseline/validate_p3_schemas.py
+python evaluation-baseline/boundary_lint.py
 ```
 
 Expected meaning of PASS:
 
 ```text
-The public synthetic/sample package follows the current helper structure.
+The public synthetic/sample helper files follow the current helper structure and wording boundary checks.
 ```
 
 PASS does not mean:
 
 ```text
 benchmark validated
+scientific truth validated
+mediation validated
 Sal-Meter validated
 CAIS compliant
 clinical evidence
 diagnostic evidence
 therapeutic evidence
-mediation validated
 production-ready
 certified
 ```
@@ -837,6 +969,7 @@ This repository must not contain:
 - clinical interpretations;
 - diagnostic interpretations;
 - therapeutic interpretations;
+- counseling interpretations;
 - person ranking;
 - relationship verdicts;
 - employment, insurance, legal, educational, or eligibility decisions;
@@ -851,6 +984,8 @@ All issues and pull requests must preserve the repository boundary.
 Contributions must not claim or imply:
 
 - benchmark validation;
+- scientific validation;
+- mediation validation;
 - Sal-Meter validation;
 - CAIS compliance;
 - diagnostic status;
@@ -910,19 +1045,23 @@ They do not create clinical, therapeutic, counseling, legal mediation, employmen
 
 ## Future roadmap
 
-The next roadmap should move from release hygiene to synthetic dyadic demonstration.
+The next roadmap should move from helper-validation hygiene to synthetic dyadic demonstration and evaluation scaffolding.
 
 Recommended next milestones:
 
 | Milestone | Name | Purpose |
 |---|---|---|
-| P4-0 | Synthetic Dyadic Demo Package | Create a public-safe synthetic dyadic session package |
+| P4-0 | Synthetic Dyadic Demo Package | Extend the existing synthetic dyadic helper package into a fuller public-safe demo package |
 | P4-1 | Dyadic Recovery Delta Evaluator | Add a baseline evaluator for dyadic recovery delta |
 | P4-2 | Mediation Policy Prompt Pack | Define bounded prompt/policy structures for state-aware mediation simulation |
 | P4-3 | Termination Gate Accuracy Skeleton | Add synthetic tests for pause/stop/close decision logic |
 | P4-4 | Phone-only Simulator Wireframe | Prepare a public-safe phone-only session flow mockup |
-| P5-0 | Boundary Lint | Add prohibited-claim language checks for README/docs/releases |
-| P5-1 | Schema Expansion Validator | Extend validation from synthetic-session-001 into packet/event/container objects |
+
+Completed helper-validation milestones are tracked under:
+
+```text
+Current P5 helper-validation state
+```
 
 ---
 
@@ -989,6 +1128,8 @@ It does not grant CAIS compliance.
 
 It does not crown a benchmark as validated.
 
+It does not validate mediation.
+
 It does not authorize surveillance.
 
 It does not authorize diagnosis.
@@ -998,3 +1139,13 @@ It does not authorize therapy.
 It does not authorize production mediation.
 
 A closed session must stay closed.
+
+The packet is not the person.
+
+The event is not the relationship.
+
+The container is not the truth.
+
+The validator is not authority.
+
+The workflow is not certification.
