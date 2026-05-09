@@ -1,0 +1,72 @@
+{
+  "packet_id": "hsp_synthetic_A_001",
+  "session_id": "session_synthetic_dyadic_001",
+  "participant_role": "participant_A",
+  "timestamp_created": "2026-05-09T09:00:00Z",
+  "timestamp_expiry": "2026-05-09T09:30:00Z",
+  "time_window": {
+    "start_time": "2026-05-09T09:00:00Z",
+    "end_time": "2026-05-09T09:05:00Z",
+    "duration_sec": 300
+  },
+  "state_summary": {
+    "arousal_band": "medium_high",
+    "regulation_trend": "improving",
+    "recovery_trend": "toward_recovery",
+    "overload_risk": "medium",
+    "withdrawal_risk": "low",
+    "engagement_band": "present",
+    "uncertainty_state": "medium_uncertainty"
+  },
+  "confidence_band": "medium",
+  "data_quality": {
+    "quality_band": "synthetic_demo",
+    "artifact_flag": false,
+    "missingness": "none",
+    "sensor_availability": [
+      "phone",
+      "voice_proxy",
+      "interaction_timing",
+      "synthetic_source"
+    ],
+    "packet_completeness": "complete",
+    "review_required": false
+  },
+  "permission_scope": "dyadic_mediation_only",
+  "sharing_scope": "synthetic_public_example",
+  "output_mode": "private_cue",
+  "session_scope": {
+    "session_type": "synthetic_demo",
+    "session_phase": "post_output",
+    "permitted_use": "synthetic_packet_example",
+    "closure_required": true,
+    "reuse_allowed": false
+  },
+  "synthetic_flag": true,
+  "raw_data_excluded": true,
+  "audit_timestamp": "2026-05-09T09:05:30Z",
+  "boundary": {
+    "research_stage": true,
+    "non_clinical": true,
+    "non_diagnostic": true,
+    "non_therapeutic": true,
+    "non_surveillance": true,
+    "non_counseling": true,
+    "raw_data_non_public": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_validated_mediation": true,
+    "not_production_intervention": true,
+    "no_human_ranking": true,
+    "no_relationship_verdict": true
+  },
+  "references": {
+    "ai_output_reference": "synthetic_ai_output_001",
+    "pre_output_reference": "synthetic_pre_output_A_001",
+    "post_output_reference": "synthetic_post_output_A_001",
+    "delta_reference": "synthetic_delta_A_001",
+    "recovery_gate_reference": "synthetic_recovery_gate_001",
+    "termination_gate_reference": "synthetic_termination_gate_001"
+  },
+  "public_notes": "Synthetic public helper packet for Participant A only. No raw human data. No identity data. No diagnosis. No therapy. No Sal-Meter validation. No CAIS compliance."
+}
