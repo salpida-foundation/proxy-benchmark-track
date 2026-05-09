@@ -1,8 +1,10 @@
 # Schemas
 
-This folder contains public helper schemas for the SICS Human-State Proxy Benchmark Track.
+This folder contains public helper schemas for the **SICS Human-State Proxy Benchmark Track**.
 
-These schemas are provided to document and validate the structure of the public synthetic/sample package and the P3 Human-State-Aware AI Mediation helper layer.
+These schemas document and validate the structure of public synthetic/sample helper packages, including the original synthetic sample package and the P3 Human-State-Aware AI Mediation helper layer.
+
+They are helper schemas only.
 
 They are not canonical authority.
 
@@ -16,9 +18,13 @@ They do not validate Sal-Meter.
 
 They do not validate benchmark performance.
 
+They do not validate scientific truth.
+
 They do not validate mediation.
 
-They do not create diagnostic, therapeutic, clinical, surveillance, employment, insurance, educational, legal, eligibility, certification, or human-ranking authority.
+They do not validate human-state measurement.
+
+They do not create diagnostic, therapeutic, clinical, counseling, surveillance, employment, insurance, educational, legal, eligibility, certification, device-readiness, production-deployment, mediation-service, or human-ranking authority.
 
 ---
 
@@ -35,14 +41,17 @@ They are intended to support:
 - leakage-risk awareness;
 - baseline feature table structure;
 - QC report structure;
+- split definition structure;
 - Human-State Packet helper structure;
 - dyadic session event helper structure;
 - benchmark session container helper structure;
+- P3 helper-schema validation;
 - future reproducibility helper workflows.
 
 They are not intended to support:
 
 - raw human data publication;
+- identifiable human data publication;
 - clinical interpretation;
 - diagnostic labeling;
 - therapeutic feedback;
@@ -53,6 +62,7 @@ They are not intended to support:
 - CAIS compliance claims;
 - Sal-Meter validation claims;
 - validated benchmark claims;
+- validated mediation claims;
 - certified benchmark claims;
 - production closed-loop intervention.
 
@@ -69,17 +79,17 @@ They are not intended to support:
 | `qc-report.schema.json` | `qc_report.json` | QC status, stream checks, leakage review, public release boundary |
 | `features-baseline.schema.json` | one row object from `features_baseline.csv` | Synthetic baseline feature rows and Human-State Cost proxy example values |
 | `splits.schema.json` | `splits.json` | Synthetic split definition, leakage notes, and holdout structure demonstration |
-| `human_state_packet.schema.json` | one Human-State Packet helper object | Minimal consent-bound, permission-bound, expiry-bound, confidence-aware, data-quality-aware, session-scoped, sharing-scoped, raw-data-excluding packet structure |
+| `human_state_packet.schema.json` | one Human-State Packet helper object | Consent-bound, permission-bound, expiry-bound, confidence-aware, data-quality-aware, session-scoped, sharing-scoped, raw-data-excluding packet structure |
 | `dyadic_session_event.schema.json` | one dyadic session event helper object | Public-safe synthetic/sample event object for consent, permission, packet status, private cue, shared output, Human-State Delta A/B, Dyadic Delta, gates, closure, and audit status |
 | `benchmark_session.schema.json` | one benchmark session helper container | Public-safe synthetic/sample benchmark session container connecting event references, baseline suite status, gate summaries, leakage review, holdout strategy, audit status, authority status, and final boundary status |
 
 ---
 
-## P3 helper schema layer
+## P5-1 / P3 helper schema layer
 
-P3 introduces the Human-State-Aware AI Mediation helper schema layer.
+P5-1 extends the repository from document-only helper structure toward machine-checkable P3 helper-schema scaffolding.
 
-This layer has three object levels:
+The P3 helper layer has three object levels:
 
 ```text
 Human-State Packet
@@ -87,7 +97,7 @@ Human-State Packet
 → Benchmark Session Container
 ```
 
-These schemas validate helper structure.
+These schemas validate helper structure only.
 
 They do not validate human state.
 
@@ -95,15 +105,76 @@ They do not validate dyadic recovery.
 
 They do not validate benchmark success.
 
+They do not validate scientific truth.
+
+They do not validate mediation effectiveness.
+
 They do not validate Sal-Meter.
 
 They do not grant CAIS compliance.
+
+They do not authorize clinical, diagnostic, therapeutic, counseling, surveillance, employment, insurance, educational, legal, eligibility, certification, device-readiness, production-deployment, mediation-service, or human-ranking use.
+
+---
+
+## Current P5-1 implementation status
+
+Current P5-1 helper-schema files:
+
+```text
+schemas/
+  human_state_packet.schema.json
+  dyadic_session_event.schema.json
+  benchmark_session.schema.json
+```
+
+Current P5-1 synthetic dyadic sample package:
+
+```text
+sample-data/
+  synthetic-dyadic-session-001/
+    README.md
+    human_state_packet_A.json
+    human_state_packet_B.json
+    dyadic_session_event.json
+    benchmark_session_container.json
+```
+
+Current P5-1 validator:
+
+```text
+evaluation-baseline/validate_p3_schemas.py
+```
+
+Current workflow integration:
+
+```text
+.github/workflows/validate-synthetic-sample.yml
+```
+
+The workflow may run:
+
+```text
+validate_sample_package.py
+validate_p3_schemas.py
+boundary_lint.py
+```
+
+This automation checks structure and boundary hygiene only.
+
+It does not validate benchmark performance.
+
+It does not validate scientific truth.
+
+It does not validate Sal-Meter.
+
+It does not grant CAIS compliance.
 
 ---
 
 ## Human-State Packet helper schema
 
-`human_state_packet.schema.json` validates a minimal Human-State Packet helper object.
+`human_state_packet.schema.json` validates one public-safe Human-State Packet helper object.
 
 A valid Human-State Packet helper object should remain:
 
@@ -115,7 +186,8 @@ A valid Human-State Packet helper object should remain:
 - data-quality-aware;
 - session-scoped;
 - sharing-scoped;
-- raw-data-excluding.
+- raw-data-excluding;
+- synthetic/sample-only when used in this public repository.
 
 It may describe bounded state-summary structure.
 
@@ -123,6 +195,10 @@ It must not include:
 
 - raw human data;
 - raw biosignals;
+- raw ECG;
+- raw EEG;
+- raw EDA;
+- raw PPG;
 - raw voice;
 - raw face;
 - raw gaze;
@@ -136,12 +212,32 @@ It must not include:
 - legal mediation conclusion;
 - relationship verdict;
 - human score;
+- psychological safety score;
+- employment score;
+- insurance score;
+- educational score;
+- legal eligibility score;
 - Sal-Meter validation claim;
-- CAIS compliance claim.
+- CAIS compliance claim;
+- certification claim.
+
+Correct boundary sentence:
+
+```text
+A Human-State Packet is a consent-bound, session-scoped, expiring state-summary helper object for interaction adjustment only.
+```
 
 The packet is an interface object.
 
 It is not the body.
+
+It is not a diagnosis.
+
+It is not a verdict.
+
+It is not Sal-Meter.
+
+It is not CAIS compliance.
 
 ---
 
@@ -151,6 +247,16 @@ It is not the body.
 
 It may record:
 
+- schema version;
+- event ID;
+- dyadic session ID;
+- event type;
+- timestamp;
+- dataset type;
+- synthetic status;
+- actor role;
+- participant scope;
+- session scope status;
 - consent status;
 - permission status;
 - packet status;
@@ -177,11 +283,23 @@ It does not expose private state.
 
 It does not judge either participant.
 
+It does not assign blame.
+
+It does not decide who is right.
+
+It does not decide who is wrong.
+
 It does not validate mediation.
 
 It does not validate Sal-Meter.
 
 It does not grant CAIS compliance.
+
+Correct boundary sentence:
+
+```text
+A Dyadic Session Event describes bounded synthetic session structure, not human truth or relationship judgment.
+```
 
 ---
 
@@ -213,6 +331,7 @@ It may connect:
 - audit status;
 - public release status;
 - authority status;
+- boundary flags;
 - final boundary status.
 
 It records the benchmark container.
@@ -225,17 +344,25 @@ It does not expose private state.
 
 It does not validate a benchmark.
 
+It does not validate scientific truth.
+
 It does not validate Sal-Meter.
 
 It does not grant CAIS compliance.
 
 It does not crown a benchmark as validated.
 
+Correct boundary sentence:
+
+```text
+A Benchmark Session Container demonstrates helper structure only; it is not benchmark evidence.
+```
+
 ---
 
-## Expected sample package alignment
+## Expected package alignment
 
-The original sample package schemas are aligned with the following public synthetic package structure:
+The original public synthetic sample package is:
 
 ```text
 sample-data/
@@ -250,23 +377,68 @@ sample-data/
     operator_log.md
 ```
 
-P3 helper schemas may later support public-safe synthetic helper objects such as:
+The P5-1 / P3 synthetic dyadic helper package is:
 
 ```text
 sample-data/
-  synthetic-session-001/
-    human_state_packet.example.json
-    dyadic_session_event.example.json
-    benchmark_session.example.json
+  synthetic-dyadic-session-001/
+    README.md
+    human_state_packet_A.json
+    human_state_packet_B.json
+    dyadic_session_event.json
+    benchmark_session_container.json
 ```
 
-These examples must remain synthetic, mock, placeholder, or structure-only.
+These two folders serve different helper purposes.
 
-They must not contain real human data.
+They should not be merged.
 
-They must not contain identifiable participant data.
+The original `synthetic-session-001` package demonstrates a public synthetic session package using CSV/JSON helper files.
 
-They must not contain real dyadic conflict content.
+The `synthetic-dyadic-session-001` package demonstrates a P3 dyadic helper package using schema-aligned JSON objects.
+
+---
+
+## P3 validation mapping
+
+The P3 validator should use the following mapping:
+
+```text
+sample-data/synthetic-dyadic-session-001/human_state_packet_A.json
+  → schemas/human_state_packet.schema.json
+
+sample-data/synthetic-dyadic-session-001/human_state_packet_B.json
+  → schemas/human_state_packet.schema.json
+
+sample-data/synthetic-dyadic-session-001/dyadic_session_event.json
+  → schemas/dyadic_session_event.schema.json
+
+sample-data/synthetic-dyadic-session-001/benchmark_session_container.json
+  → schemas/benchmark_session.schema.json
+```
+
+A successful P3 helper-schema validation means only:
+
+```text
+The public synthetic/sample P3 helper files follow the expected helper-schema structure.
+```
+
+A successful P3 helper-schema validation does not mean:
+
+```text
+The benchmark is validated.
+The science is validated.
+The mediation system works.
+The dyadic recovery is real.
+The repository is Sal-Meter.
+The repository is CAIS-compliant.
+The package is clinical.
+The package is diagnostic.
+The package is therapeutic.
+The package is certified.
+The package is device-ready.
+The package is production-ready.
+```
 
 ---
 
@@ -283,6 +455,8 @@ structure-only
 non-identifying
 raw-data-free
 not benchmark evidence
+not scientific validation
+not mediation validation
 not Sal-Meter
 not CAIS compliance
 ```
@@ -291,7 +465,10 @@ Public files must not contain:
 
 - raw human biosignal data;
 - raw human video;
-- raw face, voice, gaze, or audio data;
+- raw face data;
+- raw voice data;
+- raw gaze data;
+- raw audio data;
 - raw transcript;
 - direct identifiers;
 - identity mapping files;
@@ -304,12 +481,19 @@ Public files must not contain:
 - legal mediation conclusions;
 - relationship verdicts;
 - human scores;
+- psychological safety scores;
+- employment monitoring scores;
+- insurance eligibility scores;
+- educational eligibility scores;
+- legal eligibility scores;
 - Sal-Meter input data;
 - raw Sal-Meter traces;
 - raw CAIS traces;
 - CAIS compliance claims;
 - certification claims;
-- validated benchmark claims.
+- validated benchmark claims;
+- validated mediation claims;
+- production closed-loop claims.
 
 Public examples may show structure.
 
@@ -337,11 +521,13 @@ They do not validate Recovery Gate success.
 
 They do not validate Termination Gate maturity.
 
+They do not validate mediation effectiveness.
+
 They do not validate Sal-Meter input.
 
 They do not validate CAIS compliance.
 
-They do not validate clinical, diagnostic, therapeutic, surveillance, employment, insurance, educational, legal, or eligibility use.
+They do not validate clinical, diagnostic, therapeutic, counseling, surveillance, employment, insurance, educational, legal, or eligibility use.
 
 A valid schema object means:
 
@@ -445,6 +631,12 @@ Prohibited phrasing:
 Human-State Cost diagnoses the user’s psychological or physiological condition.
 ```
 
+Correct boundary sentence:
+
+```text
+Human-State Cost evaluates the interaction condition, not the person.
+```
+
 ---
 
 ## Naming rule
@@ -460,11 +652,20 @@ Use:
 - `non-clinical`;
 - `non-diagnostic`;
 - `non-therapeutic`;
+- `non-counseling`;
 - `non-surveillance`;
+- `non-certification`;
+- `non-human-ranking`;
 - `benchmark-support`;
 - `public helper schema`;
+- `helper-schema validation`;
 - `raw-data-non-public`;
-- `synthetic-public-data-first`.
+- `synthetic-public-data-first`;
+- `not Sal-Meter`;
+- `not CAIS compliance`;
+- `not benchmark validation`;
+- `not mediation validation`;
+- `no raw human data`.
 
 Do not use:
 
@@ -477,12 +678,58 @@ Do not use:
 - `Sal-Meter validated`;
 - `validated benchmark`;
 - `validated mediation`;
+- `validated dyadic recovery system`;
 - `human truth score`;
 - `consciousness measurement`;
 - `psychological safety score`;
 - `employee monitoring score`;
 - `production-ready`;
-- `Sal-Meter-compatible node exists`.
+- `device-ready`;
+- `emotion-reading AI`;
+- `relationship scoring system`;
+- `human ranking system`.
+
+---
+
+## GitHub Actions alignment
+
+The current workflow may run schema-related helper checks from:
+
+```text
+.github/workflows/validate-synthetic-sample.yml
+```
+
+The P3 helper-schema validator is:
+
+```text
+evaluation-baseline/validate_p3_schemas.py
+```
+
+The intended P3 validation role is:
+
+```text
+Check P3 helper-schema structure only.
+```
+
+The intended workflow posture is:
+
+```text
+Run existing synthetic sample package validator.
+Run P3 helper schema validator.
+Run boundary language lint.
+```
+
+These checks are repository hygiene helpers.
+
+They are not benchmark validators.
+
+They are not scientific validators.
+
+They are not Sal-Meter validators.
+
+They are not CAIS compliance validators.
+
+They are not mediation validators.
 
 ---
 
@@ -500,7 +747,7 @@ They do not create canonical authority.
 
 ---
 
-## Current P3 schema state
+## Current P5-1 schema state
 
 This folder currently provides structure schemas for the public synthetic/sample package and the P3 Human-State-Aware AI Mediation helper layer.
 
@@ -509,15 +756,21 @@ Status:
 ```text
 Research-stage helper schemas.
 Synthetic/sample structure validation only.
-P3 helper schema alignment completed through P3-11.
+P5-1 P3 helper schema alignment active.
 human_state_packet.schema.json exists.
 dyadic_session_event.schema.json exists.
 benchmark_session.schema.json exists.
+sample-data/synthetic-dyadic-session-001 exists.
+evaluation-baseline/validate_p3_schemas.py exists.
+GitHub Actions P3 validator step added.
 Not benchmark evidence.
+Not scientific validation.
 Not validated mediation.
 Not Sal-Meter.
 Not CAIS compliance.
 No raw human data.
+No identifiable human data.
+No clinical data.
 ```
 
 Completed P3 helper schemas:
@@ -529,6 +782,18 @@ schemas/
   benchmark_session.schema.json
 ```
 
+Current P3 synthetic helper package:
+
+```text
+sample-data/
+  synthetic-dyadic-session-001/
+    README.md
+    human_state_packet_A.json
+    human_state_packet_B.json
+    dyadic_session_event.json
+    benchmark_session_container.json
+```
+
 The schemas remain public helper schemas only.
 
 No raw human data is allowed.
@@ -538,3 +803,29 @@ No benchmark validation is claimed.
 No Sal-Meter validation is claimed.
 
 No CAIS compliance is claimed.
+
+---
+
+## Final rule
+
+A schema can validate structure.
+
+A schema cannot validate truth.
+
+A schema can guard public helper boundaries.
+
+A schema cannot crown scientific evidence.
+
+A schema can reduce drift.
+
+A schema cannot grant authority.
+
+The packet is not the person.
+
+The event is not the relationship.
+
+The container is not the benchmark.
+
+The schema is a gate.
+
+It is not the kingdom.
