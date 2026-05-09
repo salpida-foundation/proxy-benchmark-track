@@ -1,0 +1,107 @@
+{
+  "file_id": "DYADIC-DELTA-SYNTHETIC-001",
+  "session_id": "session_synthetic_dyadic_001",
+  "dyadic_session_id": "DYS-SYNTHETIC-001",
+  "dataset_type": "synthetic",
+  "synthetic_status": "synthetic_only",
+  "package_role": "p4_synthetic_dyadic_demo_delta",
+  "description": "Synthetic dyadic delta object for a public-safe dyadic helper demo package. This object illustrates bounded state-summary change across two synthetic participants after synthetic AI outputs.",
+  "linked_refs": {
+    "ai_output_primary": "synthetic_ai_output_002",
+    "human_state_packet_A": "hsp_synthetic_A_001",
+    "human_state_packet_B": "hsp_synthetic_B_001",
+    "dyadic_session_event": "DSE-SYNTHETIC-001",
+    "benchmark_session_container": "BMS-SYNTHETIC-001"
+  },
+  "observation_window": {
+    "start_time": "2026-05-09T09:04:00Z",
+    "end_time": "2026-05-09T09:08:30Z",
+    "duration_sec": 270
+  },
+  "participant_delta_summary": {
+    "participant_A": {
+      "delta_id": "synthetic_delta_A_001",
+      "direction": "toward_recovery",
+      "arousal_shift": "decreased",
+      "engagement_shift": "present",
+      "regulation_shift": "improving",
+      "withdrawal_shift": "low",
+      "uncertainty_shift": "reduced_but_present",
+      "confidence_band": "medium",
+      "interpretation_boundary": "Synthetic state-summary delta only. This is not diagnosis, therapy, clinical interpretation, emotion detection, or human truth measurement."
+    },
+    "participant_B": {
+      "delta_id": "synthetic_delta_B_001",
+      "direction": "mixed",
+      "arousal_shift": "stable",
+      "engagement_shift": "reduced",
+      "regulation_shift": "stable",
+      "withdrawal_shift": "medium",
+      "uncertainty_shift": "persistent",
+      "confidence_band": "medium",
+      "interpretation_boundary": "Synthetic state-summary delta only. Reduced engagement is not treated as recovery, agreement, fault, guilt, diagnosis, or relationship verdict."
+    }
+  },
+  "dyadic_delta_summary": {
+    "dyadic_delta_id": "synthetic_dyadic_delta_001",
+    "dyadic_direction": "mixed",
+    "recovery_asymmetry": "present",
+    "one_sided_improvement": true,
+    "two_sided_recovery_confirmed": false,
+    "false_recovery_risk": "medium",
+    "silence_risk_detected": true,
+    "private_state_exposure_risk_detected": false,
+    "synchrony_review_required": true,
+    "shared_output_safety": "bounded",
+    "permission_status": "within_synthetic_demo_scope",
+    "recommended_next_gate": "recovery_gate_review"
+  },
+  "demo_interpretation": {
+    "allowed_interpretation": [
+      "Participant A shows a synthetic movement toward recovery.",
+      "Participant B remains synthetically reduced in engagement.",
+      "The dyad should not be marked as recovered.",
+      "The next synthetic step should pass through the recovery gate before any continued mediation."
+    ],
+    "not_allowed_interpretation": [
+      "The relationship is resolved.",
+      "Participant A is right.",
+      "Participant B is wrong.",
+      "Silence means recovery.",
+      "Reduced engagement means consent.",
+      "This proves mediation effectiveness.",
+      "This validates a benchmark.",
+      "This validates Sal-Meter.",
+      "This grants CAIS compliance."
+    ]
+  },
+  "boundary": {
+    "synthetic_public_example": true,
+    "raw_human_data_present": false,
+    "identifiable_data_present": false,
+    "clinical_data_present": false,
+    "private_session_log_present": false,
+    "real_dyadic_conflict_present": false,
+    "raw_audio_present": false,
+    "raw_video_present": false,
+    "raw_transcript_present": false,
+    "raw_biosignal_present": false,
+    "sal_meter_input_present": false,
+    "cais_compliance_dossier_present": false,
+    "diagnostic_claim_present": false,
+    "therapeutic_claim_present": false,
+    "counseling_claim_present": false,
+    "surveillance_claim_present": false,
+    "legal_mediation_claim_present": false,
+    "benchmark_validation_claim_present": false,
+    "scientific_validation_claim_present": false,
+    "mediation_validation_claim_present": false,
+    "sal_meter_validation_claim_present": false,
+    "cais_compliance_claim_present": false,
+    "production_intervention_claim_present": false,
+    "human_ranking_claim_present": false,
+    "relationship_verdict_present": false
+  },
+  "final_boundary_status": "synthetic_helper_only",
+  "notes": "Synthetic dyadic delta object only. It illustrates a mixed dyadic recovery pattern and false-recovery caution. It contains no raw human data, no identifiable data, no clinical data, no Sal-Meter input, no CAIS compliance claim, no benchmark validation claim, no mediation validation claim, and no production intervention claim."
+}
