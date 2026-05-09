@@ -2,7 +2,7 @@
 
 This folder contains a public synthetic/sample dyadic helper package for the **SICS Human-State Proxy Benchmark Track**.
 
-It is provided for P3 helper-schema structure demonstration only.
+It is provided for P3 helper-schema structure demonstration and P4-0 synthetic dyadic demo-flow illustration only.
 
 It is not benchmark validation.
 
@@ -30,7 +30,9 @@ It does not create diagnostic, therapeutic, clinical, counseling, surveillance, 
 
 ## Purpose
 
-This package demonstrates a synthetic public-helper structure for the P3 dyadic benchmark scaffold:
+This package demonstrates a synthetic public-helper structure for the P3 dyadic benchmark scaffold and the P4-0 synthetic dyadic demo chain.
+
+The P3 helper scaffold is:
 
 ```text
 Human-State Packet A
@@ -39,11 +41,27 @@ Dyadic Session Event
 Benchmark Session Container
 ```
 
-The package is designed to support bounded helper-schema validation for:
+The P4-0 synthetic dyadic demo chain is:
+
+```text
+AI Output
+→ Human-State Packet A/B
+→ Dyadic Delta
+→ Recovery Gate
+→ Termination Gate
+→ Audit Log
+```
+
+The package is designed to support bounded helper-schema and demo-flow illustration for:
 
 - Human-State Packet structure;
 - dyadic event structure;
 - benchmark session container structure;
+- synthetic AI output object structure;
+- synthetic dyadic delta object structure;
+- synthetic recovery gate object structure;
+- synthetic termination gate object structure;
+- synthetic audit log object structure;
 - synthetic/sample status declaration;
 - raw human data exclusion;
 - identifiable data exclusion;
@@ -51,7 +69,8 @@ The package is designed to support bounded helper-schema validation for:
 - Sal-Meter input exclusion;
 - CAIS compliance claim exclusion;
 - benchmark validation claim exclusion;
-- mediation validation claim exclusion.
+- mediation validation claim exclusion;
+- production closed-loop claim exclusion.
 
 This package is not evidence.
 
@@ -65,6 +84,8 @@ This package is not a CAIS-compliant output.
 
 This package is not a mediation result.
 
+This package is not a production closed-loop intervention.
+
 ---
 
 ## Folder contents
@@ -77,6 +98,11 @@ sample-data/
     human_state_packet_B.json
     dyadic_session_event.json
     benchmark_session_container.json
+    ai_outputs.json
+    dyadic_delta.json
+    recovery_gate.json
+    termination_gate.json
+    audit_log.json
 ```
 
 ---
@@ -90,12 +116,17 @@ sample-data/
 | `human_state_packet_B.json` | Synthetic Human-State Packet for participant B | No raw human data, no identity data, no diagnosis, no Sal-Meter input |
 | `dyadic_session_event.json` | Synthetic dyadic event object | No relationship verdict, no blame assignment, no mediation validation |
 | `benchmark_session_container.json` | Synthetic benchmark session container | Not benchmark validation, not scientific validation, not CAIS compliance |
+| `ai_outputs.json` | Synthetic AI output examples | Mock AI outputs only, no real conversation, no private user content |
+| `dyadic_delta.json` | Synthetic dyadic delta object | Structure-only delta summary, not recovery evidence |
+| `recovery_gate.json` | Synthetic recovery gate object | Prevents false recovery in demo flow, not mediation validation |
+| `termination_gate.json` | Synthetic termination gate object | Demonstrates pause/close logic, not production intervention |
+| `audit_log.json` | Synthetic audit log object | Demonstrates traceability of the demo chain, not certification |
 
 ---
 
 ## P3 helper chain
 
-The intended helper chain is:
+The P3 helper chain is:
 
 ```text
 Human-State Packet A
@@ -121,6 +152,170 @@ It does not grant CAIS compliance.
 
 ---
 
+## P4-0 synthetic dyadic demo flow
+
+The P4-0 demo flow illustrates how synthetic helper objects can be linked into a public-safe dyadic mediation-style chain:
+
+```text
+AI Output
+→ Human-State Delta A/B
+→ Dyadic Delta
+→ Recovery Gate
+→ Termination Gate
+→ Audit Log
+```
+
+This flow is represented by:
+
+```text
+ai_outputs.json
+dyadic_delta.json
+recovery_gate.json
+termination_gate.json
+audit_log.json
+```
+
+The intended interpretation is:
+
+```text
+Synthetic AI output is generated.
+Synthetic participant packet summaries are referenced.
+Synthetic dyadic delta is observed.
+Recovery gate prevents false recovery.
+Termination gate pauses or closes the session.
+Audit log records the helper chain.
+```
+
+This is a demo-flow scaffold only.
+
+It is not benchmark validation.
+
+It is not scientific validation.
+
+It is not mediation validation.
+
+It is not Sal-Meter validation.
+
+It is not CAIS compliance.
+
+It is not a production closed-loop intervention.
+
+It does not process raw human data.
+
+It does not process identifiable human data.
+
+It does not process clinical data.
+
+---
+
+## P4-0 demo object chain
+
+The P4-0 object chain is:
+
+```text
+ai_outputs.json
+  → dyadic_delta.json
+  → recovery_gate.json
+  → termination_gate.json
+  → audit_log.json
+```
+
+Reference relationship:
+
+```text
+ai_outputs.json
+  contains:
+    synthetic_ai_output_001
+    synthetic_ai_output_002
+    synthetic_ai_output_003
+
+dyadic_delta.json
+  references:
+    synthetic_ai_output_002
+    hsp_synthetic_A_001
+    hsp_synthetic_B_001
+    DSE-SYNTHETIC-001
+    BMS-SYNTHETIC-001
+
+recovery_gate.json
+  references:
+    synthetic_ai_output_002
+    synthetic_ai_output_003
+    synthetic_dyadic_delta_001
+    synthetic_recovery_gate_001
+    DSE-SYNTHETIC-001
+    BMS-SYNTHETIC-001
+
+termination_gate.json
+  references:
+    synthetic_ai_output_003
+    synthetic_dyadic_delta_001
+    synthetic_recovery_gate_001
+    synthetic_termination_gate_001
+    synthetic_closure_001
+    DSE-SYNTHETIC-001
+    BMS-SYNTHETIC-001
+
+audit_log.json
+  references:
+    hsp_synthetic_A_001
+    hsp_synthetic_B_001
+    synthetic_ai_output_002
+    synthetic_dyadic_delta_001
+    synthetic_recovery_gate_001
+    synthetic_termination_gate_001
+    synthetic_closure_001
+    DSE-SYNTHETIC-001
+    BMS-SYNTHETIC-001
+```
+
+This reference chain demonstrates auditability.
+
+It does not demonstrate scientific proof.
+
+It does not demonstrate benchmark success.
+
+It does not demonstrate mediation effectiveness.
+
+It does not demonstrate Sal-Meter validation.
+
+It does not demonstrate CAIS compliance.
+
+---
+
+## P4-0 demo flow interpretation
+
+The synthetic demo illustrates a failure-sensitive dyadic pattern:
+
+```text
+Participant A moves toward recovery.
+Participant B remains reduced in engagement.
+Dyadic recovery is not confirmed.
+Recovery Gate does not pass.
+Termination Gate recommends pause and closure.
+Audit Log records the closure.
+```
+
+Correct interpretation:
+
+```text
+The demo chain shows why one-sided improvement should not be treated as dyadic recovery.
+```
+
+Incorrect interpretation:
+
+```text
+The AI mediated the conflict successfully.
+The dyad recovered.
+The relationship was resolved.
+The benchmark is validated.
+The mediation system is validated.
+The repository is Sal-Meter.
+The repository is CAIS-compliant.
+```
+
+---
+
 ## Schema alignment
 
 This package is intended to align with the following helper schemas:
@@ -131,7 +326,7 @@ schemas/dyadic_session_event.schema.json
 schemas/benchmark_session.schema.json
 ```
 
-Expected validation mapping:
+Expected P3 validation mapping:
 
 ```text
 human_state_packet_A.json
@@ -163,6 +358,34 @@ They do not grant CAIS compliance.
 
 ---
 
+## P4-0 demo files and schema boundary
+
+The following P4-0 demo files are public-safe synthetic helper objects:
+
+```text
+ai_outputs.json
+dyadic_delta.json
+recovery_gate.json
+termination_gate.json
+audit_log.json
+```
+
+Unless and until dedicated schemas are added for these files, they should be interpreted as demo-flow helper objects.
+
+They are not P3 schema compliance objects.
+
+They are not benchmark validation objects.
+
+They are not scientific validation objects.
+
+They are not mediation validation objects.
+
+They are not production intervention objects.
+
+They are subject to public boundary review and boundary language linting.
+
+---
+
 ## Synthetic status
 
 All files in this folder must remain synthetic/sample/helper material only.
@@ -179,6 +402,7 @@ Sal-Meter input: absent
 CAIS compliance dossier: absent
 benchmark validation claim: absent
 mediation validation claim: absent
+production intervention claim: absent
 ```
 
 If any future file cannot satisfy this boundary, it does not belong in this public repository.
@@ -223,6 +447,87 @@ A Human-State Packet is a consent-bound, session-scoped, expiring state-summary 
 
 ---
 
+## AI Output boundary
+
+The AI output file contains synthetic mock AI outputs only.
+
+It may include:
+
+- synthetic AI output ID;
+- mock output text;
+- output condition;
+- output stage;
+- output visibility;
+- intended helper function;
+- synthetic observation window;
+- linked synthetic packet references;
+- linked synthetic event references;
+- boundary flags.
+
+It must not include:
+
+- real user conversation;
+- private user statements;
+- identifiable participant data;
+- clinical interpretation;
+- diagnosis;
+- therapy;
+- counseling instruction;
+- legal mediation decision;
+- relationship verdict;
+- production intervention instruction;
+- surveillance instruction;
+- human ranking;
+- Sal-Meter output;
+- CAIS compliance claim.
+
+Correct boundary sentence:
+
+```text
+A synthetic AI output is a mock stimulus for helper-flow demonstration only.
+```
+
+---
+
+## Dyadic Delta boundary
+
+The Dyadic Delta file represents synthetic change between two bounded packet summaries.
+
+It may include:
+
+- participant A synthetic delta;
+- participant B synthetic delta;
+- dyadic direction;
+- recovery asymmetry;
+- one-sided improvement flag;
+- false recovery risk;
+- silence risk;
+- private state exposure risk;
+- recommended next gate.
+
+It must not include:
+
+- real physiological inference;
+- real psychological inference;
+- clinical interpretation;
+- emotion detection;
+- diagnosis;
+- therapy recommendation;
+- relationship verdict;
+- human score;
+- blame assignment;
+- legal conclusion;
+- benchmark validation claim;
+- mediation validation claim.
+
+Correct boundary sentence:
+
+```text
+A Dyadic Delta summarizes synthetic helper-state movement; it is not proof of recovery.
+```
+
+---
+
 ## Dyadic Session Event boundary
 
 The Dyadic Session Event file represents a synthetic event in a bounded dyadic session.
@@ -263,6 +568,123 @@ Correct boundary sentence:
 
 ```text
 A Dyadic Session Event describes bounded synthetic session structure, not human truth or relationship judgment.
+```
+
+---
+
+## Recovery Gate boundary
+
+The Recovery Gate file represents a synthetic decision point.
+
+It may include:
+
+- recovery gate status;
+- participant A recovery check;
+- participant B recovery check;
+- dyadic recovery check;
+- false recovery check;
+- silence check;
+- private state exposure check;
+- consent scope check;
+- packet permission check;
+- data quality check;
+- recommended next action.
+
+It must not include:
+
+- declaration that the dyad truly recovered;
+- clinical decision;
+- therapeutic decision;
+- counseling decision;
+- relationship verdict;
+- human ranking;
+- proof that mediation worked;
+- benchmark validation;
+- Sal-Meter validation;
+- CAIS compliance.
+
+Correct boundary sentence:
+
+```text
+A Recovery Gate prevents false recovery; it does not prove recovery.
+```
+
+---
+
+## Termination Gate boundary
+
+The Termination Gate file represents a synthetic pause/stop/close decision point.
+
+It may include:
+
+- termination gate status;
+- consent withdrawal check;
+- permission expiry check;
+- data quality check;
+- recovery uncertainty check;
+- one-sided improvement check;
+- silence misread check;
+- overstay check;
+- auditability check;
+- closure packet.
+
+It must not include:
+
+- production intervention authority;
+- automated real-world stop instruction;
+- clinical stop instruction;
+- therapeutic stop instruction;
+- legal mediation authority;
+- surveillance control;
+- relationship verdict;
+- human ranking;
+- benchmark validation;
+- mediation validation.
+
+Correct boundary sentence:
+
+```text
+A Termination Gate protects closure; it is not production control.
+```
+
+---
+
+## Audit Log boundary
+
+The Audit Log file records the synthetic helper-chain trace.
+
+It may include:
+
+- session start;
+- packet availability;
+- AI output recorded;
+- dyadic delta recorded;
+- recovery gate review;
+- termination gate review;
+- session closure;
+- object references;
+- boundary checks;
+- audit findings.
+
+It must not include:
+
+- real session logs;
+- private participant data;
+- raw conversation;
+- raw audio;
+- raw video;
+- raw biosignals;
+- clinical records;
+- legal records;
+- production logs;
+- certification records;
+- relationship verdicts;
+- human rankings.
+
+Correct boundary sentence:
+
+```text
+An Audit Log records synthetic helper-chain traceability; it is not certification.
 ```
 
 ---
@@ -330,6 +752,11 @@ This folder may include:
 - synthetic JSON examples;
 - sample helper structures;
 - mock state-summary fields;
+- synthetic AI output examples;
+- synthetic dyadic delta examples;
+- synthetic recovery gate examples;
+- synthetic termination gate examples;
+- synthetic audit log examples;
 - synthetic event references;
 - synthetic audit references;
 - public boundary declarations;
@@ -383,6 +810,7 @@ surveillance_claim_present == false
 sal_meter_validation_claim_present == false
 cais_compliance_claim_present == false
 benchmark_validation_claim_present == false
+scientific_validation_claim_present == false
 mediation_validation_claim_present == false
 production_intervention_claim_present == false
 human_ranking_claim_present == false
@@ -394,7 +822,7 @@ synthetic_public_data_confirmed == true
 
 ## Validation
 
-A future P3 helper-schema validator may be provided at:
+The P3 helper-schema validator is provided at:
 
 ```text
 evaluation-baseline/validate_p3_schemas.py
@@ -406,7 +834,7 @@ Expected validation role:
 Validate P3 helper-schema structure only.
 ```
 
-Expected validation targets:
+Expected P3 validation targets:
 
 ```text
 sample-data/synthetic-dyadic-session-001/human_state_packet_A.json
@@ -448,6 +876,32 @@ The package is production-ready.
 
 ---
 
+## P4-0 demo-flow validation boundary
+
+The P4-0 files currently demonstrate public-safe demo-flow structure.
+
+```text
+ai_outputs.json
+dyadic_delta.json
+recovery_gate.json
+termination_gate.json
+audit_log.json
+```
+
+They may be checked by:
+
+```text
+boundary_lint.py
+manual JSON review
+future demo-flow validator
+```
+
+Until a dedicated demo-flow validator is added, these files should not be described as validated.
+
+They are synthetic helper examples only.
+
+---
+
 ## Naming rule
 
 Use:
@@ -460,6 +914,7 @@ placeholder
 structure_only
 public helper
 helper-schema validation
+demo-flow illustration
 research-stage
 non-clinical
 non-diagnostic
@@ -516,7 +971,7 @@ sample-data/synthetic-session-001/
 
 The existing `synthetic-session-001` package demonstrates a single synthetic session package using CSV/JSON helper files.
 
-This folder demonstrates a P3 dyadic helper package using schema-aligned JSON objects.
+This folder demonstrates a P3/P4-0 dyadic helper package using schema-aligned JSON objects and demo-flow JSON objects.
 
 The two folders should not be merged.
 
@@ -540,7 +995,8 @@ If this folder conflicts with a higher-level DOI-registered canonical record, th
 
 ```text
 Synthetic dyadic helper package.
-Structure demonstration only.
+P3 helper-schema structure demonstration.
+P4-0 synthetic dyadic demo-flow illustration.
 Not benchmark evidence.
 Not scientific validation.
 Not mediation validation.
@@ -553,6 +1009,25 @@ No diagnostic label.
 No therapeutic claim.
 No certification claim.
 No production closed-loop claim.
+```
+
+Current P3 files:
+
+```text
+human_state_packet_A.json
+human_state_packet_B.json
+dyadic_session_event.json
+benchmark_session_container.json
+```
+
+Current P4-0 demo files:
+
+```text
+ai_outputs.json
+dyadic_delta.json
+recovery_gate.json
+termination_gate.json
+audit_log.json
 ```
 
 ---
@@ -574,6 +1049,14 @@ It does not grant CAIS compliance.
 It does not create diagnostic, therapeutic, clinical, counseling, surveillance, employment, insurance, educational, legal, eligibility, certification, device-readiness, production-deployment, mediation-service, or human-ranking authority.
 
 The packet is not the person.
+
+The AI output is not the truth.
+
+The delta is not proof.
+
+The gate is not therapy.
+
+The audit log is not certification.
 
 The event is not the relationship.
 
