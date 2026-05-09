@@ -1,0 +1,166 @@
+{
+  "file_id": "AI-OUTPUTS-SYNTHETIC-001",
+  "session_id": "session_synthetic_dyadic_001",
+  "dyadic_session_id": "DYS-SYNTHETIC-001",
+  "dataset_type": "synthetic",
+  "synthetic_status": "synthetic_only",
+  "package_role": "p4_synthetic_dyadic_demo_ai_outputs",
+  "description": "Synthetic AI output examples for a public-safe dyadic helper demo package. These outputs are mock stimuli only and contain no real user content.",
+  "ai_outputs": [
+    {
+      "ai_output_id": "synthetic_ai_output_001",
+      "output_condition": "generic_supportive_output",
+      "output_visibility": "shared_to_both_participants",
+      "output_stage": "initial_response",
+      "timestamp": "2026-05-09T09:04:00Z",
+      "synthetic_prompt_context": {
+        "context_id": "synthetic_context_001",
+        "context_type": "mock_dyadic_tension",
+        "contains_real_conversation": false,
+        "contains_private_user_statement": false,
+        "contains_identifiable_data": false,
+        "context_summary": "Two synthetic participants show a mild disagreement pattern. One participant becomes more activated while the other becomes more withdrawn."
+      },
+      "output_text": "I hear that both of you are frustrated. Before trying to solve the issue, please pause for a moment and restate what you believe the other person is trying to protect.",
+      "intended_helper_function": [
+        "slow_interaction",
+        "reduce_escalation",
+        "invite_mutual_restatement",
+        "avoid_blame_assignment"
+      ],
+      "expected_observation_window": {
+        "start_time": "2026-05-09T09:04:00Z",
+        "end_time": "2026-05-09T09:06:00Z",
+        "duration_sec": 120
+      },
+      "linked_packet_refs": [
+        "hsp_synthetic_A_001",
+        "hsp_synthetic_B_001"
+      ],
+      "linked_event_ref": "DSE-SYNTHETIC-001",
+      "boundary": {
+        "synthetic_public_example": true,
+        "raw_human_data_present": false,
+        "identifiable_data_present": false,
+        "clinical_data_present": false,
+        "private_session_log_present": false,
+        "sal_meter_input_present": false,
+        "cais_compliance_claim_present": false,
+        "benchmark_validation_claim_present": false,
+        "scientific_validation_claim_present": false,
+        "mediation_validation_claim_present": false,
+        "production_intervention_claim_present": false,
+        "human_ranking_claim_present": false,
+        "relationship_verdict_present": false
+      }
+    },
+    {
+      "ai_output_id": "synthetic_ai_output_002",
+      "output_condition": "bounded_state_aware_output",
+      "output_visibility": "shared_to_both_participants",
+      "output_stage": "recovery_check",
+      "timestamp": "2026-05-09T09:06:30Z",
+      "synthetic_prompt_context": {
+        "context_id": "synthetic_context_002",
+        "context_type": "mock_recovery_check",
+        "contains_real_conversation": false,
+        "contains_private_user_statement": false,
+        "contains_identifiable_data": false,
+        "context_summary": "Synthetic packet summaries suggest Participant A is moving toward recovery while Participant B remains reduced in engagement. The output avoids declaring recovery."
+      },
+      "output_text": "The conversation should not be treated as resolved yet. One side appears to be settling, but the other side still needs space to clarify whether they feel heard. Continue only if both participants agree to one more short turn.",
+      "intended_helper_function": [
+        "prevent_false_recovery",
+        "protect_two_sided_recovery",
+        "check_permission_before_continuing",
+        "support_pause_if_needed"
+      ],
+      "expected_observation_window": {
+        "start_time": "2026-05-09T09:06:30Z",
+        "end_time": "2026-05-09T09:08:30Z",
+        "duration_sec": 120
+      },
+      "linked_packet_refs": [
+        "hsp_synthetic_A_001",
+        "hsp_synthetic_B_001"
+      ],
+      "linked_event_ref": "DSE-SYNTHETIC-001",
+      "boundary": {
+        "synthetic_public_example": true,
+        "raw_human_data_present": false,
+        "identifiable_data_present": false,
+        "clinical_data_present": false,
+        "private_session_log_present": false,
+        "sal_meter_input_present": false,
+        "cais_compliance_claim_present": false,
+        "benchmark_validation_claim_present": false,
+        "scientific_validation_claim_present": false,
+        "mediation_validation_claim_present": false,
+        "production_intervention_claim_present": false,
+        "human_ranking_claim_present": false,
+        "relationship_verdict_present": false
+      }
+    },
+    {
+      "ai_output_id": "synthetic_ai_output_003",
+      "output_condition": "termination_gate_output",
+      "output_visibility": "shared_to_both_participants",
+      "output_stage": "pause_or_stop",
+      "timestamp": "2026-05-09T09:09:00Z",
+      "synthetic_prompt_context": {
+        "context_id": "synthetic_context_003",
+        "context_type": "mock_termination_gate",
+        "contains_real_conversation": false,
+        "contains_private_user_statement": false,
+        "contains_identifiable_data": false,
+        "context_summary": "Synthetic helper state indicates high uncertainty and possible overstay risk. The output recommends a bounded pause rather than further intervention."
+      },
+      "output_text": "This is a good point to pause. The session should close for now rather than continue pushing toward agreement. If both participants want to continue later, a new consent-bound session should begin.",
+      "intended_helper_function": [
+        "avoid_over_intervention",
+        "close_session",
+        "protect_consent_boundary",
+        "preserve_auditability"
+      ],
+      "expected_observation_window": {
+        "start_time": "2026-05-09T09:09:00Z",
+        "end_time": "2026-05-09T09:10:00Z",
+        "duration_sec": 60
+      },
+      "linked_packet_refs": [
+        "hsp_synthetic_A_001",
+        "hsp_synthetic_B_001"
+      ],
+      "linked_event_ref": "DSE-SYNTHETIC-001",
+      "boundary": {
+        "synthetic_public_example": true,
+        "raw_human_data_present": false,
+        "identifiable_data_present": false,
+        "clinical_data_present": false,
+        "private_session_log_present": false,
+        "sal_meter_input_present": false,
+        "cais_compliance_claim_present": false,
+        "benchmark_validation_claim_present": false,
+        "scientific_validation_claim_present": false,
+        "mediation_validation_claim_present": false,
+        "production_intervention_claim_present": false,
+        "human_ranking_claim_present": false,
+        "relationship_verdict_present": false
+      }
+    }
+  ],
+  "demo_chain_refs": {
+    "human_state_packet_A": "hsp_synthetic_A_001",
+    "human_state_packet_B": "hsp_synthetic_B_001",
+    "dyadic_session_event": "DSE-SYNTHETIC-001",
+    "benchmark_session_container": "BMS-SYNTHETIC-001",
+    "next_expected_files": [
+      "dyadic_delta.json",
+      "recovery_gate.json",
+      "termination_gate.json",
+      "audit_log.json"
+    ]
+  },
+  "final_boundary_status": "synthetic_helper_only",
+  "notes": "Synthetic AI output objects only. No raw human data, no identifiable data, no clinical data, no Sal-Meter input, no CAIS compliance claim, no benchmark validation claim, no mediation validation claim, and no production intervention claim."
+}
