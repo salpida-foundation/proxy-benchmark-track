@@ -42,5 +42,8 @@ jobs:
       - name: Run synthetic sample package validator
         run: python evaluation-baseline/validate_sample_package.py
 
+      - name: Run P3 helper schema validator
+        run: python evaluation-baseline/validate_p3_schemas.py
+
       - name: Run boundary language lint
         run: python evaluation-baseline/boundary_lint.py
