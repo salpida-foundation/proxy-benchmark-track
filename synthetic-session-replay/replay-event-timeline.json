@@ -1,0 +1,348 @@
+{
+  "schema_version": "0.1",
+  "artifact_id": "p4_5_synthetic_replay_event_timeline",
+  "artifact_type": "synthetic_replay_event_timeline",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "milestone": "P4-5",
+  "status": "public_helper_only",
+  "dataset_type": "synthetic",
+  "replay_type": "structural_replay_review_only",
+  "raw_human_data_present": false,
+  "identifiable_data_present": false,
+  "clinical_data_present": false,
+  "real_phone_recording_present": false,
+  "real_call_transcript_present": false,
+  "real_participant_data_present": false,
+  "sal_meter_input_present": false,
+  "cais_compliance_claim_present": false,
+  "benchmark_validation_claim_present": false,
+  "scientific_validation_claim_present": false,
+  "mediation_validation_claim_present": false,
+  "dyadic_recovery_validation_claim_present": false,
+  "termination_gate_accuracy_claim_present": false,
+  "phone_monitoring_authority_claim_present": false,
+  "device_readiness_claim_present": false,
+  "production_readiness_claim_present": false,
+  "certification_claim_present": false,
+  "relationship_verdict_present": false,
+  "human_ranking_claim_present": false,
+  "production_closed_loop_claim_present": false,
+  "description": "A synthetic-only replay event timeline for structural review of bounded session flow without real session replay, real phone replay, transcript replay, validation, Sal-Meter status, CAIS compliance, or production authority.",
+  "timeline": [
+    {
+      "event_index": 0,
+      "event_id": "R0_manifest_loaded",
+      "phase": "replay_manifest",
+      "event_type": "replay_manifest_loaded",
+      "timestamp": "T+00:00",
+      "source_type": "synthetic_helper_structure",
+      "display_label": "Replay Manifest Loaded",
+      "summary": "Synthetic replay manifest is loaded for public helper structural review.",
+      "allowed_meaning": "A synthetic replay package is available for structure-only review.",
+      "forbidden_meaning": "A real session, phone call, transcript, or participant record has been loaded.",
+      "boundary_flags": {
+        "synthetic_only": true,
+        "public_helper_only": true,
+        "raw_human_data_present": false,
+        "identifiable_data_present": false,
+        "clinical_data_present": false,
+        "real_phone_recording_present": false,
+        "real_call_transcript_present": false,
+        "sal_meter_input_present": false,
+        "cais_compliance_claim_present": false
+      },
+      "allowed_next_events": [
+        "R1_source_declared"
+      ]
+    },
+    {
+      "event_index": 1,
+      "event_id": "R1_source_declared",
+      "phase": "source_declaration",
+      "event_type": "replay_source_declared",
+      "timestamp": "T+00:01",
+      "source_type": "synthetic_helper_structure",
+      "display_label": "Replay Source Declared",
+      "summary": "Replay source is declared as synthetic public helper structure only.",
+      "allowed_meaning": "The replay uses synthetic helper objects only.",
+      "forbidden_meaning": "The replay source contains real human data, real phone recordings, or real call transcripts.",
+      "boundary_flags": {
+        "source_is_synthetic": true,
+        "source_is_public_safe": true,
+        "source_contains_real_human_data": false,
+        "source_contains_real_phone_recordings": false,
+        "source_contains_real_transcripts": false,
+        "source_contains_clinical_data": false,
+        "source_contains_sal_meter_input": false,
+        "source_contains_cais_compliance_dossier": false
+      },
+      "allowed_next_events": [
+        "R2_consent_boundary_reviewed"
+      ]
+    },
+    {
+      "event_index": 2,
+      "event_id": "R2_consent_boundary_reviewed",
+      "phase": "consent_boundary",
+      "event_type": "consent_boundary_reviewed",
+      "timestamp": "T+00:02",
+      "source_type": "synthetic_session_marker",
+      "display_label": "Consent Boundary Reviewed",
+      "summary": "Synthetic consent and permission status are reviewed for replay structure.",
+      "allowed_meaning": "Replay can show that the synthetic flow included consent and permission checks.",
+      "forbidden_meaning": "Real consent records or identifiable consent artifacts are processed.",
+      "synthetic_state": {
+        "consent_status": "confirmed_synthetic",
+        "permission_status": "active_synthetic",
+        "sharing_scope": "bounded_public_helper",
+        "raw_data_access": "blocked"
+      },
+      "allowed_next_events": [
+        "R3_packet_boundary_reviewed"
+      ]
+    },
+    {
+      "event_index": 3,
+      "event_id": "R3_packet_boundary_reviewed",
+      "phase": "packet_boundary",
+      "event_type": "packet_boundary_reviewed",
+      "timestamp": "T+00:03",
+      "source_type": "synthetic_packet_status",
+      "display_label": "Packet Boundary Reviewed",
+      "summary": "Synthetic packet availability, expiry, confidence, and data-quality flags are reviewed.",
+      "allowed_meaning": "Replay can show packet boundary structure.",
+      "forbidden_meaning": "Raw human data, Sal-Meter input, or CAIS compliance dossiers are processed.",
+      "synthetic_state": {
+        "packet_status": "available",
+        "packet_permission": "active",
+        "packet_expiry": "valid",
+        "confidence_status": "sufficient",
+        "data_quality_status": "sufficient",
+        "raw_data_present": false
+      },
+      "allowed_next_events": [
+        "R4_baseline_summary_replayed"
+      ]
+    },
+    {
+      "event_index": 4,
+      "event_id": "R4_baseline_summary_replayed",
+      "phase": "baseline_summary",
+      "event_type": "baseline_summary_replayed",
+      "timestamp": "T+00:04",
+      "source_type": "synthetic_state_summary",
+      "display_label": "Baseline Summary Replayed",
+      "summary": "Synthetic baseline summary placeholder is replayed for structural review.",
+      "allowed_meaning": "Replay can show that a baseline summary placeholder existed.",
+      "forbidden_meaning": "A real human state, diagnosis, clinical interpretation, or person score is reconstructed.",
+      "synthetic_state": {
+        "participant_A_summary": "synthetic_mild_tension_marker",
+        "participant_B_summary": "synthetic_elevated_caution_marker",
+        "clinical_interpretation_present": false,
+        "diagnostic_label_present": false,
+        "human_score_present": false
+      },
+      "allowed_next_events": [
+        "R5_ai_output_replayed"
+      ]
+    },
+    {
+      "event_index": 5,
+      "event_id": "R5_ai_output_replayed",
+      "phase": "ai_output",
+      "event_type": "ai_output_replayed",
+      "timestamp": "T+00:05",
+      "source_type": "synthetic_ai_output",
+      "display_label": "AI Output Replayed",
+      "summary": "Synthetic AI output is replayed as bounded helper-flow structure.",
+      "allowed_meaning": "Replay can show the shape of a bounded AI output.",
+      "forbidden_meaning": "A production mediation output, diagnosis, therapy instruction, or relationship verdict is generated.",
+      "synthetic_output": {
+        "output_class": "scope_narrowing_prompt",
+        "private_cue_shared": false,
+        "relationship_verdict_present": false,
+        "human_ranking_present": false,
+        "clinical_claim_present": false,
+        "production_intervention_present": false
+      },
+      "allowed_next_events": [
+        "R6_delta_replayed"
+      ]
+    },
+    {
+      "event_index": 6,
+      "event_id": "R6_delta_replayed",
+      "phase": "human_state_delta",
+      "event_type": "human_state_delta_replayed",
+      "timestamp": "T+00:06",
+      "source_type": "synthetic_delta_object",
+      "display_label": "Human-State Delta Replayed",
+      "summary": "Synthetic Human-State Delta placeholder is replayed.",
+      "allowed_meaning": "Replay can show synthetic delta structure.",
+      "forbidden_meaning": "A real human state, diagnosis, therapy effect, or recovery result is inferred.",
+      "synthetic_delta": {
+        "delta_A": "toward_recovery",
+        "delta_B": "mixed",
+        "dyadic_direction": "mixed",
+        "one_sided_improvement": true,
+        "recovery_declaration_blocked": true,
+        "reason": "one-sided improvement is not dyadic recovery"
+      },
+      "allowed_next_events": [
+        "R7_recovery_gate_replayed"
+      ]
+    },
+    {
+      "event_index": 7,
+      "event_id": "R7_recovery_gate_replayed",
+      "phase": "recovery_gate",
+      "event_type": "recovery_gate_replayed",
+      "timestamp": "T+00:07",
+      "source_type": "synthetic_recovery_gate",
+      "display_label": "Recovery Gate Replayed",
+      "summary": "Synthetic Recovery Gate status is replayed as boundary structure.",
+      "allowed_meaning": "Replay can show false-recovery prevention structure.",
+      "forbidden_meaning": "Dyadic recovery is validated.",
+      "synthetic_gate_status": {
+        "recovery_confirmed": false,
+        "silence_treated_as_recovery": false,
+        "agreement_treated_as_recovery": false,
+        "obedience_treated_as_recovery": false,
+        "synchrony_treated_as_recovery": false,
+        "one_sided_improvement_treated_as_recovery": false
+      },
+      "allowed_next_events": [
+        "R8_termination_gate_replayed"
+      ]
+    },
+    {
+      "event_index": 8,
+      "event_id": "R8_termination_gate_replayed",
+      "phase": "termination_gate",
+      "event_type": "termination_gate_replayed",
+      "timestamp": "T+00:08",
+      "source_type": "synthetic_termination_gate",
+      "display_label": "Termination Gate Replayed",
+      "summary": "Synthetic Termination Gate status is replayed as boundary structure.",
+      "allowed_meaning": "Replay can show termination boundary structure.",
+      "forbidden_meaning": "Termination-gate accuracy is validated.",
+      "synthetic_gate_status": {
+        "consent_valid": true,
+        "permission_active": true,
+        "data_quality_sufficient": true,
+        "scope_valid": true,
+        "private_state_exposure_risk": "moderate",
+        "recommended_helper_decision": "narrow_scope",
+        "production_action": "none"
+      },
+      "allowed_next_events": [
+        "R9_closure_replayed"
+      ]
+    },
+    {
+      "event_index": 9,
+      "event_id": "R9_closure_replayed",
+      "phase": "closure",
+      "event_type": "closure_replayed",
+      "timestamp": "T+00:09",
+      "source_type": "synthetic_closure_status",
+      "display_label": "Closure Replayed",
+      "summary": "Synthetic closure is replayed without reopening the session.",
+      "allowed_meaning": "Replay can show that the synthetic session closed.",
+      "forbidden_meaning": "The closed session is reopened or ordinary mediation continues after closure.",
+      "synthetic_closure": {
+        "session_status": "closed",
+        "continuation_allowed": false,
+        "new_session_required": true,
+        "recovery_claimed": false,
+        "termination_accuracy_claimed": false,
+        "mediation_validation_claimed": false,
+        "production_action": "none"
+      },
+      "allowed_next_events": [
+        "R10_audit_replay_written"
+      ]
+    },
+    {
+      "event_index": 10,
+      "event_id": "R10_audit_replay_written",
+      "phase": "audit",
+      "event_type": "audit_replay_written",
+      "timestamp": "T+00:10",
+      "source_type": "synthetic_audit_summary",
+      "display_label": "Audit Replay Written",
+      "summary": "Synthetic audit-only replay summary is written.",
+      "allowed_meaning": "Replay can show public-helper audit structure.",
+      "forbidden_meaning": "Audit creates certification, validation, production authority, or compliance authority.",
+      "synthetic_audit": {
+        "session_id": "synthetic_replay_session_001",
+        "session_status": "closed",
+        "final_decision": "close_session",
+        "raw_audio_present": false,
+        "real_transcript_present": false,
+        "identifiable_data_present": false,
+        "clinical_data_present": false,
+        "sal_meter_input_present": false,
+        "cais_compliance_dossier_present": false,
+        "relationship_verdict_present": false,
+        "human_ranking_present": false,
+        "production_intervention_present": false,
+        "public_boundary_preserved": true
+      },
+      "allowed_next_events": []
+    }
+  ],
+  "forbidden_transitions": [
+    {
+      "from": "R9_closure_replayed",
+      "to": "R5_ai_output_replayed",
+      "reason": "A replay must not reopen a closed session or generate new AI output after closure."
+    },
+    {
+      "from": "R9_closure_replayed",
+      "to": "ordinary_continuation",
+      "reason": "A closed session must stay closed."
+    },
+    {
+      "from": "R6_delta_replayed",
+      "to": "dyadic_recovery_validated",
+      "reason": "Synthetic delta replay is not dyadic recovery validation."
+    },
+    {
+      "from": "R8_termination_gate_replayed",
+      "to": "termination_gate_accuracy_validated",
+      "reason": "Synthetic termination gate replay is not termination-gate accuracy evidence."
+    },
+    {
+      "from": "R10_audit_replay_written",
+      "to": "certification_granted",
+      "reason": "Audit replay does not create certification or compliance authority."
+    }
+  ],
+  "success_meaning": [
+    "The synthetic replay event timeline is structurally readable.",
+    "The event sequence preserves consent, packet, AI output, delta, gate, closure, and audit ordering.",
+    "Closed-session replay handling is explicit.",
+    "The public data boundary is preserved."
+  ],
+  "success_does_not_mean": [
+    "benchmark validation",
+    "scientific validation",
+    "mediation validation",
+    "dyadic recovery validation",
+    "termination-gate accuracy validation",
+    "phone monitoring validation",
+    "Sal-Meter validation",
+    "CAIS compliance",
+    "clinical readiness",
+    "diagnostic readiness",
+    "therapeutic readiness",
+    "device readiness",
+    "production readiness",
+    "certification",
+    "relationship verdict authority",
+    "human-ranking authority",
+    "production closed-loop authority"
+  ],
+  "final_rule": "The replay event timeline is a map of a map. It is not the session, the phone call, the person, the relationship, recovery, termination-gate accuracy evidence, Sal-Meter, CAIS compliance, or production authority. A closed session must stay closed."
+}
