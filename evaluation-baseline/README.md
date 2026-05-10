@@ -1,76 +1,50 @@
-# Evaluation Baseline
-
-This folder contains baseline evaluation skeletons and helper-structure validation tools for the **SICS Human-State Proxy Benchmark Track**.
-
+Evaluation Baseline
+This folder contains baseline evaluation skeletons and helper-structure validation tools for the SICS Human-State Proxy Benchmark Track.
 This is a research-stage, non-clinical, non-diagnostic, non-therapeutic benchmark support folder.
-
 It is not the Sal-Meter core signal track.
-
 It does not validate Sal-Meter.
-
 It does not grant CAIS compliance.
-
 It does not validate benchmark performance.
-
 It does not validate scientific truth.
-
 It does not validate mediation effectiveness.
-
 It does not validate human-state measurement.
-
 It does not create clinical, diagnostic, therapeutic, counseling, surveillance, employment, insurance, educational, legal, eligibility, certification, device-readiness, production-deployment, mediation-service, or human-ranking authority.
-
 ---
-
-## Purpose
-
+Purpose
 The purpose of this folder is to demonstrate how public synthetic proxy benchmark data may be loaded, checked, split, validated against helper schemas, evaluated through bounded synthetic demo-flow logic, and passed into transparent baseline modeling code.
-
 The first goal is not high model performance.
-
 The first goal is an auditable evaluation skeleton.
-
 The second goal is a validator that confirms whether the public synthetic/sample package follows the expected helper structure.
-
 The third goal is a boundary language lint helper that checks public helper files for prohibited or risky wording before public claim drift occurs.
-
 The fourth goal is a P3 helper-schema validator that confirms whether public synthetic dyadic helper files follow the expected Human-State Packet, Dyadic Session Event, and Benchmark Session Container schemas.
-
 The fifth goal is a P4-1 synthetic dyadic recovery delta evaluator that reads the P4-0 synthetic dyadic demo-flow objects and prints a bounded helper-only evaluation summary.
-
 This folder is designed to support:
-
-- synthetic/sample package validation;
-- P3 helper-schema validation;
-- P4 synthetic dyadic recovery demo-flow evaluation;
-- public boundary language checking;
-- schema-aligned file checks;
-- transparent baseline pipeline scaffolding;
-- leakage-safe split demonstration;
-- reproducibility helper workflows;
-- public/private data boundary discipline;
-- future benchmark-support infrastructure.
-
+synthetic/sample package validation;
+P3 helper-schema validation;
+P4 synthetic dyadic recovery demo-flow evaluation;
+public boundary language checking;
+schema-aligned file checks;
+transparent baseline pipeline scaffolding;
+leakage-safe split demonstration;
+reproducibility helper workflows;
+public/private data boundary discipline;
+future benchmark-support infrastructure.
 It is not designed to support:
-
-- benchmark validation;
-- scientific validation;
-- clinical interpretation;
-- diagnostic scoring;
-- therapeutic feedback;
-- counseling service;
-- legal mediation service;
-- surveillance scoring;
-- Sal-Meter validation;
-- CAIS compliance claims;
-- certified benchmark claims;
-- mediation validation claims;
-- production closed-loop claims.
-
+benchmark validation;
+scientific validation;
+clinical interpretation;
+diagnostic scoring;
+therapeutic feedback;
+counseling service;
+legal mediation service;
+surveillance scoring;
+Sal-Meter validation;
+CAIS compliance claims;
+certified benchmark claims;
+mediation validation claims;
+production closed-loop claims.
 ---
-
-## Current files
-
+Current files
 ```text
 evaluation-baseline/
   README.md
@@ -83,29 +57,65 @@ evaluation-baseline/
   prohibited_terms.json
   boundary_lint.py
 ```
-
-| File | Role | Status |
-|---|---|---|
-| `requirements.txt` | Python dependency list for helper scripts | Present |
-| `baseline_pipeline_skeleton.py` | Toy baseline pipeline skeleton for synthetic/sample features | Present |
-| `leakage_safe_split_example.py` | Demonstration of leakage-aware split logic | Present |
-| `validate_sample_package.py` | Structural validator for the original public synthetic sample package | Present |
-| `validate_p3_schemas.py` | P3 helper-schema validator for synthetic dyadic helper files | Present |
-| `evaluate_dyadic_recovery_demo.py` | P4-1 synthetic dyadic recovery demo-flow evaluator | Present |
-| `prohibited_terms.json` | Public boundary prohibited / risky wording list | Present |
-| `boundary_lint.py` | Public boundary language lint helper | Present |
-| `README.md` | Folder-level documentation and boundary notice | Current file |
-
+File	Role	Status
+`requirements.txt`	Python dependency list for helper scripts	Present
+`baseline_pipeline_skeleton.py`	Toy baseline pipeline skeleton for synthetic/sample features	Present
+`leakage_safe_split_example.py`	Demonstration of leakage-aware split logic	Present
+`validate_sample_package.py`	Structural validator for the original public synthetic sample package	Present
+`validate_p3_schemas.py`	P3 helper-schema validator for synthetic dyadic helper files	Present
+`evaluate_dyadic_recovery_demo.py`	P4-1 synthetic dyadic recovery demo-flow evaluator	Present
+`prohibited_terms.json`	Public boundary prohibited / risky wording list	Present
+`boundary_lint.py`	Public boundary language lint helper	Present
+`README.md`	Folder-level documentation and boundary notice	Current file
 ---
-
-## Expected sample inputs
-
+Current public helper release status
+Current public helper release:
+```text
+v0.1.1 — Post-Validator-Pass Public Helper Package for Human-State Proxy Benchmark Track
+```
+Release posture:
+```text
+Bounded public helper pre-release.
+Post-validator-pass helper-structure package.
+Supersedes v0.1.0 for helper-structure validation status.
+Manual binary assets: none.
+GitHub may automatically provide source code archives.
+```
+This release status means only:
+```text
+The public synthetic/sample package validator successfully ran on the main branch.
+The repository helper structure is publicly packaged after validator execution.
+The release remains a structure-only public helper pre-release.
+```
+This release status does not mean:
+```text
+Benchmark performance is validated.
+Scientific truth is validated.
+Mediation effectiveness is validated.
+Sal-Meter is validated.
+CAIS compliance is granted.
+Any system, model, dataset, dashboard, laboratory, device, repository, schema, session protocol, implementation, or mediation system is certified.
+```
+Data boundary:
+```text
+No raw human data.
+No identifiable human data.
+No clinical data.
+No Sal-Meter input.
+No CAIS-compliant measurement data.
+Public examples remain synthetic/sample-structure-only.
+```
+Authority boundary:
+```text
+GitHub is a technical helper surface.
+DOI-registered SICS / CAIS / Sal-Meter / CCF records remain the authority layer.
+If this GitHub release conflicts with a DOI-registered canonical record or formally issued SICS determination, the stricter canonical record controls.
+```
+---
+Expected sample inputs
 This folder currently supports three public synthetic/sample helper packages or helper-flow groups.
-
 ---
-
-### Original synthetic sample package
-
+Original synthetic sample package
 ```text
 sample-data/synthetic-session-001/
   README.md
@@ -118,21 +128,13 @@ sample-data/synthetic-session-001/
   splits.json
   operator_log.md
 ```
-
 This input is synthetic only.
-
 It is not real human data.
-
 It is not benchmark evidence.
-
 It is not Sal-Meter data.
-
 It is not CAIS-compliant output.
-
 ---
-
-### P5-1 / P3 synthetic dyadic helper package
-
+P5-1 / P3 synthetic dyadic helper package
 ```text
 sample-data/synthetic-dyadic-session-001/
   README.md
@@ -141,25 +143,15 @@ sample-data/synthetic-dyadic-session-001/
   dyadic_session_event.json
   benchmark_session_container.json
 ```
-
 This input is synthetic only.
-
 It is not real dyadic data.
-
 It is not clinical data.
-
 It is not mediation evidence.
-
 It is not benchmark evidence.
-
 It is not Sal-Meter data.
-
 It is not CAIS-compliant output.
-
 ---
-
-### P4-0 / P4-1 synthetic dyadic demo-flow package
-
+P4-0 / P4-1 synthetic dyadic demo-flow package
 ```text
 sample-data/synthetic-dyadic-session-001/
   README.md
@@ -173,35 +165,20 @@ sample-data/synthetic-dyadic-session-001/
   termination_gate.json
   audit_log.json
 ```
-
 This input is synthetic only.
-
 It is a demo-flow helper package.
-
 It is not real dyadic recovery evidence.
-
 It is not mediation validation.
-
 It is not benchmark validation.
-
 It is not scientific validation.
-
 It is not Sal-Meter validation.
-
 It is not CAIS compliance.
-
 It does not contain raw human data.
-
 It does not contain identifiable human data.
-
 It does not contain clinical data.
-
 ---
-
-## Schema alignment
-
+Schema alignment
 The original synthetic sample package is checked against helper schemas in:
-
 ```text
 schemas/
   session-metadata.schema.json
@@ -212,18 +189,14 @@ schemas/
   features-baseline.schema.json
   splits.schema.json
 ```
-
 The P5-1 / P3 synthetic dyadic helper package is checked against helper schemas in:
-
 ```text
 schemas/
   human_state_packet.schema.json
   dyadic_session_event.schema.json
   benchmark_session.schema.json
 ```
-
 P3 validation mapping:
-
 ```text
 sample-data/synthetic-dyadic-session-001/human_state_packet_A.json
   → schemas/human_state_packet.schema.json
@@ -237,31 +210,18 @@ sample-data/synthetic-dyadic-session-001/dyadic_session_event.json
 sample-data/synthetic-dyadic-session-001/benchmark_session_container.json
   → schemas/benchmark_session.schema.json
 ```
-
 These schemas validate structure only.
-
 They do not validate scientific truth.
-
 They do not validate human-state inference.
-
 They do not validate dyadic recovery.
-
 They do not validate mediation effectiveness.
-
 They do not validate model reliability.
-
 They do not validate benchmark performance.
-
 They do not validate Sal-Meter input.
-
 They do not validate CAIS compliance.
-
 ---
-
-## P4-1 demo-flow evaluation alignment
-
+P4-1 demo-flow evaluation alignment
 The P4-1 synthetic dyadic recovery delta evaluator reads the following P4-0 demo-flow files:
-
 ```text
 sample-data/synthetic-dyadic-session-001/ai_outputs.json
 sample-data/synthetic-dyadic-session-001/dyadic_delta.json
@@ -269,9 +229,7 @@ sample-data/synthetic-dyadic-session-001/recovery_gate.json
 sample-data/synthetic-dyadic-session-001/termination_gate.json
 sample-data/synthetic-dyadic-session-001/audit_log.json
 ```
-
 The P4-1 evaluator confirms the internal consistency of a synthetic demo-flow chain:
-
 ```text
 AI Output
 → Human-State Packet A/B
@@ -280,70 +238,43 @@ AI Output
 → Termination Gate
 → Audit Log
 ```
-
 It checks demo-flow structure only.
-
 It does not validate benchmark performance.
-
 It does not validate scientific truth.
-
 It does not validate mediation effectiveness.
-
 It does not validate Sal-Meter.
-
 It does not grant CAIS compliance.
-
 It does not validate human-state measurement.
-
 It does not process raw human data.
-
 It does not process identifiable human data.
-
 It does not process clinical data.
-
 ---
-
-## Dependency installation
-
+Dependency installation
 From the repository root:
-
 ```bash
 pip install -r evaluation-baseline/requirements.txt
 ```
-
 The validators require `jsonschema`.
-
 If `jsonschema` is not already included in the local environment or in `requirements.txt`, install it directly:
-
 ```bash
 pip install jsonschema
 ```
-
 Recommended dependency posture:
-
 ```text
 numpy
 pandas
 scikit-learn
 jsonschema
 ```
-
 For automated validation, `jsonschema` should be available in the execution environment.
-
 The P4-1 evaluator uses Python standard-library JSON and path handling only, but it should still be run in the same validation environment as the other helper scripts.
-
 ---
-
-## How to run the original sample package validator
-
+How to run the original sample package validator
 From the repository root:
-
 ```bash
 python evaluation-baseline/validate_sample_package.py
 ```
-
 Expected successful output:
-
 ```text
 SICS Human-State Proxy Benchmark Track
 Synthetic Sample Package Validator v0.1
@@ -358,15 +289,11 @@ Boundary status:
 - no diagnostic, therapeutic, or clinical validation
 - no benchmark performance validation
 ```
-
 A successful validator run means only:
-
 ```text
 The public synthetic/sample package follows the expected helper structure.
 ```
-
 A successful validator run does not mean:
-
 ```text
 The data is real evidence.
 The benchmark is validated.
@@ -375,42 +302,29 @@ The system is diagnostic.
 The system is Sal-Meter.
 The system is CAIS-compliant.
 ```
-
 ---
-
-## How to run the P3 helper-schema validator
-
+How to run the P3 helper-schema validator
 The file:
-
 ```text
 validate_p3_schemas.py
 ```
-
 checks the P5-1 / P3 synthetic dyadic helper package against the P3 helper schemas.
-
 Run from the repository root:
-
 ```bash
 python evaluation-baseline/validate_p3_schemas.py
 ```
-
 Expected successful output:
-
 ```text
 SICS Human-State Proxy Benchmark Track
 P3 Helper Schema Validator v0.1
 
 PASS: P3 synthetic dyadic helper files follow the current public helper schemas.
 ```
-
 A successful P3 helper-schema validation means only:
-
 ```text
 The public synthetic/sample P3 helper files follow the expected helper-schema structure.
 ```
-
 A successful P3 helper-schema validation does not mean:
-
 ```text
 The benchmark is validated.
 The science is validated.
@@ -425,27 +339,18 @@ The package is certified.
 The package is device-ready.
 The package is production-ready.
 ```
-
 ---
-
-## How to run the P4-1 synthetic dyadic recovery demo evaluator
-
+How to run the P4-1 synthetic dyadic recovery demo evaluator
 The file:
-
 ```text
 evaluate_dyadic_recovery_demo.py
 ```
-
 checks the P4-0 synthetic dyadic demo-flow helper objects.
-
 Run from the repository root:
-
 ```bash
 python evaluation-baseline/evaluate_dyadic_recovery_demo.py
 ```
-
 Expected successful output:
-
 ```text
 SICS Human-State Proxy Benchmark Track
 P4-1 Synthetic Dyadic Recovery Delta Evaluator v0.1
@@ -473,15 +378,11 @@ Synthetic demo result:
 - false recovery prevention: active
 - public boundary: preserved
 ```
-
 A successful P4-1 evaluator run means only:
-
 ```text
 The synthetic dyadic demo-flow objects are internally consistent enough for public helper demonstration.
 ```
-
 A successful P4-1 evaluator run does not mean:
-
 ```text
 The benchmark is validated.
 The science is validated.
@@ -496,93 +397,67 @@ The package is certified.
 The package is device-ready.
 The package is production-ready.
 ```
-
 ---
-
-## What the P3 helper-schema validator checks
-
+What the P3 helper-schema validator checks
 `validate_p3_schemas.py` checks:
-
-- required P3 schema files exist;
-- required synthetic dyadic sample files exist;
-- JSON files can be parsed;
-- schema files can be parsed;
-- schemas are valid Draft 2020-12 JSON Schemas;
-- Human-State Packet A validates against `human_state_packet.schema.json`;
-- Human-State Packet B validates against `human_state_packet.schema.json`;
-- Dyadic Session Event validates against `dyadic_session_event.schema.json`;
-- Benchmark Session Container validates against `benchmark_session.schema.json`;
-- synthetic/sample status is explicit;
-- raw human data exclusion is explicit;
-- identifiable data exclusion is explicit;
-- clinical data exclusion is explicit;
-- Sal-Meter input exclusion is explicit;
-- CAIS compliance exclusion is explicit;
-- benchmark validation exclusion is explicit;
-- mediation validation exclusion is explicit.
-
+required P3 schema files exist;
+required synthetic dyadic sample files exist;
+JSON files can be parsed;
+schema files can be parsed;
+schemas are valid Draft 2020-12 JSON Schemas;
+Human-State Packet A validates against `human_state_packet.schema.json`;
+Human-State Packet B validates against `human_state_packet.schema.json`;
+Dyadic Session Event validates against `dyadic_session_event.schema.json`;
+Benchmark Session Container validates against `benchmark_session.schema.json`;
+synthetic/sample status is explicit;
+raw human data exclusion is explicit;
+identifiable data exclusion is explicit;
+clinical data exclusion is explicit;
+Sal-Meter input exclusion is explicit;
+CAIS compliance exclusion is explicit;
+benchmark validation exclusion is explicit;
+mediation validation exclusion is explicit.
 The P3 helper-schema validator is a structure gate.
-
 It is not an evidence gate.
-
 It is not a science gate.
-
 It is not a benchmark gate.
-
 It is not a mediation gate.
-
 It is not a Sal-Meter gate.
-
 It is not a CAIS compliance gate.
-
 ---
-
-## What the P4-1 evaluator checks
-
+What the P4-1 evaluator checks
 `evaluate_dyadic_recovery_demo.py` checks:
-
-- required P4-0 demo-flow files exist;
-- `ai_outputs.json` can be parsed;
-- `dyadic_delta.json` can be parsed;
-- `recovery_gate.json` can be parsed;
-- `termination_gate.json` can be parsed;
-- `audit_log.json` can be parsed;
-- synthetic/sample status is explicit;
-- raw human data exclusion is explicit;
-- identifiable data exclusion is explicit;
-- clinical data exclusion is explicit;
-- Sal-Meter input exclusion is explicit;
-- CAIS compliance exclusion is explicit;
-- benchmark validation exclusion is explicit;
-- mediation validation exclusion is explicit;
-- production intervention exclusion is explicit;
-- human ranking exclusion is explicit;
-- relationship verdict exclusion is explicit;
-- dyadic recovery is not marked as true;
-- recovery gate is not passed;
-- termination gate recommends pause and closure;
-- audit log records closed state.
-
+required P4-0 demo-flow files exist;
+`ai_outputs.json` can be parsed;
+`dyadic_delta.json` can be parsed;
+`recovery_gate.json` can be parsed;
+`termination_gate.json` can be parsed;
+`audit_log.json` can be parsed;
+synthetic/sample status is explicit;
+raw human data exclusion is explicit;
+identifiable data exclusion is explicit;
+clinical data exclusion is explicit;
+Sal-Meter input exclusion is explicit;
+CAIS compliance exclusion is explicit;
+benchmark validation exclusion is explicit;
+mediation validation exclusion is explicit;
+production intervention exclusion is explicit;
+human ranking exclusion is explicit;
+relationship verdict exclusion is explicit;
+dyadic recovery is not marked as true;
+recovery gate is not passed;
+termination gate recommends pause and closure;
+audit log records closed state.
 The P4-1 evaluator is a synthetic demo-flow evaluator.
-
 It is not an evidence gate.
-
 It is not a science gate.
-
 It is not a benchmark gate.
-
 It is not a mediation gate.
-
 It is not a Sal-Meter gate.
-
 It is not a CAIS compliance gate.
-
 ---
-
-## P3 validator boundary output
-
+P3 validator boundary output
 The validator should preserve this boundary posture:
-
 ```text
 This validator checks P3 helper-schema structure only.
 
@@ -608,13 +483,9 @@ It does not process Sal-Meter raw input.
 
 It does not process CAIS compliance dossiers.
 ```
-
 ---
-
-## P4-1 evaluator boundary output
-
+P4-1 evaluator boundary output
 The evaluator should preserve this boundary posture:
-
 ```text
 This evaluator checks synthetic demo-flow structure only.
 
@@ -636,170 +507,137 @@ It does not process identifiable human data.
 
 It does not process clinical data.
 ```
-
 ---
-
-## Human-State Packet helper boundary
-
+Human-State Packet helper boundary
 The P3 Human-State Packet examples are:
-
 ```text
 sample-data/synthetic-dyadic-session-001/human_state_packet_A.json
 sample-data/synthetic-dyadic-session-001/human_state_packet_B.json
 ```
-
 They are summary helper objects only.
-
 They are not:
-
-- the body;
-- raw biosignal data;
-- raw ECG;
-- raw EEG;
-- raw EDA;
-- raw PPG;
-- raw voice;
-- raw face;
-- raw gaze;
-- raw video;
-- raw transcript;
-- a diagnosis;
-- a therapy label;
-- a psychiatric label;
-- a clinical state;
-- a human score;
-- a truth score;
-- a guilt score;
-- a morality score;
-- a psychological safety score;
-- an employee risk score;
-- a relationship verdict;
-- a fault assignment;
-- a Sal-Meter trace;
-- a CAIS compliance record;
-- a certification record.
-
+the body;
+raw biosignal data;
+raw ECG;
+raw EEG;
+raw EDA;
+raw PPG;
+raw voice;
+raw face;
+raw gaze;
+raw video;
+raw transcript;
+a diagnosis;
+a therapy label;
+a psychiatric label;
+a clinical state;
+a human score;
+a truth score;
+a guilt score;
+a morality score;
+a psychological safety score;
+an employee risk score;
+a relationship verdict;
+a fault assignment;
+a Sal-Meter trace;
+a CAIS compliance record;
+a certification record.
 Correct boundary sentence:
-
 ```text
 A Human-State Packet is a consent-bound, session-scoped, expiring state-summary helper object for interaction adjustment only.
 ```
-
 ---
-
-## Dyadic Session Event helper boundary
-
+Dyadic Session Event helper boundary
 The P3 Dyadic Session Event example is:
-
 ```text
 sample-data/synthetic-dyadic-session-001/dyadic_session_event.json
 ```
-
 It may describe:
-
-- consent status;
-- permission status;
-- packet status;
-- sharing scope;
-- private cue status;
-- shared output status;
-- participant A bounded state-summary delta;
-- participant B bounded state-summary delta;
-- dyadic delta;
-- recovery gate decision;
-- termination gate decision;
-- closure reason;
-- audit reference.
-
+consent status;
+permission status;
+packet status;
+sharing scope;
+private cue status;
+shared output status;
+participant A bounded state-summary delta;
+participant B bounded state-summary delta;
+dyadic delta;
+recovery gate decision;
+termination gate decision;
+closure reason;
+audit reference.
 It must not describe:
-
-- who is right;
-- who is wrong;
-- who is guilty;
-- who is unsafe;
-- who is morally better;
-- who should be punished;
-- who should be ranked;
-- who should be monitored;
-- who should be diagnosed;
-- who should receive therapy;
-- a legal mediation decision;
-- a relationship verdict;
-- a clinical interpretation;
-- a production intervention.
-
+who is right;
+who is wrong;
+who is guilty;
+who is unsafe;
+who is morally better;
+who should be punished;
+who should be ranked;
+who should be monitored;
+who should be diagnosed;
+who should receive therapy;
+a legal mediation decision;
+a relationship verdict;
+a clinical interpretation;
+a production intervention.
 Correct boundary sentence:
-
 ```text
 A Dyadic Session Event describes bounded synthetic session structure, not human truth or relationship judgment.
 ```
-
 ---
-
-## Benchmark Session Container boundary
-
+Benchmark Session Container boundary
 The P3 Benchmark Session Container example is:
-
 ```text
 sample-data/synthetic-dyadic-session-001/benchmark_session_container.json
 ```
-
 It may declare:
-
-- benchmark session ID;
-- session ID;
-- synthetic status;
-- helper benchmark scope;
-- helper benchmark stage;
-- session type;
-- modality stack;
-- event schema reference;
-- session event references;
-- baseline suite status;
-- primary helper outcome;
-- human-state delta summary;
-- dyadic delta summary;
-- recovery gate summary;
-- termination gate summary;
-- leakage review status;
-- holdout strategy;
-- data boundary status;
-- consent boundary status;
-- sharing boundary status;
-- audit status;
-- public release status;
-- authority status;
-- boundary flags;
-- final boundary status.
-
+benchmark session ID;
+session ID;
+synthetic status;
+helper benchmark scope;
+helper benchmark stage;
+session type;
+modality stack;
+event schema reference;
+session event references;
+baseline suite status;
+primary helper outcome;
+human-state delta summary;
+dyadic delta summary;
+recovery gate summary;
+termination gate summary;
+leakage review status;
+holdout strategy;
+data boundary status;
+consent boundary status;
+sharing boundary status;
+audit status;
+public release status;
+authority status;
+boundary flags;
+final boundary status.
 It must not declare:
-
-- benchmark validation;
-- scientific validation;
-- Sal-Meter validation;
-- CAIS compliance;
-- mediation validation;
-- clinical readiness;
-- diagnostic readiness;
-- therapeutic readiness;
-- counseling readiness;
-- surveillance readiness;
-- certification readiness;
-- device readiness;
-- production readiness.
-
+benchmark validation;
+scientific validation;
+Sal-Meter validation;
+CAIS compliance;
+mediation validation;
+clinical readiness;
+diagnostic readiness;
+therapeutic readiness;
+counseling readiness;
+surveillance readiness;
+certification readiness;
+device readiness;
+production readiness.
 Correct boundary sentence:
-
 ```text
 A Benchmark Session Container demonstrates helper structure only; it is not benchmark evidence.
 ```
-
 ---
-
-## P4-1 dyadic recovery demo boundary
-
+P4-1 dyadic recovery demo boundary
 The P4-1 evaluator reads:
-
 ```text
 ai_outputs.json
 dyadic_delta.json
@@ -807,103 +645,73 @@ recovery_gate.json
 termination_gate.json
 audit_log.json
 ```
-
 It may report:
-
-- dyadic recovery confirmed: false;
-- one-sided improvement: true;
-- recovery gate: not_passed;
-- termination gate: pause_and_close_session;
-- audit state: closed;
-- false recovery prevention: active;
-- public boundary: preserved.
-
+dyadic recovery confirmed: false;
+one-sided improvement: true;
+recovery gate: not_passed;
+termination gate: pause_and_close_session;
+audit state: closed;
+false recovery prevention: active;
+public boundary: preserved.
 It must not report:
-
-- real dyadic recovery;
-- validated mediation;
-- benchmark validation;
-- scientific validation;
-- Sal-Meter validation;
-- CAIS compliance;
-- clinical usefulness;
-- diagnostic readiness;
-- therapeutic readiness;
-- device readiness;
-- production readiness;
-- relationship verdict;
-- human ranking.
-
+real dyadic recovery;
+validated mediation;
+benchmark validation;
+scientific validation;
+Sal-Meter validation;
+CAIS compliance;
+clinical usefulness;
+diagnostic readiness;
+therapeutic readiness;
+device readiness;
+production readiness;
+relationship verdict;
+human ranking.
 Correct boundary sentence:
-
 ```text
 A P4-1 evaluator result is a synthetic demo-flow consistency signal, not benchmark evidence.
 ```
-
 ---
-
-## Boundary language lint
-
+Boundary language lint
 The file:
-
 ```text
 boundary_lint.py
 ```
-
 is a public boundary language lint helper.
-
 It scans public helper files for prohibited or risky wording that may imply:
-
-- benchmark validation;
-- scientific validation;
-- Sal-Meter validation;
-- CAIS compliance;
-- clinical authority;
-- diagnostic authority;
-- therapeutic authority;
-- surveillance readiness;
-- certification;
-- device-readiness;
-- production deployment;
-- mediation-service readiness;
-- counseling-service readiness;
-- relationship scoring;
-- or human-ranking authority.
-
+benchmark validation;
+scientific validation;
+Sal-Meter validation;
+CAIS compliance;
+clinical authority;
+diagnostic authority;
+therapeutic authority;
+surveillance readiness;
+certification;
+device-readiness;
+production deployment;
+mediation-service readiness;
+counseling-service readiness;
+relationship scoring;
+or human-ranking authority.
 It is a wording hygiene helper.
-
 It is not a benchmark validator.
-
 It is not a science validator.
-
 It is not a Sal-Meter validator.
-
 It is not a CAIS compliance validator.
-
 It is not a mediation validator.
-
 It does not process raw human data.
-
 It does not process identifiable human data.
-
 It does not process clinical data.
-
 It does not process Sal-Meter raw input.
-
 It does not process CAIS compliance dossiers.
-
 ---
-
-## How to run boundary language lint
-
+How to run boundary language lint
 From the repository root:
-
 ```bash
 python evaluation-baseline/boundary_lint.py
 ```
-
 Expected clean output:
-
 ```text
 Boundary language lint completed.
 
@@ -911,87 +719,52 @@ No configured prohibited or risky boundary-language terms were detected.
 
 This result does not validate benchmark performance, scientific truth, Sal-Meter, CAIS compliance, mediation effectiveness, clinical use, diagnostic use, therapeutic use, surveillance readiness, certification, device-readiness, production readiness, or human-state truth measurement.
 ```
-
 If risky wording is detected, the helper prints:
-
 ```text
 Boundary language warning detected.
 ```
-
 and reports:
-
 ```text
 file path
 line number
 matched phrase
 ```
-
 A warning means wording should be reviewed.
-
 A warning does not mean scientific failure.
-
 A warning does not mean benchmark failure.
-
 A warning does not mean clinical failure.
-
 A warning does not mean mediation failure.
-
 A warning means public-language boundary drift may be present.
-
 ---
-
-## Advisory and strict mode
-
+Advisory and strict mode
 By default, `boundary_lint.py` may be used as an advisory helper.
-
 Advisory mode is useful during early drafting.
-
 Run:
-
 ```bash
 python evaluation-baseline/boundary_lint.py
 ```
-
 For CI enforcement, use strict mode:
-
 ```bash
 python evaluation-baseline/boundary_lint.py --strict
 ```
-
 Strict mode should fail the run if configured prohibited or risky wording is detected.
-
 Use strict mode carefully.
-
 Some prohibited terms may appear inside boundary documents as examples of what not to say.
-
 If that happens, either revise the text context or later add explicit allow-list handling.
-
 Do not use strict mode to imply scientific validation.
-
 Do not use strict mode to imply benchmark validation.
-
 Do not use strict mode to imply Sal-Meter validation.
-
 Do not use strict mode to imply CAIS compliance.
-
 Do not use strict mode to imply mediation validation.
-
 ---
-
-## Prohibited terms list
-
+Prohibited terms list
 The file:
-
 ```text
 prohibited_terms.json
 ```
-
 stores the configured prohibited or risky wording list.
-
 This list is part of the public claim firewall.
-
 It may include expressions such as:
-
 ```text
 validated mediation
 validated human-state benchmark
@@ -1029,25 +802,16 @@ insurance risk score
 legal eligibility score
 educational eligibility score
 ```
-
 These terms are not always wrong in every context.
-
 They are dangerous when they appear as project claims.
-
 The lint helper exists to force review before public wording drifts beyond the repository boundary.
-
 ---
-
-## Boundary lint PASS interpretation
-
+Boundary lint PASS interpretation
 A boundary lint clean run means only:
-
 ```text
 No configured prohibited or risky boundary-language terms were detected in the scanned public helper files.
 ```
-
 A boundary lint clean run does not mean:
-
 ```text
 The benchmark is validated.
 The science is validated.
@@ -1056,118 +820,82 @@ The repository is CAIS-compliant.
 The mediation system works.
 The system is clinical, diagnostic, therapeutic, certified, device-ready, or production-ready.
 ```
-
 ---
-
-## Boundary lint FAIL / warning interpretation
-
+Boundary lint FAIL / warning interpretation
 A warning usually means one of the following:
-
-- a prohibited term appears in public-facing helper text;
-- a risky phrase may imply validation;
-- a phrase may imply CAIS compliance;
-- a phrase may imply Sal-Meter validation;
-- a phrase may imply clinical, diagnostic, therapeutic, surveillance, certification, or production authority;
-- a phrase may imply relationship scoring, human ranking, or human-state verdict authority;
-- a phrase may imply mediation validation or production closed-loop intervention.
-
+a prohibited term appears in public-facing helper text;
+a risky phrase may imply validation;
+a phrase may imply CAIS compliance;
+a phrase may imply Sal-Meter validation;
+a phrase may imply clinical, diagnostic, therapeutic, surveillance, certification, or production authority;
+a phrase may imply relationship scoring, human ranking, or human-state verdict authority;
+a phrase may imply mediation validation or production closed-loop intervention.
 A warning is a language-boundary mismatch.
-
 A warning is not scientific evidence.
-
 A warning is not benchmark evidence.
-
 A warning is not clinical evidence.
-
 A warning is not mediation evidence.
-
 ---
-
-## What the original sample package validator checks
-
+What the original sample package validator checks
 `validate_sample_package.py` checks:
-
-- required sample package files exist;
-- JSON files can be parsed;
-- CSV files can be parsed;
-- schema files can be loaded;
-- JSON files align with their helper schemas;
-- CSV rows align with their helper row schemas;
-- synthetic status is declared;
-- public boundary fields are present;
-- raw human data flags are false;
-- identifiable data flags are false;
-- clinical data flags are false;
-- face, voice, video, and audio public-data flags are false where declared;
-- Sal-Meter input flags are false;
-- CAIS compliance claim flags are false;
-- operator log contains expected boundary language.
-
+required sample package files exist;
+JSON files can be parsed;
+CSV files can be parsed;
+schema files can be loaded;
+JSON files align with their helper schemas;
+CSV rows align with their helper row schemas;
+synthetic status is declared;
+public boundary fields are present;
+raw human data flags are false;
+identifiable data flags are false;
+clinical data flags are false;
+face, voice, video, and audio public-data flags are false where declared;
+Sal-Meter input flags are false;
+CAIS compliance claim flags are false;
+operator log contains expected boundary language.
 The validator is a structure gate.
-
 It is not an evidence gate.
-
 It is not a science gate.
-
 It is not a performance gate.
-
 It is not a clinical gate.
-
 It is not a CAIS compliance gate.
-
 ---
-
-## What the validators and evaluator do not check
-
+What the validators and evaluator do not check
 The validators and evaluator do not check:
-
-- real physiological validity;
-- real psychological validity;
-- true human-state inference;
-- true dyadic recovery;
-- clinical interpretation;
-- diagnostic correctness;
-- therapeutic effect;
-- mediation effectiveness;
-- model performance;
-- benchmark reliability;
-- external reproducibility;
-- Sal-Meter signal validity;
-- CAIS compliance;
-- certification readiness;
-- device readiness;
-- production readiness.
-
+real physiological validity;
+real psychological validity;
+true human-state inference;
+true dyadic recovery;
+clinical interpretation;
+diagnostic correctness;
+therapeutic effect;
+mediation effectiveness;
+model performance;
+benchmark reliability;
+external reproducibility;
+Sal-Meter signal validity;
+CAIS compliance;
+certification readiness;
+device readiness;
+production readiness.
 The validators and evaluator may return `PASS` even though the package contains only synthetic/toy values.
-
 That is expected.
-
 The validators and evaluator exist to verify structure, boundary, and demo-flow consistency, not truth.
-
 ---
-
-## Common PASS interpretation
-
+Common PASS interpretation
 A `PASS` means one of the following:
-
 ```text
 The synthetic sample package is internally consistent enough for public helper demonstration.
 ```
-
 or:
-
 ```text
 The public synthetic/sample P3 helper files follow the expected helper-schema structure.
 ```
-
 or:
-
 ```text
 The synthetic P4 demo-flow objects are internally consistent enough for public helper demonstration.
 ```
-
 A `PASS` does not mean:
-
 ```text
 The package proves a benchmark.
 The package proves human-state measurement.
@@ -1178,139 +906,95 @@ The package proves Sal-Meter readiness.
 The package proves CAIS compliance.
 The package proves scientific validity.
 ```
-
 ---
-
-## Common FAIL causes
-
+Common FAIL causes
 A `FAIL` usually means one of the following:
-
-- a required file is missing;
-- a JSON file cannot be parsed;
-- a CSV file has missing or mismatched column names;
-- a schema file is invalid;
-- a sample file does not match its schema;
-- `dataset_type` is not `synthetic`;
-- synthetic/sample status is missing;
-- a required public boundary field is missing;
-- a boundary flag expected to be `false` is not false;
-- a boundary flag expected to be `true` is not true;
-- `synthetic_status_declared` is missing or not true;
-- the operator log is missing expected boundary phrases;
-- filenames, field names, or enum values drifted from the helper schemas;
-- P4 demo-flow objects do not preserve expected recovery / termination / audit logic.
-
+a required file is missing;
+a JSON file cannot be parsed;
+a CSV file has missing or mismatched column names;
+a schema file is invalid;
+a sample file does not match its schema;
+`dataset_type` is not `synthetic`;
+synthetic/sample status is missing;
+a required public boundary field is missing;
+a boundary flag expected to be `false` is not false;
+a boundary flag expected to be `true` is not true;
+`synthetic_status_declared` is missing or not true;
+the operator log is missing expected boundary phrases;
+filenames, field names, or enum values drifted from the helper schemas;
+P4 demo-flow objects do not preserve expected recovery / termination / audit logic.
 A `FAIL` is not a scientific failure.
-
 A `FAIL` is not a benchmark failure.
-
 A `FAIL` is not a mediation failure.
-
 A `FAIL` is a structure, boundary, or demo-flow mismatch.
-
 ---
-
-## Boundary lint common warning causes
-
+Boundary lint common warning causes
 A boundary lint warning usually means one of the following:
-
-- public helper wording may imply a validated benchmark;
-- public helper wording may imply scientific validation;
-- public helper wording may imply Sal-Meter validation;
-- public helper wording may imply CAIS compliance;
-- public helper wording may imply mediation validation;
-- public helper wording may imply clinical, diagnostic, therapeutic, counseling, surveillance, certification, device-readiness, production-deployment, or human-ranking authority;
-- public helper wording may imply a relationship verdict or human score;
-- public helper wording may imply emotion detection or emotion recognition.
-
+public helper wording may imply a validated benchmark;
+public helper wording may imply scientific validation;
+public helper wording may imply Sal-Meter validation;
+public helper wording may imply CAIS compliance;
+public helper wording may imply mediation validation;
+public helper wording may imply clinical, diagnostic, therapeutic, counseling, surveillance, certification, device-readiness, production-deployment, or human-ranking authority;
+public helper wording may imply a relationship verdict or human score;
+public helper wording may imply emotion detection or emotion recognition.
 A boundary lint warning is not a scientific failure.
-
 A boundary lint warning is a public language hygiene signal.
-
 ---
-
-## Baseline pipeline skeleton
-
+Baseline pipeline skeleton
 The file:
-
 ```text
 baseline_pipeline_skeleton.py
 ```
-
 is a toy baseline pipeline skeleton.
-
 It may be used to demonstrate:
-
-- loading synthetic feature rows;
-- loading synthetic metadata;
-- loading synthetic QC boundary declarations;
-- enforcing public boundary fields;
-- separating synthetic feature columns;
-- sketching a transparent baseline flow;
-- identifying where leakage-safe split logic belongs.
-
+loading synthetic feature rows;
+loading synthetic metadata;
+loading synthetic QC boundary declarations;
+enforcing public boundary fields;
+separating synthetic feature columns;
+sketching a transparent baseline flow;
+identifying where leakage-safe split logic belongs.
 It must not be used to claim:
-
-- validated model performance;
-- real human-state classification;
-- clinical interpretation;
-- diagnostic status;
-- Sal-Meter validation;
-- CAIS compliance.
-
+validated model performance;
+real human-state classification;
+clinical interpretation;
+diagnostic status;
+Sal-Meter validation;
+CAIS compliance.
 Run from the repository root:
-
 ```bash
 python evaluation-baseline/baseline_pipeline_skeleton.py
 ```
-
 For the current tiny synthetic sample, the baseline model may be skipped.
-
 That is expected.
-
 The current file demonstrates structure, not model performance.
-
 ---
-
-## Leakage-safe split example
-
+Leakage-safe split example
 The file:
-
 ```text
 leakage_safe_split_example.py
 ```
-
 is a helper demonstration of leakage-aware split thinking.
-
 It supports the principle that real benchmark evaluation must avoid hidden leakage through:
-
-- participant identity;
-- day/session order;
-- device identity;
-- operator identity;
-- condition labels;
-- filenames;
-- preprocessing artifacts;
-- train/validation/test contamination.
-
+participant identity;
+day/session order;
+device identity;
+operator identity;
+condition labels;
+filenames;
+preprocessing artifacts;
+train/validation/test contamination.
 Run from the repository root:
-
 ```bash
 python evaluation-baseline/leakage_safe_split_example.py
 ```
-
 The current synthetic session is intentionally small and visible.
-
 It is for structure demonstration only.
-
 A real benchmark package must use stricter split rules.
-
 ---
-
-## Recommended real split hierarchy
-
+Recommended real split hierarchy
 For future controlled benchmark work, prefer leakage-safe split rules in this order:
-
 ```text
 1. participant holdout
 2. day holdout
@@ -1319,66 +1003,52 @@ For future controlled benchmark work, prefer leakage-safe split rules in this or
 5. condition holdout
 6. operator holdout
 ```
-
 Do not tune on the final holdout set.
-
 Do not use filenames, folder names, condition names, session order, device IDs, or operator IDs as hidden labels.
-
 ---
-
-## Boundary
-
+Boundary
 Allowed:
-
-- synthetic feature loading;
-- toy baseline processing;
-- leakage-safe split demonstration;
-- schema and file-structure checking;
-- P3 helper-schema validation;
-- P4 synthetic demo-flow evaluation;
-- public boundary language linting;
-- transparent model skeletons;
-- reproducibility examples;
-- public helper validation;
-- non-diagnostic benchmark-support language.
-
+synthetic feature loading;
+toy baseline processing;
+leakage-safe split demonstration;
+schema and file-structure checking;
+P3 helper-schema validation;
+P4 synthetic demo-flow evaluation;
+public boundary language linting;
+transparent model skeletons;
+reproducibility examples;
+public helper validation;
+non-diagnostic benchmark-support language.
 Not allowed:
-
-- raw human data;
-- real participant data;
-- real dyadic conflict data;
-- real webcam data;
-- real audio data;
-- real face data;
-- real voice data;
-- raw gaze data;
-- raw transcript data;
-- identity mapping files;
-- private consent records;
-- clinical data;
-- diagnostic claims;
-- therapeutic claims;
-- counseling claims;
-- legal mediation conclusions;
-- human ranking;
-- relationship verdicts;
-- surveillance scoring;
-- Sal-Meter validation claims;
-- CAIS compliance claims;
-- certified benchmark claims;
-- mediation validation claims;
-- production closed-loop claims.
-
+raw human data;
+real participant data;
+real dyadic conflict data;
+real webcam data;
+real audio data;
+real face data;
+real voice data;
+raw gaze data;
+raw transcript data;
+identity mapping files;
+private consent records;
+clinical data;
+diagnostic claims;
+therapeutic claims;
+counseling claims;
+legal mediation conclusions;
+human ranking;
+relationship verdicts;
+surveillance scoring;
+Sal-Meter validation claims;
+CAIS compliance claims;
+certified benchmark claims;
+mediation validation claims;
+production closed-loop claims.
 ---
-
-## Human-State Cost proxy boundary
-
+Human-State Cost proxy boundary
 Synthetic feature files may include a Human-State Cost proxy field.
-
 In this repository, Human-State Cost is only a non-diagnostic benchmark construct example.
-
 It must not be presented as:
-
 ```text
 a medical score
 a psychiatric score
@@ -1395,18 +1065,14 @@ a certified benchmark output
 a Sal-Meter output
 a CAIS output
 ```
-
 Acceptable language:
-
 ```text
 Human-State Cost proxy example value
 non-diagnostic benchmark construct
 synthetic/sample helper field
 proxy burden comparison construct
 ```
-
 Prohibited language:
-
 ```text
 diagnostic score
 clinical score
@@ -1417,78 +1083,57 @@ CAIS-compliant output
 consciousness measurement
 human truth score
 ```
-
 Correct boundary sentence:
-
 ```text
 Human-State Cost evaluates the interaction condition, not the person.
 ```
-
 ---
-
-## How to interpret synthetic results
-
+How to interpret synthetic results
 Synthetic results are allowed to show structure.
-
 Synthetic results are not allowed to imply evidence.
-
 A result from synthetic data may demonstrate:
-
-- file loading;
-- schema alignment;
-- preprocessing flow;
-- baseline code structure;
-- leakage-control logic;
-- reporting format;
-- P3 helper-schema mapping;
-- P4 demo-flow consistency;
-- boundary flag discipline.
-
+file loading;
+schema alignment;
+preprocessing flow;
+baseline code structure;
+leakage-control logic;
+reporting format;
+P3 helper-schema mapping;
+P4 demo-flow consistency;
+boundary flag discipline.
 A result from synthetic data must not claim:
-
-- biological validity;
-- physiological validity;
-- psychological validity;
-- clinical validity;
-- diagnostic validity;
-- therapeutic validity;
-- benchmark validity;
-- mediation validity;
-- Sal-Meter validity;
-- CAIS compliance.
-
+biological validity;
+physiological validity;
+psychological validity;
+clinical validity;
+diagnostic validity;
+therapeutic validity;
+benchmark validity;
+mediation validity;
+Sal-Meter validity;
+CAIS compliance.
 ---
-
-## Baseline philosophy
-
+Baseline philosophy
 Initial baselines should be boring.
-
 Preferred properties:
-
-- transparent;
-- reproducible;
-- leakage-aware;
-- metadata-aware;
-- synthetic-safe;
-- easy to audit;
-- explicit about limitations.
-
+transparent;
+reproducible;
+leakage-aware;
+metadata-aware;
+synthetic-safe;
+easy to audit;
+explicit about limitations.
 Avoid:
-
-- leaderboard framing;
-- deep learning performance claims;
-- clinical scoring;
-- diagnostic interpretation;
-- hidden preprocessing;
-- tuning on final holdout data;
-- reporting synthetic output as evidence.
-
+leaderboard framing;
+deep learning performance claims;
+clinical scoring;
+diagnostic interpretation;
+hidden preprocessing;
+tuning on final holdout data;
+reporting synthetic output as evidence.
 ---
-
-## Evaluation boundary
-
+Evaluation boundary
 A model result, validator result, or evaluator result from this folder must not be described as:
-
 ```text
 validated
 clinical
@@ -1503,9 +1148,7 @@ human ranking
 psychological safety score
 AI harm diagnosis
 ```
-
 Acceptable language:
-
 ```text
 synthetic baseline skeleton
 toy evaluation example
@@ -1518,45 +1161,32 @@ P4 synthetic demo-flow evaluation
 public boundary language lint
 wording hygiene check
 ```
-
 ---
-
-## GitHub Actions workflow
-
+GitHub Actions workflow
 A workflow file may run validation automatically from:
-
 ```text
 .github/workflows/validate-synthetic-sample.yml
 ```
-
 The intended workflow role is:
-
 ```text
 Run validate_sample_package.py automatically on push, pull request, or manual dispatch.
 Run validate_p3_schemas.py automatically as a P3 helper-schema validation step.
 Run evaluate_dyadic_recovery_demo.py automatically as a P4 synthetic dyadic demo-flow evaluation step.
 Run boundary_lint.py as a public wording-boundary helper.
 ```
-
 Current intended workflow sequence:
-
 ```text
 Run synthetic sample package validator
 Run P3 helper schema validator
 Run P4 synthetic dyadic recovery demo evaluator
 Run boundary language lint
 ```
-
 A later workflow step may run boundary lint in strict mode:
-
 ```bash
 python evaluation-baseline/boundary_lint.py --strict
 ```
-
 This strict lint step should be treated as a public wording-boundary gate only.
-
 It must not be described as:
-
 ```text
 benchmark validation
 scientific validation
@@ -1572,90 +1202,63 @@ production readiness
 mediation validation
 human-state truth measurement
 ```
-
 The workflow is a repository hygiene helper.
-
 It is not a benchmark validator.
-
 It is not a Sal-Meter validator.
-
 It is not a CAIS compliance validator.
-
 It is not a clinical validator.
-
 It is not a mediation validator.
-
 It does not create clinical, diagnostic, therapeutic, surveillance, certification, or human-ranking authority.
-
-If GitHub Actions access is restricted at account level, the workflow file may exist while workflow execution remains blocked.
-
+Current workflow posture:
+```text
+The workflow may run on push, pull request, or manual dispatch.
+A successful run confirms public helper-structure validation only.
+A successful run does not validate benchmark performance, scientific truth, Sal-Meter, CAIS compliance, mediation effectiveness, clinical use, diagnostic use, therapeutic use, surveillance readiness, certification, device readiness, production readiness, or human-state truth measurement.
+```
+If GitHub Actions access is ever restricted again at account level, the workflow file may exist while workflow execution remains blocked.
 In that case, local validation remains the fallback:
-
 ```bash
 python evaluation-baseline/validate_sample_package.py
 python evaluation-baseline/validate_p3_schemas.py
 python evaluation-baseline/evaluate_dyadic_recovery_demo.py
 python evaluation-baseline/boundary_lint.py
 ```
-
 ---
-
-## Troubleshooting
-
-### Missing dependency
-
+Troubleshooting
+Missing dependency
 Possible output:
-
 ```text
 FAIL: Missing dependency: jsonschema
 ```
-
 Fix:
-
 ```bash
 pip install jsonschema
 ```
-
 Recommended repository fix:
-
 ```text
 Add jsonschema to evaluation-baseline/requirements.txt
 ```
-
 ---
-
-### Missing original sample directory
-
+Missing original sample directory
 Possible output:
-
 ```text
 sample directory not found
 ```
-
 Check that this folder exists:
-
 ```text
 sample-data/synthetic-session-001/
 ```
-
 ---
-
-### Missing P3 sample directory
-
+Missing P3 sample directory
 Possible output:
-
 ```text
 Missing required file: sample-data/synthetic-dyadic-session-001/...
 ```
-
 Check that this folder exists:
-
 ```text
 sample-data/synthetic-dyadic-session-001/
 ```
-
 Required P3 files:
-
 ```text
 README.md
 human_state_packet_A.json
@@ -1663,13 +1266,9 @@ human_state_packet_B.json
 dyadic_session_event.json
 benchmark_session_container.json
 ```
-
 ---
-
-### Missing P4 demo-flow file
-
+Missing P4 demo-flow file
 Possible output:
-
 ```text
 Missing required file: sample-data/synthetic-dyadic-session-001/ai_outputs.json
 Missing required file: sample-data/synthetic-dyadic-session-001/dyadic_delta.json
@@ -1677,9 +1276,7 @@ Missing required file: sample-data/synthetic-dyadic-session-001/recovery_gate.js
 Missing required file: sample-data/synthetic-dyadic-session-001/termination_gate.json
 Missing required file: sample-data/synthetic-dyadic-session-001/audit_log.json
 ```
-
 Check that the P4-0 demo-flow files exist:
-
 ```text
 sample-data/synthetic-dyadic-session-001/ai_outputs.json
 sample-data/synthetic-dyadic-session-001/dyadic_delta.json
@@ -1687,35 +1284,23 @@ sample-data/synthetic-dyadic-session-001/recovery_gate.json
 sample-data/synthetic-dyadic-session-001/termination_gate.json
 sample-data/synthetic-dyadic-session-001/audit_log.json
 ```
-
 ---
-
-### Missing schema directory
-
+Missing schema directory
 Possible output:
-
 ```text
 schemas directory not found
 ```
-
 Check that this folder exists:
-
 ```text
 schemas/
 ```
-
 ---
-
-### Missing original sample package file
-
+Missing original sample package file
 Possible output:
-
 ```text
 missing required sample file
 ```
-
 Check that the original sample package contains:
-
 ```text
 session_metadata.json
 streams_manifest.csv
@@ -1726,114 +1311,79 @@ features_baseline.csv
 splits.json
 operator_log.md
 ```
-
 ---
-
-### Missing P3 schema file
-
+Missing P3 schema file
 Possible output:
-
 ```text
 Missing required file: schemas/human_state_packet.schema.json
 Missing required file: schemas/dyadic_session_event.schema.json
 Missing required file: schemas/benchmark_session.schema.json
 ```
-
 Check that the P3 helper schemas exist:
-
 ```text
 schemas/human_state_packet.schema.json
 schemas/dyadic_session_event.schema.json
 schemas/benchmark_session.schema.json
 ```
-
 ---
-
-### P3 schema validation failure
-
+P3 schema validation failure
 Possible output:
-
 ```text
 FAIL: P3 helper-schema validation failed.
 ```
-
 Common causes:
-
-- sample JSON has a field not allowed by the schema;
-- a required field is missing;
-- an enum value does not match the schema;
-- a boundary flag expected to be `false` is not false;
-- a boundary flag expected to be `true` is not true;
-- an ID pattern does not match the schema;
-- `synthetic_status` is not explicit;
-- Sal-Meter / CAIS / benchmark validation exclusion is not explicit.
-
+sample JSON has a field not allowed by the schema;
+a required field is missing;
+an enum value does not match the schema;
+a boundary flag expected to be `false` is not false;
+a boundary flag expected to be `true` is not true;
+an ID pattern does not match the schema;
+`synthetic_status` is not explicit;
+Sal-Meter / CAIS / benchmark validation exclusion is not explicit.
 This is a structure or boundary mismatch.
-
 It is not scientific failure.
-
 It is not benchmark failure.
-
 It is not mediation failure.
-
 ---
-
-### P4 demo-flow evaluator failure
-
+P4 demo-flow evaluator failure
 Possible output:
-
 ```text
 FAIL: synthetic dyadic recovery demo evaluation failed.
 ```
-
 Common causes:
-
-- a required P4-0 demo-flow file is missing;
-- a P4-0 JSON file cannot be parsed;
-- `dataset_type` is not `synthetic`;
-- `synthetic_status` is not `synthetic_only`;
-- a boundary flag expected to be `false` is missing or not false;
-- `dyadic_delta_summary.one_sided_improvement` is not true;
-- `dyadic_delta_summary.two_sided_recovery_confirmed` is not false;
-- `dyadic_delta_summary.dyadic_direction` is not `mixed`;
-- `dyadic_delta_summary.recommended_next_gate` is not `recovery_gate_review`;
-- `gate_decision.recovery_gate_status` is not `not_passed`;
-- `gate_decision.recovery_decision` is not `do_not_mark_recovered`;
-- `gate_decision.termination_gate_status` is not `passed`;
-- `gate_decision.termination_decision` is not `pause_and_close_session`;
-- `gate_decision.continue_mediation_allowed` is not false;
-- `audit_checks.session_closed` is not true;
-- `audit_checks.new_session_required_for_continuation` is not true;
-- `audit_findings.recovery_status` is not `not_confirmed`;
-- `audit_findings.termination_status` is not `pause_and_close`;
-- `audit_findings.final_public_state` is not `closed`.
-
+a required P4-0 demo-flow file is missing;
+a P4-0 JSON file cannot be parsed;
+`dataset_type` is not `synthetic`;
+`synthetic_status` is not `synthetic_only`;
+a boundary flag expected to be `false` is missing or not false;
+`dyadic_delta_summary.one_sided_improvement` is not true;
+`dyadic_delta_summary.two_sided_recovery_confirmed` is not false;
+`dyadic_delta_summary.dyadic_direction` is not `mixed`;
+`dyadic_delta_summary.recommended_next_gate` is not `recovery_gate_review`;
+`gate_decision.recovery_gate_status` is not `not_passed`;
+`gate_decision.recovery_decision` is not `do_not_mark_recovered`;
+`gate_decision.termination_gate_status` is not `passed`;
+`gate_decision.termination_decision` is not `pause_and_close_session`;
+`gate_decision.continue_mediation_allowed` is not false;
+`audit_checks.session_closed` is not true;
+`audit_checks.new_session_required_for_continuation` is not true;
+`audit_findings.recovery_status` is not `not_confirmed`;
+`audit_findings.termination_status` is not `pause_and_close`;
+`audit_findings.final_public_state` is not `closed`.
 This is a structure or boundary mismatch.
-
 It is not scientific failure.
-
 It is not benchmark failure.
-
 It is not mediation failure.
-
 It is not Sal-Meter failure.
-
 It is not CAIS compliance failure.
-
 ---
-
-### Boundary flag failure
-
+Boundary flag failure
 Possible output:
-
 ```text
 must be false
 ```
-
 This means a public boundary field is not locked correctly.
-
 Public sample files must keep these conditions false:
-
 ```text
 raw_human_data_present == false
 identifiable_data_present == false
@@ -1843,197 +1393,135 @@ cais_compliance_claim_present == false
 benchmark_validation_claim_present == false
 mediation_validation_claim_present == false
 ```
-
 ---
-
-### Synthetic status failure
-
+Synthetic status failure
 Possible output:
-
 ```text
 dataset_type should be 'synthetic'
 ```
-
 For the current public sample packages, `dataset_type` should remain:
-
 ```text
 synthetic
 ```
-
 or an explicitly allowed synthetic/sample/mock/placeholder/structure-only value defined by the relevant schema.
-
 For the P4-1 evaluator, `synthetic_status` should remain:
-
 ```text
 synthetic_only
 ```
-
 where present.
-
 ---
-
-### Boundary lint warning
-
+Boundary lint warning
 Possible output:
-
 ```text
 Boundary language warning detected.
 ```
-
 This means one or more configured prohibited or risky terms were found.
-
 Check the printed:
-
 ```text
 file path
 line number
 matched phrase
 ```
-
 Then revise the wording so that the public helper boundary remains clear.
-
 A boundary lint warning is not scientific failure.
-
 A boundary lint warning is not benchmark failure.
-
 A boundary lint warning is not mediation failure.
-
 A boundary lint warning is a public-language hygiene signal.
-
 ---
-
-### Boundary lint clean run
-
+Boundary lint clean run
 Possible output:
-
 ```text
 Boundary language lint completed.
 ```
-
 This means no configured prohibited or risky boundary-language terms were detected.
-
 It does not validate benchmark performance.
-
 It does not validate scientific truth.
-
 It does not validate Sal-Meter.
-
 It does not grant CAIS compliance.
-
 It does not validate mediation effectiveness.
-
 ---
-
-## P1-3 issue alignment
-
+P1-3 issue alignment
 This README addresses:
-
 ```text
 [P1-3] Improve evaluation baseline README and validator usability
 ```
-
 The issue is complete when this README clearly explains:
-
-- what the validator does;
-- how to run the validator;
-- how to install dependencies;
-- what `PASS` means;
-- what `FAIL` usually means;
-- what the validator does not validate;
-- why the output is helper-structure validation only.
-
+what the validator does;
+how to run the validator;
+how to install dependencies;
+what `PASS` means;
+what `FAIL` usually means;
+what the validator does not validate;
+why the output is helper-structure validation only.
 ---
-
-## P1-5 release-readiness alignment
-
-This README supports:
-
+P1-5 release-readiness and v0.1.1 alignment
+This README historically supported:
 ```text
 [P1-5] Prepare v0.1.0 release readiness package
 ```
-
-Relevant P1-5 checklist item:
-
+Current release alignment:
 ```text
-Confirm evaluation-baseline/README.md explains validator usage and PASS / FAIL interpretation
+v0.1.1 supersedes v0.1.0 for helper-structure validation status.
+v0.1.1 remains a bounded public helper pre-release.
+v0.1.1 remains structure-only, synthetic/sample-only, non-clinical, non-diagnostic, non-therapeutic, non-surveillance, non-certification, not Sal-Meter, and not CAIS compliance.
 ```
-
+Relevant P1-5 checklist item:
+```text
+Confirm evaluation-baseline/README.md explains validator usage and PASS / FAIL interpretation.
+```
 This checklist item is satisfied when this file clearly states:
-
 ```text
 PASS means helper-structure validation only.
 FAIL means structure or boundary mismatch.
 Neither PASS nor FAIL is scientific validation.
 ```
-
 ---
-
-## P5-0 boundary lint alignment
-
+P5-0 boundary lint alignment
 This README supports:
-
 ```text
 [P5-0] Add boundary language lint
 ```
-
 This alignment is satisfied when this file clearly states:
-
-- what `boundary_lint.py` does;
-- how to run boundary language lint;
-- how advisory mode differs from strict mode;
-- where prohibited terms are stored;
-- what a clean lint run means;
-- what a lint warning means;
-- that boundary lint is wording hygiene only;
-- that boundary lint is not benchmark validation, scientific validation, Sal-Meter validation, CAIS compliance, mediation validation, clinical validation, diagnostic validation, therapeutic validation, surveillance readiness, certification readiness, device readiness, production readiness, or human-state truth measurement.
-
+what `boundary_lint.py` does;
+how to run boundary language lint;
+how advisory mode differs from strict mode;
+where prohibited terms are stored;
+what a clean lint run means;
+what a lint warning means;
+that boundary lint is wording hygiene only;
+that boundary lint is not benchmark validation, scientific validation, Sal-Meter validation, CAIS compliance, mediation validation, clinical validation, diagnostic validation, therapeutic validation, surveillance readiness, certification readiness, device readiness, production readiness, or human-state truth measurement.
 ---
-
-## P5-1 P3 helper-schema validator alignment
-
+P5-1 P3 helper-schema validator alignment
 This README supports:
-
 ```text
 [P5-1] Extend validator to P3 helper schemas
 ```
-
 This alignment is satisfied when this file clearly states:
-
-- what `validate_p3_schemas.py` does;
-- how to run the P3 helper-schema validator;
-- which P3 files are checked;
-- which P3 schemas are used;
-- what P3 validator `PASS` means;
-- what P3 validator `FAIL` means;
-- that P3 helper-schema validation is helper-structure validation only;
-- that it does not validate benchmark performance, scientific truth, Sal-Meter, CAIS compliance, dyadic mediation, Human-State Cost, clinical interpretation, diagnostic use, therapeutic use, surveillance readiness, certification, device readiness, production readiness, or human-state truth measurement.
-
+what `validate_p3_schemas.py` does;
+how to run the P3 helper-schema validator;
+which P3 files are checked;
+which P3 schemas are used;
+what P3 validator `PASS` means;
+what P3 validator `FAIL` means;
+that P3 helper-schema validation is helper-structure validation only;
+that it does not validate benchmark performance, scientific truth, Sal-Meter, CAIS compliance, dyadic mediation, Human-State Cost, clinical interpretation, diagnostic use, therapeutic use, surveillance readiness, certification, device readiness, production readiness, or human-state truth measurement.
 ---
-
-## P4-1 synthetic dyadic recovery delta evaluator alignment
-
+P4-1 synthetic dyadic recovery delta evaluator alignment
 This README supports:
-
 ```text
 [P4-1] Add dyadic recovery delta evaluator
 ```
-
 This alignment is satisfied when this file clearly states:
-
-- what `evaluate_dyadic_recovery_demo.py` does;
-- how to run the P4-1 evaluator;
-- which P4-0 files are read;
-- what P4-1 evaluator `PASS` means;
-- what P4-1 evaluator `FAIL` means;
-- that P4-1 evaluation is synthetic demo-flow evaluation only;
-- that it does not validate benchmark performance, scientific truth, Sal-Meter, CAIS compliance, dyadic mediation, Human-State Cost, clinical interpretation, diagnostic use, therapeutic use, surveillance readiness, certification, device readiness, production readiness, or human-state truth measurement.
-
+what `evaluate_dyadic_recovery_demo.py` does;
+how to run the P4-1 evaluator;
+which P4-0 files are read;
+what P4-1 evaluator `PASS` means;
+what P4-1 evaluator `FAIL` means;
+that P4-1 evaluation is synthetic demo-flow evaluation only;
+that it does not validate benchmark performance, scientific truth, Sal-Meter, CAIS compliance, dyadic mediation, Human-State Cost, clinical interpretation, diagnostic use, therapeutic use, surveillance readiness, certification, device readiness, production readiness, or human-state truth measurement.
 ---
-
-## Recommended local check sequence
-
+Recommended local check sequence
 From the repository root:
-
 ```bash
 pip install -r evaluation-baseline/requirements.txt
 pip install jsonschema
@@ -2044,9 +1532,7 @@ python evaluation-baseline/boundary_lint.py
 python evaluation-baseline/baseline_pipeline_skeleton.py
 python evaluation-baseline/leakage_safe_split_example.py
 ```
-
 Expected posture:
-
 ```text
 The original validator checks synthetic sample package structure.
 The P3 validator checks synthetic dyadic helper-schema structure.
@@ -2059,25 +1545,15 @@ None of these outputs are scientific validation.
 None of these outputs are mediation validation.
 None of these outputs grant Sal-Meter validation or CAIS compliance.
 ```
-
 ---
-
-## Authority rule
-
+Authority rule
 This folder is a GitHub helper surface.
-
 It is not a canonical authority layer.
-
 DOI-registered SICS / CAIS / Sal-Meter / CCF records remain the authority layer.
-
 If this folder conflicts with a higher-level DOI-registered canonical record, the higher-level canonical record prevails automatically.
-
 ---
-
-## Current P5-1 status
-
+Current P5-1 status
 Current status:
-
 ```text
 validate_sample_package.py exists.
 validate_p3_schemas.py exists.
@@ -2086,6 +1562,7 @@ synthetic-session-001 exists.
 synthetic-dyadic-session-001 exists.
 P3 helper schema sample files exist.
 GitHub Actions P3 validator step added.
+GitHub Actions helper workflow may confirm public helper-structure validation only.
 Synthetic/sample structure demonstration only.
 P3 helper-schema validation only.
 Not benchmark evidence.
@@ -2101,9 +1578,7 @@ No therapeutic claim.
 No certification claim.
 No production closed-loop claim.
 ```
-
 Current P3 dyadic sample package:
-
 ```text
 sample-data/
   synthetic-dyadic-session-001/
@@ -2113,24 +1588,19 @@ sample-data/
     dyadic_session_event.json
     benchmark_session_container.json
 ```
-
 Current P3 validator:
-
 ```text
 evaluation-baseline/validate_p3_schemas.py
 ```
-
 ---
-
-## Current P4-1 status
-
+Current P4-1 status
 Current status:
-
 ```text
 evaluate_dyadic_recovery_demo.py exists.
 synthetic-dyadic-session-001 exists.
 P4-0 demo-flow files exist.
 GitHub Actions P4 evaluator step added.
+GitHub Actions helper workflow may confirm public helper-structure validation only.
 Synthetic demo-flow evaluation only.
 Not benchmark evidence.
 Not scientific validation.
@@ -2145,9 +1615,7 @@ No therapeutic claim.
 No certification claim.
 No production closed-loop claim.
 ```
-
 Current P4-0 / P4-1 dyadic demo-flow package:
-
 ```text
 sample-data/
   synthetic-dyadic-session-001/
@@ -2162,15 +1630,11 @@ sample-data/
     termination_gate.json
     audit_log.json
 ```
-
 Current P4-1 evaluator:
-
 ```text
 evaluation-baseline/evaluate_dyadic_recovery_demo.py
 ```
-
 Current P4-1 demo-flow result:
-
 ```text
 dyadic recovery confirmed: false
 one-sided improvement: true
@@ -2180,39 +1644,22 @@ audit state: closed
 false recovery prevention: active
 public boundary: preserved
 ```
-
 This result is a synthetic demo-flow consistency signal only.
-
 It is not benchmark validation.
-
 It is not scientific validation.
-
 It is not mediation validation.
-
 It is not Sal-Meter validation.
-
 It is not CAIS compliance.
-
 ---
-
-## Final rule
-
+Final rule
 A result that cannot be replayed is not benchmark evidence.
-
 A result that leaks labels is not evidence.
-
 A result based on synthetic data is structure demonstration, not scientific proof.
-
 A validator `PASS` is a structure signal, not a scientific claim.
-
 A P3 helper-schema validator `PASS` is a helper-structure signal, not benchmark validation.
-
 A P4-1 evaluator `PASS` is a synthetic demo-flow consistency signal, not benchmark validation.
-
 A boundary lint clean run is a wording hygiene signal, not scientific validation.
-
 This folder remains:
-
 ```text
 Research-stage.
 Synthetic/sample helper only.
@@ -2237,17 +1684,10 @@ No benchmark validation claim.
 No mediation validation claim.
 No production closed-loop claim.
 ```
-
 The sample is not evidence.
-
 The schema is not truth.
-
 The validator is not authority.
-
 The evaluator is not proof.
-
 The workflow is not certification.
-
 The gate may open.
-
 It does not crown the kingdom.
