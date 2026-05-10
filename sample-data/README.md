@@ -4,7 +4,7 @@ This folder is reserved for public synthetic, toy, mock, placeholder, or non-ide
 
 No raw human data belongs in this repository.
 
-This folder exists to demonstrate file structure, metadata discipline, schema alignment, helper-schema validation, leakage awareness, and public release boundaries for the **SICS Human-State Proxy Benchmark Track**.
+This folder exists to demonstrate file structure, metadata discipline, schema alignment, helper-schema validation, leakage awareness, demo-flow consistency, and public release boundaries for the **SICS Human-State Proxy Benchmark Track**.
 
 It does not provide benchmark evidence.
 
@@ -37,6 +37,8 @@ This folder may contain public sample packages that demonstrate:
 - Human-State Packet helper examples;
 - Dyadic Session Event helper examples;
 - Benchmark Session Container helper examples;
+- P4-0 synthetic dyadic demo-flow objects;
+- P4-1 synthetic dyadic recovery demo-flow evaluation inputs;
 - schema demonstration files;
 - generated examples for notebooks;
 - non-identifying mock data;
@@ -81,6 +83,11 @@ sample-data/
     human_state_packet_B.json
     dyadic_session_event.json
     benchmark_session_container.json
+    ai_outputs.json
+    dyadic_delta.json
+    recovery_gate.json
+    termination_gate.json
+    audit_log.json
 ```
 
 ---
@@ -91,6 +98,7 @@ sample-data/
 |---|---|---|
 | `synthetic-session-001/` | Original public synthetic/sample package for session metadata, streams, events, labels, QC, features, splits, and operator log | Structure demonstration only |
 | `synthetic-dyadic-session-001/` | P5-1 / P3 synthetic dyadic helper package for Human-State Packet A/B, Dyadic Session Event, and Benchmark Session Container | Helper-schema validation only |
+| `synthetic-dyadic-session-001/` | P4-0 / P4-1 synthetic dyadic demo-flow package for AI Output, Dyadic Delta, Recovery Gate, Termination Gate, and Audit Log | Synthetic demo-flow consistency only |
 
 These packages are synthetic.
 
@@ -100,7 +108,7 @@ They are not clinical data.
 
 They are not Sal-Meter data.
 
-They are not CAIS-compliant output.
+They are not CAIS-compliance output.
 
 They are not benchmark evidence.
 
@@ -171,7 +179,32 @@ The system is CAIS-compliant.
 
 ## `synthetic-dyadic-session-001/`
 
-This package demonstrates a P5-1 / P3 public-safe dyadic helper package using schema-aligned JSON objects.
+This package contains two public-safe synthetic layers:
+
+```text
+P3 helper-schema objects
+P4-0 / P4-1 synthetic demo-flow objects
+```
+
+Both layers are synthetic.
+
+Both layers are helper-only.
+
+Neither layer is benchmark evidence.
+
+Neither layer is scientific validation.
+
+Neither layer is mediation validation.
+
+Neither layer is Sal-Meter validation.
+
+Neither layer grants CAIS compliance.
+
+---
+
+## P3 helper-schema layer
+
+The P3 helper-schema layer demonstrates schema-aligned JSON objects.
 
 It is intended to show:
 
@@ -185,7 +218,7 @@ Dyadic Session Event
 Benchmark Session Container
 ```
 
-Current file map:
+Current P3 file map:
 
 ```text
 sample-data/
@@ -207,16 +240,16 @@ Expected schema mapping:
 
 ```text
 human_state_packet_A.json
-  → schemas/human_state_packet.schema.json
+  -> schemas/human_state_packet.schema.json
 
 human_state_packet_B.json
-  → schemas/human_state_packet.schema.json
+  -> schemas/human_state_packet.schema.json
 
 dyadic_session_event.json
-  → schemas/dyadic_session_event.schema.json
+  -> schemas/dyadic_session_event.schema.json
 
 benchmark_session_container.json
-  → schemas/benchmark_session.schema.json
+  -> schemas/benchmark_session.schema.json
 ```
 
 A successful P3 helper-schema validation means only:
@@ -244,6 +277,93 @@ The package is production-ready.
 
 ---
 
+## P4-0 / P4-1 synthetic demo-flow layer
+
+The P4-0 / P4-1 layer demonstrates a bounded synthetic dyadic recovery demo-flow.
+
+It is intended to show:
+
+```text
+AI Output
+↓
+Human-State Packet A/B
+↓
+Dyadic Delta
+↓
+Recovery Gate
+↓
+Termination Gate
+↓
+Audit Log
+```
+
+Current P4-0 / P4-1 file map:
+
+```text
+sample-data/
+  synthetic-dyadic-session-001/
+    ai_outputs.json
+    dyadic_delta.json
+    recovery_gate.json
+    termination_gate.json
+    audit_log.json
+```
+
+This package is checked by:
+
+```text
+evaluation-baseline/evaluate_dyadic_recovery_demo.py
+```
+
+A successful P4-1 synthetic dyadic recovery demo-flow evaluation means only:
+
+```text
+The synthetic dyadic demo-flow objects are internally consistent enough for public helper demonstration.
+```
+
+It does not mean:
+
+```text
+The benchmark is validated.
+The science is validated.
+The mediation system works.
+The dyadic recovery is real.
+The repository is Sal-Meter.
+The repository is CAIS-compliant.
+The package is clinical.
+The package is diagnostic.
+The package is therapeutic.
+The package is certified.
+The package is device-ready.
+The package is production-ready.
+```
+
+Current synthetic demo result posture:
+
+```text
+dyadic recovery confirmed: false
+one-sided improvement: true
+recovery gate: not_passed
+termination gate: pause_and_close_session
+audit state: closed
+false recovery prevention: active
+public boundary: preserved
+```
+
+This result is a synthetic demo-flow consistency signal only.
+
+It is not benchmark validation.
+
+It is not scientific validation.
+
+It is not mediation validation.
+
+It is not Sal-Meter validation.
+
+It is not CAIS compliance.
+
+---
+
 ## Allowed here
 
 Allowed materials:
@@ -261,6 +381,12 @@ Allowed materials:
 - Human-State Packet helper examples;
 - Dyadic Session Event helper examples;
 - Benchmark Session Container helper examples;
+- P4-0 synthetic demo-flow examples;
+- AI Output helper examples;
+- Dyadic Delta helper examples;
+- Recovery Gate helper examples;
+- Termination Gate helper examples;
+- Audit Log helper examples;
 - schema demonstration files;
 - non-identifying mock data;
 - generated examples for notebooks;
@@ -346,6 +472,9 @@ toy
 mock
 placeholder
 structure_only
+synthetic_only
+demo_flow_only
+helper_only
 ```
 
 Avoid filenames, folder names, row IDs, or metadata values that could be mistaken for real participant data.
@@ -389,13 +518,25 @@ schemas/
   benchmark_session.schema.json
 ```
 
+The P4-0 / P4-1 synthetic demo-flow files are checked by the evaluator:
+
+```text
+evaluation-baseline/evaluate_dyadic_recovery_demo.py
+```
+
 Schema alignment means:
 
 ```text
 The file follows the expected helper structure.
 ```
 
-Schema alignment does not mean:
+Demo-flow evaluator alignment means:
+
+```text
+The synthetic demo-flow objects preserve expected helper consistency and boundary logic.
+```
+
+Schema or evaluator alignment does not mean:
 
 ```text
 The data is real evidence.
@@ -417,6 +558,7 @@ Current validation helpers:
 ```text
 evaluation-baseline/validate_sample_package.py
 evaluation-baseline/validate_p3_schemas.py
+evaluation-baseline/evaluate_dyadic_recovery_demo.py
 evaluation-baseline/boundary_lint.py
 ```
 
@@ -425,6 +567,7 @@ Intended workflow posture:
 ```text
 Run existing synthetic sample package validator.
 Run P3 helper schema validator.
+Run P4 synthetic dyadic recovery demo-flow evaluator.
 Run boundary language lint.
 ```
 
@@ -583,6 +726,45 @@ A Benchmark Session Container demonstrates helper structure only; it is not benc
 
 ---
 
+## P4-1 dyadic recovery demo boundary
+
+A P4-1 synthetic dyadic recovery demo result in this folder is a bounded public helper result.
+
+It may describe:
+
+- AI output helper structure;
+- synthetic dyadic delta summary;
+- one-sided improvement;
+- false recovery prevention;
+- recovery gate status;
+- termination gate status;
+- audit closure status;
+- public boundary preservation.
+
+It must not describe:
+
+- real dyadic recovery;
+- validated mediation;
+- benchmark validation;
+- scientific validation;
+- Sal-Meter validation;
+- CAIS compliance;
+- clinical usefulness;
+- diagnostic readiness;
+- therapeutic readiness;
+- device readiness;
+- production readiness;
+- relationship verdict;
+- human ranking.
+
+Correct boundary sentence:
+
+```text
+A P4-1 evaluator result is a synthetic demo-flow consistency signal, not benchmark evidence.
+```
+
+---
+
 ## Human-State Cost proxy boundary
 
 Synthetic sample files may include Human-State Cost only as a non-diagnostic benchmark construct or synthetic/example field.
@@ -680,6 +862,7 @@ public helper file
 non-identifying example
 schema demonstration
 helper-schema validation
+synthetic demo-flow consistency
 research-stage
 non-clinical
 non-diagnostic
@@ -738,6 +921,11 @@ human_state_packet_A.json
 human_state_packet_B.json
 dyadic_session_event.json
 benchmark_session_container.json
+ai_outputs.json
+dyadic_delta.json
+recovery_gate.json
+termination_gate.json
+audit_log.json
 ```
 
 Use names that make the public boundary visible.
@@ -797,6 +985,74 @@ sample-data/
 
 ---
 
+## Current P4-1 status
+
+Current status:
+
+```text
+synthetic-dyadic-session-001 exists.
+P4-0 demo-flow files exist.
+evaluate_dyadic_recovery_demo.py exists.
+GitHub Actions P4 evaluator step added.
+Synthetic demo-flow evaluation only.
+Not benchmark evidence.
+Not scientific validation.
+Not mediation validation.
+Not Sal-Meter.
+Not CAIS compliance.
+No raw human data.
+No identifiable data.
+No clinical data.
+No diagnostic label.
+No therapeutic claim.
+No certification claim.
+No production closed-loop claim.
+```
+
+Current P4-0 / P4-1 dyadic demo-flow package:
+
+```text
+sample-data/
+  synthetic-dyadic-session-001/
+    ai_outputs.json
+    dyadic_delta.json
+    recovery_gate.json
+    termination_gate.json
+    audit_log.json
+```
+
+Current P4-1 evaluator:
+
+```text
+evaluation-baseline/evaluate_dyadic_recovery_demo.py
+```
+
+Current P4-1 demo-flow result:
+
+```text
+dyadic recovery confirmed: false
+one-sided improvement: true
+recovery gate: not_passed
+termination gate: pause_and_close_session
+audit state: closed
+false recovery prevention: active
+public boundary: preserved
+```
+
+This result is a synthetic demo-flow consistency signal only.
+
+It is not benchmark validation.
+
+It is not scientific validation.
+
+It is not mediation validation.
+
+It is not Sal-Meter validation.
+
+It is not CAIS compliance.
+
+---
+
 ## Final rule
 
 Public sample data exists to demonstrate structure.
@@ -817,6 +1073,8 @@ The event is not the relationship.
 
 The container is not the truth.
 
+The demo-flow is not recovery.
+
 The sample is a map.
 
-It is not the mountain. 
+It is not the mountain.
