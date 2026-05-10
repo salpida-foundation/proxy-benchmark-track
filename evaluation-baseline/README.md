@@ -80,19 +80,7 @@ evaluation-baseline/
   validate_sample_package.py
   validate_p3_schemas.py
   evaluate_dyadic_recovery_demo.py
-  prohibited_terms.json
-  boundary_lint.py
-## 2. Current files
-
-```text
-evaluation-baseline/
-  README.md
-  requirements.txt
-  baseline_pipeline_skeleton.py
-  leakage_safe_split_example.py
-  validate_sample_package.py
-  validate_p3_schemas.py
-  evaluate_dyadic_recovery_demo.py
+  evaluate_termination_gate_demo.py
   prohibited_terms.json
   boundary_lint.py
 ```
@@ -105,6 +93,7 @@ evaluation-baseline/
 | `validate_sample_package.py` | Structural validator for the original public synthetic sample package | Present |
 | `validate_p3_schemas.py` | P3 helper-schema validator for synthetic dyadic helper files | Present |
 | `evaluate_dyadic_recovery_demo.py` | P4-1 synthetic dyadic recovery demo-flow evaluator | Present |
+| `evaluate_termination_gate_demo.py` | P4-3 synthetic termination gate helper evaluator | Present |
 | `prohibited_terms.json` | Public boundary prohibited / risky wording list | Present |
 | `boundary_lint.py` | Public boundary language lint helper | Present |
 | `README.md` | Folder-level documentation and boundary notice | Current file |
@@ -398,6 +387,7 @@ The P4-1 evaluator uses Python standard-library JSON and path handling only, but
 | `validate_sample_package.py` | `python evaluation-baseline/validate_sample_package.py` | Original synthetic sample package structure validation |
 | `validate_p3_schemas.py` | `python evaluation-baseline/validate_p3_schemas.py` | P3 synthetic dyadic helper-schema validation |
 | `evaluate_dyadic_recovery_demo.py` | `python evaluation-baseline/evaluate_dyadic_recovery_demo.py` | P4-1 synthetic dyadic recovery demo-flow evaluation |
+| `evaluate_termination_gate_demo.py` | `python evaluation-baseline/evaluate_termination_gate_demo.py` | P4-3 synthetic termination gate helper evaluation |
 | `boundary_lint.py` | `python evaluation-baseline/boundary_lint.py` | Public boundary language lint |
 | `baseline_pipeline_skeleton.py` | `python evaluation-baseline/baseline_pipeline_skeleton.py` | Toy baseline flow demonstration |
 | `leakage_safe_split_example.py` | `python evaluation-baseline/leakage_safe_split_example.py` | Leakage-aware split demonstration |
@@ -410,6 +400,7 @@ pip install jsonschema
 python evaluation-baseline/validate_sample_package.py
 python evaluation-baseline/validate_p3_schemas.py
 python evaluation-baseline/evaluate_dyadic_recovery_demo.py
+python evaluation-baseline/evaluate_termination_gate_demo.py
 python evaluation-baseline/boundary_lint.py
 python evaluation-baseline/baseline_pipeline_skeleton.py
 python evaluation-baseline/leakage_safe_split_example.py
@@ -421,6 +412,7 @@ python evaluation-baseline/leakage_safe_split_example.py
 The original validator checks synthetic sample package structure.
 The P3 validator checks synthetic dyadic helper-schema structure.
 The P4-1 evaluator checks synthetic dyadic demo-flow consistency.
+The P4-3 evaluator checks synthetic termination-gate helper logic.
 The boundary lint helper checks public wording.
 The baseline skeleton demonstrates flow.
 The leakage example demonstrates split discipline.
@@ -491,6 +483,45 @@ Synthetic demo result:
 - public boundary: preserved
 ```
 
+**P4-3 synthetic termination gate evaluator:**
+
+```text
+SICS Human-State Proxy Benchmark Track
+P4-3 Synthetic Termination Gate Accuracy Skeleton v0.1
+
+This evaluator checks synthetic termination-gate helper logic only.
+
+It does not validate benchmark performance.
+It does not validate scientific truth.
+It does not validate mediation effectiveness.
+It does not validate Sal-Meter.
+It does not grant CAIS compliance.
+It does not validate human-state measurement.
+It does not process raw human data.
+It does not process identifiable human data.
+It does not process clinical data.
+
+PASS: synthetic termination-gate helper cases evaluated successfully.
+
+Synthetic termination gate result:
+- total cases: 12
+- expected decisions present:
+  - audit_only
+  - close_session
+  - narrow_scope
+  - pause_session
+  - request_consent_refresh
+  - request_packet_refresh
+  - terminate_session
+- closed session stays closed: true
+- expired permission blocks ordinary continuation: true
+- low confidence blocks recovery declaration: true
+- insufficient data quality blocks recovery declaration: true
+- private-state exposure risk triggers pause or closure: true
+- one-sided improvement is not dyadic recovery: true
+- public boundary: preserved
+```
+
 **Boundary lint clean output:**
 
 ```text
@@ -523,6 +554,12 @@ or:
 The synthetic P4 demo-flow objects are internally consistent enough for public helper demonstration.
 ```
 
+or:
+
+```text
+The synthetic P4-3 termination-gate cases are internally consistent enough for public helper demonstration.
+```
+
 **A PASS does not mean:**
 
 ```text
@@ -552,6 +589,7 @@ The package proves scientific validity.
 - the operator log is missing expected boundary phrases;
 - filenames, field names, or enum values drifted from the helper schemas;
 - P4 demo-flow objects do not preserve expected recovery / termination / audit logic.
+- P4-3 termination-gate cases do not preserve expected pause / narrow / close / terminate / audit-only logic.
 
 A FAIL is not a scientific failure.
 
@@ -667,9 +705,46 @@ It is not a Sal-Meter gate.
 
 It is not a CAIS compliance gate.
 
+**`evaluate_termination_gate_demo.py` checks:**
+
+- required P4-3 termination-gate case file exists;
+- `termination_gate_cases.json` can be parsed;
+- package metadata is explicit;
+- synthetic/sample status is explicit;
+- raw human data exclusion is explicit;
+- identifiable data exclusion is explicit;
+- clinical data exclusion is explicit;
+- Sal-Meter input exclusion is explicit;
+- CAIS compliance exclusion is explicit;
+- benchmark validation exclusion is explicit;
+- mediation validation exclusion is explicit;
+- production intervention exclusion is explicit;
+- human ranking exclusion is explicit;
+- relationship verdict exclusion is explicit;
+- 12 synthetic termination-gate cases exist;
+- pause, narrow, close, terminate, refresh, and audit-only decisions are represented;
+- closed sessions stay closed;
+- expired permission blocks ordinary continuation;
+- low confidence blocks recovery declaration;
+- insufficient data quality blocks recovery declaration;
+- private-state exposure risk triggers pause or closure;
+- one-sided improvement is not marked as dyadic recovery.
+
+The P4-3 evaluator is a synthetic termination-gate helper evaluator.
+
+It is not an evidence gate.
+
+It is not a science gate.
+
+It is not a benchmark gate.
+
+It is not a mediation gate.
+
+It is not a Sal-Meter gate.
+
+It is not a CAIS compliance gate.
+
 ---
-
-
 
 ## 12. Helper object boundaries
 
@@ -868,6 +943,48 @@ Correct boundary sentence:
 A P4-1 evaluator result is a synthetic demo-flow consistency signal, not benchmark evidence.
 ```
 
+**P4-3 termination gate demo boundary**
+
+The P4-3 evaluator reads:
+
+```text
+termination_gate_cases.json
+```
+
+It may report:
+
+- total synthetic cases;
+- expected termination-gate decisions;
+- closed session stays closed;
+- expired permission blocks ordinary continuation;
+- low confidence blocks recovery declaration;
+- insufficient data quality blocks recovery declaration;
+- private-state exposure risk triggers pause or closure;
+- one-sided improvement is not dyadic recovery;
+- public boundary preserved.
+
+It must not report:
+
+- real mediation accuracy;
+- validated termination accuracy;
+- benchmark validation;
+- scientific validation;
+- Sal-Meter validation;
+- CAIS compliance;
+- clinical usefulness;
+- diagnostic readiness;
+- therapeutic readiness;
+- device readiness;
+- production readiness;
+- relationship verdict;
+- human ranking.
+
+Correct boundary sentence:
+
+```text
+A P4-3 evaluator result is a synthetic termination-gate helper consistency signal, not benchmark evidence.
+```
+
 ---
 
 ## 13. Boundary language lint
@@ -889,6 +1006,7 @@ It scans public helper files for prohibited or risky wording that may imply:
 - clinical authority;
 - diagnostic authority;
 - therapeutic authority;
+- counseling authority;
 - surveillance readiness;
 - certification;
 - device-readiness;
@@ -896,7 +1014,11 @@ It scans public helper files for prohibited or risky wording that may imply:
 - mediation-service readiness;
 - counseling-service readiness;
 - relationship scoring;
-- human-ranking authority.
+- relationship verdict authority;
+- human-ranking authority;
+- validated dyadic recovery;
+- validated termination accuracy;
+- production closed-loop intervention.
 
 It is a wording hygiene helper.
 
@@ -910,6 +1032,12 @@ It is not a CAIS compliance validator.
 
 It is not a mediation validator.
 
+It is not a dyadic recovery validator.
+
+It is not a termination-gate accuracy validator.
+
+It is not a production-readiness validator.
+
 It does not process raw human data.
 
 It does not process identifiable human data.
@@ -919,6 +1047,14 @@ It does not process clinical data.
 It does not process Sal-Meter raw input.
 
 It does not process CAIS compliance dossiers.
+
+It does not evaluate real mediation effectiveness.
+
+It does not evaluate real dyadic recovery.
+
+It does not evaluate real termination accuracy.
+
+It only checks whether public helper wording may drift beyond the permitted boundary.
 
 **Advisory mode:**
 
@@ -950,6 +1086,16 @@ Do not use strict mode to imply CAIS compliance.
 
 Do not use strict mode to imply mediation validation.
 
+Do not use strict mode to imply dyadic recovery validation.
+
+Do not use strict mode to imply termination-gate accuracy validation.
+
+Do not use strict mode to imply device readiness.
+
+Do not use strict mode to imply production readiness.
+
+Do not use strict mode to imply certification.
+
 ---
 
 ## 14. Boundary lint interpretation
@@ -968,7 +1114,10 @@ The science is validated.
 The repository is Sal-Meter.
 The repository is CAIS compliance output.
 The mediation system works.
+The dyadic recovery logic is validated.
+The termination-gate logic is validated.
 The system is clinical, diagnostic, therapeutic, certified, device-ready, or production-ready.
+The system is authorized for production closed-loop intervention.
 ```
 
 **A boundary lint warning usually means one of the following:**
@@ -979,7 +1128,10 @@ The system is clinical, diagnostic, therapeutic, certified, device-ready, or pro
 - a phrase may imply Sal-Meter validation;
 - a phrase may imply clinical, diagnostic, therapeutic, surveillance, certification, or production authority;
 - a phrase may imply relationship scoring, human ranking, or human-state verdict authority;
-- a phrase may imply mediation validation or production closed-loop intervention.
+- a phrase may imply dyadic recovery validation;
+- a phrase may imply termination-gate accuracy validation;
+- a phrase may imply mediation validation;
+- a phrase may imply production closed-loop intervention.
 
 A warning is a language-boundary mismatch.
 
@@ -990,6 +1142,14 @@ A warning is not benchmark evidence.
 A warning is not clinical evidence.
 
 A warning is not mediation evidence.
+
+A warning is not dyadic recovery evidence.
+
+A warning is not termination-gate accuracy evidence.
+
+A warning is not Sal-Meter evidence.
+
+A warning is not CAIS compliance evidence.
 
 ---
 
@@ -1081,10 +1241,13 @@ certified
 CAIS-compliance output
 Sal-Meter validation
 mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
 consciousness measurement
 human ranking
 psychological safety score
 AI harm diagnosis
+production closed-loop intervention
 ```
 
 Acceptable language:
@@ -1098,6 +1261,7 @@ non-diagnostic benchmark support
 helper-structure validation
 P3 helper-schema validation
 P4 synthetic demo-flow evaluation
+P4-3 synthetic termination-gate helper evaluation
 public boundary language lint
 wording hygiene check
 ```
@@ -1116,6 +1280,7 @@ A result from synthetic data may demonstrate:
 - reporting format;
 - P3 helper-schema mapping;
 - P4 demo-flow consistency;
+- P4-3 termination-gate helper consistency;
 - boundary flag discipline.
 
 A result from synthetic data must not claim:
@@ -1128,9 +1293,14 @@ A result from synthetic data must not claim:
 - therapeutic validity;
 - benchmark validity;
 - mediation validity;
+- dyadic recovery validity;
+- termination-gate accuracy validity;
 - Sal-Meter validity;
-- CAIS compliance.
-  ---
+- CAIS compliance;
+- production readiness;
+- certification readiness.
+
+---
 
 ## 17. GitHub Actions workflow
 
@@ -1146,6 +1316,7 @@ The intended workflow role is:
 Run validate_sample_package.py automatically on push, pull request, or manual dispatch.
 Run validate_p3_schemas.py automatically as a P3 helper-schema validation step.
 Run evaluate_dyadic_recovery_demo.py automatically as a P4 synthetic dyadic demo-flow evaluation step.
+Run evaluate_termination_gate_demo.py automatically as a P4-3 synthetic termination-gate helper evaluation step.
 Run boundary_lint.py as a public wording-boundary helper.
 ```
 
@@ -1155,6 +1326,7 @@ Current intended workflow sequence:
 Run synthetic sample package validator
 Run P3 helper schema validator
 Run P4 synthetic dyadic recovery demo evaluator
+Run P4 termination gate demo evaluator
 Run boundary language lint
 ```
 
@@ -1170,13 +1342,20 @@ It is not a clinical validator.
 
 It is not a mediation validator.
 
-It does not create clinical, diagnostic, therapeutic, surveillance, certification, or human-ranking authority.
+It is not a dyadic recovery validator.
+
+It is not a termination-gate accuracy validator.
+
+It does not create clinical, diagnostic, therapeutic, surveillance, certification, device-readiness, production-readiness, relationship-verdict, production closed-loop, or human-ranking authority.
 
 **Current workflow posture:**
 
 - the workflow may run on push, pull request, or manual dispatch;
 - a successful run confirms public helper-structure validation only;
-- a successful run does not validate benchmark performance, scientific truth, Sal-Meter, CAIS compliance, mediation effectiveness, clinical use, diagnostic use, therapeutic use, surveillance readiness, certification, device readiness, production readiness, or human-state truth measurement.
+- a successful run may confirm synthetic demo-flow consistency only;
+- a successful run may confirm synthetic termination-gate helper consistency only;
+- a successful run may confirm wording-boundary hygiene only;
+- a successful run does not validate benchmark performance, scientific truth, Sal-Meter, CAIS compliance, mediation effectiveness, dyadic recovery, termination-gate accuracy, clinical use, diagnostic use, therapeutic use, surveillance readiness, certification, device readiness, production readiness, or human-state truth measurement.
 
 If GitHub Actions access is ever restricted again at account level, the workflow file may exist while workflow execution remains blocked.
 
@@ -1186,6 +1365,7 @@ In that case, local validation remains the fallback:
 python evaluation-baseline/validate_sample_package.py
 python evaluation-baseline/validate_p3_schemas.py
 python evaluation-baseline/evaluate_dyadic_recovery_demo.py
+python evaluation-baseline/evaluate_termination_gate_demo.py
 python evaluation-baseline/boundary_lint.py
 ```
 
@@ -1202,6 +1382,7 @@ python evaluation-baseline/boundary_lint.py
 | `missing required sample file` | Missing original synthetic sample file | Check required files under `sample-data/synthetic-session-001/` |
 | `FAIL: P3 helper-schema validation failed.` | JSON/schema mismatch or boundary flag mismatch | Check required fields, enums, ID patterns, and boundary flags |
 | `FAIL: synthetic dyadic recovery demo evaluation failed.` | P4 demo-flow mismatch | Check P4 JSON files, synthetic status, recovery gate, termination gate, and audit state |
+| `FAIL: synthetic termination-gate helper evaluation failed.` | P4-3 termination-gate case mismatch | Check `termination_gate_cases.json`, expected decisions, boundary flags, closed-session logic, permission expiry logic, data-quality logic, private-state exposure logic, and recovery declaration exclusion |
 | `must be false` | Boundary flag not locked | Confirm public boundary fields remain false where required |
 | `dataset_type should be 'synthetic'` | Dataset type drift | Keep current public sample packages synthetic |
 | `Boundary language warning detected.` | Risky public wording | Review file path, line number, and matched phrase |
@@ -1239,12 +1420,24 @@ termination_gate.json
 audit_log.json
 ```
 
+**Required P4-3 files:**
+
+```text
+termination_gate_cases.json
+```
+
 **Required P3 schemas:**
 
 ```text
 schemas/human_state_packet.schema.json
 schemas/dyadic_session_event.schema.json
 schemas/benchmark_session.schema.json
+```
+
+**Required P4-3 evaluator:**
+
+```text
+evaluation-baseline/evaluate_termination_gate_demo.py
 ```
 
 ---
@@ -1316,7 +1509,7 @@ This alignment is satisfied when this file clearly states:
 - what a clean lint run means;
 - what a lint warning means;
 - that boundary lint is wording hygiene only;
-- that boundary lint is not benchmark validation, scientific validation, Sal-Meter validation, CAIS compliance, mediation validation, clinical validation, diagnostic validation, therapeutic validation, surveillance readiness, certification readiness, device readiness, production readiness, or human-state truth measurement.
+- that boundary lint is not benchmark validation, scientific validation, Sal-Meter validation, CAIS compliance, mediation validation, dyadic recovery validation, termination-gate accuracy validation, clinical validation, diagnostic validation, therapeutic validation, surveillance readiness, certification readiness, device readiness, production readiness, or human-state truth measurement.
 
 **P5-1 alignment**
 
@@ -1352,6 +1545,29 @@ This alignment is satisfied when this file clearly states:
 - what P4-1 evaluator PASS means;
 - what P4-1 evaluator FAIL means;
 - that P4-1 evaluation is synthetic demo-flow evaluation only.
+
+**P4-3 alignment**
+
+This README supports:
+
+```text
+[P4-3] Add termination gate accuracy skeleton
+```
+
+This alignment is satisfied when this file clearly states:
+
+- what `evaluate_termination_gate_demo.py` does;
+- how to run the P4-3 evaluator;
+- which P4-3 files are read;
+- what P4-3 evaluator PASS means;
+- what P4-3 evaluator FAIL means;
+- that P4-3 evaluation is synthetic termination-gate helper evaluation only;
+- that closed sessions must stay closed;
+- that expired permission blocks ordinary continuation;
+- that low confidence and insufficient data quality block recovery declaration;
+- that private-state exposure risk triggers pause or closure;
+- that one-sided improvement is not dyadic recovery;
+- that P4-3 does not validate benchmark performance, scientific truth, mediation effectiveness, Sal-Meter, CAIS compliance, clinical readiness, diagnostic readiness, therapeutic readiness, device readiness, production readiness, certification, relationship verdicts, or human ranking.
 
 ---
 
@@ -1474,6 +1690,84 @@ It is not CAIS compliance.
 
 ---
 
+**Current P4-3 status:**
+
+```text
+evaluate_termination_gate_demo.py exists.
+termination_gate_cases.json exists.
+GitHub Actions P4-3 evaluator step added.
+GitHub Actions helper workflow may confirm public helper-structure validation only.
+Synthetic termination-gate helper evaluation only.
+Not benchmark evidence.
+Not scientific validation.
+Not mediation validation.
+Not termination-gate accuracy validation.
+Not Sal-Meter.
+Not CAIS compliance.
+No raw human data.
+No identifiable data.
+No clinical data.
+No diagnostic label.
+No therapeutic claim.
+No certification claim.
+No device-readiness claim.
+No production-readiness claim.
+No production closed-loop claim.
+No relationship verdict.
+No human-ranking claim.
+```
+
+**Current P4-3 termination gate case package:**
+
+```text
+sample-data/
+  synthetic-dyadic-session-001/
+    termination_gate_cases.json
+```
+
+**Current P4-3 evaluator:**
+
+```text
+evaluation-baseline/evaluate_termination_gate_demo.py
+```
+
+**Current P4-3 helper result posture:**
+
+```text
+total cases: 12
+expected decisions present:
+  - audit_only
+  - close_session
+  - narrow_scope
+  - pause_session
+  - request_consent_refresh
+  - request_packet_refresh
+  - terminate_session
+closed session stays closed: true
+expired permission blocks ordinary continuation: true
+low confidence blocks recovery declaration: true
+insufficient data quality blocks recovery declaration: true
+private-state exposure risk triggers pause or closure: true
+one-sided improvement is not dyadic recovery: true
+public boundary: preserved
+```
+
+This result is a synthetic termination-gate helper consistency signal only.
+
+It is not benchmark validation.
+
+It is not scientific validation.
+
+It is not mediation validation.
+
+It is not termination-gate accuracy validation.
+
+It is not Sal-Meter validation.
+
+It is not CAIS compliance.
+
+---
+
 ## 21. Authority rule
 
 This folder is a GitHub helper surface.
@@ -1500,6 +1794,8 @@ A P3 helper-schema validator PASS is a helper-structure signal, not benchmark va
 
 A P4-1 evaluator PASS is a synthetic demo-flow consistency signal, not benchmark validation.
 
+A P4-3 evaluator PASS is a synthetic termination-gate helper consistency signal, not benchmark validation.
+
 A boundary lint clean run is a wording hygiene signal, not scientific validation.
 
 This folder remains:
@@ -1519,6 +1815,8 @@ Not CAIS compliance.
 Not benchmark evidence.
 Not scientific validation.
 Not mediation validation.
+Not dyadic recovery validation.
+Not termination-gate accuracy validation.
 No raw human data.
 No identifiable data.
 No clinical data.
@@ -1526,6 +1824,13 @@ No Sal-Meter input.
 No CAIS compliance claim.
 No benchmark validation claim.
 No mediation validation claim.
+No dyadic recovery validation claim.
+No termination-gate accuracy validation claim.
+No device-readiness claim.
+No production-readiness claim.
+No certification claim.
+No relationship verdict.
+No human-ranking claim.
 No production closed-loop claim.
 ```
 
@@ -1539,6 +1844,16 @@ The evaluator is not proof.
 
 The workflow is not certification.
 
+The recovery gate does not crown recovery.
+
+The termination gate does not prove accuracy.
+
 The gate may open.
+
+The gate may pause.
+
+The gate may close.
+
+A closed session must stay closed.
 
 It does not crown the kingdom.
