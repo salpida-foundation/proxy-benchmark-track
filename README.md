@@ -3,7 +3,7 @@
 **A research-stage public helper repository for measuring what AI leaves behind in the human state.**
 
 > Most AI benchmarks ask whether AI outputs are correct, safe, helpful, or aligned.
->
+> 
 > The Proxy Benchmark Track asks a different question:
 >
 > **What did the AI output leave behind in the human state?**
