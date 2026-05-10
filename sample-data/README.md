@@ -471,7 +471,6 @@ Termination Gate Case
 Expected Helper Decision
 ↓
 Boundary Preservation
-
 ```
 
 Current P4-3 file map:
@@ -713,8 +712,8 @@ production readiness
 certification readiness
 relationship verdict authority
 human-ranking authority
-```
 production closed-loop intervention
+```
 
 If a file contains any of the above, it does not belong in this public sample-data folder.
 
