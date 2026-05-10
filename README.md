@@ -270,6 +270,8 @@ It provides:
 - schema helper structures;
 - synthetic/sample data;
 - P3 synthetic dyadic helper package;
+- P4 synthetic dyadic demo-flow package;
+- P4-1 synthetic dyadic recovery demo-flow evaluator;
 - validation scaffolding;
 - P3 helper-schema validation;
 - boundary language linting;
@@ -304,6 +306,8 @@ It does not validate Sal-Meter.
 | Benchmark Session JSON helper schema | Done | `schemas/benchmark_session.schema.json` validates one public-safe synthetic/sample benchmark session container |
 | Synthetic sample package | Present / Passed validator | `sample-data/synthetic-session-001/` contains a public synthetic/sample structure package that passes helper-structure validation |
 | Synthetic dyadic helper package | Present / Passed P3 helper-schema validation | `sample-data/synthetic-dyadic-session-001/` contains Human-State Packet A/B, Dyadic Session Event, and Benchmark Session Container examples |
+| Synthetic dyadic demo-flow package | Present / Passed P4-1 evaluator | `sample-data/synthetic-dyadic-session-001/` contains `ai_outputs.json`, `dyadic_delta.json`, `recovery_gate.json`, `termination_gate.json`, and `audit_log.json` examples |
+| P4-1 dyadic recovery demo evaluator | Present / Passed | `evaluation-baseline/evaluate_dyadic_recovery_demo.py` checks synthetic demo-flow consistency only |
 | Synthetic session README | Done | The original synthetic package includes a local README explaining file roles and boundaries |
 | Synthetic dyadic session README | Done | The P3 synthetic dyadic package includes a local README explaining packet/event/container roles and boundaries |
 | Sample package validator | Present / Passed | `evaluation-baseline/validate_sample_package.py` provides helper-structure validation for the original synthetic package |
@@ -315,7 +319,7 @@ It does not validate Sal-Meter.
 | Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` defines feedback-loop boundaries, event-log schema, and local placeholder code |
 | Replication guide pack | Done | `replication-guide/` defines reproducibility, metadata completeness, audit trail, and public release-readiness checklists |
 | Issue / PR template pack | Done | `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` define contributor boundary gates |
-| GitHub Actions validator workflow | Passed | `.github/workflows/validate-synthetic-sample.yml` runs the original sample validator, P3 helper-schema validator, and boundary language lint |
+| GitHub Actions validator workflow | Passed | `.github/workflows/validate-synthetic-sample.yml` runs the original sample validator, P3 helper-schema validator, P4 synthetic dyadic recovery demo-flow evaluator, and boundary language lint |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
 | Sal-Meter input | Not present | This repository is not Sal-Meter and does not contain Sal-Meter signal data |
@@ -407,6 +411,8 @@ It is not mediation validation.
 | P5-0 Boundary language lint | Done / advisory mode | `evaluation-baseline/boundary_lint.py` and `evaluation-baseline/prohibited_terms.json` are implemented; GitHub Actions runs the boundary lint step in advisory mode |
 | P5-1 P3 helper-schema validator | Done / Passed | `evaluation-baseline/validate_p3_schemas.py` validates the synthetic P3 dyadic helper files against `human_state_packet.schema.json`, `dyadic_session_event.schema.json`, and `benchmark_session.schema.json` |
 | P5-1 synthetic dyadic helper package | Done / Passed | `sample-data/synthetic-dyadic-session-001/` contains `human_state_packet_A.json`, `human_state_packet_B.json`, `dyadic_session_event.json`, and `benchmark_session_container.json` |
+| P4-0 synthetic dyadic demo-flow package | Done / Passed | `sample-data/synthetic-dyadic-session-001/` contains `ai_outputs.json`, `dyadic_delta.json`, `recovery_gate.json`, `termination_gate.json`, and `audit_log.json` |
+| P4-1 synthetic dyadic recovery delta evaluator | Done / Passed | `evaluation-baseline/evaluate_dyadic_recovery_demo.py` evaluates synthetic demo-flow consistency only |
 | P5-1 documentation alignment | Done | `schemas/README.md`, `sample-data/README.md`, `evaluation-baseline/README.md`, and root `README.md` explain P3 helper-schema validation as helper-structure validation only |
 
 Current P5 helper-validation chain:
@@ -414,13 +420,14 @@ Current P5 helper-validation chain:
 ```text
 validate_sample_package.py
 → validate_p3_schemas.py
+→ evaluate_dyadic_recovery_demo.py
 → boundary_lint.py
 ```
 
 A successful run means only:
 
 ```text
-The public synthetic/sample helper files follow the expected helper structure and wording boundary checks.
+The public synthetic/sample helper files follow the expected helper structure, the synthetic demo-flow objects preserve expected helper consistency, and wording boundary checks are clean.
 ```
 
 A successful run does not mean:
@@ -480,6 +487,7 @@ evaluation-baseline/
   boundary_lint.py
   prohibited_terms.json
   validate_p3_schemas.py
+  evaluate_dyadic_recovery_demo.py
   README.md
 
 sample-data/
@@ -489,6 +497,11 @@ sample-data/
     human_state_packet_B.json
     dyadic_session_event.json
     benchmark_session_container.json
+    ai_outputs.json
+    dyadic_delta.json
+    recovery_gate.json
+    termination_gate.json
+    audit_log.json
 ```
 
 ---
@@ -883,6 +896,7 @@ Current intended workflow sequence:
 ```text
 Run synthetic sample package validator
 Run P3 helper schema validator
+Run P4 synthetic dyadic recovery demo-flow evaluator
 Run boundary language lint
 ```
 
@@ -891,6 +905,7 @@ Validation helpers:
 ```text
 evaluation-baseline/validate_sample_package.py
 evaluation-baseline/validate_p3_schemas.py
+evaluation-baseline/evaluate_dyadic_recovery_demo.py
 evaluation-baseline/boundary_lint.py
 ```
 
@@ -925,13 +940,14 @@ Run validators:
 ```bash
 python evaluation-baseline/validate_sample_package.py
 python evaluation-baseline/validate_p3_schemas.py
+python evaluation-baseline/evaluate_dyadic_recovery_demo.py
 python evaluation-baseline/boundary_lint.py
 ```
 
 Expected meaning of PASS:
 
 ```text
-The public synthetic/sample helper files follow the current helper structure and wording boundary checks.
+The public synthetic/sample helper files follow the expected helper structure, the synthetic demo-flow objects preserve expected helper consistency, and wording boundary checks are clean.
 ```
 
 PASS does not mean:
@@ -1051,8 +1067,6 @@ Recommended next milestones:
 
 | Milestone | Name | Purpose |
 |---|---|---|
-| P4-0 | Synthetic Dyadic Demo Package | Extend the existing synthetic dyadic helper package into a fuller public-safe demo package |
-| P4-1 | Dyadic Recovery Delta Evaluator | Add a baseline evaluator for dyadic recovery delta |
 | P4-2 | Mediation Policy Prompt Pack | Define bounded prompt/policy structures for state-aware mediation simulation |
 | P4-3 | Termination Gate Accuracy Skeleton | Add synthetic tests for pause/stop/close decision logic |
 | P4-4 | Phone-only Simulator Wireframe | Prepare a public-safe phone-only session flow mockup |
