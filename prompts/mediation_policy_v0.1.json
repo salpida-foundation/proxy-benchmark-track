@@ -1,0 +1,282 @@
+{
+  "policy_id": "sics_p4_2_mediation_policy_prompt_pack_v0_1",
+  "policy_version": "0.1",
+  "repository_track": "SICS Human-State Proxy Benchmark Track",
+  "milestone": "P4-2",
+  "milestone_name": "Mediation Policy Prompt Pack",
+  "dataset_type": "synthetic",
+  "prompt_policy_scope": "public_helper_only",
+  "status": {
+    "research_stage": true,
+    "public_helper_only": true,
+    "synthetic_only": true,
+    "mediation_status": "not_validated",
+    "benchmark_status": "not_validated",
+    "sal_meter_status": "not_sal_meter",
+    "cais_status": "not_cais_compliance",
+    "production_status": "not_production_ready",
+    "certification_status": "not_certified"
+  },
+  "purpose": {
+    "summary": "Define bounded prompt and policy structures for synthetic Human-State-Aware AI mediation simulation.",
+    "allowed_use": [
+      "synthetic AI output condition examples",
+      "state-aware AI output condition examples",
+      "private cue boundary examples",
+      "shared mediation output boundary examples",
+      "pause recommendation logic",
+      "clarification request logic",
+      "scope narrowing logic",
+      "recovery check logic",
+      "termination recommendation logic",
+      "false recovery prevention",
+      "one-sided improvement caution"
+    ],
+    "not_allowed_use": [
+      "production mediation system",
+      "clinical mediation system",
+      "diagnostic system",
+      "therapeutic system",
+      "counseling service",
+      "surveillance system",
+      "relationship judgment system",
+      "human ranking system",
+      "Sal-Meter validation",
+      "CAIS compliance",
+      "benchmark validation",
+      "mediation validation"
+    ]
+  },
+  "prompt_condition_types": [
+    "generic_ai_output",
+    "state_aware_ai_output",
+    "private_cue",
+    "shared_mediation_output",
+    "pause_recommendation",
+    "clarification_request",
+    "scope_narrowing",
+    "recovery_check",
+    "termination_recommendation",
+    "audit_note"
+  ],
+  "output_layers": {
+    "internal_policy_decision": {
+      "description": "Synthetic routing decision for helper-only simulation.",
+      "participant_visible": false,
+      "may_contain_private_cue": true,
+      "may_contain_shared_output": false
+    },
+    "private_cue": {
+      "description": "Bounded synthetic routing helper for internal mediation simulation.",
+      "participant_visible": false,
+      "may_disclose_raw_human_data": false,
+      "may_disclose_private_state_details": false
+    },
+    "shared_mediation_output": {
+      "description": "Bounded synthetic message visible to simulated participants.",
+      "participant_visible": true,
+      "may_disclose_private_cue": false,
+      "may_disclose_raw_human_data": false,
+      "may_create_relationship_verdict": false
+    }
+  },
+  "allowed_policy_actions": [
+    "continue_with_clarification",
+    "continue_with_scope_narrowing",
+    "continue_with_private_cue_only",
+    "continue_with_shared_mediation_output",
+    "request_consent_refresh",
+    "request_packet_refresh",
+    "pause_session",
+    "close_session",
+    "terminate_session",
+    "audit_only"
+  ],
+  "prohibited_policy_actions": [
+    "diagnose_participant",
+    "treat_participant",
+    "rank_participant",
+    "score_person",
+    "assign_blame",
+    "declare_relationship_verdict",
+    "override_consent",
+    "bypass_permission",
+    "reuse_expired_packet",
+    "expose_private_state",
+    "publish_raw_data",
+    "start_production_intervention",
+    "claim_benchmark_validation",
+    "claim_mediation_validation",
+    "claim_sal_meter_validation",
+    "claim_cais_compliance"
+  ],
+  "private_cue_boundary": {
+    "allowed_content": [
+      "uncertainty",
+      "packet availability",
+      "consent status",
+      "permission status",
+      "confidence level",
+      "data-quality limitation",
+      "one-sided improvement risk",
+      "possible false recovery risk",
+      "need to pause",
+      "need to narrow scope",
+      "need to terminate the session"
+    ],
+    "prohibited_content": [
+      "raw human data",
+      "raw voice",
+      "raw face",
+      "raw gaze",
+      "raw transcript",
+      "private state details",
+      "clinical interpretations",
+      "diagnostic interpretations",
+      "therapeutic interpretations",
+      "hidden labels",
+      "identity-bearing information",
+      "relationship verdicts",
+      "blame assignments",
+      "human scores"
+    ],
+    "boundary_sentence": "A private cue is a bounded synthetic routing helper, not a disclosure of private human state."
+  },
+  "shared_output_boundary": {
+    "allowed_content": [
+      "slow down escalation",
+      "ask for clarification",
+      "restate scope",
+      "suggest pausing",
+      "ask for consent confirmation",
+      "avoid assigning blame",
+      "avoid declaring recovery",
+      "avoid ranking participants",
+      "avoid diagnosing participants",
+      "avoid exposing private packet details",
+      "recommend closure when continuation is not safe within the session boundary"
+    ],
+    "prohibited_content": [
+      "reveal private cue content",
+      "reveal raw human data",
+      "reveal hidden packet details",
+      "declare who is right",
+      "declare who is wrong",
+      "declare who is guilty",
+      "declare who is unsafe",
+      "declare who is emotionally defective",
+      "declare who should be punished",
+      "declare who should be monitored",
+      "declare who should be treated",
+      "declare that the relationship is resolved",
+      "declare that the relationship has failed",
+      "declare that dyadic recovery has occurred without gate support",
+      "create a clinical outcome",
+      "create a diagnostic outcome",
+      "create a therapeutic outcome",
+      "create a legal outcome",
+      "create an employment outcome",
+      "create an insurance outcome",
+      "create an educational outcome",
+      "create an eligibility outcome",
+      "create a surveillance outcome",
+      "create a certification outcome",
+      "create a human-ranking outcome"
+    ],
+    "boundary_sentence": "A shared mediation output is a bounded synthetic communication helper, not a relationship judgment."
+  },
+  "recovery_gate_dependency": {
+    "required": true,
+    "recovery_must_not_be_marked_when": [
+      "only one participant improves",
+      "one participant becomes silent",
+      "one participant becomes compliant",
+      "both participants merely agree verbally",
+      "the AI output sounds supportive but the dyadic delta remains mixed",
+      "the recovery gate is not passed",
+      "consent or permission has expired",
+      "data quality is insufficient",
+      "private state would be exposed by continuation",
+      "the termination gate recommends pause or closure"
+    ],
+    "boundary_sentence": "One-sided improvement is not dyadic recovery."
+  },
+  "termination_gate_dependency": {
+    "required": true,
+    "pause_narrow_or_close_when": [
+      "consent is withdrawn",
+      "permission expires",
+      "packet confidence is too low",
+      "data quality is insufficient",
+      "uncertainty is high",
+      "continuation would expose private state",
+      "the AI has exceeded session scope",
+      "the mediation would become endless",
+      "the session is already closed",
+      "a new session is required for continuation"
+    ],
+    "boundary_sentence": "A closed session must stay closed."
+  },
+  "false_recovery_prevention": {
+    "enabled": true,
+    "automatic_recovery_disallowed_from": [
+      "silence",
+      "obedience",
+      "agreement",
+      "synchrony",
+      "AI fluency",
+      "supportive tone",
+      "one-sided relief",
+      "one-sided improvement"
+    ]
+  },
+  "boundary_flags": {
+    "raw_human_data_present": false,
+    "identifiable_data_present": false,
+    "clinical_data_present": false,
+    "sal_meter_input_present": false,
+    "cais_compliance_claim_present": false,
+    "benchmark_validation_claim_present": false,
+    "mediation_validation_claim_present": false,
+    "production_intervention_claim_present": false,
+    "human_ranking_claim_present": false,
+    "relationship_verdict_present": false
+  },
+  "prohibited_claims": [
+    "benchmark validation",
+    "scientific validation",
+    "mediation validation",
+    "Sal-Meter validation",
+    "CAIS compliance",
+    "clinical readiness",
+    "diagnostic readiness",
+    "therapeutic readiness",
+    "counseling readiness",
+    "surveillance readiness",
+    "certification readiness",
+    "device readiness",
+    "production readiness",
+    "human ranking",
+    "relationship verdict"
+  ],
+  "audit_note": {
+    "summary": "This JSON file is a synthetic public-helper policy object for prompt scaffolding only.",
+    "not_evidence": true,
+    "not_validation": true,
+    "not_authority": true
+  },
+  "final_boundary_status": {
+    "public_helper_only": true,
+    "synthetic_only": true,
+    "raw_human_data_excluded": true,
+    "identifiable_data_excluded": true,
+    "clinical_data_excluded": true,
+    "sal_meter_input_excluded": true,
+    "cais_compliance_excluded": true,
+    "benchmark_validation_excluded": true,
+    "mediation_validation_excluded": true,
+    "production_closed_loop_excluded": true,
+    "human_ranking_excluded": true,
+    "relationship_verdict_excluded": true
+  }
+}
