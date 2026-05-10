@@ -272,8 +272,13 @@ It provides:
 - P3 synthetic dyadic helper package;
 - P4 synthetic dyadic demo-flow package;
 - P4-1 synthetic dyadic recovery demo-flow evaluator;
+- P4-2 mediation policy prompt pack;
 - P4-3 synthetic termination-gate helper case package;
 - P4-3 synthetic termination-gate helper evaluator;
+- P4-4 phone-only simulator scaffold;
+- P4-4 phone-only session flow wireframe;
+- P4-4 synthetic phone-session state-machine mockup;
+- P4-4 synthetic sample phone-session script;
 - validation scaffolding;
 - P3 helper-schema validation;
 - synthetic demo-flow consistency checking;
@@ -286,7 +291,6 @@ It provides:
 - contributor issue / PR templates;
 - Human-State-Aware AI Mediation helper documents;
 - GitHub Actions helper-structure validation workflow;
-- P4-2 mediation policy prompt pack;
 - bounded prompt / policy scaffolding for synthetic mediation simulation.
 
 It does not provide benchmark evidence.
@@ -311,6 +315,24 @@ It does not certify production readiness.
 
 It does not authorize production closed-loop intervention.
 
+The phone-only simulator is a public helper scaffold only.
+
+It is not a real phone monitoring system.
+
+It is not a clinical system.
+
+It is not a diagnostic system.
+
+It is not a therapeutic system.
+
+It is not a counseling system.
+
+It is not a mediation-service system.
+
+It is not a surveillance system.
+
+A closed session must stay closed.
+
 ---
 
 ## Implementation status table
@@ -326,8 +348,14 @@ It does not authorize production closed-loop intervention.
 | Synthetic dyadic helper package | Present / Passed P3 helper-schema validation | `sample-data/synthetic-dyadic-session-001/` contains Human-State Packet A/B, Dyadic Session Event, and Benchmark Session Container examples |
 | Synthetic dyadic demo-flow package | Present / Passed P4-1 evaluator | `sample-data/synthetic-dyadic-session-001/` contains `ai_outputs.json`, `dyadic_delta.json`, `recovery_gate.json`, `termination_gate.json`, and `audit_log.json` examples |
 | P4-1 dyadic recovery demo evaluator | Present / Passed | `evaluation-baseline/evaluate_dyadic_recovery_demo.py` checks synthetic demo-flow consistency only |
+| P4-2 mediation policy prompt pack | Present | `prompts/` contains `README.md` and `mediation_policy_v0.1.json`; `docs/mediation-policy-prompt-pack.md` documents private cue, shared mediation output, false recovery prevention, and termination boundary logic |
 | P4-3 synthetic termination-gate helper case package | Present / Passed P4-3 evaluator | `sample-data/synthetic-dyadic-session-001/` contains `termination_gate_cases.json` with synthetic pause, narrow, close, terminate, refresh, and audit-only helper cases |
 | P4-3 termination gate demo evaluator | Present / Passed | `evaluation-baseline/evaluate_termination_gate_demo.py` checks synthetic termination-gate helper consistency only |
+| P4-4 phone-only simulator scaffold | Present | `phone-only-simulator/` contains a public-safe, synthetic-only phone-session simulator helper package |
+| P4-4 phone-only simulator README | Present | `phone-only-simulator/README.md` defines folder boundary, intended files, public data boundary, P4-3 relationship, and final rule |
+| P4-4 phone session flow wireframe | Present | `phone-only-simulator/session-flow-wireframe.md` defines consent, packet check, baseline summary, AI output, Human-State Delta, Recovery Gate, Termination Gate, closure, and audit screens |
+| P4-4 phone session state machine | Present | `phone-only-simulator/phone-session-state-machine.json` defines synthetic-only states, allowed transitions, forbidden transitions, allowed decisions, prohibited decisions, and boundary flags |
+| P4-4 sample phone session script | Present | `phone-only-simulator/sample-phone-session-script.md` provides a synthetic sample script showing consent, packet availability, AI output, delta review, recovery gate, termination gate, closure, and audit flow |
 | Synthetic session README | Done | The original synthetic package includes a local README explaining file roles and boundaries |
 | Synthetic dyadic session README | Done | The dyadic synthetic package includes a local README explaining P3 helper-schema, P4 demo-flow, and P4-3 termination-gate helper boundaries |
 | Sample package validator | Present / Passed | `evaluation-baseline/validate_sample_package.py` provides helper-structure validation for the original synthetic package |
@@ -339,14 +367,15 @@ It does not authorize production closed-loop intervention.
 | Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` defines feedback-loop boundaries, event-log schema, and local placeholder code |
 | Replication guide pack | Done | `replication-guide/` defines reproducibility, metadata completeness, audit trail, and public release-readiness checklists |
 | Issue / PR template pack | Done | `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` define contributor boundary gates |
-| GitHub Actions validator workflow | Passed | `.github/workflows/validate-synthetic-sample.yml` runs the original sample validator, P3 helper-schema validator, P4 synthetic dyadic recovery demo-flow evaluator, P4-3 synthetic termination-gate helper evaluator, and boundary language lint |
+| GitHub Actions validator workflow | Passed | `.github/workflows/validate-synthetic-sample.yml` runs the original sample validator, P3 helper-schema validator, P4 synthetic dyadic recovery demo-flow evaluator, P4-3 synthetic termination-gate helper evaluator, and boundary language lint; P4-4 currently adds documentation and simulator scaffold only, not a new validator |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
 | Sal-Meter input | Not present | This repository is not Sal-Meter and does not contain Sal-Meter signal data |
 | CAIS compliance claim | Not present | This repository does not grant CAIS compliance |
-| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, template, PR, validator, workflow, evaluator, termination-gate helper case, or benchmark result is validated by this repository |
+| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, template, PR, validator, workflow, evaluator, phone-only simulator, termination-gate helper case, or benchmark result is validated by this repository |
+| Phone monitoring authority | Not present | The P4-4 phone-only simulator is not a real phone monitoring system and does not process real calls, raw audio, transcripts, or identifiable participant data |
+| Production closed-loop authority | Not present | No phone-only simulator file authorizes production mediation, monitoring, intervention, relationship verdicts, or human ranking |
 | Release status | `v0.1.1` published as pre-release | `v0.1.1` is the post-validator-pass public helper pre-release package |
-| P4-2 mediation policy prompt pack | Present | `prompts/` contains `README.md` and `mediation_policy_v0.1.json`; `docs/mediation-policy-prompt-pack.md` documents private cue, shared mediation output, false recovery prevention, and termination boundary logic |
 
 ---
 
@@ -435,6 +464,12 @@ It is not certification.
 
 It is not production readiness.
 
+P4-4 adds a public phone-only simulator scaffold.
+
+P4-4 is documentation and simulator scaffolding only.
+
+P4-4 is not currently part of the P5 helper-validation chain unless a later validator or lint step is added.
+
 | Milestone | Status | Notes |
 |---|---|---|
 | P5-0 Boundary language lint | Done / advisory mode | `evaluation-baseline/boundary_lint.py` and `evaluation-baseline/prohibited_terms.json` are implemented; GitHub Actions runs the boundary lint step in advisory mode |
@@ -442,10 +477,16 @@ It is not production readiness.
 | P5-1 synthetic dyadic helper package | Done / Passed | `sample-data/synthetic-dyadic-session-001/` contains `human_state_packet_A.json`, `human_state_packet_B.json`, `dyadic_session_event.json`, and `benchmark_session_container.json` |
 | P4-0 synthetic dyadic demo-flow package | Done / Passed | `sample-data/synthetic-dyadic-session-001/` contains `ai_outputs.json`, `dyadic_delta.json`, `recovery_gate.json`, `termination_gate.json`, and `audit_log.json` |
 | P4-1 synthetic dyadic recovery delta evaluator | Done / Passed | `evaluation-baseline/evaluate_dyadic_recovery_demo.py` evaluates synthetic demo-flow consistency only |
+| P4-2 mediation policy prompt pack | Done | `prompts/` contains `README.md` and `mediation_policy_v0.1.json`; `docs/mediation-policy-prompt-pack.md` documents private cue, shared mediation output, false recovery prevention, and termination boundary logic |
 | P4-3 synthetic termination-gate helper case package | Done / Passed | `sample-data/synthetic-dyadic-session-001/termination_gate_cases.json` contains synthetic pause, narrow, close, terminate, refresh, and audit-only helper cases |
 | P4-3 termination gate demo evaluator | Done / Passed | `evaluation-baseline/evaluate_termination_gate_demo.py` evaluates synthetic termination-gate helper consistency only |
 | P5-1 documentation alignment | Done | `schemas/README.md`, `sample-data/README.md`, `evaluation-baseline/README.md`, and root `README.md` explain P3 helper-schema validation as helper-structure validation only |
 | P4-3 documentation alignment | Done | `sample-data/README.md`, `evaluation-baseline/README.md`, and root `README.md` explain P4-3 termination-gate helper evaluation as synthetic helper consistency only |
+| P4-4 phone-only simulator scaffold | Present / documentation only | `phone-only-simulator/` contains public-helper documentation and simulator scaffolding only; it is not a validator and is not production monitoring |
+| P4-4 phone-only simulator README | Present / documentation only | `phone-only-simulator/README.md` defines folder boundary, public data boundary, P4-3 relationship, and final rule |
+| P4-4 phone session flow wireframe | Present / documentation only | `phone-only-simulator/session-flow-wireframe.md` defines synthetic consent, packet check, AI output, delta review, recovery gate, termination gate, closure, and audit screens |
+| P4-4 phone session state machine | Present / synthetic mockup only | `phone-only-simulator/phone-session-state-machine.json` defines synthetic-only states, allowed transitions, forbidden transitions, allowed decisions, prohibited decisions, and boundary flags |
+| P4-4 sample phone session script | Present / synthetic script only | `phone-only-simulator/sample-phone-session-script.md` provides a synthetic sample phone-session script without real audio, real transcript, real participant data, Sal-Meter input, CAIS compliance dossier, or production intervention logic |
 
 Current P5 helper-validation chain:
 
@@ -457,7 +498,19 @@ validate_sample_package.py
 → boundary_lint.py
 ```
 
-A successful run means only:
+P4-4 is not currently included in the validation chain.
+
+Current P4-4 scaffold files:
+
+```text
+phone-only-simulator/
+  README.md
+  session-flow-wireframe.md
+  phone-session-state-machine.json
+  sample-phone-session-script.md
+```
+
+A successful P5 validation run means only:
 
 ```text
 The public synthetic/sample helper files follow the expected helper structure.
@@ -467,7 +520,19 @@ The P4-3 synthetic termination-gate helper cases preserve expected helper consis
 Wording boundary checks are clean.
 ```
 
-A successful run does not mean:
+A completed P4-4 scaffold means only:
+
+```text
+The phone-only simulator scaffold is publicly documented.
+The phone-only simulator files are synthetic-only.
+The phone-only session flow is represented as a helper wireframe.
+The phone-session state machine is a synthetic mockup.
+The sample phone-session script is not a real transcript.
+The closed-session rule is explicit.
+The public data boundary is preserved.
+```
+
+A successful run or completed scaffold does not mean:
 
 ```text
 benchmark validation
@@ -483,6 +548,7 @@ therapeutic readiness
 device readiness
 production readiness
 certification
+phone monitoring authority
 relationship verdict authority
 human-ranking authority
 production closed-loop authority
@@ -491,7 +557,7 @@ production closed-loop authority
 Correct boundary sentence:
 
 ```text
-The P5 helper-validation chain checks public helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; it does not validate benchmark performance, mediation, dyadic recovery, termination-gate accuracy, Sal-Meter, CAIS compliance, certification, or production readiness.
+The P5 helper-validation chain checks public helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; P4-4 adds a synthetic phone-only simulator scaffold only, and neither creates benchmark validation, mediation validation, dyadic recovery validation, termination-gate accuracy validation, Sal-Meter validation, CAIS compliance, certification, phone monitoring authority, or production authority.
 ```
 
 ---
@@ -593,6 +659,88 @@ Completed P5 helper-validation files support structure, schema, demo-flow, termi
 
 ---
 
+## Completed P4-4 public simulator scaffold files
+
+```text
+phone-only-simulator/
+  README.md
+  session-flow-wireframe.md
+  phone-session-state-machine.json
+  sample-phone-session-script.md
+```
+
+These files support:
+
+```text
+phone-only simulator boundary documentation
+synthetic phone-session flow wireframe
+synthetic phone-session state-machine mockup
+synthetic sample phone-session script
+closed-session rule visibility
+public data boundary visibility
+P4-4 public-helper scaffold documentation
+```
+
+They do not support:
+
+```text
+real phone monitoring
+real phone recording
+real transcript processing
+real participant data processing
+clinical intake
+diagnosis
+therapy
+counseling
+mediation-service operation
+surveillance
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+Sal-Meter validation
+CAIS compliance
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+P4-4 scaffold files must remain:
+
+```text
+research-stage
+public-helper-only
+synthetic-only
+non-clinical
+non-diagnostic
+non-therapeutic
+non-counseling
+non-surveillance
+non-certification
+non-human-ranking
+not Sal-Meter
+not CAIS compliance
+not benchmark validation
+not mediation validation
+not dyadic recovery validation
+not termination-gate accuracy validation
+not phone monitoring authority
+not production readiness
+not production closed-loop
+```
+
+Correct boundary sentence:
+
+```text
+Completed P4-4 public simulator scaffold files may demonstrate synthetic phone-only session structure only; they do not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+```
+
+---
+
 ## P3 helper architecture
 
 ```text
@@ -610,6 +758,68 @@ AI Output
 ```
 
 The Consent and Data-Sharing Boundary controls what may cross the arrows.
+
+P3 defines the core helper architecture.
+
+P4-4 does not replace this architecture.
+
+P4-4 projects this architecture into a public-safe phone-only simulator scaffold.
+
+P4-4 represents the same boundary logic through:
+
+```text
+phone-only-simulator/
+  README.md
+  session-flow-wireframe.md
+  phone-session-state-machine.json
+  sample-phone-session-script.md
+```
+
+The P4-4 phone-only simulator may demonstrate:
+
+- consent-first session entry;
+- packet availability checking;
+- synthetic baseline state summary;
+- synthetic AI output;
+- synthetic Human-State Delta review;
+- Recovery Gate placeholder;
+- Termination Gate placeholder;
+- closed-session handling;
+- audit-log boundary.
+
+The P4-4 phone-only simulator must not imply:
+
+```text
+real phone monitoring
+real phone recording
+real transcript processing
+real participant data processing
+clinical intake
+diagnosis
+therapy
+counseling
+mediation-service operation
+surveillance
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+Sal-Meter validation
+CAIS compliance
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+Correct boundary sentence:
+
+```text
+P4-4 is a phone-only public helper projection of the P3 session architecture; it does not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+```
 
 ---
 
@@ -873,6 +1083,75 @@ Session Creation
 → Audit Log
 ```
 
+P4-4 projects this session principle into a phone-only public helper scaffold.
+
+The P4-4 phone-only simulator may represent the same session principle through:
+
+```text
+phone-only-simulator/
+  README.md
+  session-flow-wireframe.md
+  phone-session-state-machine.json
+  sample-phone-session-script.md
+```
+
+In P4-4, the phone-only simulator may demonstrate:
+
+- consent-first session entry;
+- packet availability checking;
+- synthetic baseline summary;
+- synthetic AI output;
+- synthetic Human-State Delta review;
+- Recovery Gate placeholder;
+- Termination Gate placeholder;
+- closed-session handling;
+- audit-log boundary.
+
+The phone-only simulator must not process:
+
+```text
+real phone calls
+real audio
+real transcripts
+real participant data
+identifiable human data
+clinical data
+Sal-Meter raw input
+CAIS compliance dossiers
+production intervention logs
+```
+
+The phone-only simulator must not imply:
+
+```text
+real phone monitoring
+clinical intake
+diagnosis
+therapy
+counseling
+mediation-service operation
+surveillance
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+Sal-Meter validation
+CAIS compliance
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+Correct boundary sentence:
+
+```text
+The P4-4 phone-only simulator demonstrates the session principle as a synthetic public helper flow only; it does not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+```
+
 ---
 
 ## Synthetic sample packages
@@ -1008,7 +1287,68 @@ human-ranking authority
 production closed-loop authority
 ```
 
-Public sample data must remain:
+### P4-4 phone-only simulator scaffold
+
+```text
+phone-only-simulator/
+```
+
+Required public helper files include:
+
+```text
+README.md
+session-flow-wireframe.md
+phone-session-state-machine.json
+sample-phone-session-script.md
+```
+
+P4-4 is not stored under `sample-data/`.
+
+P4-4 is a separate public simulator scaffold.
+
+P4-4 may demonstrate:
+
+- synthetic phone-only session structure;
+- consent-first flow;
+- packet availability check;
+- synthetic baseline summary;
+- synthetic AI output;
+- synthetic Human-State Delta review;
+- Recovery Gate placeholder;
+- Termination Gate placeholder;
+- closed-session handling;
+- audit-log boundary;
+- public-helper-only simulator posture.
+
+P4-4 must not imply:
+
+```text
+real phone monitoring
+real phone recording
+real transcript processing
+real participant data processing
+clinical intake
+diagnosis
+therapy
+counseling
+mediation-service operation
+surveillance
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+Sal-Meter validation
+CAIS compliance
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+Public sample and simulator files must remain:
 
 ```text
 synthetic
@@ -1022,6 +1362,7 @@ public-helper-only
 non-clinical
 non-diagnostic
 non-therapeutic
+non-counseling
 non-surveillance
 non-certification
 non-human-ranking
@@ -1034,12 +1375,14 @@ not termination-gate accuracy evidence
 not production data
 ```
 
-Public sample data must not include:
+Public sample and simulator files must not include:
 
 ```text
 real raw human data
 identity-bearing data
 real dyadic conflict records
+real phone recordings
+real call transcripts
 clinical records
 health records
 raw biosignals
@@ -1053,6 +1396,13 @@ device-readiness claims
 production-readiness claims
 certification claims
 termination-gate accuracy claims
+phone monitoring authority
+```
+
+Correct boundary sentence:
+
+```text
+Synthetic sample packages and the P4-4 phone-only simulator scaffold may demonstrate public helper structure only; they do not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1089,7 +1439,27 @@ The workflow successfully runs on the main branch.
 
 This confirms only public helper-structure validation, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording-boundary hygiene.
 
-It does not validate benchmark performance.
+P4-4 currently adds documentation and simulator scaffold files only.
+
+P4-4 does not currently add a new validator.
+
+P4-4 does not currently add a new GitHub Actions workflow step.
+
+Current P4-4 scaffold files:
+
+```text
+phone-only-simulator/
+  README.md
+  session-flow-wireframe.md
+  phone-session-state-machine.json
+  sample-phone-session-script.md
+```
+
+The P4-4 scaffold may be reviewed by existing boundary-language lint if included in the lint scan path.
+
+If a later validator is added for P4-4, the workflow may be extended in a separate issue.
+
+This workflow does not validate benchmark performance.
 
 It does not validate scientific truth.
 
@@ -1103,14 +1473,18 @@ It does not validate Sal-Meter.
 
 It does not grant CAIS compliance.
 
-It does not certify any system, model, dataset, dashboard, laboratory, device, repository, schema, session protocol, implementation, mediation system, termination gate, or closed-loop system.
+It does not validate the P4-4 phone-only simulator.
 
-It does not create clinical, diagnostic, therapeutic, counseling, surveillance, certification, device-readiness, production-readiness, relationship-verdict, production closed-loop, or human-ranking authority.
+It does not certify phone monitoring.
+
+It does not certify any system, model, dataset, dashboard, laboratory, device, repository, schema, session protocol, implementation, mediation system, termination gate, phone-only simulator, or closed-loop system.
+
+It does not create clinical, diagnostic, therapeutic, counseling, surveillance, certification, device-readiness, production-readiness, relationship-verdict, phone-monitoring, production closed-loop, or human-ranking authority.
 
 Correct boundary sentence:
 
 ```text
-The validation workflow checks public helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; it does not create benchmark validation, mediation validation, termination-gate accuracy validation, Sal-Meter validation, CAIS compliance, certification, or production authority.
+The validation workflow checks public helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; P4-4 currently adds phone-only simulator scaffold documentation only and does not create benchmark validation, mediation validation, termination-gate accuracy validation, Sal-Meter validation, CAIS compliance, certification, phone-monitoring authority, or production authority.
 ```
 
 ---
@@ -1143,6 +1517,27 @@ The P4-3 synthetic termination-gate helper cases preserve expected helper consis
 Wording boundary checks are clean.
 ```
 
+P4-4 local status:
+
+```text
+phone-only-simulator/README.md exists.
+phone-only-simulator/session-flow-wireframe.md exists.
+phone-only-simulator/phone-session-state-machine.json exists.
+phone-only-simulator/sample-phone-session-script.md exists.
+```
+
+P4-4 currently has no separate local validator.
+
+P4-4 currently has no separate GitHub Actions validation step.
+
+P4-4 is documentation and simulator scaffolding only.
+
+P4-4 files may be reviewed manually for boundary consistency.
+
+P4-4 files may be scanned by the boundary language lint if the lint path includes the `phone-only-simulator/` folder.
+
+If a later P4-4 validator is added, it should be added in a separate issue.
+
 PASS does not mean:
 
 ```text
@@ -1151,6 +1546,8 @@ scientific truth validated
 mediation validated
 dyadic recovery validated
 termination-gate accuracy validated
+phone-only simulator validated
+phone monitoring validated
 Sal-Meter validated
 CAIS compliant
 clinical evidence
@@ -1167,7 +1564,7 @@ production closed-loop authority
 Correct boundary sentence:
 
 ```text
-Local validation checks helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; it does not create evidence, validation, certification, Sal-Meter status, CAIS compliance, or production authority.
+Local validation checks helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; P4-4 currently adds phone-only simulator scaffold documentation only and does not create evidence, validation, certification, phone monitoring authority, Sal-Meter status, CAIS compliance, or production authority.
 ```
 
 ---
@@ -1180,6 +1577,9 @@ This repository must not contain:
 - identifiable human data;
 - private participant data;
 - real dyadic conflict records;
+- real phone recordings;
+- real call transcripts;
+- real phone-session logs;
 - consent forms with identifiers;
 - private session logs;
 - raw biosignal files from real participants;
@@ -1197,6 +1597,8 @@ This repository must not contain:
 - relationship scoring outputs;
 - employment, insurance, legal, educational, or eligibility decisions;
 - surveillance or coercive monitoring materials;
+- phone monitoring authority;
+- real-time monitoring authority;
 - device-readiness claims;
 - production-readiness claims;
 - certification claims;
@@ -1209,7 +1611,7 @@ This repository must not contain:
 - Sal-Meter validation claims;
 - CAIS compliance claims.
 
-Public sample and helper files must remain:
+Public sample, helper, and simulator files must remain:
 
 ```text
 synthetic
@@ -1233,6 +1635,7 @@ not benchmark evidence
 not mediation evidence
 not dyadic recovery evidence
 not termination-gate accuracy evidence
+not phone monitoring authority
 not production data
 ```
 
@@ -1251,6 +1654,20 @@ P4-3 termination-gate helper cases may demonstrate:
 - insufficient-data-quality handling;
 - private-state exposure risk handling;
 - one-sided improvement caution.
+
+P4-4 phone-only simulator scaffold files may demonstrate:
+
+- synthetic phone-only session structure;
+- consent-first flow;
+- packet availability check;
+- synthetic baseline summary;
+- synthetic AI output;
+- synthetic Human-State Delta review;
+- Recovery Gate placeholder;
+- Termination Gate placeholder;
+- closed-session handling;
+- audit-log boundary;
+- public-helper-only simulator posture.
 
 P4-3 termination-gate helper cases must not imply:
 
@@ -1274,10 +1691,39 @@ human-ranking authority
 production closed-loop authority
 ```
 
+P4-4 phone-only simulator scaffold files must not imply:
+
+```text
+real phone monitoring
+real phone recording
+real transcript processing
+real participant data processing
+clinical intake
+diagnosis
+therapy
+counseling
+mediation-service operation
+surveillance
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+Sal-Meter validation
+CAIS compliance
+phone monitoring authority
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
 Correct boundary sentence:
 
 ```text
-Public data in this repository may demonstrate helper structure and synthetic consistency only; it must not create evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
+Public data in this repository may demonstrate helper structure, synthetic consistency, and phone-only simulator scaffolding only; it must not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1293,6 +1739,8 @@ Contributions must not claim or imply:
 - mediation validation;
 - dyadic recovery validation;
 - termination-gate accuracy validation;
+- phone-only simulator validation;
+- phone monitoring validation;
 - Sal-Meter validation;
 - CAIS compliance;
 - diagnostic status;
@@ -1301,6 +1749,7 @@ Contributions must not claim or imply:
 - counseling-service status;
 - legal mediation authority;
 - surveillance readiness;
+- phone monitoring authority;
 - device readiness;
 - production readiness;
 - certification;
@@ -1319,6 +1768,10 @@ Issues and pull requests may propose or modify:
 - schema helper structures;
 - synthetic demo-flow objects;
 - synthetic termination-gate helper cases;
+- phone-only simulator scaffold files;
+- synthetic phone-session wireframes;
+- synthetic phone-session state-machine mockups;
+- synthetic sample phone-session scripts;
 - validation helper scripts;
 - wording-boundary lint rules;
 - documentation alignment;
@@ -1330,6 +1783,11 @@ Issues and pull requests must not introduce:
 raw human data
 identifiable human data
 clinical data
+real phone recordings
+real call transcripts
+real participant data
+real consent records
+real phone-session logs
 Sal-Meter raw input
 CAIS compliance dossier
 benchmark validation claim
@@ -1337,6 +1795,8 @@ scientific validation claim
 mediation validation claim
 dyadic recovery validation claim
 termination-gate accuracy validation claim
+phone-only simulator validation claim
+phone monitoring authority claim
 device-readiness claim
 production-readiness claim
 certification claim
@@ -1353,12 +1813,32 @@ A valid issue or pull request may improve synthetic consistency checks.
 
 A valid issue or pull request may improve termination-gate helper case coverage.
 
-A valid issue or pull request must not convert this repository into an evidence, certification, production, clinical, diagnostic, therapeutic, surveillance, relationship-verdict, or human-ranking system.
+A valid issue or pull request may improve phone-only simulator scaffold clarity.
+
+A valid issue or pull request may improve synthetic phone-session flow representation.
+
+A valid issue or pull request must not convert this repository into:
+
+```text
+an evidence system
+a certification system
+a production system
+a clinical system
+a diagnostic system
+a therapeutic system
+a counseling system
+a surveillance system
+a real phone monitoring system
+a relationship-verdict system
+a human-ranking system
+a Sal-Meter validation system
+a CAIS compliance system
+```
 
 Correct boundary sentence:
 
 ```text
-Issues and pull requests may improve public helper structure, but they must not create evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
+Issues and pull requests may improve public helper structure, synthetic termination-gate cases, and phone-only simulator scaffolding, but they must not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1381,7 +1861,11 @@ They may show:
 - synthetic Termination Gate status;
 - synthetic pause / narrow / close / terminate examples;
 - synthetic audit status;
-- synthetic public-boundary flags.
+- synthetic public-boundary flags;
+- synthetic phone-only simulator state;
+- synthetic phone-session flow status;
+- synthetic phone-session state-machine status;
+- synthetic phone-session closure status.
 
 They must not present:
 
@@ -1394,6 +1878,10 @@ They must not present:
 - legal eligibility;
 - educational eligibility;
 - surveillance status;
+- phone monitoring status;
+- real-time monitoring status;
+- real phone recording status;
+- real transcript status;
 - relationship verdicts;
 - relationship scoring;
 - human ranking;
@@ -1403,6 +1891,7 @@ They must not present:
 - validated mediation status;
 - validated dyadic recovery status;
 - validated termination-gate accuracy status;
+- validated phone-only simulator status;
 - device-readiness status;
 - production-readiness status;
 - production closed-loop status;
@@ -1411,9 +1900,23 @@ They must not present:
 
 A dashboard may show bounded synthetic/sample helper fields for demonstration.
 
+A dashboard may show P4-4 phone-only simulator scaffold status only as synthetic helper structure.
+
+A dashboard must not show real call monitoring.
+
+A dashboard must not show real phone audio status.
+
+A dashboard must not show real transcript processing.
+
+A dashboard must not show real participant state.
+
+A dashboard must not show phone monitoring authority.
+
 It must not become a judgment engine.
 
 It must not become a monitoring engine.
+
+It must not become a phone monitoring engine.
 
 It must not become a clinical engine.
 
@@ -1428,7 +1931,7 @@ It must not become a production closed-loop intervention engine.
 Correct boundary sentence:
 
 ```text
-A dashboard mockup may display public helper structure, but it must not create evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
+A dashboard mockup may display public helper structure and synthetic phone-only simulator scaffold status, but it must not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1449,9 +1952,28 @@ They may demonstrate:
 - audit-only examples;
 - public-helper-only closure logic.
 
+P4-4 phone-only simulator files may demonstrate:
+
+- synthetic phone-session flow structure;
+- synthetic phone-session state-machine structure;
+- synthetic sample phone-session script structure;
+- consent-first phone-only session entry;
+- packet availability check;
+- synthetic Human-State Delta review;
+- Recovery Gate placeholder;
+- Termination Gate placeholder;
+- session closure;
+- audit-log boundary.
+
 They do not define a production closed-loop intervention system.
 
 They do not authorize real-time human monitoring.
+
+They do not authorize phone monitoring.
+
+They do not authorize real phone recording.
+
+They do not authorize real transcript processing.
 
 They do not authorize automated intervention on real participants.
 
@@ -1463,6 +1985,8 @@ They do not validate dyadic recovery.
 
 They do not validate termination-gate accuracy.
 
+They do not validate the phone-only simulator.
+
 They do not validate Sal-Meter.
 
 They do not grant CAIS compliance.
@@ -1471,23 +1995,30 @@ They do not certify device readiness.
 
 They do not certify production readiness.
 
-They do not create clinical, diagnostic, therapeutic, counseling, legal mediation, employment, insurance, educational, eligibility, surveillance, relationship-verdict, production closed-loop, or human-ranking authority.
+They do not create clinical, diagnostic, therapeutic, counseling, legal mediation, employment, insurance, educational, eligibility, surveillance, phone-monitoring, relationship-verdict, production closed-loop, or human-ranking authority.
 
-Closed-loop demo-lite files must not contain:
+Closed-loop demo-lite and P4-4 phone-only simulator files must not contain:
 
 ```text
 raw human data
 identifiable human data
 clinical data
+real phone recordings
+real call transcripts
+real participant data
+real consent records
+real phone-session logs
 Sal-Meter raw input
 CAIS compliance dossier
 real-time monitoring authority
+phone monitoring authority
 automated intervention authority
 benchmark validation claim
 scientific validation claim
 mediation validation claim
 dyadic recovery validation claim
 termination-gate accuracy validation claim
+phone-only simulator validation claim
 device-readiness claim
 production-readiness claim
 certification claim
@@ -1499,30 +2030,33 @@ production closed-loop authority
 Correct boundary sentence:
 
 ```text
-Closed-loop demo-lite may demonstrate placeholder helper structure only; it must not create evidence, validation, certification, monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+Closed-loop demo-lite and P4-4 phone-only simulator files may demonstrate placeholder helper structure only; they must not create evidence, validation, certification, phone monitoring authority, monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
 
 ## Future roadmap
 
-The next roadmap should move from helper-validation hygiene and synthetic termination-gate checks toward public-safe simulator scaffolding.
+The next roadmap should move from public-safe phone-only simulator scaffolding toward synthetic replay and review scaffolds.
 
 Recommended next milestones:
 
 | Milestone | Name | Purpose |
 |---|---|---|
-| P4-4 | Phone-only Simulator Wireframe | Prepare a public-safe phone-only session flow mockup |
 | P4-5 | Synthetic Session Replay Skeleton | Prepare a bounded replay structure for synthetic session flow review |
 | P4-6 | Public Helper Demo Package Review | Review synthetic demo packages for public-boundary consistency before any future release |
+| P4-7 | Phone-only Simulator Boundary Lint Extension | Consider extending boundary-language lint coverage to `phone-only-simulator/` if needed |
 
 Completed helper-validation and P4 helper milestones are tracked under:
 
 ```text
 Current P5 helper-validation state
 Implementation status table
+Completed P5 helper-validation files
+Completed P4-4 public simulator scaffold files
 Synthetic sample packages
 Validation workflow
+Local validation
 ```
 
 Completed P4 helper items include:
@@ -1533,6 +2067,20 @@ P4-1 synthetic dyadic recovery demo-flow evaluator
 P4-2 mediation policy prompt pack
 P4-3 synthetic termination-gate helper case package
 P4-3 termination gate demo evaluator
+P4-4 phone-only simulator scaffold
+P4-4 phone-only session flow wireframe
+P4-4 synthetic phone-session state-machine mockup
+P4-4 synthetic sample phone-session script
+```
+
+Current P4-4 scaffold files:
+
+```text
+phone-only-simulator/
+  README.md
+  session-flow-wireframe.md
+  phone-session-state-machine.json
+  sample-phone-session-script.md
 ```
 
 Future roadmap items must remain:
@@ -1551,16 +2099,48 @@ non-human-ranking
 not Sal-Meter
 not CAIS compliance
 not benchmark validation
+not scientific validation
 not mediation validation
 not dyadic recovery validation
 not termination-gate accuracy validation
+not phone monitoring authority
+not device readiness
+not production readiness
 not production closed-loop
+```
+
+Future roadmap items must not introduce:
+
+```text
+raw human data
+identifiable human data
+clinical data
+real phone recordings
+real call transcripts
+real participant data
+real consent records
+real phone-session logs
+Sal-Meter raw input
+CAIS compliance dossier
+benchmark validation claim
+scientific validation claim
+mediation validation claim
+dyadic recovery validation claim
+termination-gate accuracy validation claim
+phone-only simulator validation claim
+phone monitoring authority claim
+device-readiness claim
+production-readiness claim
+certification claim
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
 ```
 
 Correct boundary sentence:
 
 ```text
-Future roadmap items may extend public helper structure, but they must not create evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
+Future roadmap items may extend public helper structure, synthetic replay scaffolding, and phone-only simulator boundary coverage, but they must not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1582,6 +2162,13 @@ This repository does not attempt to:
 - expose raw human data;
 - process identifiable human data;
 - publish clinical data;
+- process real phone calls;
+- process real phone recordings;
+- process real call transcripts;
+- process real phone-session logs;
+- create phone monitoring authority;
+- authorize real-time phone monitoring;
+- validate the phone-only simulator;
 - validate Sal-Meter;
 - define CAIS compliance;
 - validate benchmark performance;
@@ -1593,6 +2180,7 @@ This repository does not attempt to:
 - certify device readiness;
 - certify production readiness;
 - operate a production mediation service;
+- operate a production phone-monitoring service;
 - operate a production closed-loop intervention system;
 - authorize surveillance;
 - authorize real-time monitoring;
@@ -1606,6 +2194,10 @@ synthetic sample structure
 schema helper structure
 synthetic demo-flow consistency checks
 synthetic termination-gate helper consistency checks
+synthetic phone-only simulator scaffolding
+synthetic phone-session flow representation
+synthetic phone-session state-machine mockups
+synthetic sample phone-session scripts
 boundary-language hygiene
 repository-level transparency
 ```
@@ -1618,6 +2210,8 @@ a diagnostic system
 a therapeutic system
 a counseling system
 a surveillance system
+a real phone monitoring system
+a real transcript processing system
 a relationship-verdict system
 a human-ranking system
 a production closed-loop system
@@ -1629,7 +2223,7 @@ a CAIS compliance system
 Correct boundary sentence:
 
 ```text
-This repository is a public helper surface; it does not create evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
+This repository is a public helper surface; it does not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1681,6 +2275,8 @@ It does not validate dyadic recovery.
 
 It does not validate termination-gate accuracy.
 
+It does not validate the phone-only simulator.
+
 It does not validate Sal-Meter.
 
 It does not grant CAIS compliance.
@@ -1719,6 +2315,14 @@ It does not authorize relationship verdicts.
 
 It does not authorize human ranking.
 
+It does not authorize phone monitoring.
+
+It does not authorize real-time monitoring.
+
+It does not authorize real phone recording.
+
+It does not authorize real transcript processing.
+
 It does not authorize production mediation.
 
 It does not authorize production closed-loop intervention.
@@ -1734,6 +2338,12 @@ The container is not the truth.
 The demo-flow is not recovery.
 
 The termination-gate case is not accuracy evidence.
+
+The phone-only simulator is not the phone call.
+
+The sample phone-session script is not a transcript.
+
+The phone-session state machine is not authority.
 
 The validator is not authority.
 
