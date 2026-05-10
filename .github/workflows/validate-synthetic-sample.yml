@@ -48,5 +48,8 @@ jobs:
       - name: Run P4 synthetic dyadic recovery demo evaluator
         run: python evaluation-baseline/evaluate_dyadic_recovery_demo.py
 
+      - name: Run P4 termination gate demo evaluator
+        run: python evaluation-baseline/evaluate_termination_gate_demo.py
+
       - name: Run boundary language lint
         run: python evaluation-baseline/boundary_lint.py
