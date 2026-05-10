@@ -272,8 +272,12 @@ It provides:
 - P3 synthetic dyadic helper package;
 - P4 synthetic dyadic demo-flow package;
 - P4-1 synthetic dyadic recovery demo-flow evaluator;
+- P4-3 synthetic termination-gate helper case package;
+- P4-3 synthetic termination-gate helper evaluator;
 - validation scaffolding;
 - P3 helper-schema validation;
+- synthetic demo-flow consistency checking;
+- synthetic termination-gate helper consistency checking;
 - boundary language linting;
 - dashboard mockup boundaries;
 - protocol helper rules;
@@ -283,8 +287,8 @@ It provides:
 - Human-State-Aware AI Mediation helper documents;
 - GitHub Actions helper-structure validation workflow;
 - P4-2 mediation policy prompt pack;
-- bounded prompt / policy scaffolding for synthetic mediation simulation;
-  
+- bounded prompt / policy scaffolding for synthetic mediation simulation.
+
 It does not provide benchmark evidence.
 
 It does not provide raw human data.
@@ -294,6 +298,18 @@ It does not provide Sal-Meter input.
 It does not grant CAIS compliance.
 
 It does not validate Sal-Meter.
+
+It does not validate mediation.
+
+It does not validate dyadic recovery.
+
+It does not validate termination-gate accuracy.
+
+It does not certify device readiness.
+
+It does not certify production readiness.
+
+It does not authorize production closed-loop intervention.
 
 ---
 
@@ -310,25 +326,28 @@ It does not validate Sal-Meter.
 | Synthetic dyadic helper package | Present / Passed P3 helper-schema validation | `sample-data/synthetic-dyadic-session-001/` contains Human-State Packet A/B, Dyadic Session Event, and Benchmark Session Container examples |
 | Synthetic dyadic demo-flow package | Present / Passed P4-1 evaluator | `sample-data/synthetic-dyadic-session-001/` contains `ai_outputs.json`, `dyadic_delta.json`, `recovery_gate.json`, `termination_gate.json`, and `audit_log.json` examples |
 | P4-1 dyadic recovery demo evaluator | Present / Passed | `evaluation-baseline/evaluate_dyadic_recovery_demo.py` checks synthetic demo-flow consistency only |
+| P4-3 synthetic termination-gate helper case package | Present / Passed P4-3 evaluator | `sample-data/synthetic-dyadic-session-001/` contains `termination_gate_cases.json` with synthetic pause, narrow, close, terminate, refresh, and audit-only helper cases |
+| P4-3 termination gate demo evaluator | Present / Passed | `evaluation-baseline/evaluate_termination_gate_demo.py` checks synthetic termination-gate helper consistency only |
 | Synthetic session README | Done | The original synthetic package includes a local README explaining file roles and boundaries |
-| Synthetic dyadic session README | Done | The P3 synthetic dyadic package includes a local README explaining packet/event/container roles and boundaries |
+| Synthetic dyadic session README | Done | The dyadic synthetic package includes a local README explaining P3 helper-schema, P4 demo-flow, and P4-3 termination-gate helper boundaries |
 | Sample package validator | Present / Passed | `evaluation-baseline/validate_sample_package.py` provides helper-structure validation for the original synthetic package |
 | P3 helper-schema validator | Present / Passed | `evaluation-baseline/validate_p3_schemas.py` validates the public synthetic P3 dyadic helper files against the Human-State Packet, Dyadic Session Event, and Benchmark Session schemas |
 | Boundary language lint | Present / Passed advisory mode | `evaluation-baseline/boundary_lint.py` scans public helper wording for prohibited or risky boundary-language drift |
-| Evaluation baseline README | Done | `evaluation-baseline/README.md` explains validator usage, P3 helper-schema validation, PASS / FAIL interpretation, dependency installation, and validation boundaries |
+| Evaluation baseline README | Done | `evaluation-baseline/README.md` explains validator usage, P3 helper-schema validation, P4-1 demo-flow evaluation, P4-3 termination-gate helper evaluation, PASS / FAIL interpretation, dependency installation, and validation boundaries |
 | Protocol helper boundary pack | Done | `protocol-helper/` defines label, timestamp, metadata, Human-State Cost, and future Sal-Meter A/B comparison boundaries |
 | Dashboard mockup boundary pack | Done | `dashboard-mockup/` defines dashboard claim, field, and wireframe boundaries |
 | Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` defines feedback-loop boundaries, event-log schema, and local placeholder code |
 | Replication guide pack | Done | `replication-guide/` defines reproducibility, metadata completeness, audit trail, and public release-readiness checklists |
 | Issue / PR template pack | Done | `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` define contributor boundary gates |
-| GitHub Actions validator workflow | Passed | `.github/workflows/validate-synthetic-sample.yml` runs the original sample validator, P3 helper-schema validator, P4 synthetic dyadic recovery demo-flow evaluator, and boundary language lint |
+| GitHub Actions validator workflow | Passed | `.github/workflows/validate-synthetic-sample.yml` runs the original sample validator, P3 helper-schema validator, P4 synthetic dyadic recovery demo-flow evaluator, P4-3 synthetic termination-gate helper evaluator, and boundary language lint |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
 | Sal-Meter input | Not present | This repository is not Sal-Meter and does not contain Sal-Meter signal data |
 | CAIS compliance claim | Not present | This repository does not grant CAIS compliance |
-| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, template, PR, validator, workflow, or benchmark result is validated by this repository |
+| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, template, PR, validator, workflow, evaluator, termination-gate helper case, or benchmark result is validated by this repository |
 | Release status | `v0.1.1` published as pre-release | `v0.1.1` is the post-validator-pass public helper pre-release package |
 | P4-2 mediation policy prompt pack | Present | `prompts/` contains `README.md` and `mediation_policy_v0.1.json`; `docs/mediation-policy-prompt-pack.md` documents private cue, shared mediation output, false recovery prevention, and termination boundary logic |
+
 ---
 
 ## Current P1 milestone state
@@ -408,6 +427,14 @@ It is not CAIS compliance.
 
 It is not mediation validation.
 
+It is not dyadic recovery validation.
+
+It is not termination-gate accuracy validation.
+
+It is not certification.
+
+It is not production readiness.
+
 | Milestone | Status | Notes |
 |---|---|---|
 | P5-0 Boundary language lint | Done / advisory mode | `evaluation-baseline/boundary_lint.py` and `evaluation-baseline/prohibited_terms.json` are implemented; GitHub Actions runs the boundary lint step in advisory mode |
@@ -415,7 +442,10 @@ It is not mediation validation.
 | P5-1 synthetic dyadic helper package | Done / Passed | `sample-data/synthetic-dyadic-session-001/` contains `human_state_packet_A.json`, `human_state_packet_B.json`, `dyadic_session_event.json`, and `benchmark_session_container.json` |
 | P4-0 synthetic dyadic demo-flow package | Done / Passed | `sample-data/synthetic-dyadic-session-001/` contains `ai_outputs.json`, `dyadic_delta.json`, `recovery_gate.json`, `termination_gate.json`, and `audit_log.json` |
 | P4-1 synthetic dyadic recovery delta evaluator | Done / Passed | `evaluation-baseline/evaluate_dyadic_recovery_demo.py` evaluates synthetic demo-flow consistency only |
+| P4-3 synthetic termination-gate helper case package | Done / Passed | `sample-data/synthetic-dyadic-session-001/termination_gate_cases.json` contains synthetic pause, narrow, close, terminate, refresh, and audit-only helper cases |
+| P4-3 termination gate demo evaluator | Done / Passed | `evaluation-baseline/evaluate_termination_gate_demo.py` evaluates synthetic termination-gate helper consistency only |
 | P5-1 documentation alignment | Done | `schemas/README.md`, `sample-data/README.md`, `evaluation-baseline/README.md`, and root `README.md` explain P3 helper-schema validation as helper-structure validation only |
+| P4-3 documentation alignment | Done | `sample-data/README.md`, `evaluation-baseline/README.md`, and root `README.md` explain P4-3 termination-gate helper evaluation as synthetic helper consistency only |
 
 Current P5 helper-validation chain:
 
@@ -423,13 +453,18 @@ Current P5 helper-validation chain:
 validate_sample_package.py
 → validate_p3_schemas.py
 → evaluate_dyadic_recovery_demo.py
+→ evaluate_termination_gate_demo.py
 → boundary_lint.py
 ```
 
 A successful run means only:
 
 ```text
-The public synthetic/sample helper files follow the expected helper structure, the synthetic demo-flow objects preserve expected helper consistency, and wording boundary checks are clean.
+The public synthetic/sample helper files follow the expected helper structure.
+The P3 helper-schema objects follow expected helper-schema structure.
+The P4-1 synthetic demo-flow objects preserve expected helper consistency.
+The P4-3 synthetic termination-gate helper cases preserve expected helper consistency.
+Wording boundary checks are clean.
 ```
 
 A successful run does not mean:
@@ -438,6 +473,8 @@ A successful run does not mean:
 benchmark validation
 scientific validation
 mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
 Sal-Meter validation
 CAIS compliance
 clinical readiness
@@ -445,6 +482,16 @@ diagnostic readiness
 therapeutic readiness
 device readiness
 production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+Correct boundary sentence:
+
+```text
+The P5 helper-validation chain checks public helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; it does not validate benchmark performance, mediation, dyadic recovery, termination-gate accuracy, Sal-Meter, CAIS compliance, certification, or production readiness.
 ```
 
 ---
@@ -490,6 +537,7 @@ evaluation-baseline/
   prohibited_terms.json
   validate_p3_schemas.py
   evaluate_dyadic_recovery_demo.py
+  evaluate_termination_gate_demo.py
   README.md
 
 sample-data/
@@ -504,6 +552,43 @@ sample-data/
     recovery_gate.json
     termination_gate.json
     audit_log.json
+    termination_gate_cases.json
+```
+
+These files support:
+
+```text
+P3 helper-schema validation
+P4-1 synthetic demo-flow consistency checking
+P4-3 synthetic termination-gate helper consistency checking
+boundary language linting
+```
+
+They do not support:
+
+```text
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+Sal-Meter validation
+CAIS compliance
+clinical readiness
+diagnostic readiness
+therapeutic readiness
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+Correct boundary sentence:
+
+```text
+Completed P5 helper-validation files support structure, schema, demo-flow, termination-gate helper, and wording checks only; they do not create evidence, validation, certification, Sal-Meter status, CAIS compliance, or production authority.
 ```
 
 ---
@@ -856,6 +941,73 @@ benchmark_session_container.json
   → schemas/benchmark_session.schema.json
 ```
 
+### P4-0 / P4-1 synthetic dyadic demo-flow package
+
+```text
+sample-data/synthetic-dyadic-session-001/
+```
+
+Required public helper files include:
+
+```text
+ai_outputs.json
+dyadic_delta.json
+recovery_gate.json
+termination_gate.json
+audit_log.json
+```
+
+This package is checked by:
+
+```text
+evaluation-baseline/evaluate_dyadic_recovery_demo.py
+```
+
+### P4-3 synthetic termination-gate helper package
+
+```text
+sample-data/synthetic-dyadic-session-001/
+```
+
+Required public helper files include:
+
+```text
+termination_gate_cases.json
+```
+
+This package is checked by:
+
+```text
+evaluation-baseline/evaluate_termination_gate_demo.py
+```
+
+A successful P4-3 helper evaluation means only:
+
+```text
+The synthetic termination-gate helper cases preserve expected public-helper consistency.
+```
+
+It does not mean:
+
+```text
+termination-gate accuracy validation
+dyadic recovery validation
+mediation validation
+benchmark validation
+scientific validation
+Sal-Meter validation
+CAIS compliance
+clinical readiness
+diagnostic readiness
+therapeutic readiness
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
 Public sample data must remain:
 
 ```text
@@ -866,6 +1018,20 @@ placeholder
 structure-only
 non-identifying
 raw-data-free
+public-helper-only
+non-clinical
+non-diagnostic
+non-therapeutic
+non-surveillance
+non-certification
+non-human-ranking
+not Sal-Meter
+not CAIS compliance
+not benchmark evidence
+not mediation evidence
+not dyadic recovery evidence
+not termination-gate accuracy evidence
+not production data
 ```
 
 Public sample data must not include:
@@ -881,6 +1047,12 @@ raw Sal-Meter traces
 raw CAIS traces
 private consent records
 production intervention logs
+relationship verdicts
+human-ranking outputs
+device-readiness claims
+production-readiness claims
+certification claims
+termination-gate accuracy claims
 ```
 
 ---
@@ -899,6 +1071,7 @@ Current intended workflow sequence:
 Run synthetic sample package validator
 Run P3 helper schema validator
 Run P4 synthetic dyadic recovery demo-flow evaluator
+Run P4 termination gate demo evaluator
 Run boundary language lint
 ```
 
@@ -908,24 +1081,37 @@ Validation helpers:
 evaluation-baseline/validate_sample_package.py
 evaluation-baseline/validate_p3_schemas.py
 evaluation-baseline/evaluate_dyadic_recovery_demo.py
+evaluation-baseline/evaluate_termination_gate_demo.py
 evaluation-baseline/boundary_lint.py
 ```
 
 The workflow successfully runs on the main branch.
 
-This confirms only public helper-structure validation and wording-boundary hygiene.
+This confirms only public helper-structure validation, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording-boundary hygiene.
 
 It does not validate benchmark performance.
 
 It does not validate scientific truth.
 
+It does not validate mediation.
+
+It does not validate dyadic recovery.
+
+It does not validate termination-gate accuracy.
+
 It does not validate Sal-Meter.
 
 It does not grant CAIS compliance.
 
-It does not validate mediation.
+It does not certify any system, model, dataset, dashboard, laboratory, device, repository, schema, session protocol, implementation, mediation system, termination gate, or closed-loop system.
 
-It does not certify any system, model, dataset, dashboard, laboratory, device, repository, schema, session protocol, implementation, or mediation system.
+It does not create clinical, diagnostic, therapeutic, counseling, surveillance, certification, device-readiness, production-readiness, relationship-verdict, production closed-loop, or human-ranking authority.
+
+Correct boundary sentence:
+
+```text
+The validation workflow checks public helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; it does not create benchmark validation, mediation validation, termination-gate accuracy validation, Sal-Meter validation, CAIS compliance, certification, or production authority.
+```
 
 ---
 
@@ -943,13 +1129,18 @@ Run validators:
 python evaluation-baseline/validate_sample_package.py
 python evaluation-baseline/validate_p3_schemas.py
 python evaluation-baseline/evaluate_dyadic_recovery_demo.py
+python evaluation-baseline/evaluate_termination_gate_demo.py
 python evaluation-baseline/boundary_lint.py
 ```
 
 Expected meaning of PASS:
 
 ```text
-The public synthetic/sample helper files follow the expected helper structure, the synthetic demo-flow objects preserve expected helper consistency, and wording boundary checks are clean.
+The public synthetic/sample helper files follow the expected helper structure.
+The P3 helper-schema objects follow expected helper-schema structure.
+The P4-1 synthetic demo-flow objects preserve expected helper consistency.
+The P4-3 synthetic termination-gate helper cases preserve expected helper consistency.
+Wording boundary checks are clean.
 ```
 
 PASS does not mean:
@@ -958,13 +1149,25 @@ PASS does not mean:
 benchmark validated
 scientific truth validated
 mediation validated
+dyadic recovery validated
+termination-gate accuracy validated
 Sal-Meter validated
 CAIS compliant
 clinical evidence
 diagnostic evidence
 therapeutic evidence
+device-ready
 production-ready
 certified
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+Correct boundary sentence:
+
+```text
+Local validation checks helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; it does not create evidence, validation, certification, Sal-Meter status, CAIS compliance, or production authority.
 ```
 
 ---
@@ -989,9 +1192,93 @@ This repository must not contain:
 - therapeutic interpretations;
 - counseling interpretations;
 - person ranking;
+- human ranking;
 - relationship verdicts;
+- relationship scoring outputs;
 - employment, insurance, legal, educational, or eligibility decisions;
-- surveillance or coercive monitoring materials.
+- surveillance or coercive monitoring materials;
+- device-readiness claims;
+- production-readiness claims;
+- certification claims;
+- production closed-loop claims;
+- termination-gate accuracy claims;
+- dyadic recovery validation claims;
+- mediation validation claims;
+- benchmark validation claims;
+- scientific validation claims;
+- Sal-Meter validation claims;
+- CAIS compliance claims.
+
+Public sample and helper files must remain:
+
+```text
+synthetic
+sample
+mock
+placeholder
+structure-only
+non-identifying
+raw-data-free
+public-helper-only
+non-clinical
+non-diagnostic
+non-therapeutic
+non-counseling
+non-surveillance
+non-certification
+non-human-ranking
+not Sal-Meter
+not CAIS compliance
+not benchmark evidence
+not mediation evidence
+not dyadic recovery evidence
+not termination-gate accuracy evidence
+not production data
+```
+
+P4-3 termination-gate helper cases may demonstrate:
+
+- pause-session examples;
+- narrow-scope examples;
+- close-session examples;
+- terminate-session examples;
+- consent-refresh examples;
+- packet-refresh examples;
+- audit-only examples;
+- closed-session handling;
+- permission-expiry handling;
+- low-confidence handling;
+- insufficient-data-quality handling;
+- private-state exposure risk handling;
+- one-sided improvement caution.
+
+P4-3 termination-gate helper cases must not imply:
+
+```text
+real mediation accuracy
+validated termination-gate accuracy
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+Sal-Meter validation
+CAIS compliance
+clinical readiness
+diagnostic readiness
+therapeutic readiness
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+Correct boundary sentence:
+
+```text
+Public data in this repository may demonstrate helper structure and synthetic consistency only; it must not create evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
+```
 
 ---
 
@@ -1004,6 +1291,8 @@ Contributions must not claim or imply:
 - benchmark validation;
 - scientific validation;
 - mediation validation;
+- dyadic recovery validation;
+- termination-gate accuracy validation;
 - Sal-Meter validation;
 - CAIS compliance;
 - diagnostic status;
@@ -1012,11 +1301,65 @@ Contributions must not claim or imply:
 - counseling-service status;
 - legal mediation authority;
 - surveillance readiness;
+- device readiness;
+- production readiness;
+- certification;
 - production deployment;
+- production closed-loop authority;
 - human ranking;
 - relationship verdict;
+- relationship scoring;
 - official consciousness measurement;
 - ground-truth human-state truth measurement.
+
+Issues and pull requests may propose or modify:
+
+- public helper documents;
+- synthetic sample structures;
+- schema helper structures;
+- synthetic demo-flow objects;
+- synthetic termination-gate helper cases;
+- validation helper scripts;
+- wording-boundary lint rules;
+- documentation alignment;
+- release-boundary notes.
+
+Issues and pull requests must not introduce:
+
+```text
+raw human data
+identifiable human data
+clinical data
+Sal-Meter raw input
+CAIS compliance dossier
+benchmark validation claim
+scientific validation claim
+mediation validation claim
+dyadic recovery validation claim
+termination-gate accuracy validation claim
+device-readiness claim
+production-readiness claim
+certification claim
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+A valid issue or pull request may improve helper structure.
+
+A valid issue or pull request may improve boundary clarity.
+
+A valid issue or pull request may improve synthetic consistency checks.
+
+A valid issue or pull request may improve termination-gate helper case coverage.
+
+A valid issue or pull request must not convert this repository into an evidence, certification, production, clinical, diagnostic, therapeutic, surveillance, relationship-verdict, or human-ranking system.
+
+Correct boundary sentence:
+
+```text
+Issues and pull requests may improve public helper structure, but they must not create evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
+```
 
 ---
 
@@ -1024,16 +1367,45 @@ Contributions must not claim or imply:
 
 Dashboard mockups in this repository are public helper structures only.
 
+They may present bounded synthetic/sample helper fields for demonstration.
+
+They may show:
+
+- synthetic session identifiers;
+- synthetic packet availability status;
+- synthetic confidence fields;
+- synthetic data-quality fields;
+- synthetic Human-State Delta summaries;
+- synthetic Dyadic Delta summaries;
+- synthetic Recovery Gate status;
+- synthetic Termination Gate status;
+- synthetic pause / narrow / close / terminate examples;
+- synthetic audit status;
+- synthetic public-boundary flags.
+
 They must not present:
 
 - person scores;
 - diagnosis;
 - treatment guidance;
+- counseling guidance;
+- clinical interpretation;
 - employment or insurance eligibility;
+- legal eligibility;
+- educational eligibility;
 - surveillance status;
 - relationship verdicts;
+- relationship scoring;
+- human ranking;
+- psychological safety score;
 - certified status;
 - validated benchmark status;
+- validated mediation status;
+- validated dyadic recovery status;
+- validated termination-gate accuracy status;
+- device-readiness status;
+- production-readiness status;
+- production closed-loop status;
 - Sal-Meter output;
 - CAIS compliance.
 
@@ -1041,11 +1413,41 @@ A dashboard may show bounded synthetic/sample helper fields for demonstration.
 
 It must not become a judgment engine.
 
+It must not become a monitoring engine.
+
+It must not become a clinical engine.
+
+It must not become a mediation-service engine.
+
+It must not become a relationship-verdict engine.
+
+It must not become a human-ranking engine.
+
+It must not become a production closed-loop intervention engine.
+
+Correct boundary sentence:
+
+```text
+A dashboard mockup may display public helper structure, but it must not create evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
+```
+
 ---
 
 ## Closed-loop demo-lite boundary
 
 Closed-loop demo-lite files are local placeholder structures only.
+
+They may demonstrate:
+
+- synthetic event-log shape;
+- synthetic feedback-loop boundary fields;
+- placeholder routing logic;
+- pause-session examples;
+- narrow-scope examples;
+- close-session examples;
+- terminate-session examples;
+- audit-only examples;
+- public-helper-only closure logic.
 
 They do not define a production closed-loop intervention system.
 
@@ -1057,25 +1459,108 @@ They do not validate mediation.
 
 They do not validate recovery.
 
-They do not create clinical, therapeutic, counseling, legal mediation, employment, insurance, educational, eligibility, surveillance, or human-ranking authority.
+They do not validate dyadic recovery.
+
+They do not validate termination-gate accuracy.
+
+They do not validate Sal-Meter.
+
+They do not grant CAIS compliance.
+
+They do not certify device readiness.
+
+They do not certify production readiness.
+
+They do not create clinical, diagnostic, therapeutic, counseling, legal mediation, employment, insurance, educational, eligibility, surveillance, relationship-verdict, production closed-loop, or human-ranking authority.
+
+Closed-loop demo-lite files must not contain:
+
+```text
+raw human data
+identifiable human data
+clinical data
+Sal-Meter raw input
+CAIS compliance dossier
+real-time monitoring authority
+automated intervention authority
+benchmark validation claim
+scientific validation claim
+mediation validation claim
+dyadic recovery validation claim
+termination-gate accuracy validation claim
+device-readiness claim
+production-readiness claim
+certification claim
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+Correct boundary sentence:
+
+```text
+Closed-loop demo-lite may demonstrate placeholder helper structure only; it must not create evidence, validation, certification, monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+```
 
 ---
 
 ## Future roadmap
 
-The next roadmap should move from helper-validation hygiene to synthetic dyadic demonstration and evaluation scaffolding.
+The next roadmap should move from helper-validation hygiene and synthetic termination-gate checks toward public-safe simulator scaffolding.
 
 Recommended next milestones:
 
 | Milestone | Name | Purpose |
 |---|---|---|
-| P4-3 | Termination Gate Accuracy Skeleton | Add synthetic tests for pause/stop/close decision logic |
 | P4-4 | Phone-only Simulator Wireframe | Prepare a public-safe phone-only session flow mockup |
+| P4-5 | Synthetic Session Replay Skeleton | Prepare a bounded replay structure for synthetic session flow review |
+| P4-6 | Public Helper Demo Package Review | Review synthetic demo packages for public-boundary consistency before any future release |
 
-Completed helper-validation milestones are tracked under:
+Completed helper-validation and P4 helper milestones are tracked under:
 
 ```text
 Current P5 helper-validation state
+Implementation status table
+Synthetic sample packages
+Validation workflow
+```
+
+Completed P4 helper items include:
+
+```text
+P4-0 synthetic dyadic demo-flow package
+P4-1 synthetic dyadic recovery demo-flow evaluator
+P4-2 mediation policy prompt pack
+P4-3 synthetic termination-gate helper case package
+P4-3 termination gate demo evaluator
+```
+
+Future roadmap items must remain:
+
+```text
+research-stage
+public-helper-only
+synthetic-first
+non-clinical
+non-diagnostic
+non-therapeutic
+non-counseling
+non-surveillance
+non-certification
+non-human-ranking
+not Sal-Meter
+not CAIS compliance
+not benchmark validation
+not mediation validation
+not dyadic recovery validation
+not termination-gate accuracy validation
+not production closed-loop
+```
+
+Correct boundary sentence:
+
+```text
+Future roadmap items may extend public helper structure, but they must not create evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1091,12 +1576,61 @@ This repository does not attempt to:
 - treat or counsel people;
 - rank persons;
 - judge relationships;
+- produce relationship verdicts;
+- produce human-ranking outputs;
 - replace human consent;
 - expose raw human data;
+- process identifiable human data;
+- publish clinical data;
 - validate Sal-Meter;
 - define CAIS compliance;
+- validate benchmark performance;
+- validate scientific truth;
+- validate mediation;
+- validate dyadic recovery;
+- validate termination-gate accuracy;
 - certify any system;
-- operate a production mediation service.
+- certify device readiness;
+- certify production readiness;
+- operate a production mediation service;
+- operate a production closed-loop intervention system;
+- authorize surveillance;
+- authorize real-time monitoring;
+- authorize automated intervention on real participants.
+
+This repository may support:
+
+```text
+public helper documentation
+synthetic sample structure
+schema helper structure
+synthetic demo-flow consistency checks
+synthetic termination-gate helper consistency checks
+boundary-language hygiene
+repository-level transparency
+```
+
+This repository must not become:
+
+```text
+a clinical system
+a diagnostic system
+a therapeutic system
+a counseling system
+a surveillance system
+a relationship-verdict system
+a human-ranking system
+a production closed-loop system
+a certified benchmark system
+a Sal-Meter validation system
+a CAIS compliance system
+```
+
+Correct boundary sentence:
+
+```text
+This repository is a public helper surface; it does not create evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
+```
 
 ---
 
@@ -1137,6 +1671,16 @@ This repository documents structure.
 
 It does not validate the body.
 
+It does not validate the person.
+
+It does not validate the relationship.
+
+It does not validate a human state.
+
+It does not validate dyadic recovery.
+
+It does not validate termination-gate accuracy.
+
 It does not validate Sal-Meter.
 
 It does not grant CAIS compliance.
@@ -1145,13 +1689,39 @@ It does not crown a benchmark as validated.
 
 It does not validate mediation.
 
+It does not certify any system.
+
+It does not certify any model.
+
+It does not certify any dataset.
+
+It does not certify any dashboard.
+
+It does not certify any laboratory.
+
+It does not certify any device.
+
+It does not certify device readiness.
+
+It does not certify production readiness.
+
 It does not authorize surveillance.
 
 It does not authorize diagnosis.
 
 It does not authorize therapy.
 
+It does not authorize counseling.
+
+It does not authorize legal mediation.
+
+It does not authorize relationship verdicts.
+
+It does not authorize human ranking.
+
 It does not authorize production mediation.
+
+It does not authorize production closed-loop intervention.
 
 A closed session must stay closed.
 
@@ -1161,6 +1731,16 @@ The event is not the relationship.
 
 The container is not the truth.
 
+The demo-flow is not recovery.
+
+The termination-gate case is not accuracy evidence.
+
 The validator is not authority.
 
+The evaluator is not proof.
+
 The workflow is not certification.
+
+The repository is a map.
+
+It is not the mountain.
