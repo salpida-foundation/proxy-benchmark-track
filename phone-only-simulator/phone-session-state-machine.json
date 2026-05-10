@@ -1,0 +1,442 @@
+{
+  "schema_version": "0.1",
+  "artifact_id": "p4_4_phone_session_state_machine",
+  "artifact_type": "synthetic_phone_only_simulator_state_machine",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "milestone": "P4-4",
+  "status": "public_helper_only",
+  "dataset_type": "synthetic",
+  "raw_human_data_present": false,
+  "identifiable_data_present": false,
+  "clinical_data_present": false,
+  "sal_meter_input_present": false,
+  "cais_compliance_claim_present": false,
+  "benchmark_validation_claim_present": false,
+  "scientific_validation_claim_present": false,
+  "mediation_validation_claim_present": false,
+  "dyadic_recovery_validation_claim_present": false,
+  "termination_gate_accuracy_claim_present": false,
+  "device_readiness_claim_present": false,
+  "production_readiness_claim_present": false,
+  "certification_claim_present": false,
+  "relationship_verdict_present": false,
+  "human_ranking_claim_present": false,
+  "production_closed_loop_claim_present": false,
+  "description": "A synthetic-only, public-helper-only phone session state-machine mockup for demonstrating bounded session flow structure without real monitoring, mediation validation, Sal-Meter validation, CAIS compliance, or production authority.",
+  "boundary": {
+    "public_helper_only": true,
+    "synthetic_only": true,
+    "non_clinical": true,
+    "non_diagnostic": true,
+    "non_therapeutic": true,
+    "non_counseling": true,
+    "non_surveillance": true,
+    "non_certification": true,
+    "non_human_ranking": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_benchmark_validation": true,
+    "not_mediation_validation": true,
+    "not_dyadic_recovery_validation": true,
+    "not_termination_gate_accuracy_validation": true,
+    "not_device_ready": true,
+    "not_production_ready": true,
+    "not_production_closed_loop": true
+  },
+  "initial_state": "session_created",
+  "terminal_states": [
+    "session_closed",
+    "session_terminated",
+    "audit_log_written"
+  ],
+  "states": {
+    "session_created": {
+      "type": "entry",
+      "allowed_meaning": "A synthetic phone-only helper session has been created for flow demonstration.",
+      "forbidden_meaning": "A real phone call has started or a real participant is being monitored.",
+      "allowed_next": [
+        "consent_pending",
+        "session_closed"
+      ]
+    },
+    "consent_pending": {
+      "type": "boundary_check",
+      "allowed_meaning": "Consent is not yet confirmed.",
+      "forbidden_meaning": "The session may continue without consent.",
+      "allowed_next": [
+        "consent_confirmed",
+        "session_closed"
+      ]
+    },
+    "consent_confirmed": {
+      "type": "boundary_check",
+      "allowed_meaning": "Synthetic consent status is confirmed for helper-flow demonstration.",
+      "forbidden_meaning": "A real consent record has been collected.",
+      "allowed_next": [
+        "packet_availability_check",
+        "session_closed"
+      ]
+    },
+    "packet_availability_check": {
+      "type": "gate",
+      "allowed_meaning": "Synthetic packet availability, permission, expiry, confidence, and data quality are checked.",
+      "forbidden_meaning": "Raw human data or Sal-Meter input is being processed.",
+      "allowed_next": [
+        "packet_available",
+        "packet_unavailable",
+        "permission_expired",
+        "low_confidence",
+        "insufficient_data_quality",
+        "session_closed"
+      ]
+    },
+    "packet_available": {
+      "type": "helper_status",
+      "allowed_meaning": "A synthetic helper packet is available for flow demonstration.",
+      "forbidden_meaning": "A real human state has been measured.",
+      "allowed_next": [
+        "baseline_summary_ready",
+        "session_closed"
+      ]
+    },
+    "packet_unavailable": {
+      "type": "blocked_status",
+      "allowed_meaning": "The synthetic flow cannot proceed ordinarily without packet availability.",
+      "forbidden_meaning": "The simulator may continue ordinary mediation without packet availability.",
+      "allowed_next": [
+        "request_packet_refresh",
+        "session_closed"
+      ]
+    },
+    "permission_expired": {
+      "type": "blocked_status",
+      "allowed_meaning": "Expired permission blocks ordinary continuation.",
+      "forbidden_meaning": "The simulator may continue using expired permission.",
+      "allowed_next": [
+        "request_consent_refresh",
+        "session_closed"
+      ]
+    },
+    "low_confidence": {
+      "type": "blocked_status",
+      "allowed_meaning": "Low confidence blocks recovery declaration and may trigger pause or closure.",
+      "forbidden_meaning": "Low confidence can support a recovery claim.",
+      "allowed_next": [
+        "pause_session",
+        "session_closed"
+      ]
+    },
+    "insufficient_data_quality": {
+      "type": "blocked_status",
+      "allowed_meaning": "Insufficient data quality blocks recovery declaration and may trigger pause or closure.",
+      "forbidden_meaning": "Insufficient data can support a recovery claim.",
+      "allowed_next": [
+        "pause_session",
+        "session_closed"
+      ]
+    },
+    "baseline_summary_ready": {
+      "type": "helper_summary",
+      "allowed_meaning": "A synthetic baseline summary placeholder is available.",
+      "forbidden_meaning": "A clinical or diagnostic baseline has been created.",
+      "allowed_next": [
+        "ai_output_generated",
+        "pause_session",
+        "session_closed"
+      ]
+    },
+    "ai_output_generated": {
+      "type": "synthetic_output",
+      "allowed_meaning": "A bounded synthetic AI output is generated for helper-flow demonstration.",
+      "forbidden_meaning": "A production mediation output, diagnosis, therapy instruction, or relationship verdict is generated.",
+      "allowed_next": [
+        "delta_review_pending",
+        "narrow_scope",
+        "pause_session",
+        "session_closed"
+      ]
+    },
+    "delta_review_pending": {
+      "type": "helper_review",
+      "allowed_meaning": "Synthetic Human-State Delta review is pending.",
+      "forbidden_meaning": "A real human state or diagnosis is being inferred.",
+      "allowed_next": [
+        "delta_toward_recovery",
+        "delta_mixed",
+        "delta_uncertain",
+        "insufficient_data_quality",
+        "private_state_exposure_risk",
+        "recovery_gate_review",
+        "termination_gate_review"
+      ]
+    },
+    "delta_toward_recovery": {
+      "type": "synthetic_delta",
+      "allowed_meaning": "A synthetic delta label indicates movement toward session-defined recovery conditions.",
+      "forbidden_meaning": "Actual recovery has been validated.",
+      "allowed_next": [
+        "recovery_gate_review",
+        "termination_gate_review"
+      ]
+    },
+    "delta_mixed": {
+      "type": "synthetic_delta",
+      "allowed_meaning": "Synthetic dyadic movement is mixed or asymmetric.",
+      "forbidden_meaning": "One-sided improvement is dyadic recovery.",
+      "allowed_next": [
+        "recovery_gate_review",
+        "termination_gate_review",
+        "pause_session"
+      ]
+    },
+    "delta_uncertain": {
+      "type": "synthetic_delta",
+      "allowed_meaning": "Synthetic delta is uncertain and cannot support recovery declaration.",
+      "forbidden_meaning": "Uncertainty can support recovery validation.",
+      "allowed_next": [
+        "pause_session",
+        "termination_gate_review",
+        "session_closed"
+      ]
+    },
+    "private_state_exposure_risk": {
+      "type": "risk_boundary",
+      "allowed_meaning": "Private-state exposure risk triggers pause, scope narrowing, or closure.",
+      "forbidden_meaning": "Private-state content may be shared into public output.",
+      "allowed_next": [
+        "pause_session",
+        "narrow_scope",
+        "close_session"
+      ]
+    },
+    "recovery_gate_review": {
+      "type": "gate",
+      "allowed_meaning": "Recovery Gate checks whether synthetic conditions are sufficient to reduce, pause, or stop the flow.",
+      "forbidden_meaning": "Recovery Gate validates real recovery.",
+      "allowed_next": [
+        "recovery_not_confirmed",
+        "recovery_uncertain",
+        "termination_gate_review",
+        "pause_session",
+        "session_closed"
+      ]
+    },
+    "recovery_not_confirmed": {
+      "type": "gate_result",
+      "allowed_meaning": "Recovery is not confirmed in the synthetic helper flow.",
+      "forbidden_meaning": "Failed recovery means clinical failure or benchmark failure.",
+      "allowed_next": [
+        "termination_gate_review",
+        "pause_session",
+        "session_closed"
+      ]
+    },
+    "recovery_uncertain": {
+      "type": "gate_result",
+      "allowed_meaning": "Recovery is uncertain and must not be declared.",
+      "forbidden_meaning": "Uncertain recovery can be treated as success.",
+      "allowed_next": [
+        "pause_session",
+        "termination_gate_review",
+        "session_closed"
+      ]
+    },
+    "termination_gate_review": {
+      "type": "gate",
+      "allowed_meaning": "Termination Gate reviews consent, permission, expiry, data quality, scope, private-state risk, and closure.",
+      "forbidden_meaning": "Termination Gate validates real-world accuracy.",
+      "allowed_next": [
+        "pause_session",
+        "narrow_scope",
+        "request_consent_refresh",
+        "request_packet_refresh",
+        "close_session",
+        "terminate_session",
+        "audit_only"
+      ]
+    },
+    "pause_session": {
+      "type": "safe_action",
+      "allowed_meaning": "The synthetic flow pauses without production intervention.",
+      "forbidden_meaning": "The simulator performs a real intervention.",
+      "allowed_next": [
+        "session_closed",
+        "audit_log_written"
+      ]
+    },
+    "narrow_scope": {
+      "type": "safe_action",
+      "allowed_meaning": "The synthetic flow narrows scope without making clinical, diagnostic, or relationship-verdict claims.",
+      "forbidden_meaning": "Scope narrowing is a treatment, diagnosis, or legal mediation action.",
+      "allowed_next": [
+        "termination_gate_review",
+        "session_closed",
+        "audit_log_written"
+      ]
+    },
+    "request_consent_refresh": {
+      "type": "safe_action",
+      "allowed_meaning": "The synthetic flow requests renewed consent before any further ordinary continuation.",
+      "forbidden_meaning": "The simulator may continue without renewed consent.",
+      "allowed_next": [
+        "consent_pending",
+        "session_closed",
+        "audit_log_written"
+      ]
+    },
+    "request_packet_refresh": {
+      "type": "safe_action",
+      "allowed_meaning": "The synthetic flow requests refreshed packet availability.",
+      "forbidden_meaning": "The simulator may proceed without packet availability.",
+      "allowed_next": [
+        "packet_availability_check",
+        "session_closed",
+        "audit_log_written"
+      ]
+    },
+    "close_session": {
+      "type": "safe_action",
+      "allowed_meaning": "The synthetic phone-only session is closed.",
+      "forbidden_meaning": "Closure validates recovery, mediation, or termination accuracy.",
+      "allowed_next": [
+        "session_closed",
+        "audit_log_written"
+      ]
+    },
+    "terminate_session": {
+      "type": "safe_action",
+      "allowed_meaning": "The synthetic session is terminated within the helper scaffold.",
+      "forbidden_meaning": "Termination is a real intervention or production decision.",
+      "allowed_next": [
+        "session_terminated",
+        "audit_log_written"
+      ]
+    },
+    "audit_only": {
+      "type": "safe_action",
+      "allowed_meaning": "The synthetic flow records audit-only closure without further mediation.",
+      "forbidden_meaning": "Audit creates certification or validation authority.",
+      "allowed_next": [
+        "audit_log_written"
+      ]
+    },
+    "session_closed": {
+      "type": "terminal",
+      "allowed_meaning": "The synthetic session is closed and must stay closed.",
+      "forbidden_meaning": "The session may reopen automatically or continue ordinary mediation.",
+      "allowed_next": [
+        "audit_log_written"
+      ]
+    },
+    "session_terminated": {
+      "type": "terminal",
+      "allowed_meaning": "The synthetic session is terminated and must not continue.",
+      "forbidden_meaning": "Termination triggers real-world intervention.",
+      "allowed_next": [
+        "audit_log_written"
+      ]
+    },
+    "audit_log_written": {
+      "type": "terminal",
+      "allowed_meaning": "A synthetic audit summary is written without raw human data or identifiers.",
+      "forbidden_meaning": "Audit output creates certification, validation, or production authority.",
+      "allowed_next": []
+    }
+  },
+  "forbidden_transitions": [
+    {
+      "from": "session_closed",
+      "to": "ai_output_generated",
+      "reason": "A closed session must stay closed."
+    },
+    {
+      "from": "session_closed",
+      "to": "ordinary_continuation",
+      "reason": "A closed session must not continue ordinary mediation."
+    },
+    {
+      "from": "permission_expired",
+      "to": "ordinary_continuation",
+      "reason": "Expired permission blocks ordinary continuation."
+    },
+    {
+      "from": "packet_unavailable",
+      "to": "ai_output_generated",
+      "reason": "No packet means no ordinary continuation."
+    },
+    {
+      "from": "low_confidence",
+      "to": "recovery_confirmed",
+      "reason": "Low confidence blocks recovery declaration."
+    },
+    {
+      "from": "insufficient_data_quality",
+      "to": "recovery_confirmed",
+      "reason": "Insufficient data quality blocks recovery declaration."
+    },
+    {
+      "from": "private_state_exposure_risk",
+      "to": "shared_output",
+      "reason": "Private-state exposure risk must trigger pause, narrowing, closure, or audit-only handling."
+    },
+    {
+      "from": "delta_mixed",
+      "to": "dyadic_recovery_confirmed",
+      "reason": "One-sided or mixed improvement is not dyadic recovery."
+    },
+    {
+      "from": "synthetic_session",
+      "to": "production_intervention",
+      "reason": "Synthetic helper flow must not trigger production intervention."
+    }
+  ],
+  "allowed_decisions": [
+    "pause_session",
+    "narrow_scope",
+    "request_consent_refresh",
+    "request_packet_refresh",
+    "close_session",
+    "terminate_session",
+    "audit_only"
+  ],
+  "prohibited_decisions": [
+    "diagnose",
+    "treat",
+    "counsel",
+    "monitor",
+    "rank",
+    "score_person",
+    "judge_relationship",
+    "declare_recovery_validated",
+    "declare_termination_accuracy",
+    "trigger_real_intervention",
+    "certify_device_readiness",
+    "certify_production_readiness"
+  ],
+  "success_meaning": [
+    "The synthetic state machine is structurally readable.",
+    "The public helper flow is represented.",
+    "Closed-session handling is explicit.",
+    "Consent and packet permission boundaries are visible.",
+    "Public data boundary is preserved."
+  ],
+  "success_does_not_mean": [
+    "benchmark validation",
+    "scientific validation",
+    "mediation validation",
+    "dyadic recovery validation",
+    "termination-gate accuracy validation",
+    "Sal-Meter validation",
+    "CAIS compliance",
+    "clinical readiness",
+    "diagnostic readiness",
+    "therapeutic readiness",
+    "device readiness",
+    "production readiness",
+    "certification",
+    "relationship verdict authority",
+    "human-ranking authority",
+    "production closed-loop authority"
+  ],
+  "final_rule": "The phone-only state machine is a map. It is not the phone call, the person, the relationship, recovery, termination-gate accuracy evidence, Sal-Meter, CAIS compliance, or production authority."
+}
