@@ -281,8 +281,10 @@ It provides:
 - replication guide checklists;
 - contributor issue / PR templates;
 - Human-State-Aware AI Mediation helper documents;
-- GitHub Actions helper-structure validation workflow.
-
+- GitHub Actions helper-structure validation workflow;
+- P4-2 mediation policy prompt pack;
+- bounded prompt / policy scaffolding for synthetic mediation simulation;
+  
 It does not provide benchmark evidence.
 
 It does not provide raw human data.
@@ -326,7 +328,7 @@ It does not validate Sal-Meter.
 | CAIS compliance claim | Not present | This repository does not grant CAIS compliance |
 | Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, template, PR, validator, workflow, or benchmark result is validated by this repository |
 | Release status | `v0.1.1` published as pre-release | `v0.1.1` is the post-validator-pass public helper pre-release package |
-
+| P4-2 mediation policy prompt pack | Present | `prompts/` contains `README.md` and `mediation_policy_v0.1.json`; `docs/mediation-policy-prompt-pack.md` documents private cue, shared mediation output, false recovery prevention, and termination boundary logic |
 ---
 
 ## Current P1 milestone state
@@ -1067,7 +1069,6 @@ Recommended next milestones:
 
 | Milestone | Name | Purpose |
 |---|---|---|
-| P4-2 | Mediation Policy Prompt Pack | Define bounded prompt/policy structures for state-aware mediation simulation |
 | P4-3 | Termination Gate Accuracy Skeleton | Add synthetic tests for pause/stop/close decision logic |
 | P4-4 | Phone-only Simulator Wireframe | Prepare a public-safe phone-only session flow mockup |
 
