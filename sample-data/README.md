@@ -39,6 +39,13 @@ This folder may contain public sample packages that demonstrate:
 - Benchmark Session Container helper examples;
 - P4-0 synthetic dyadic demo-flow objects;
 - P4-1 synthetic dyadic recovery demo-flow evaluation inputs;
+- P4-3 synthetic termination-gate helper cases;
+- synthetic pause / narrow / close / terminate decision examples;
+- synthetic closed-session handling examples;
+- synthetic permission-expiry handling examples;
+- synthetic low-confidence and insufficient-data-quality examples;
+- synthetic private-state exposure risk examples;
+- synthetic one-sided improvement caution examples;
 - schema demonstration files;
 - generated examples for notebooks;
 - non-identifying mock data;
@@ -52,9 +59,15 @@ The purpose is not benchmark validation.
 
 The purpose is not mediation validation.
 
+The purpose is not dyadic recovery validation.
+
+The purpose is not termination-gate accuracy validation.
+
 The purpose is not Sal-Meter validation.
 
 The purpose is not CAIS compliance.
+
+The purpose is not clinical, diagnostic, therapeutic, counseling, surveillance, certification, device-readiness, production-readiness, relationship-verdict, production closed-loop, or human-ranking authority.
 
 ---
 
@@ -88,21 +101,27 @@ sample-data/
     recovery_gate.json
     termination_gate.json
     audit_log.json
+    termination_gate_cases.json
 ```
 
----
+The current public sample package map includes:
 
-## Package roles
+```text
+Original synthetic session package
+P3 synthetic dyadic helper package
+P4-0 / P4-1 synthetic dyadic demo-flow package
+P4-3 synthetic termination-gate helper case package
+```
 
-| Folder | Role | Boundary |
-|---|---|---|
-| `synthetic-session-001/` | Original public synthetic/sample package for session metadata, streams, events, labels, QC, features, splits, and operator log | Structure demonstration only |
-| `synthetic-dyadic-session-001/` | P5-1 / P3 synthetic dyadic helper package for Human-State Packet A/B, Dyadic Session Event, and Benchmark Session Container | Helper-schema validation only |
-| `synthetic-dyadic-session-001/` | P4-0 / P4-1 synthetic dyadic demo-flow package for AI Output, Dyadic Delta, Recovery Gate, Termination Gate, and Audit Log | Synthetic demo-flow consistency only |
+All listed files are public helper examples only.
 
-These packages are synthetic.
+They are synthetic.
 
-They are not real human data.
+They are structure-demonstration files.
+
+They are not raw human data.
+
+They are not identifiable human data.
 
 They are not clinical data.
 
@@ -114,7 +133,46 @@ They are not benchmark evidence.
 
 They are not mediation evidence.
 
+They are not dyadic recovery evidence.
+
+They are not termination-gate accuracy evidence.
+
 They are not production data.
+
+---
+
+## Package roles
+
+| Folder | Role | Boundary |
+|---|---|---|
+| `synthetic-session-001/` | Original public synthetic/sample package for session metadata, streams, events, labels, QC, features, splits, and operator log | Structure demonstration only |
+| `synthetic-dyadic-session-001/` | P5-1 / P3 synthetic dyadic helper package for Human-State Packet A/B, Dyadic Session Event, and Benchmark Session Container | Helper-schema validation only |
+| `synthetic-dyadic-session-001/` | P4-0 / P4-1 synthetic dyadic demo-flow package for AI Output, Dyadic Delta, Recovery Gate, Termination Gate, and Audit Log | Synthetic demo-flow consistency only |
+| `synthetic-dyadic-session-001/` | P4-3 synthetic termination-gate helper case package for pause, narrow, close, terminate, refresh, and audit-only decision examples | Synthetic termination-gate helper consistency only |
+
+These packages are synthetic.
+
+They are not real human data.
+
+They are not identifiable human data.
+
+They are not clinical data.
+
+They are not Sal-Meter data.
+
+They are not CAIS-compliance output.
+
+They are not benchmark evidence.
+
+They are not mediation evidence.
+
+They are not dyadic recovery evidence.
+
+They are not termination-gate accuracy evidence.
+
+They are not production data.
+
+They do not create clinical, diagnostic, therapeutic, counseling, surveillance, certification, device-readiness, production-readiness, relationship-verdict, production closed-loop, or human-ranking authority.
 
 ---
 
@@ -179,26 +237,61 @@ The system is CAIS-compliant.
 
 ## `synthetic-dyadic-session-001/`
 
-This package contains two public-safe synthetic layers:
+This package contains three public-safe synthetic layers:
 
 ```text
 P3 helper-schema objects
 P4-0 / P4-1 synthetic demo-flow objects
+P4-3 synthetic termination-gate helper cases
 ```
 
-Both layers are synthetic.
+All layers are synthetic.
 
-Both layers are helper-only.
+All layers are helper-only.
 
-Neither layer is benchmark evidence.
+No layer is benchmark evidence.
 
-Neither layer is scientific validation.
+No layer is scientific validation.
 
-Neither layer is mediation validation.
+No layer is mediation validation.
 
-Neither layer is Sal-Meter validation.
+No layer is dyadic recovery validation.
 
-Neither layer grants CAIS compliance.
+No layer is termination-gate accuracy validation.
+
+No layer is Sal-Meter validation.
+
+No layer grants CAIS compliance.
+
+**Layer summary:**
+
+| Layer | Files | Boundary |
+|---|---|---|
+| P3 helper-schema layer | `human_state_packet_A.json`, `human_state_packet_B.json`, `dyadic_session_event.json`, `benchmark_session_container.json` | Helper-schema validation only |
+| P4-0 / P4-1 synthetic demo-flow layer | `ai_outputs.json`, `dyadic_delta.json`, `recovery_gate.json`, `termination_gate.json`, `audit_log.json` | Synthetic demo-flow consistency only |
+| P4-3 synthetic termination-gate helper layer | `termination_gate_cases.json` | Synthetic termination-gate helper consistency only |
+
+This package must not be interpreted as:
+
+```text
+real dyadic data
+clinical data
+mediation evidence
+benchmark evidence
+dyadic recovery evidence
+termination-gate accuracy evidence
+Sal-Meter data
+CAIS compliance output
+production data
+relationship verdict data
+human-ranking data
+```
+
+Correct boundary sentence:
+
+```text
+The synthetic-dyadic-session-001 package demonstrates bounded helper structure only; it is not evidence, validation, Sal-Meter, or CAIS compliance.
+```
 
 ---
 
@@ -364,6 +457,117 @@ It is not CAIS compliance.
 
 ---
 
+## P4-3 synthetic termination-gate helper layer
+
+The P4-3 layer demonstrates bounded synthetic termination-gate helper cases.
+
+It is intended to show:
+
+```text
+Consent / Permission / Packet Quality / Session Scope
+↓
+Termination Gate Case
+↓
+Expected Helper Decision
+↓
+Boundary Preservation
+
+```
+
+Current P4-3 file map:
+
+```text
+sample-data/
+  synthetic-dyadic-session-001/
+    termination_gate_cases.json
+```
+
+This package is checked by:
+
+```text
+evaluation-baseline/evaluate_termination_gate_demo.py
+```
+
+A successful P4-3 synthetic termination-gate helper evaluation means only:
+
+```text
+The synthetic termination-gate helper cases are internally consistent enough for public helper demonstration.
+```
+
+It may demonstrate synthetic helper decisions such as:
+
+- pause session;
+- narrow scope;
+- close session;
+- terminate session;
+- request consent refresh;
+- request packet refresh;
+- audit-only handling.
+
+It confirms only bounded helper expectations such as:
+
+- closed sessions stay closed;
+- expired permission blocks ordinary continuation;
+- low confidence blocks recovery declaration;
+- insufficient data quality blocks recovery declaration;
+- private-state exposure risk triggers pause or closure;
+- one-sided improvement is not dyadic recovery.
+
+It does not mean:
+
+```text
+The benchmark is validated.
+The science is validated.
+The mediation system works.
+The termination gate is accurate.
+The dyadic recovery is real.
+The repository is Sal-Meter.
+The repository is CAIS-compliant.
+The package is clinical.
+The package is diagnostic.
+The package is therapeutic.
+The package is certified.
+The package is device-ready.
+The package is production-ready.
+```
+
+Current synthetic termination-gate helper posture:
+
+```text
+total cases: 12
+expected decisions present:
+  - audit_only
+  - close_session
+  - narrow_scope
+  - pause_session
+  - request_consent_refresh
+  - request_packet_refresh
+  - terminate_session
+closed session stays closed: true
+expired permission blocks ordinary continuation: true
+low confidence blocks recovery declaration: true
+insufficient data quality blocks recovery declaration: true
+private-state exposure risk triggers pause or closure: true
+one-sided improvement is not dyadic recovery: true
+public boundary: preserved
+```
+
+This result is a synthetic termination-gate helper consistency signal only.
+
+It is not benchmark validation.
+
+It is not scientific validation.
+
+It is not mediation validation.
+
+It is not termination-gate accuracy validation.
+
+It is not Sal-Meter validation.
+
+It is not CAIS compliance.
+
+---
+
 ## Allowed here
 
 Allowed materials:
@@ -382,15 +586,50 @@ Allowed materials:
 - Dyadic Session Event helper examples;
 - Benchmark Session Container helper examples;
 - P4-0 synthetic demo-flow examples;
+- P4-1 synthetic dyadic recovery demo-flow examples;
+- P4-3 synthetic termination-gate helper case examples;
 - AI Output helper examples;
 - Dyadic Delta helper examples;
 - Recovery Gate helper examples;
 - Termination Gate helper examples;
 - Audit Log helper examples;
+- synthetic pause-session examples;
+- synthetic narrow-scope examples;
+- synthetic close-session examples;
+- synthetic terminate-session examples;
+- synthetic consent-refresh examples;
+- synthetic packet-refresh examples;
+- synthetic audit-only examples;
+- synthetic closed-session handling examples;
+- synthetic permission-expiry handling examples;
+- synthetic low-confidence handling examples;
+- synthetic insufficient-data-quality handling examples;
+- synthetic private-state exposure risk examples;
+- synthetic one-sided improvement caution examples;
 - schema demonstration files;
 - non-identifying mock data;
 - generated examples for notebooks;
 - public helper files for structure demonstration.
+
+Allowed materials must remain:
+
+- synthetic;
+- public-helper-only;
+- non-identifying;
+- non-clinical;
+- non-diagnostic;
+- non-therapeutic;
+- non-counseling;
+- non-surveillance;
+- non-certification;
+- non-human-ranking;
+- not Sal-Meter;
+- not CAIS compliance;
+- not benchmark evidence;
+- not mediation evidence;
+- not dyadic recovery evidence;
+- not termination-gate accuracy evidence;
+- not production data.
 
 ---
 
@@ -433,9 +672,56 @@ Do not upload:
 - CAIS compliance claims;
 - Sal-Meter validation claims;
 - benchmark validation claims;
+- scientific validation claims;
 - mediation validation claims;
+- dyadic recovery validation claims;
+- termination-gate accuracy claims;
+- device-readiness claims;
+- production-readiness claims;
 - certification claims;
-- production closed-loop claims.
+- production closed-loop claims;
+- relationship scoring outputs;
+- relationship verdict outputs;
+- human-ranking outputs;
+- human-state verdict outputs;
+- clinical decision outputs;
+- diagnostic decision outputs;
+- therapeutic decision outputs;
+- counseling-service outputs;
+- surveillance outputs;
+- employment decision outputs;
+- insurance decision outputs;
+- educational eligibility outputs;
+- legal eligibility outputs.
+
+This folder must not contain files that imply:
+
+```text
+real human data
+clinical evidence
+diagnostic evidence
+therapeutic evidence
+scientific validation
+benchmark validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+Sal-Meter validation
+CAIS compliance
+device readiness
+production readiness
+certification readiness
+relationship verdict authority
+human-ranking authority
+production closed-loop intervention
+```
+If a file contains any of the above, it does not belong in this public sample-data folder.
+
+Correct boundary sentence:
+
+```text
+Public sample data may demonstrate structure, but it must not create evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
+```
 
 ---
 
@@ -450,13 +736,86 @@ clinical_data_present == false
 sal_meter_input_present == false
 cais_compliance_claim_present == false
 benchmark_validation_claim_present == false
+scientific_validation_claim_present == false
 mediation_validation_claim_present == false
+dyadic_recovery_validation_claim_present == false
+termination_gate_accuracy_claim_present == false
 production_intervention_claim_present == false
+device_readiness_claim_present == false
+production_readiness_claim_present == false
+certification_claim_present == false
 human_ranking_claim_present == false
 relationship_verdict_present == false
+human_state_verdict_present == false
+clinical_decision_present == false
+diagnostic_decision_present == false
+therapeutic_decision_present == false
+counseling_service_claim_present == false
+surveillance_claim_present == false
+employment_decision_present == false
+insurance_decision_present == false
+educational_eligibility_decision_present == false
+legal_eligibility_decision_present == false
 ```
 
 If any of the above cannot be confirmed, the file does not belong in this public repository.
+
+Before publication, every sample-data file must remain:
+
+```text
+synthetic
+public-helper-only
+non-identifying
+non-clinical
+non-diagnostic
+non-therapeutic
+non-counseling
+non-surveillance
+non-certification
+non-human-ranking
+not Sal-Meter
+not CAIS compliance
+not benchmark evidence
+not scientific evidence
+not mediation evidence
+not dyadic recovery evidence
+not termination-gate accuracy evidence
+not production data
+```
+
+A public sample-data file may demonstrate:
+
+- structure;
+- file naming;
+- metadata discipline;
+- helper-schema alignment;
+- demo-flow consistency;
+- termination-gate helper consistency;
+- public/private boundary discipline;
+- leakage caution;
+- validation-script compatibility.
+
+A public sample-data file must not create:
+
+- evidence;
+- validation;
+- certification;
+- device readiness;
+- production readiness;
+- production closed-loop authority;
+- clinical authority;
+- diagnostic authority;
+- therapeutic authority;
+- counseling authority;
+- surveillance authority;
+- relationship verdict authority;
+- human-ranking authority.
+
+Correct boundary sentence:
+
+```text
+A file may enter sample-data only if it demonstrates public helper structure without creating evidence, validation, certification, production authority, relationship verdicts, or human-ranking authority.
+```
 
 ---
 
