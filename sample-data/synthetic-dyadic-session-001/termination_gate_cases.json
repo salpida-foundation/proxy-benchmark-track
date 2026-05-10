@@ -1,0 +1,425 @@
+{
+  "package_id": "sics_p4_3_synthetic_termination_gate_cases_v0_1",
+  "package_version": "0.1",
+  "repository_track": "SICS Human-State Proxy Benchmark Track",
+  "milestone": "P4-3",
+  "milestone_name": "Termination Gate Accuracy Skeleton",
+  "dataset_type": "synthetic",
+  "synthetic_status": "synthetic_only",
+  "sample_scope": "public_helper_only",
+  "description": "Synthetic termination-gate cases for checking bounded pause, narrow, close, and terminate decision logic.",
+  "boundary_status": {
+    "research_stage": true,
+    "public_helper_only": true,
+    "synthetic_only": true,
+    "non_clinical": true,
+    "non_diagnostic": true,
+    "non_therapeutic": true,
+    "non_counseling": true,
+    "non_surveillance": true,
+    "non_certification": true,
+    "non_human_ranking": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_benchmark_validation": true,
+    "not_mediation_validation": true,
+    "not_production_closed_loop": true
+  },
+  "boundary_flags": {
+    "raw_human_data_present": false,
+    "identifiable_data_present": false,
+    "clinical_data_present": false,
+    "sal_meter_input_present": false,
+    "cais_compliance_claim_present": false,
+    "benchmark_validation_claim_present": false,
+    "mediation_validation_claim_present": false,
+    "production_intervention_claim_present": false,
+    "human_ranking_claim_present": false,
+    "relationship_verdict_present": false
+  },
+  "case_schema_note": {
+    "case_id": "Stable synthetic identifier for the case.",
+    "trigger_type": "Synthetic termination-gate trigger type.",
+    "input_state": "Synthetic helper-state fields only.",
+    "expected_decision": "Expected bounded helper decision.",
+    "expected_reason": "Expected synthetic reason category.",
+    "expected_boundary": "Expected boundary-preservation outcome."
+  },
+  "allowed_expected_decisions": [
+    "pause_session",
+    "narrow_scope",
+    "close_session",
+    "terminate_session",
+    "request_consent_refresh",
+    "request_packet_refresh",
+    "audit_only"
+  ],
+  "prohibited_interpretations": [
+    "clinical decision",
+    "diagnostic decision",
+    "therapeutic decision",
+    "counseling decision",
+    "legal mediation decision",
+    "relationship verdict",
+    "human ranking",
+    "human score",
+    "Sal-Meter validation",
+    "CAIS compliance",
+    "benchmark validation",
+    "mediation validation",
+    "production closed-loop intervention"
+  ],
+  "termination_gate_cases": [
+    {
+      "case_id": "tg_case_001_consent_withdrawn",
+      "trigger_type": "consent_withdrawn",
+      "input_state": {
+        "session_status": "active",
+        "consent_status": "withdrawn",
+        "permission_status": "inactive",
+        "packet_confidence": "not_applicable",
+        "data_quality": "not_applicable",
+        "uncertainty_level": "not_applicable",
+        "private_state_exposure_risk": false,
+        "session_scope_status": "within_scope",
+        "prior_session_closed": false,
+        "new_session_required": true
+      },
+      "expected_decision": "terminate_session",
+      "expected_reason": "consent_withdrawn",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": false,
+        "private_cue_allowed": true,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": true
+      }
+    },
+    {
+      "case_id": "tg_case_002_permission_expired",
+      "trigger_type": "permission_expired",
+      "input_state": {
+        "session_status": "active",
+        "consent_status": "confirmed",
+        "permission_status": "expired",
+        "packet_confidence": "medium",
+        "data_quality": "sufficient",
+        "uncertainty_level": "medium",
+        "private_state_exposure_risk": false,
+        "session_scope_status": "within_scope",
+        "prior_session_closed": false,
+        "new_session_required": true
+      },
+      "expected_decision": "request_consent_refresh",
+      "expected_reason": "permission_expired",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": false,
+        "private_cue_allowed": true,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": false
+      }
+    },
+    {
+      "case_id": "tg_case_003_low_confidence",
+      "trigger_type": "low_confidence",
+      "input_state": {
+        "session_status": "active",
+        "consent_status": "confirmed",
+        "permission_status": "active",
+        "packet_confidence": "low",
+        "data_quality": "sufficient",
+        "uncertainty_level": "high",
+        "private_state_exposure_risk": false,
+        "session_scope_status": "within_scope",
+        "prior_session_closed": false,
+        "new_session_required": false
+      },
+      "expected_decision": "pause_session",
+      "expected_reason": "low_confidence_high_uncertainty",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": true,
+        "private_cue_allowed": true,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": false
+      }
+    },
+    {
+      "case_id": "tg_case_004_insufficient_data_quality",
+      "trigger_type": "insufficient_data_quality",
+      "input_state": {
+        "session_status": "active",
+        "consent_status": "confirmed",
+        "permission_status": "active",
+        "packet_confidence": "medium",
+        "data_quality": "insufficient",
+        "uncertainty_level": "high",
+        "private_state_exposure_risk": false,
+        "session_scope_status": "within_scope",
+        "prior_session_closed": false,
+        "new_session_required": false
+      },
+      "expected_decision": "request_packet_refresh",
+      "expected_reason": "insufficient_data_quality",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": true,
+        "private_cue_allowed": true,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": false
+      }
+    },
+    {
+      "case_id": "tg_case_005_high_uncertainty",
+      "trigger_type": "high_uncertainty",
+      "input_state": {
+        "session_status": "active",
+        "consent_status": "confirmed",
+        "permission_status": "active",
+        "packet_confidence": "medium",
+        "data_quality": "sufficient",
+        "uncertainty_level": "high",
+        "private_state_exposure_risk": false,
+        "session_scope_status": "within_scope",
+        "prior_session_closed": false,
+        "new_session_required": false
+      },
+      "expected_decision": "pause_session",
+      "expected_reason": "high_uncertainty",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": true,
+        "private_cue_allowed": true,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": false
+      }
+    },
+    {
+      "case_id": "tg_case_006_private_state_exposure_risk",
+      "trigger_type": "private_state_exposure_risk",
+      "input_state": {
+        "session_status": "active",
+        "consent_status": "confirmed",
+        "permission_status": "active",
+        "packet_confidence": "medium",
+        "data_quality": "sufficient",
+        "uncertainty_level": "medium",
+        "private_state_exposure_risk": true,
+        "session_scope_status": "within_scope",
+        "prior_session_closed": false,
+        "new_session_required": false
+      },
+      "expected_decision": "pause_session",
+      "expected_reason": "private_state_exposure_risk",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": true,
+        "private_cue_allowed": true,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": false
+      }
+    },
+    {
+      "case_id": "tg_case_007_session_scope_exceeded",
+      "trigger_type": "session_scope_exceeded",
+      "input_state": {
+        "session_status": "active",
+        "consent_status": "confirmed",
+        "permission_status": "active",
+        "packet_confidence": "medium",
+        "data_quality": "sufficient",
+        "uncertainty_level": "medium",
+        "private_state_exposure_risk": false,
+        "session_scope_status": "exceeded",
+        "prior_session_closed": false,
+        "new_session_required": true
+      },
+      "expected_decision": "narrow_scope",
+      "expected_reason": "session_scope_exceeded",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": true,
+        "private_cue_allowed": true,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": false
+      }
+    },
+    {
+      "case_id": "tg_case_008_endless_mediation_risk",
+      "trigger_type": "endless_mediation_risk",
+      "input_state": {
+        "session_status": "active",
+        "consent_status": "confirmed",
+        "permission_status": "active",
+        "packet_confidence": "medium",
+        "data_quality": "sufficient",
+        "uncertainty_level": "medium",
+        "private_state_exposure_risk": false,
+        "session_scope_status": "within_scope",
+        "prior_session_closed": false,
+        "new_session_required": false,
+        "turn_count_status": "excessive",
+        "recovery_progress_status": "stalled"
+      },
+      "expected_decision": "close_session",
+      "expected_reason": "endless_mediation_risk",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": true,
+        "private_cue_allowed": true,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": true
+      }
+    },
+    {
+      "case_id": "tg_case_009_session_already_closed",
+      "trigger_type": "session_already_closed",
+      "input_state": {
+        "session_status": "closed",
+        "consent_status": "previously_confirmed",
+        "permission_status": "inactive",
+        "packet_confidence": "not_applicable",
+        "data_quality": "not_applicable",
+        "uncertainty_level": "not_applicable",
+        "private_state_exposure_risk": false,
+        "session_scope_status": "closed",
+        "prior_session_closed": true,
+        "new_session_required": true
+      },
+      "expected_decision": "audit_only",
+      "expected_reason": "closed_session_must_stay_closed",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": false,
+        "private_cue_allowed": false,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": true
+      }
+    },
+    {
+      "case_id": "tg_case_010_new_session_required",
+      "trigger_type": "new_session_required",
+      "input_state": {
+        "session_status": "closed",
+        "consent_status": "requires_refresh",
+        "permission_status": "requires_refresh",
+        "packet_confidence": "not_applicable",
+        "data_quality": "not_applicable",
+        "uncertainty_level": "not_applicable",
+        "private_state_exposure_risk": false,
+        "session_scope_status": "requires_new_session",
+        "prior_session_closed": true,
+        "new_session_required": true
+      },
+      "expected_decision": "close_session",
+      "expected_reason": "new_session_required_for_continuation",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": true,
+        "private_cue_allowed": true,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": true
+      }
+    },
+    {
+      "case_id": "tg_case_011_one_sided_improvement",
+      "trigger_type": "one_sided_improvement",
+      "input_state": {
+        "session_status": "active",
+        "consent_status": "confirmed",
+        "permission_status": "active",
+        "packet_confidence": "medium",
+        "data_quality": "sufficient",
+        "uncertainty_level": "medium",
+        "private_state_exposure_risk": false,
+        "session_scope_status": "within_scope",
+        "prior_session_closed": false,
+        "new_session_required": false,
+        "dyadic_delta_summary": {
+          "participant_a_direction": "toward_recovery",
+          "participant_b_direction": "away_from_recovery",
+          "dyadic_direction": "mixed",
+          "one_sided_improvement": true
+        }
+      },
+      "expected_decision": "pause_session",
+      "expected_reason": "one_sided_improvement_not_dyadic_recovery",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": true,
+        "private_cue_allowed": true,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": false
+      }
+    },
+    {
+      "case_id": "tg_case_012_recovery_gate_not_passed",
+      "trigger_type": "recovery_gate_not_passed",
+      "input_state": {
+        "session_status": "active",
+        "consent_status": "confirmed",
+        "permission_status": "active",
+        "packet_confidence": "medium",
+        "data_quality": "sufficient",
+        "uncertainty_level": "medium",
+        "private_state_exposure_risk": false,
+        "session_scope_status": "within_scope",
+        "prior_session_closed": false,
+        "new_session_required": false,
+        "recovery_gate_status": "not_passed",
+        "termination_gate_status": "pause_recommended"
+      },
+      "expected_decision": "pause_session",
+      "expected_reason": "recovery_gate_not_passed",
+      "expected_boundary": {
+        "continue_mediation_allowed": false,
+        "shared_mediation_output_allowed": true,
+        "private_cue_allowed": true,
+        "recovery_declaration_allowed": false,
+        "audit_log_required": true,
+        "session_must_close": false
+      }
+    }
+  ],
+  "expected_summary": {
+    "total_cases": 12,
+    "must_include_pause": true,
+    "must_include_narrow_scope": true,
+    "must_include_close": true,
+    "must_include_terminate": true,
+    "must_include_audit_only": true,
+    "closed_session_must_stay_closed": true,
+    "expired_permission_cannot_continue_ordinary_mediation": true,
+    "low_confidence_blocks_recovery_declaration": true,
+    "insufficient_data_quality_blocks_recovery_declaration": true,
+    "private_state_exposure_risk_triggers_pause_or_closure": true,
+    "one_sided_improvement_is_not_dyadic_recovery": true
+  },
+  "final_boundary_status": {
+    "synthetic_helper_case_set_only": true,
+    "not_benchmark_evidence": true,
+    "not_scientific_validation": true,
+    "not_mediation_validation": true,
+    "not_sal_meter_validation": true,
+    "not_cais_compliance": true,
+    "not_clinical": true,
+    "not_diagnostic": true,
+    "not_therapeutic": true,
+    "not_production_ready": true,
+    "not_certification": true,
+    "not_human_ranking": true,
+    "not_relationship_verdict": true
+  }
+}
