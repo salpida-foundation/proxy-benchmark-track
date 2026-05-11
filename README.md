@@ -279,6 +279,10 @@ It provides:
 - P4-4 phone-only session flow wireframe;
 - P4-4 synthetic phone-session state-machine mockup;
 - P4-4 synthetic sample phone-session script;
+- P4-5 synthetic session replay scaffold;
+- P4-5 synthetic replay manifest;
+- P4-5 synthetic replay event timeline;
+- P4-5 synthetic replay boundary document;
 - validation scaffolding;
 - P3 helper-schema validation;
 - synthetic demo-flow consistency checking;
@@ -309,6 +313,8 @@ It does not validate dyadic recovery.
 
 It does not validate termination-gate accuracy.
 
+It does not validate synthetic session replay.
+
 It does not certify device readiness.
 
 It does not certify production readiness.
@@ -317,7 +323,13 @@ It does not authorize production closed-loop intervention.
 
 The phone-only simulator is a public helper scaffold only.
 
+The synthetic session replay skeleton is a public helper scaffold only.
+
 It is not a real phone monitoring system.
+
+It is not a real session replay system.
+
+It is not a real transcript replay system.
 
 It is not a clinical system.
 
@@ -332,6 +344,8 @@ It is not a mediation-service system.
 It is not a surveillance system.
 
 A closed session must stay closed.
+
+A replay must not reopen a closed session.
 
 ---
 
@@ -356,6 +370,11 @@ A closed session must stay closed.
 | P4-4 phone session flow wireframe | Present | `phone-only-simulator/session-flow-wireframe.md` defines consent, packet check, baseline summary, AI output, Human-State Delta, Recovery Gate, Termination Gate, closure, and audit screens |
 | P4-4 phone session state machine | Present | `phone-only-simulator/phone-session-state-machine.json` defines synthetic-only states, allowed transitions, forbidden transitions, allowed decisions, prohibited decisions, and boundary flags |
 | P4-4 sample phone session script | Present | `phone-only-simulator/sample-phone-session-script.md` provides a synthetic sample script showing consent, packet availability, AI output, delta review, recovery gate, termination gate, closure, and audit flow |
+| P4-5 synthetic session replay scaffold | Present | `synthetic-session-replay/` contains a public-safe, synthetic-only session replay helper scaffold |
+| P4-5 synthetic replay README | Present | `synthetic-session-replay/README.md` defines replay scaffold purpose, scope, intended files, public data boundary, P4-4 relationship, closed-session replay rule, and final rule |
+| P4-5 synthetic replay manifest | Present | `synthetic-session-replay/replay-manifest.json` defines replay source declaration, replay scope, boundary flags, replay flow, closed-session rule, allowed decisions, prohibited decisions, and success meaning |
+| P4-5 synthetic replay event timeline | Present | `synthetic-session-replay/replay-event-timeline.json` defines synthetic replay sequence from manifest loading through source declaration, consent, packet review, AI output, delta, recovery gate, termination gate, closure, and audit |
+| P4-5 synthetic replay boundary | Present | `synthetic-session-replay/replay-boundary.md` defines allowed replay materials, prohibited replay materials, prohibited replay claims, closed-session replay rule, replay interpretation, P4-4 relationship, and public release rule |
 | Synthetic session README | Done | The original synthetic package includes a local README explaining file roles and boundaries |
 | Synthetic dyadic session README | Done | The dyadic synthetic package includes a local README explaining P3 helper-schema, P4 demo-flow, and P4-3 termination-gate helper boundaries |
 | Sample package validator | Present / Passed | `evaluation-baseline/validate_sample_package.py` provides helper-structure validation for the original synthetic package |
@@ -367,14 +386,15 @@ A closed session must stay closed.
 | Closed-loop demo-lite boundary pack | Done | `closed-loop-demo-lite/` defines feedback-loop boundaries, event-log schema, and local placeholder code |
 | Replication guide pack | Done | `replication-guide/` defines reproducibility, metadata completeness, audit trail, and public release-readiness checklists |
 | Issue / PR template pack | Done | `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` define contributor boundary gates |
-| GitHub Actions validator workflow | Passed | `.github/workflows/validate-synthetic-sample.yml` runs the original sample validator, P3 helper-schema validator, P4 synthetic dyadic recovery demo-flow evaluator, P4-3 synthetic termination-gate helper evaluator, and boundary language lint; P4-4 currently adds documentation and simulator scaffold only, not a new validator |
+| GitHub Actions validator workflow | Passed / unchanged for P4-5 | `.github/workflows/validate-synthetic-sample.yml` runs the original sample validator, P3 helper-schema validator, P4 synthetic dyadic recovery demo-flow evaluator, P4-3 synthetic termination-gate helper evaluator, and boundary language lint; P4-5 currently adds documentation and replay scaffold only, not a new validator |
 | Citation metadata | Present | `CITATION.cff` points citation toward DOI-registered public boundary records |
 | Raw human data | Not present | Public repository examples must remain synthetic, mock, placeholder, or sample-structure-only |
 | Sal-Meter input | Not present | This repository is not Sal-Meter and does not contain Sal-Meter signal data |
 | CAIS compliance claim | Not present | This repository does not grant CAIS compliance |
-| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, template, PR, validator, workflow, evaluator, phone-only simulator, termination-gate helper case, or benchmark result is validated by this repository |
-| Phone monitoring authority | Not present | The P4-4 phone-only simulator is not a real phone monitoring system and does not process real calls, raw audio, transcripts, or identifiable participant data |
-| Production closed-loop authority | Not present | No phone-only simulator file authorizes production mediation, monitoring, intervention, relationship verdicts, or human ranking |
+| Benchmark validation | Not present | No model, dataset, dashboard, sensor stack, feedback loop, template, PR, validator, workflow, evaluator, phone-only simulator, replay scaffold, termination-gate helper case, or benchmark result is validated by this repository |
+| Phone monitoring authority | Not present | The P4-4 phone-only simulator and P4-5 replay scaffold are not real phone monitoring systems and do not process real calls, raw audio, transcripts, or identifiable participant data |
+| Replay validation authority | Not present | The P4-5 synthetic session replay scaffold does not validate replay, mediation, dyadic recovery, termination-gate accuracy, Sal-Meter, CAIS compliance, device readiness, or production readiness |
+| Production closed-loop authority | Not present | No phone-only simulator file or replay scaffold file authorizes production mediation, monitoring, intervention, relationship verdicts, or human ranking |
 | Release status | `v0.1.1` published as pre-release | `v0.1.1` is the post-validator-pass public helper pre-release package |
 
 ---
@@ -460,15 +480,21 @@ It is not dyadic recovery validation.
 
 It is not termination-gate accuracy validation.
 
+It is not synthetic replay validation.
+
 It is not certification.
 
 It is not production readiness.
 
 P4-4 adds a public phone-only simulator scaffold.
 
-P4-4 is documentation and simulator scaffolding only.
+P4-5 adds a public synthetic session replay scaffold.
+
+P4-4 and P4-5 are documentation and simulator / replay scaffolding only.
 
 P4-4 is not currently part of the P5 helper-validation chain unless a later validator or lint step is added.
+
+P4-5 is not currently part of the P5 helper-validation chain unless a later validator or lint step is added.
 
 | Milestone | Status | Notes |
 |---|---|---|
@@ -487,6 +513,11 @@ P4-4 is not currently part of the P5 helper-validation chain unless a later vali
 | P4-4 phone session flow wireframe | Present / documentation only | `phone-only-simulator/session-flow-wireframe.md` defines synthetic consent, packet check, AI output, delta review, recovery gate, termination gate, closure, and audit screens |
 | P4-4 phone session state machine | Present / synthetic mockup only | `phone-only-simulator/phone-session-state-machine.json` defines synthetic-only states, allowed transitions, forbidden transitions, allowed decisions, prohibited decisions, and boundary flags |
 | P4-4 sample phone session script | Present / synthetic script only | `phone-only-simulator/sample-phone-session-script.md` provides a synthetic sample phone-session script without real audio, real transcript, real participant data, Sal-Meter input, CAIS compliance dossier, or production intervention logic |
+| P4-5 synthetic session replay scaffold | Present / documentation and JSON scaffold only | `synthetic-session-replay/` contains public-helper documentation, replay manifest, replay event timeline, and replay boundary only; it is not a validator and is not real session replay |
+| P4-5 synthetic replay README | Present / documentation only | `synthetic-session-replay/README.md` defines replay scaffold purpose, scope, intended files, public data boundary, P4-4 relationship, closed-session replay rule, and final rule |
+| P4-5 synthetic replay manifest | Present / synthetic manifest only | `synthetic-session-replay/replay-manifest.json` defines replay source declaration, replay scope, boundary flags, replay flow, closed-session rule, allowed decisions, prohibited decisions, and success meaning |
+| P4-5 synthetic replay event timeline | Present / synthetic timeline only | `synthetic-session-replay/replay-event-timeline.json` defines synthetic replay sequence from manifest loading through source declaration, consent, packet review, AI output, delta, recovery gate, termination gate, closure, and audit |
+| P4-5 synthetic replay boundary | Present / documentation only | `synthetic-session-replay/replay-boundary.md` defines allowed replay materials, prohibited replay materials, prohibited replay claims, closed-session replay rule, replay interpretation, P4-4 relationship, and public release rule |
 
 Current P5 helper-validation chain:
 
@@ -500,6 +531,8 @@ validate_sample_package.py
 
 P4-4 is not currently included in the validation chain.
 
+P4-5 is not currently included in the validation chain.
+
 Current P4-4 scaffold files:
 
 ```text
@@ -508,6 +541,16 @@ phone-only-simulator/
   session-flow-wireframe.md
   phone-session-state-machine.json
   sample-phone-session-script.md
+```
+
+Current P4-5 scaffold files:
+
+```text
+synthetic-session-replay/
+  README.md
+  replay-manifest.json
+  replay-event-timeline.json
+  replay-boundary.md
 ```
 
 A successful P5 validation run means only:
@@ -532,6 +575,20 @@ The closed-session rule is explicit.
 The public data boundary is preserved.
 ```
 
+A completed P4-5 scaffold means only:
+
+```text
+The synthetic session replay scaffold is publicly documented.
+The replay manifest is synthetic-only.
+The replay event timeline is a synthetic structural review timeline.
+The replay boundary is explicit.
+The replay does not reopen a closed session.
+The replay does not process real session data.
+The replay does not process real phone recordings.
+The replay does not process real call transcripts.
+The public data boundary is preserved.
+```
+
 A successful run or completed scaffold does not mean:
 
 ```text
@@ -540,6 +597,8 @@ scientific validation
 mediation validation
 dyadic recovery validation
 termination-gate accuracy validation
+synthetic replay validation
+phone monitoring validation
 Sal-Meter validation
 CAIS compliance
 clinical readiness
@@ -557,43 +616,10 @@ production closed-loop authority
 Correct boundary sentence:
 
 ```text
-The P5 helper-validation chain checks public helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; P4-4 adds a synthetic phone-only simulator scaffold only, and neither creates benchmark validation, mediation validation, dyadic recovery validation, termination-gate accuracy validation, Sal-Meter validation, CAIS compliance, certification, phone monitoring authority, or production authority.
+The P5 helper-validation chain checks public helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; P4-4 adds a synthetic phone-only simulator scaffold only, P4-5 adds a synthetic session replay scaffold only, and none of these create benchmark validation, mediation validation, dyadic recovery validation, termination-gate accuracy validation, replay validation, Sal-Meter validation, CAIS compliance, certification, phone monitoring authority, or production authority.
 ```
 
 ---
-
-## Completed P3 helper documents
-
-```text
-docs/
-  human-state-mediation-layer.md
-  human-state-packet-schema.md
-  dyadic-recovery-baseline-suite.md
-  recovery-gate-definition.md
-  termination-gate-definition.md
-  human-state-session-protocol.md
-  dyadic-mediation-session-flow.md
-  consent-and-data-sharing-boundary.md
-```
-
-## Completed P3 boundary and release-preparation documents
-
-```text
-docs/
-  p3-final-boundary-audit.md
-  v0.1.0-public-helper-release-package.md
-  v0.1.0-github-pre-release-notes-and-publication-gate.md
-```
-
-## Completed P3 helper schemas
-
-```text
-schemas/
-  human_state_packet.schema.json
-  dyadic_session_event.schema.json
-  benchmark_session.schema.json
-  README.md
-```
 
 ## Completed P5 helper-validation files
 
@@ -638,6 +664,7 @@ scientific validation
 mediation validation
 dyadic recovery validation
 termination-gate accuracy validation
+synthetic replay validation
 Sal-Meter validation
 CAIS compliance
 clinical readiness
@@ -648,13 +675,14 @@ production readiness
 certification
 relationship verdict authority
 human-ranking authority
+phone monitoring authority
 production closed-loop authority
 ```
 
 Correct boundary sentence:
 
 ```text
-Completed P5 helper-validation files support structure, schema, demo-flow, termination-gate helper, and wording checks only; they do not create evidence, validation, certification, Sal-Meter status, CAIS compliance, or production authority.
+Completed P5 helper-validation files support structure, schema, demo-flow, termination-gate helper, and wording checks only; they do not create evidence, validation, certification, Sal-Meter status, CAIS compliance, replay validation, phone monitoring authority, or production authority.
 ```
 
 ---
@@ -741,6 +769,127 @@ Completed P4-4 public simulator scaffold files may demonstrate synthetic phone-o
 
 ---
 
+## Completed P4-5 public replay scaffold files
+
+```text
+synthetic-session-replay/
+  README.md
+  replay-manifest.json
+  replay-event-timeline.json
+  replay-boundary.md
+```
+
+These files support:
+
+```text
+synthetic session replay boundary documentation
+synthetic replay manifest structure
+synthetic replay event timeline structure
+synthetic replay boundary rules
+closed-session replay handling
+audit-only replay posture
+public data boundary visibility
+P4-5 public-helper replay scaffold documentation
+```
+
+They do not support:
+
+```text
+real session replay
+real phone replay
+real transcript replay
+real participant data replay
+raw human data replay
+clinical replay
+diagnostic replay
+therapeutic replay
+counseling replay
+surveillance replay
+production mediation replay
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+synthetic replay validation
+phone monitoring validation
+Sal-Meter validation
+CAIS compliance
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+P4-5 scaffold files must remain:
+
+```text
+research-stage
+public-helper-only
+synthetic-only
+replay-scaffold-only
+non-clinical
+non-diagnostic
+non-therapeutic
+non-counseling
+non-surveillance
+non-certification
+non-human-ranking
+not real session replay
+not real phone replay
+not real transcript replay
+not Sal-Meter
+not CAIS compliance
+not benchmark validation
+not mediation validation
+not dyadic recovery validation
+not termination-gate accuracy validation
+not synthetic replay validation
+not phone monitoring authority
+not production readiness
+not production closed-loop
+```
+
+P4-5 replay scaffold files must not contain:
+
+```text
+raw human data
+identifiable human data
+real participant data
+real dyadic conflict records
+real phone recordings
+real call transcripts
+real phone-session logs
+private consent records
+clinical records
+health records
+diagnostic labels
+therapeutic recommendations
+counseling notes
+relationship verdicts
+human scores
+human-ranking outputs
+raw biosignals
+raw Sal-Meter traces
+raw CAIS traces
+CAIS compliance dossiers
+production intervention logs
+production monitoring logs
+device-readiness evidence
+production-readiness evidence
+certification evidence
+```
+
+Correct boundary sentence:
+
+```text
+Completed P4-5 public replay scaffold files may demonstrate synthetic session replay structure only; they do not create evidence, validation, certification, replay validation, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+```
+
+---
+
 ## P3 helper architecture
 
 ```text
@@ -765,6 +914,10 @@ P4-4 does not replace this architecture.
 
 P4-4 projects this architecture into a public-safe phone-only simulator scaffold.
 
+P4-5 does not replace this architecture.
+
+P4-5 projects this architecture into a public-safe synthetic replay scaffold.
+
 P4-4 represents the same boundary logic through:
 
 ```text
@@ -773,6 +926,16 @@ phone-only-simulator/
   session-flow-wireframe.md
   phone-session-state-machine.json
   sample-phone-session-script.md
+```
+
+P4-5 represents replay review of the same boundary logic through:
+
+```text
+synthetic-session-replay/
+  README.md
+  replay-manifest.json
+  replay-event-timeline.json
+  replay-boundary.md
 ```
 
 The P4-4 phone-only simulator may demonstrate:
@@ -786,6 +949,21 @@ The P4-4 phone-only simulator may demonstrate:
 - Termination Gate placeholder;
 - closed-session handling;
 - audit-log boundary.
+
+The P4-5 synthetic session replay scaffold may demonstrate:
+
+- replay manifest loading;
+- replay source declaration;
+- synthetic event timeline review;
+- consent boundary review;
+- packet boundary review;
+- synthetic AI output replay;
+- synthetic Human-State Delta replay;
+- Recovery Gate replay;
+- Termination Gate replay;
+- closure replay;
+- audit-only replay summary;
+- closed-session replay handling.
 
 The P4-4 phone-only simulator must not imply:
 
@@ -815,10 +993,49 @@ human-ranking authority
 production closed-loop authority
 ```
 
+The P4-5 synthetic session replay scaffold must not imply:
+
+```text
+real session replay
+real phone replay
+real transcript replay
+real participant data replay
+raw human data replay
+clinical replay
+diagnostic replay
+therapeutic replay
+counseling replay
+surveillance replay
+production mediation replay
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+synthetic replay validation
+phone monitoring validation
+Sal-Meter validation
+CAIS compliance
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+P4-5 must not reopen a closed session.
+
+P4-5 must not continue mediation after closure.
+
+P4-5 must not convert closure into recovery evidence.
+
+P4-5 must not convert audit replay into certification.
+
 Correct boundary sentence:
 
 ```text
-P4-4 is a phone-only public helper projection of the P3 session architecture; it does not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+P4-4 is a phone-only public helper projection of the P3 session architecture, and P4-5 is a synthetic replay scaffold for reviewing that structure after representation; neither creates evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1085,6 +1302,8 @@ Session Creation
 
 P4-4 projects this session principle into a phone-only public helper scaffold.
 
+P4-5 projects this session principle into a synthetic replay scaffold.
+
 The P4-4 phone-only simulator may represent the same session principle through:
 
 ```text
@@ -1093,6 +1312,16 @@ phone-only-simulator/
   session-flow-wireframe.md
   phone-session-state-machine.json
   sample-phone-session-script.md
+```
+
+The P4-5 synthetic session replay scaffold may represent the same session principle through:
+
+```text
+synthetic-session-replay/
+  README.md
+  replay-manifest.json
+  replay-event-timeline.json
+  replay-boundary.md
 ```
 
 In P4-4, the phone-only simulator may demonstrate:
@@ -1107,13 +1336,28 @@ In P4-4, the phone-only simulator may demonstrate:
 - closed-session handling;
 - audit-log boundary.
 
-The phone-only simulator must not process:
+In P4-5, the synthetic replay scaffold may demonstrate:
+
+- replay manifest loading;
+- replay source declaration;
+- synthetic event timeline review;
+- consent boundary review;
+- packet boundary review;
+- synthetic AI output replay;
+- synthetic Human-State Delta replay;
+- Recovery Gate replay;
+- Termination Gate replay;
+- closure replay;
+- audit-only replay summary.
+
+The phone-only simulator and replay scaffold must not process:
 
 ```text
 real phone calls
 real audio
 real transcripts
 real participant data
+real session records
 identifiable human data
 clinical data
 Sal-Meter raw input
@@ -1121,10 +1365,12 @@ CAIS compliance dossiers
 production intervention logs
 ```
 
-The phone-only simulator must not imply:
+The phone-only simulator and replay scaffold must not imply:
 
 ```text
 real phone monitoring
+real session replay
+real transcript replay
 clinical intake
 diagnosis
 therapy
@@ -1136,6 +1382,7 @@ scientific validation
 mediation validation
 dyadic recovery validation
 termination-gate accuracy validation
+synthetic replay validation
 Sal-Meter validation
 CAIS compliance
 device readiness
@@ -1146,10 +1393,22 @@ human-ranking authority
 production closed-loop authority
 ```
 
+A closed session must stay closed.
+
+A replay must not reopen a closed session.
+
+A replay must not continue mediation after closure.
+
+A replay must not generate new AI output after closure.
+
+A replay must not convert closure into recovery evidence.
+
+A replay must not convert audit into certification.
+
 Correct boundary sentence:
 
 ```text
-The P4-4 phone-only simulator demonstrates the session principle as a synthetic public helper flow only; it does not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+The P4-4 phone-only simulator and P4-5 synthetic replay scaffold demonstrate the session principle as synthetic public helper flows only; they do not create evidence, validation, certification, phone monitoring authority, replay validation, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1348,7 +1607,84 @@ human-ranking authority
 production closed-loop authority
 ```
 
-Public sample and simulator files must remain:
+### P4-5 synthetic session replay scaffold
+
+```text
+synthetic-session-replay/
+```
+
+Required public helper files include:
+
+```text
+README.md
+replay-manifest.json
+replay-event-timeline.json
+replay-boundary.md
+```
+
+P4-5 is not stored under `sample-data/`.
+
+P4-5 is a separate public replay scaffold.
+
+P4-5 may demonstrate:
+
+- synthetic session replay structure;
+- replay manifest structure;
+- replay source declaration;
+- synthetic replay event timeline;
+- consent boundary review;
+- packet boundary review;
+- synthetic AI output replay;
+- synthetic Human-State Delta replay;
+- Recovery Gate replay;
+- Termination Gate replay;
+- closure replay;
+- audit-only replay summary;
+- closed-session replay handling;
+- public-helper-only replay posture.
+
+P4-5 must not imply:
+
+```text
+real session replay
+real phone replay
+real transcript replay
+real participant data replay
+raw human data replay
+clinical replay
+diagnostic replay
+therapeutic replay
+counseling replay
+surveillance replay
+production mediation replay
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+synthetic replay validation
+phone monitoring validation
+Sal-Meter validation
+CAIS compliance
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+A synthetic replay may document a closed session.
+
+A synthetic replay must not reopen a closed session.
+
+A synthetic replay must not continue mediation after closure.
+
+A synthetic replay must not convert closure into recovery evidence.
+
+A synthetic replay must not convert audit into certification.
+
+Public sample, simulator, and replay files must remain:
 
 ```text
 synthetic
@@ -1372,17 +1708,21 @@ not benchmark evidence
 not mediation evidence
 not dyadic recovery evidence
 not termination-gate accuracy evidence
+not synthetic replay validation
+not phone monitoring authority
 not production data
 ```
 
-Public sample and simulator files must not include:
+Public sample, simulator, and replay files must not include:
 
 ```text
 real raw human data
 identity-bearing data
 real dyadic conflict records
+real session records
 real phone recordings
 real call transcripts
+real transcript replay
 clinical records
 health records
 raw biosignals
@@ -1396,13 +1736,14 @@ device-readiness claims
 production-readiness claims
 certification claims
 termination-gate accuracy claims
+synthetic replay validation claims
 phone monitoring authority
 ```
 
 Correct boundary sentence:
 
 ```text
-Synthetic sample packages and the P4-4 phone-only simulator scaffold may demonstrate public helper structure only; they do not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+Synthetic sample packages, the P4-4 phone-only simulator scaffold, and the P4-5 synthetic replay scaffold may demonstrate public helper structure only; they do not create evidence, validation, certification, replay validation, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1441,9 +1782,15 @@ This confirms only public helper-structure validation, synthetic demo-flow consi
 
 P4-4 currently adds documentation and simulator scaffold files only.
 
+P4-5 currently adds documentation and replay scaffold files only.
+
 P4-4 does not currently add a new validator.
 
+P4-5 does not currently add a new validator.
+
 P4-4 does not currently add a new GitHub Actions workflow step.
+
+P4-5 does not currently add a new GitHub Actions workflow step.
 
 Current P4-4 scaffold files:
 
@@ -1455,9 +1802,21 @@ phone-only-simulator/
   sample-phone-session-script.md
 ```
 
+Current P4-5 scaffold files:
+
+```text
+synthetic-session-replay/
+  README.md
+  replay-manifest.json
+  replay-event-timeline.json
+  replay-boundary.md
+```
+
 The P4-4 scaffold may be reviewed by existing boundary-language lint if included in the lint scan path.
 
-If a later validator is added for P4-4, the workflow may be extended in a separate issue.
+The P4-5 replay scaffold may be reviewed by existing boundary-language lint if included in the lint scan path.
+
+If a later validator is added for P4-4 or P4-5, the workflow may be extended in a separate issue.
 
 This workflow does not validate benchmark performance.
 
@@ -1469,22 +1828,28 @@ It does not validate dyadic recovery.
 
 It does not validate termination-gate accuracy.
 
+It does not validate synthetic replay.
+
 It does not validate Sal-Meter.
 
 It does not grant CAIS compliance.
 
 It does not validate the P4-4 phone-only simulator.
 
+It does not validate the P4-5 synthetic replay scaffold.
+
 It does not certify phone monitoring.
 
-It does not certify any system, model, dataset, dashboard, laboratory, device, repository, schema, session protocol, implementation, mediation system, termination gate, phone-only simulator, or closed-loop system.
+It does not certify replay.
 
-It does not create clinical, diagnostic, therapeutic, counseling, surveillance, certification, device-readiness, production-readiness, relationship-verdict, phone-monitoring, production closed-loop, or human-ranking authority.
+It does not certify any system, model, dataset, dashboard, laboratory, device, repository, schema, session protocol, implementation, mediation system, termination gate, phone-only simulator, replay scaffold, or closed-loop system.
+
+It does not create clinical, diagnostic, therapeutic, counseling, surveillance, certification, device-readiness, production-readiness, relationship-verdict, phone-monitoring, replay-validation, production closed-loop, or human-ranking authority.
 
 Correct boundary sentence:
 
 ```text
-The validation workflow checks public helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; P4-4 currently adds phone-only simulator scaffold documentation only and does not create benchmark validation, mediation validation, termination-gate accuracy validation, Sal-Meter validation, CAIS compliance, certification, phone-monitoring authority, or production authority.
+The validation workflow checks public helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; P4-4 currently adds phone-only simulator scaffold documentation only, P4-5 currently adds synthetic replay scaffold documentation only, and neither creates benchmark validation, mediation validation, dyadic recovery validation, termination-gate accuracy validation, replay validation, Sal-Meter validation, CAIS compliance, certification, phone-monitoring authority, or production authority.
 ```
 
 ---
@@ -1526,17 +1891,36 @@ phone-only-simulator/phone-session-state-machine.json exists.
 phone-only-simulator/sample-phone-session-script.md exists.
 ```
 
+P4-5 local status:
+
+```text
+synthetic-session-replay/README.md exists.
+synthetic-session-replay/replay-manifest.json exists.
+synthetic-session-replay/replay-event-timeline.json exists.
+synthetic-session-replay/replay-boundary.md exists.
+```
+
 P4-4 currently has no separate local validator.
+
+P4-5 currently has no separate local validator.
 
 P4-4 currently has no separate GitHub Actions validation step.
 
+P4-5 currently has no separate GitHub Actions validation step.
+
 P4-4 is documentation and simulator scaffolding only.
+
+P4-5 is documentation and replay scaffolding only.
 
 P4-4 files may be reviewed manually for boundary consistency.
 
+P4-5 files may be reviewed manually for boundary consistency.
+
 P4-4 files may be scanned by the boundary language lint if the lint path includes the `phone-only-simulator/` folder.
 
-If a later P4-4 validator is added, it should be added in a separate issue.
+P4-5 files may be scanned by the boundary language lint if the lint path includes the `synthetic-session-replay/` folder.
+
+If a later P4-4 or P4-5 validator is added, it should be added in a separate issue.
 
 PASS does not mean:
 
@@ -1547,6 +1931,7 @@ mediation validated
 dyadic recovery validated
 termination-gate accuracy validated
 phone-only simulator validated
+synthetic replay validated
 phone monitoring validated
 Sal-Meter validated
 CAIS compliant
@@ -1564,7 +1949,7 @@ production closed-loop authority
 Correct boundary sentence:
 
 ```text
-Local validation checks helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; P4-4 currently adds phone-only simulator scaffold documentation only and does not create evidence, validation, certification, phone monitoring authority, Sal-Meter status, CAIS compliance, or production authority.
+Local validation checks helper structure, synthetic demo-flow consistency, synthetic termination-gate helper consistency, and wording hygiene only; P4-4 currently adds phone-only simulator scaffold documentation only, P4-5 currently adds synthetic replay scaffold documentation only, and neither creates evidence, validation, certification, replay validation, phone monitoring authority, Sal-Meter status, CAIS compliance, or production authority.
 ```
 
 ---
@@ -1577,8 +1962,10 @@ This repository must not contain:
 - identifiable human data;
 - private participant data;
 - real dyadic conflict records;
+- real session records;
 - real phone recordings;
 - real call transcripts;
+- real transcript replay;
 - real phone-session logs;
 - consent forms with identifiers;
 - private session logs;
@@ -1598,6 +1985,7 @@ This repository must not contain:
 - employment, insurance, legal, educational, or eligibility decisions;
 - surveillance or coercive monitoring materials;
 - phone monitoring authority;
+- replay validation authority;
 - real-time monitoring authority;
 - device-readiness claims;
 - production-readiness claims;
@@ -1606,12 +1994,13 @@ This repository must not contain:
 - termination-gate accuracy claims;
 - dyadic recovery validation claims;
 - mediation validation claims;
+- synthetic replay validation claims;
 - benchmark validation claims;
 - scientific validation claims;
 - Sal-Meter validation claims;
 - CAIS compliance claims.
 
-Public sample, helper, and simulator files must remain:
+Public sample, helper, simulator, and replay files must remain:
 
 ```text
 synthetic
@@ -1635,7 +2024,9 @@ not benchmark evidence
 not mediation evidence
 not dyadic recovery evidence
 not termination-gate accuracy evidence
+not synthetic replay validation
 not phone monitoring authority
+not replay validation authority
 not production data
 ```
 
@@ -1668,6 +2059,23 @@ P4-4 phone-only simulator scaffold files may demonstrate:
 - closed-session handling;
 - audit-log boundary;
 - public-helper-only simulator posture.
+
+P4-5 synthetic session replay scaffold files may demonstrate:
+
+- synthetic session replay structure;
+- replay manifest structure;
+- replay source declaration;
+- synthetic replay event timeline;
+- consent boundary review;
+- packet boundary review;
+- synthetic AI output replay;
+- synthetic Human-State Delta replay;
+- Recovery Gate replay;
+- Termination Gate replay;
+- closure replay;
+- audit-only replay summary;
+- closed-session replay handling;
+- public-helper-only replay posture.
 
 P4-3 termination-gate helper cases must not imply:
 
@@ -1720,10 +2128,53 @@ human-ranking authority
 production closed-loop authority
 ```
 
+P4-5 synthetic session replay scaffold files must not imply:
+
+```text
+real session replay
+real phone replay
+real transcript replay
+real participant data replay
+raw human data replay
+clinical replay
+diagnostic replay
+therapeutic replay
+counseling replay
+surveillance replay
+production mediation replay
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+synthetic replay validation
+phone monitoring validation
+Sal-Meter validation
+CAIS compliance
+device readiness
+production readiness
+certification
+relationship verdict authority
+human-ranking authority
+production closed-loop authority
+```
+
+A synthetic replay may document a closed session.
+
+A synthetic replay must not reopen a closed session.
+
+A synthetic replay must not continue mediation after closure.
+
+A synthetic replay must not generate new AI output after closure.
+
+A synthetic replay must not convert closure into recovery evidence.
+
+A synthetic replay must not convert audit into certification.
+
 Correct boundary sentence:
 
 ```text
-Public data in this repository may demonstrate helper structure, synthetic consistency, and phone-only simulator scaffolding only; it must not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+Public data in this repository may demonstrate helper structure, synthetic consistency, phone-only simulator scaffolding, and synthetic replay scaffolding only; it must not create evidence, validation, certification, replay validation, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1740,6 +2191,7 @@ Contributions must not claim or imply:
 - dyadic recovery validation;
 - termination-gate accuracy validation;
 - phone-only simulator validation;
+- synthetic replay validation;
 - phone monitoring validation;
 - Sal-Meter validation;
 - CAIS compliance;
@@ -1750,6 +2202,7 @@ Contributions must not claim or imply:
 - legal mediation authority;
 - surveillance readiness;
 - phone monitoring authority;
+- replay validation authority;
 - device readiness;
 - production readiness;
 - certification;
@@ -1772,6 +2225,10 @@ Issues and pull requests may propose or modify:
 - synthetic phone-session wireframes;
 - synthetic phone-session state-machine mockups;
 - synthetic sample phone-session scripts;
+- synthetic session replay scaffold files;
+- synthetic replay manifests;
+- synthetic replay event timelines;
+- synthetic replay boundary documents;
 - validation helper scripts;
 - wording-boundary lint rules;
 - documentation alignment;
@@ -1783,11 +2240,13 @@ Issues and pull requests must not introduce:
 raw human data
 identifiable human data
 clinical data
+real session records
 real phone recordings
 real call transcripts
 real participant data
 real consent records
 real phone-session logs
+real transcript replay
 Sal-Meter raw input
 CAIS compliance dossier
 benchmark validation claim
@@ -1796,7 +2255,9 @@ mediation validation claim
 dyadic recovery validation claim
 termination-gate accuracy validation claim
 phone-only simulator validation claim
+synthetic replay validation claim
 phone monitoring authority claim
+replay validation authority claim
 device-readiness claim
 production-readiness claim
 certification claim
@@ -1817,6 +2278,12 @@ A valid issue or pull request may improve phone-only simulator scaffold clarity.
 
 A valid issue or pull request may improve synthetic phone-session flow representation.
 
+A valid issue or pull request may improve synthetic session replay scaffold clarity.
+
+A valid issue or pull request may improve synthetic replay event ordering.
+
+A valid issue or pull request may improve closed-session replay handling.
+
 A valid issue or pull request must not convert this repository into:
 
 ```text
@@ -1829,6 +2296,8 @@ a therapeutic system
 a counseling system
 a surveillance system
 a real phone monitoring system
+a real session replay system
+a real transcript replay system
 a relationship-verdict system
 a human-ranking system
 a Sal-Meter validation system
@@ -1838,7 +2307,7 @@ a CAIS compliance system
 Correct boundary sentence:
 
 ```text
-Issues and pull requests may improve public helper structure, synthetic termination-gate cases, and phone-only simulator scaffolding, but they must not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+Issues and pull requests may improve public helper structure, synthetic termination-gate cases, phone-only simulator scaffolding, and synthetic replay scaffolding, but they must not create evidence, validation, certification, replay validation, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1865,7 +2334,12 @@ They may show:
 - synthetic phone-only simulator state;
 - synthetic phone-session flow status;
 - synthetic phone-session state-machine status;
-- synthetic phone-session closure status.
+- synthetic phone-session closure status;
+- synthetic replay manifest status;
+- synthetic replay event timeline status;
+- synthetic replay boundary status;
+- synthetic replay closure status;
+- synthetic audit-only replay status.
 
 They must not present:
 
@@ -1882,6 +2356,10 @@ They must not present:
 - real-time monitoring status;
 - real phone recording status;
 - real transcript status;
+- real session replay status;
+- real phone replay status;
+- real transcript replay status;
+- replay validation status;
 - relationship verdicts;
 - relationship scoring;
 - human ranking;
@@ -1892,6 +2370,7 @@ They must not present:
 - validated dyadic recovery status;
 - validated termination-gate accuracy status;
 - validated phone-only simulator status;
+- validated synthetic replay status;
 - device-readiness status;
 - production-readiness status;
 - production closed-loop status;
@@ -1902,21 +2381,31 @@ A dashboard may show bounded synthetic/sample helper fields for demonstration.
 
 A dashboard may show P4-4 phone-only simulator scaffold status only as synthetic helper structure.
 
+A dashboard may show P4-5 synthetic replay scaffold status only as synthetic helper structure.
+
 A dashboard must not show real call monitoring.
 
 A dashboard must not show real phone audio status.
 
 A dashboard must not show real transcript processing.
 
+A dashboard must not show real session replay.
+
+A dashboard must not show real transcript replay.
+
 A dashboard must not show real participant state.
 
 A dashboard must not show phone monitoring authority.
+
+A dashboard must not show replay validation authority.
 
 It must not become a judgment engine.
 
 It must not become a monitoring engine.
 
 It must not become a phone monitoring engine.
+
+It must not become a replay validation engine.
 
 It must not become a clinical engine.
 
@@ -1931,7 +2420,7 @@ It must not become a production closed-loop intervention engine.
 Correct boundary sentence:
 
 ```text
-A dashboard mockup may display public helper structure and synthetic phone-only simulator scaffold status, but it must not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+A dashboard mockup may display public helper structure, synthetic phone-only simulator scaffold status, and synthetic replay scaffold status, but it must not create evidence, validation, certification, replay validation, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -1965,6 +2454,22 @@ P4-4 phone-only simulator files may demonstrate:
 - session closure;
 - audit-log boundary.
 
+P4-5 synthetic replay scaffold files may demonstrate:
+
+- synthetic replay manifest structure;
+- synthetic replay event timeline structure;
+- synthetic replay boundary structure;
+- replay source declaration;
+- consent boundary review;
+- packet boundary review;
+- synthetic AI output replay;
+- synthetic Human-State Delta replay;
+- Recovery Gate replay;
+- Termination Gate replay;
+- closure replay;
+- audit-only replay summary;
+- closed-session replay handling.
+
 They do not define a production closed-loop intervention system.
 
 They do not authorize real-time human monitoring.
@@ -1974,6 +2479,14 @@ They do not authorize phone monitoring.
 They do not authorize real phone recording.
 
 They do not authorize real transcript processing.
+
+They do not authorize real session replay.
+
+They do not authorize real phone replay.
+
+They do not authorize real transcript replay.
+
+They do not authorize replay validation.
 
 They do not authorize automated intervention on real participants.
 
@@ -1987,6 +2500,8 @@ They do not validate termination-gate accuracy.
 
 They do not validate the phone-only simulator.
 
+They do not validate the synthetic replay scaffold.
+
 They do not validate Sal-Meter.
 
 They do not grant CAIS compliance.
@@ -1995,16 +2510,18 @@ They do not certify device readiness.
 
 They do not certify production readiness.
 
-They do not create clinical, diagnostic, therapeutic, counseling, legal mediation, employment, insurance, educational, eligibility, surveillance, phone-monitoring, relationship-verdict, production closed-loop, or human-ranking authority.
+They do not create clinical, diagnostic, therapeutic, counseling, legal mediation, employment, insurance, educational, eligibility, surveillance, phone-monitoring, replay-validation, relationship-verdict, production closed-loop, or human-ranking authority.
 
-Closed-loop demo-lite and P4-4 phone-only simulator files must not contain:
+Closed-loop demo-lite, P4-4 phone-only simulator, and P4-5 synthetic replay scaffold files must not contain:
 
 ```text
 raw human data
 identifiable human data
 clinical data
+real session records
 real phone recordings
 real call transcripts
+real transcript replay
 real participant data
 real consent records
 real phone-session logs
@@ -2012,6 +2529,7 @@ Sal-Meter raw input
 CAIS compliance dossier
 real-time monitoring authority
 phone monitoring authority
+replay validation authority
 automated intervention authority
 benchmark validation claim
 scientific validation claim
@@ -2019,6 +2537,7 @@ mediation validation claim
 dyadic recovery validation claim
 termination-gate accuracy validation claim
 phone-only simulator validation claim
+synthetic replay validation claim
 device-readiness claim
 production-readiness claim
 certification claim
@@ -2027,25 +2546,35 @@ human-ranking authority
 production closed-loop authority
 ```
 
+A closed session must stay closed.
+
+A replay must not reopen a closed session.
+
+A replay must not continue mediation after closure.
+
+A replay must not convert closure into recovery evidence.
+
+A replay must not convert audit into certification.
+
 Correct boundary sentence:
 
 ```text
-Closed-loop demo-lite and P4-4 phone-only simulator files may demonstrate placeholder helper structure only; they must not create evidence, validation, certification, phone monitoring authority, monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+Closed-loop demo-lite, P4-4 phone-only simulator, and P4-5 synthetic replay scaffold files may demonstrate placeholder helper structure only; they must not create evidence, validation, certification, replay validation, phone monitoring authority, monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
 
 ## Future roadmap
 
-The next roadmap should move from public-safe phone-only simulator scaffolding toward synthetic replay and review scaffolds.
+The next roadmap should move from synthetic replay scaffolding toward public helper demo package review and optional lint extension.
 
 Recommended next milestones:
 
 | Milestone | Name | Purpose |
 |---|---|---|
-| P4-5 | Synthetic Session Replay Skeleton | Prepare a bounded replay structure for synthetic session flow review |
-| P4-6 | Public Helper Demo Package Review | Review synthetic demo packages for public-boundary consistency before any future release |
-| P4-7 | Phone-only Simulator Boundary Lint Extension | Consider extending boundary-language lint coverage to `phone-only-simulator/` if needed |
+| P4-6 | Public Helper Demo Package Review | Review synthetic demo packages, simulator scaffolds, and replay scaffolds for public-boundary consistency before any future release |
+| P4-7 | Phone-only / Replay Boundary Lint Extension | Consider extending boundary-language lint coverage to `phone-only-simulator/` and `synthetic-session-replay/` if needed |
+| P4-8 | Public Helper Release Readiness Note | Prepare a bounded release-readiness note only after P4-6 review and any needed lint extension are complete |
 
 Completed helper-validation and P4 helper milestones are tracked under:
 
@@ -2054,6 +2583,7 @@ Current P5 helper-validation state
 Implementation status table
 Completed P5 helper-validation files
 Completed P4-4 public simulator scaffold files
+Completed P4-5 public replay scaffold files
 Synthetic sample packages
 Validation workflow
 Local validation
@@ -2071,6 +2601,10 @@ P4-4 phone-only simulator scaffold
 P4-4 phone-only session flow wireframe
 P4-4 synthetic phone-session state-machine mockup
 P4-4 synthetic sample phone-session script
+P4-5 synthetic session replay scaffold
+P4-5 synthetic replay manifest
+P4-5 synthetic replay event timeline
+P4-5 synthetic replay boundary document
 ```
 
 Current P4-4 scaffold files:
@@ -2081,6 +2615,16 @@ phone-only-simulator/
   session-flow-wireframe.md
   phone-session-state-machine.json
   sample-phone-session-script.md
+```
+
+Current P4-5 scaffold files:
+
+```text
+synthetic-session-replay/
+  README.md
+  replay-manifest.json
+  replay-event-timeline.json
+  replay-boundary.md
 ```
 
 Future roadmap items must remain:
@@ -2103,7 +2647,9 @@ not scientific validation
 not mediation validation
 not dyadic recovery validation
 not termination-gate accuracy validation
+not synthetic replay validation
 not phone monitoring authority
+not replay validation authority
 not device readiness
 not production readiness
 not production closed-loop
@@ -2115,11 +2661,13 @@ Future roadmap items must not introduce:
 raw human data
 identifiable human data
 clinical data
+real session records
 real phone recordings
 real call transcripts
 real participant data
 real consent records
 real phone-session logs
+real transcript replay
 Sal-Meter raw input
 CAIS compliance dossier
 benchmark validation claim
@@ -2128,7 +2676,9 @@ mediation validation claim
 dyadic recovery validation claim
 termination-gate accuracy validation claim
 phone-only simulator validation claim
+synthetic replay validation claim
 phone monitoring authority claim
+replay validation authority claim
 device-readiness claim
 production-readiness claim
 certification claim
@@ -2137,10 +2687,38 @@ human-ranking authority
 production closed-loop authority
 ```
 
+P4-6 review may check:
+
+- public helper file completeness;
+- synthetic-only status;
+- boundary-language consistency;
+- closed-session handling;
+- replay does not reopen closure;
+- simulator and replay folders remain outside `sample-data/`;
+- root README alignment;
+- issue checklist alignment;
+- Actions PASS status.
+
+P4-6 review must not become:
+
+```text
+benchmark validation
+scientific validation
+mediation validation
+dyadic recovery validation
+termination-gate accuracy validation
+synthetic replay validation
+Sal-Meter validation
+CAIS compliance
+device-readiness review
+production-readiness review
+certification review
+```
+
 Correct boundary sentence:
 
 ```text
-Future roadmap items may extend public helper structure, synthetic replay scaffolding, and phone-only simulator boundary coverage, but they must not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+Future roadmap items may extend public helper review, synthetic replay scaffolding, simulator boundary coverage, and optional lint hygiene, but they must not create evidence, validation, certification, replay validation, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -2166,9 +2744,15 @@ This repository does not attempt to:
 - process real phone recordings;
 - process real call transcripts;
 - process real phone-session logs;
+- process real session records;
+- replay real sessions;
+- replay real phone calls;
+- replay real transcripts;
 - create phone monitoring authority;
+- create replay validation authority;
 - authorize real-time phone monitoring;
 - validate the phone-only simulator;
+- validate the synthetic replay scaffold;
 - validate Sal-Meter;
 - define CAIS compliance;
 - validate benchmark performance;
@@ -2181,6 +2765,7 @@ This repository does not attempt to:
 - certify production readiness;
 - operate a production mediation service;
 - operate a production phone-monitoring service;
+- operate a production replay service;
 - operate a production closed-loop intervention system;
 - authorize surveillance;
 - authorize real-time monitoring;
@@ -2198,6 +2783,10 @@ synthetic phone-only simulator scaffolding
 synthetic phone-session flow representation
 synthetic phone-session state-machine mockups
 synthetic sample phone-session scripts
+synthetic session replay scaffolding
+synthetic replay manifest structure
+synthetic replay event timeline structure
+synthetic replay boundary documentation
 boundary-language hygiene
 repository-level transparency
 ```
@@ -2211,7 +2800,9 @@ a therapeutic system
 a counseling system
 a surveillance system
 a real phone monitoring system
+a real session replay system
 a real transcript processing system
+a replay validation system
 a relationship-verdict system
 a human-ranking system
 a production closed-loop system
@@ -2223,7 +2814,7 @@ a CAIS compliance system
 Correct boundary sentence:
 
 ```text
-This repository is a public helper surface; it does not create evidence, validation, certification, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
+This repository is a public helper surface; it does not create evidence, validation, certification, replay validation, phone monitoring authority, production authority, relationship verdicts, or human-ranking authority.
 ```
 
 ---
@@ -2277,6 +2868,8 @@ It does not validate termination-gate accuracy.
 
 It does not validate the phone-only simulator.
 
+It does not validate the synthetic replay scaffold.
+
 It does not validate Sal-Meter.
 
 It does not grant CAIS compliance.
@@ -2323,11 +2916,29 @@ It does not authorize real phone recording.
 
 It does not authorize real transcript processing.
 
+It does not authorize real session replay.
+
+It does not authorize real phone replay.
+
+It does not authorize real transcript replay.
+
+It does not authorize replay validation.
+
 It does not authorize production mediation.
 
 It does not authorize production closed-loop intervention.
 
 A closed session must stay closed.
+
+A replay must not reopen a closed session.
+
+A replay must not continue mediation after closure.
+
+A replay must not generate new AI output after closure.
+
+A replay must not convert closure into recovery evidence.
+
+A replay must not convert audit into certification.
 
 The packet is not the person.
 
@@ -2344,6 +2955,14 @@ The phone-only simulator is not the phone call.
 The sample phone-session script is not a transcript.
 
 The phone-session state machine is not authority.
+
+The replay skeleton is a map of a map.
+
+The replay manifest is not a session.
+
+The replay event timeline is not the event.
+
+The replay boundary is not authority.
 
 The validator is not authority.
 
