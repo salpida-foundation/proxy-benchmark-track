@@ -1426,8 +1426,14 @@ Sal-Meter validation
 mediation validation
 dyadic recovery validation
 termination-gate accuracy validation
+AI output superiority
+real AI impact validation
+real human-state measurement
+real emotional recovery
+real relationship repair
 consciousness measurement
 human ranking
+relationship verdict
 psychological safety score
 AI harm diagnosis
 production closed-loop intervention
@@ -1435,7 +1441,7 @@ production closed-loop intervention
 
 Acceptable language:
 
-```text
+```
 synthetic baseline skeleton
 toy evaluation example
 leakage-safe split demonstration
@@ -1445,6 +1451,9 @@ helper-structure validation
 P3 helper-schema validation
 P4 synthetic demo-flow evaluation
 P4-3 synthetic termination-gate helper evaluation
+synthetic AI Output A/B consequence evaluator
+synthetic A/B consequence comparison
+synthetic preferred condition
 public boundary language lint
 wording hygiene check
 ```
@@ -1464,6 +1473,8 @@ A result from synthetic data may demonstrate:
 - P3 helper-schema mapping;
 - P4 demo-flow consistency;
 - P4-3 termination-gate helper consistency;
+- synthetic AI Output A/B consequence comparison;
+- synthetic scoring report format;
 - boundary flag discipline.
 
 A result from synthetic data must not claim:
@@ -1478,6 +1489,13 @@ A result from synthetic data must not claim:
 - mediation validity;
 - dyadic recovery validity;
 - termination-gate accuracy validity;
+- real AI superiority;
+- real AI impact validity;
+- real human-state measurement;
+- real emotional recovery;
+- real relationship repair;
+- relationship verdict authority;
+- human ranking authority;
 - Sal-Meter validity;
 - CAIS compliance;
 - production readiness;
