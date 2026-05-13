@@ -1,0 +1,79 @@
+{
+  "demo_name": "Phone-only synthetic mediation demo",
+  "demo_version": "v0.1",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "repository_surface": "public-helper",
+  "mode": "synthetic-only",
+  "input_session_file": "phone-only-simulator/synthetic_sessions/synthetic_phone_session_001.json",
+  "output_report_file": "phone-only-simulator/demo_output/demo_report_001.json",
+  "required_boundary_flags": {
+    "synthetic_only": true,
+    "real_participant_data": false,
+    "raw_human_data_included": false,
+    "real_phone_recording_included": false,
+    "real_call_transcript_included": false,
+    "real_session_log_included": false,
+    "clinical_data_included": false,
+    "diagnostic_data_included": false,
+    "therapeutic_data_included": false,
+    "counseling_data_included": false,
+    "surveillance_data_included": false,
+    "sal_meter_raw_input_included": false,
+    "cais_trace_data_included": false,
+    "production_intervention_log_included": false
+  },
+  "gate_rules": {
+    "recovery_gate": {
+      "type": "synthetic_helper_placeholder",
+      "pass_if_recovery_delta_gte": 0.2,
+      "hold_if_recovery_delta_between": [-0.1, 0.199],
+      "fail_if_recovery_delta_lt": -0.1,
+      "not_validation": true
+    },
+    "termination_gate": {
+      "type": "synthetic_helper_placeholder",
+      "require_session_closure": true,
+      "require_raw_data_excluded": true,
+      "require_real_participant_data_false": true,
+      "not_real_world_accuracy_validation": true
+    }
+  },
+  "report_fields": [
+    "session_id",
+    "synthetic_only",
+    "ai_output_condition",
+    "overload_delta",
+    "recovery_delta",
+    "relational_stability_delta",
+    "recovery_gate_status",
+    "termination_gate_status",
+    "session_closure_status",
+    "data_quality_flag",
+    "boundary_statement"
+  ],
+  "prohibited_output_fields": [
+    "real_name",
+    "phone_number",
+    "real_audio",
+    "real_call_transcript",
+    "real_session_log",
+    "clinical_note",
+    "diagnostic_label",
+    "therapeutic_interpretation",
+    "counseling_interpretation",
+    "surveillance_flag",
+    "relationship_verdict",
+    "human_score",
+    "human_rank",
+    "sal_meter_raw_input",
+    "cais_trace_data",
+    "production_intervention_log"
+  ],
+  "terminal_summary": {
+    "print_header": true,
+    "print_boundary_flags": true,
+    "print_gate_status": true,
+    "print_final_boundary": true
+  },
+  "final_boundary_statement": "This demo is synthetic-only and public-helper-only. It is not validation, not clinical, not diagnostic, not therapeutic, not counseling, not surveillance, not Sal-Meter, not CAIS compliance, not certification, not device readiness, not production readiness, and not production authority. A closed session must stay closed."
+}
