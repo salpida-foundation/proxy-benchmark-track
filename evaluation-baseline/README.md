@@ -24,7 +24,7 @@ It does not create clinical, diagnostic, therapeutic, counseling, surveillance, 
 
 ## 1. Purpose
 
-The purpose of this folder is to demonstrate how public synthetic proxy benchmark data may be loaded, checked, split, validated against helper schemas, evaluated through bounded synthetic demo-flow logic, and passed into transparent baseline modeling code.
+The purpose of this folder is to demonstrate how public synthetic proxy benchmark data may be loaded, checked, split, validated against helper schemas, evaluated through bounded synthetic demo-flow logic, compared through synthetic AI Output A/B consequence logic, and passed into transparent baseline modeling code.
 
 The first goal is not high model performance.
 
@@ -38,11 +38,15 @@ The fourth goal is a P3 helper-schema validator that confirms whether public syn
 
 The fifth goal is a P4-1 synthetic dyadic recovery delta evaluator that reads the P4-0 synthetic dyadic demo-flow objects and prints a bounded helper-only evaluation summary.
 
+The sixth goal is a synthetic AI Output A/B consequence evaluator that compares two synthetic AI output conditions using bounded synthetic consequence fields only.
+
 **This folder supports:**
 
 - synthetic/sample package validation;
 - P3 helper-schema validation;
 - P4 synthetic dyadic recovery demo-flow evaluation;
+- P4-3 synthetic termination-gate helper evaluation;
+- synthetic AI Output A/B consequence evaluation;
 - public boundary language checking;
 - schema-aligned file checks;
 - transparent baseline pipeline scaffolding;
@@ -65,9 +69,11 @@ The fifth goal is a P4-1 synthetic dyadic recovery delta evaluator that reads th
 - CAIS compliance claims;
 - certified benchmark claims;
 - mediation validation claims;
+- dyadic recovery validation claims;
+- termination-gate accuracy validation claims;
+- AI output superiority claims for real humans;
+- real AI impact validation;
 - production closed-loop claims.
-
----
 
 ## 2. Current files
 
@@ -81,6 +87,12 @@ evaluation-baseline/
   validate_p3_schemas.py
   evaluate_dyadic_recovery_demo.py
   evaluate_termination_gate_demo.py
+  ai_output_ab_consequence_config.json
+  synthetic_ab_inputs/
+    synthetic_ai_output_ab_001.json
+  evaluate_ai_output_ab.py
+  demo_output/
+    ai_output_ab_demo_report_001.json
   prohibited_terms.json
   boundary_lint.py
 ```
@@ -94,6 +106,10 @@ evaluation-baseline/
 | `validate_p3_schemas.py` | P3 helper-schema validator for synthetic dyadic helper files | Present |
 | `evaluate_dyadic_recovery_demo.py` | P4-1 synthetic dyadic recovery demo-flow evaluator | Present |
 | `evaluate_termination_gate_demo.py` | P4-3 synthetic termination gate helper evaluator | Present |
+| `ai_output_ab_consequence_config.json` | Configuration for the synthetic AI Output A/B consequence evaluator | Present |
+| `synthetic_ab_inputs/synthetic_ai_output_ab_001.json` | Synthetic-only A/B input object for AI output consequence comparison | Present |
+| `evaluate_ai_output_ab.py` | Synthetic AI Output A/B consequence evaluator | Present |
+| `demo_output/ai_output_ab_demo_report_001.json` | Example bounded A/B consequence evaluator demo report | Present |
 | `prohibited_terms.json` | Public boundary prohibited / risky wording list | Present |
 | `boundary_lint.py` | Public boundary language lint helper | Present |
 | `README.md` | Folder-level documentation and boundary notice | Current file |
@@ -388,6 +404,7 @@ The P4-1 evaluator uses Python standard-library JSON and path handling only, but
 | `validate_p3_schemas.py` | `python evaluation-baseline/validate_p3_schemas.py` | P3 synthetic dyadic helper-schema validation |
 | `evaluate_dyadic_recovery_demo.py` | `python evaluation-baseline/evaluate_dyadic_recovery_demo.py` | P4-1 synthetic dyadic recovery demo-flow evaluation |
 | `evaluate_termination_gate_demo.py` | `python evaluation-baseline/evaluate_termination_gate_demo.py` | P4-3 synthetic termination gate helper evaluation |
+| `evaluate_ai_output_ab.py` | `python evaluation-baseline/evaluate_ai_output_ab.py` | Synthetic AI Output A/B consequence evaluator |
 | `boundary_lint.py` | `python evaluation-baseline/boundary_lint.py` | Public boundary language lint |
 | `baseline_pipeline_skeleton.py` | `python evaluation-baseline/baseline_pipeline_skeleton.py` | Toy baseline flow demonstration |
 | `leakage_safe_split_example.py` | `python evaluation-baseline/leakage_safe_split_example.py` | Leakage-aware split demonstration |
@@ -401,6 +418,7 @@ python evaluation-baseline/validate_sample_package.py
 python evaluation-baseline/validate_p3_schemas.py
 python evaluation-baseline/evaluate_dyadic_recovery_demo.py
 python evaluation-baseline/evaluate_termination_gate_demo.py
+python evaluation-baseline/evaluate_ai_output_ab.py
 python evaluation-baseline/boundary_lint.py
 python evaluation-baseline/baseline_pipeline_skeleton.py
 python evaluation-baseline/leakage_safe_split_example.py
@@ -408,11 +426,11 @@ python evaluation-baseline/leakage_safe_split_example.py
 
 **Expected posture:**
 
-```text
 The original validator checks synthetic sample package structure.
 The P3 validator checks synthetic dyadic helper-schema structure.
 The P4-1 evaluator checks synthetic dyadic demo-flow consistency.
 The P4-3 evaluator checks synthetic termination-gate helper logic.
+The AI Output A/B evaluator checks synthetic consequence comparison logic only.
 The boundary lint helper checks public wording.
 The baseline skeleton demonstrates flow.
 The leakage example demonstrates split discipline.
@@ -420,8 +438,9 @@ The leakage example demonstrates split discipline.
 None of these outputs are benchmark evidence.
 None of these outputs are scientific validation.
 None of these outputs are mediation validation.
+None of these outputs prove real AI impact.
+None of these outputs prove one AI output is better for real humans.
 None of these outputs grant Sal-Meter validation or CAIS compliance.
-```
 
 ---
 
@@ -522,6 +541,50 @@ Synthetic termination gate result:
 - public boundary: preserved
 ```
 
+**AI Output A/B synthetic consequence evaluator:**
+
+```text
+SICS Human-State Proxy Benchmark Track
+AI Output A/B consequence evaluator demo v0.1
+
+Synthetic-only: true
+Real participant data: false
+Raw human data included: false
+
+Comparison: synthetic_ai_output_ab_001
+Condition A: generic_ai_response
+Condition B: recovery_aware_response
+
+Synthetic score A: -0.72
+Synthetic score B: 0.73
+Preferred synthetic condition: condition_b
+Reason: Condition B has a higher synthetic helper score than Condition A.
+Termination gate A: hold
+Termination gate B: pass
+
+This evaluator is public-helper-only.
+It is not validation.
+```
+
+**AI Output A/B evaluator boundary interpretation:**
+
+```text
+This output means only that a synthetic A/B comparison object was loaded,
+synthetic consequence fields were compared, and a bounded demo report was produced.
+
+It does not mean that one AI output is better for real humans.
+It does not validate real AI impact.
+It does not validate mediation effectiveness.
+It does not validate benchmark performance.
+It does not validate scientific truth.
+It does not validate Sal-Meter.
+It does not grant CAIS compliance.
+It does not process raw human data.
+It does not process identifiable human data.
+It does not process real conversations.
+It does not process clinical data.
+```
+
 **Boundary lint clean output:**
 
 ```text
@@ -541,23 +604,21 @@ This result does not validate benchmark performance, scientific truth, Sal-Meter
 ```text
 The synthetic sample package is internally consistent enough for public helper demonstration.
 ```
-
 or:
-
-```text
+```
 The public synthetic/sample P3 helper files follow the expected helper-schema structure.
 ```
-
 or:
-
-```text
+```
 The synthetic P4 demo-flow objects are internally consistent enough for public helper demonstration.
 ```
-
 or:
-
-```text
+```
 The synthetic P4-3 termination-gate cases are internally consistent enough for public helper demonstration.
+```
+or:
+```
+The synthetic AI Output A/B consequence evaluator can compare two synthetic AI output conditions using synthetic consequence fields only.
 ```
 
 **A PASS does not mean:**
@@ -571,6 +632,10 @@ The package proves mediation effectiveness.
 The package proves Sal-Meter readiness.
 The package proves CAIS compliance.
 The package proves scientific validity.
+The package proves one AI output is better for real humans.
+The package proves real AI impact.
+The package proves real emotional recovery.
+The package proves real relationship repair.
 ```
 
 **A FAIL usually means one of the following:**
@@ -586,10 +651,17 @@ The package proves scientific validity.
 - a boundary flag expected to be `false` is not false;
 - a boundary flag expected to be `true` is not true;
 - `synthetic_status_declared` is missing or not true;
-- the operator log is missing expected boundary phrases;
+- the operator log is missing expected boundary language;
 - filenames, field names, or enum values drifted from the helper schemas;
-- P4 demo-flow objects do not preserve expected recovery / termination / audit logic.
-- P4-3 termination-gate cases do not preserve expected pause / narrow / close / terminate / audit-only logic.
+- P4 demo-flow objects do not preserve expected recovery / termination / audit logic;
+- P4-3 termination-gate cases do not preserve expected pause / narrow / close / terminate / audit-only logic;
+- the synthetic A/B input cannot be parsed;
+- required A/B consequence fields are missing;
+- AI Output A or AI Output B is missing required synthetic consequence fields;
+- the A/B evaluator cannot compute synthetic helper scores;
+- the A/B evaluator cannot generate the A/B demo report;
+- an A/B boundary flag expected to be `false` is not false;
+- an A/B boundary flag expected to be `true` is not true.
 
 A FAIL is not a scientific failure.
 
@@ -597,7 +669,11 @@ A FAIL is not a benchmark failure.
 
 A FAIL is not a mediation failure.
 
-A FAIL is a structure, boundary, or demo-flow mismatch.
+A FAIL is not an AI superiority failure.
+
+A FAIL is not proof that one AI output is worse for real humans.
+
+A FAIL is a structure, boundary, schema, demo-flow, or synthetic evaluator mismatch.
 
 ---
 
@@ -743,6 +819,62 @@ It is not a mediation gate.
 It is not a Sal-Meter gate.
 
 It is not a CAIS compliance gate.
+
+**`evaluate_ai_output_ab.py` checks:**
+
+- required A/B evaluator config exists;
+- required synthetic A/B input exists;
+- JSON files can be parsed;
+- synthetic/sample status is explicit;
+- raw human data exclusion is explicit;
+- real participant data exclusion is explicit;
+- real conversation exclusion is explicit;
+- real phone recording exclusion is explicit;
+- real call transcript exclusion is explicit;
+- real session log exclusion is explicit;
+- clinical data exclusion is explicit;
+- diagnostic data exclusion is explicit;
+- therapeutic data exclusion is explicit;
+- counseling data exclusion is explicit;
+- surveillance data exclusion is explicit;
+- Sal-Meter input exclusion is explicit;
+- CAIS compliance exclusion is explicit;
+- benchmark validation exclusion is explicit;
+- mediation validation exclusion is explicit;
+- scientific truth validation exclusion is explicit;
+- AI Output A has synthetic consequence fields;
+- AI Output B has synthetic consequence fields;
+- synthetic overload deltas can be compared;
+- synthetic recovery deltas can be compared;
+- synthetic relational stability deltas can be compared;
+- synthetic termination gate statuses can be compared;
+- synthetic helper scores can be computed;
+- a synthetic preferred condition can be generated;
+- the A/B demo report can be written.
+
+The AI Output A/B evaluator is a synthetic consequence comparison helper.
+
+It is not an evidence gate.
+
+It is not a science gate.
+
+It is not a benchmark gate.
+
+It is not a mediation gate.
+
+It is not a Sal-Meter gate.
+
+It is not a CAIS compliance gate.
+
+It does not prove that one AI output is better for real humans.
+
+It does not validate real AI impact.
+
+It does not validate real human-state measurement.
+
+It does not create a relationship verdict.
+
+It does not create human ranking.
 
 ---
 
