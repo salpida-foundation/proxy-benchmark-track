@@ -51,5 +51,8 @@ jobs:
       - name: Run P4 termination gate demo evaluator
         run: python evaluation-baseline/evaluate_termination_gate_demo.py
 
+      - name: Run synthetic AI Output A/B consequence evaluator
+        run: python evaluation-baseline/evaluate_ai_output_ab.py
+
       - name: Run boundary language lint
         run: python evaluation-baseline/boundary_lint.py
