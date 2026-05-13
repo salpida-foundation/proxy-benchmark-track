@@ -1,0 +1,108 @@
+{
+  "session_id": "synthetic_phone_session_001",
+  "demo_version": "v0.1",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "surface": "phone-only-simulator",
+  "mode": "synthetic-only",
+  "boundary_flags": {
+    "synthetic_only": true,
+    "real_participant_data": false,
+    "raw_human_data_included": false,
+    "real_phone_recording_included": false,
+    "real_call_transcript_included": false,
+    "real_session_log_included": false,
+    "clinical_data_included": false,
+    "diagnostic_data_included": false,
+    "therapeutic_data_included": false,
+    "counseling_data_included": false,
+    "surveillance_data_included": false,
+    "sal_meter_raw_input_included": false,
+    "cais_trace_data_included": false,
+    "production_intervention_log_included": false
+  },
+  "synthetic_participants": {
+    "person_a": {
+      "label": "person_a",
+      "type": "synthetic_participant",
+      "real_person": false
+    },
+    "person_b": {
+      "label": "person_b",
+      "type": "synthetic_participant",
+      "real_person": false
+    }
+  },
+  "synthetic_conflict_scenario": {
+    "scenario_id": "synthetic_conflict_scenario_001",
+    "scenario_label": "minor_escalating_misunderstanding",
+    "scenario_type": "synthetic_dyadic_tension",
+    "description": "A synthetic two-person phone-only interaction in which a minor misunderstanding begins to escalate. No real transcript, recording, or participant data is included."
+  },
+  "session_flow": {
+    "session_created": true,
+    "consent_confirmed": true,
+    "packet_available": true,
+    "baseline_summary_available": true,
+    "ai_output_generated": true,
+    "post_output_summary_available": true,
+    "recovery_gate_reviewed": true,
+    "termination_gate_reviewed": true,
+    "session_closure_status": "closed",
+    "audit_log_written": true
+  },
+  "ai_output_condition": {
+    "condition_id": "recovery_aware_response",
+    "condition_type": "synthetic_ai_output",
+    "comparison_role": "demo_condition_b",
+    "description": "Synthetic recovery-aware AI output condition used only for public-helper demo structure."
+  },
+  "baseline_state_summary": {
+    "overload_score": 0.62,
+    "recovery_score": 0.31,
+    "relational_stability_score": 0.42,
+    "termination_readiness_score": 0.28,
+    "summary_type": "synthetic_baseline_summary"
+  },
+  "post_output_state_summary": {
+    "overload_score": 0.52,
+    "recovery_score": 0.59,
+    "relational_stability_score": 0.77,
+    "termination_readiness_score": 0.76,
+    "summary_type": "synthetic_post_output_summary"
+  },
+  "state_deltas": {
+    "overload_delta": -0.1,
+    "recovery_delta": 0.28,
+    "relational_stability_delta": 0.35,
+    "termination_readiness_delta": 0.48
+  },
+  "quality": {
+    "confidence_score": 0.82,
+    "data_quality_flag": "synthetic_demo_usable",
+    "raw_data_excluded": true,
+    "notes": "Synthetic helper values only. These values are not derived from real participants, phone calls, recordings, transcripts, clinical data, Sal-Meter input, or CAIS trace data."
+  },
+  "recovery_gate_input": {
+    "recovery_delta": 0.28,
+    "relational_stability_delta": 0.35,
+    "overload_delta": -0.1,
+    "expected_recovery_gate_status": "pass",
+    "helper_rule_note": "Expected pass because synthetic recovery_delta is greater than or equal to the configured pass threshold."
+  },
+  "termination_gate_input": {
+    "session_closure_requested": true,
+    "session_closure_status": "closed",
+    "raw_data_excluded": true,
+    "real_participant_data": false,
+    "expected_termination_gate_status": "pass",
+    "helper_rule_note": "Expected pass because the synthetic session is closed, raw data is excluded, and no real participant data is present."
+  },
+  "expected_demo_report": {
+    "report_id": "demo_report_001",
+    "expected_output_file": "phone-only-simulator/demo_output/demo_report_001.json",
+    "expected_recovery_gate_status": "pass",
+    "expected_termination_gate_status": "pass",
+    "expected_session_closure_status": "closed"
+  },
+  "boundary_statement": "This synthetic phone-only session is a public-helper demo input only. It is not real participant data, not a real phone recording, not a real call transcript, not a real session log, not clinical data, not diagnostic data, not therapeutic data, not counseling data, not surveillance data, not Sal-Meter input, not CAIS trace data, not validation, not certification, not device readiness, not production readiness, and not production authority. A closed session must stay closed."
+}
