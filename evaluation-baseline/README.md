@@ -168,7 +168,7 @@ If this GitHub release conflicts with a DOI-registered canonical record or forma
 
 ## 4. Expected sample inputs
 
-This folder currently supports three public synthetic/sample helper packages or helper-flow groups.
+This folder currently supports five public synthetic/sample helper packages or helper-flow groups.
 
 **Original synthetic sample package:**
 
@@ -250,13 +250,57 @@ It is not scientific validation.
 
 It is not Sal-Meter validation.
 
-It is not CAIS compliance.
+It is not CAIS compliance output.
 
 It does not contain raw human data.
 
 It does not contain identifiable human data.
 
 It does not contain clinical data.
+
+**P4-3 synthetic termination-gate helper package:**
+
+```text
+sample-data/synthetic-dyadic-session-001/
+  termination_gate_cases.json
+```
+
+This input is synthetic only.
+
+It is not real mediation data.
+
+It is not termination-gate accuracy evidence.
+
+It is not benchmark evidence.
+
+It is not Sal-Meter data.
+
+It is not CAIS compliance output.
+
+**Synthetic AI Output A/B consequence input group:**
+
+```text
+evaluation-baseline/
+  ai_output_ab_consequence_config.json
+  synthetic_ab_inputs/
+    synthetic_ai_output_ab_001.json
+```
+
+This input is synthetic only.
+
+It is not real AI impact data.
+
+It is not real conversation data.
+
+It is not real human-state evidence.
+
+It is not AI output superiority evidence.
+
+It is not benchmark evidence.
+
+It is not Sal-Meter data.
+
+It is not CAIS compliance output.
 
 ---
 
@@ -1518,6 +1562,7 @@ Run validate_sample_package.py automatically on push, pull request, or manual di
 Run validate_p3_schemas.py automatically as a P3 helper-schema validation step.
 Run evaluate_dyadic_recovery_demo.py automatically as a P4 synthetic dyadic demo-flow evaluation step.
 Run evaluate_termination_gate_demo.py automatically as a P4-3 synthetic termination-gate helper evaluation step.
+Run evaluate_ai_output_ab.py automatically as a synthetic AI Output A/B consequence evaluator step.
 Run boundary_lint.py as a public wording-boundary helper.
 ```
 
@@ -1528,6 +1573,7 @@ Run synthetic sample package validator
 Run P3 helper schema validator
 Run P4 synthetic dyadic recovery demo evaluator
 Run P4 termination gate demo evaluator
+Run synthetic AI Output A/B consequence evaluator
 Run boundary language lint
 ```
 
@@ -1555,6 +1601,7 @@ It does not create clinical, diagnostic, therapeutic, surveillance, certificatio
 - a successful run confirms public helper-structure validation only;
 - a successful run may confirm synthetic demo-flow consistency only;
 - a successful run may confirm synthetic termination-gate helper consistency only;
+- a successful run may confirm synthetic AI Output A/B consequence helper consistency only;
 - a successful run may confirm wording-boundary hygiene only;
 - a successful run does not validate benchmark performance, scientific truth, Sal-Meter, CAIS compliance, mediation effectiveness, dyadic recovery, termination-gate accuracy, clinical use, diagnostic use, therapeutic use, surveillance readiness, certification, device readiness, production readiness, or human-state truth measurement.
 
@@ -1567,6 +1614,7 @@ python evaluation-baseline/validate_sample_package.py
 python evaluation-baseline/validate_p3_schemas.py
 python evaluation-baseline/evaluate_dyadic_recovery_demo.py
 python evaluation-baseline/evaluate_termination_gate_demo.py
+python evaluation-baseline/evaluate_ai_output_ab.py
 python evaluation-baseline/boundary_lint.py
 ```
 
@@ -1639,6 +1687,14 @@ schemas/benchmark_session.schema.json
 
 ```text
 evaluation-baseline/evaluate_termination_gate_demo.py
+```
+
+**Required AI Output A/B files:**
+
+```text
+evaluation-baseline/ai_output_ab_consequence_config.json
+evaluation-baseline/synthetic_ab_inputs/synthetic_ai_output_ab_001.json
+evaluation-baseline/evaluate_ai_output_ab.py
 ```
 
 ---
