@@ -1,0 +1,76 @@
+{
+  "comparison_id": "synthetic_ai_output_ab_001",
+  "demo_version": "v0.1",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "surface": "evaluation-baseline",
+  "mode": "synthetic-only",
+  "boundary_flags": {
+    "synthetic_only": true,
+    "real_participant_data": false,
+    "raw_human_data_included": false,
+    "real_conversation_included": false,
+    "real_phone_recording_included": false,
+    "real_call_transcript_included": false,
+    "real_session_log_included": false,
+    "clinical_data_included": false,
+    "diagnostic_data_included": false,
+    "therapeutic_data_included": false,
+    "counseling_data_included": false,
+    "surveillance_data_included": false,
+    "sal_meter_raw_input_included": false,
+    "cais_trace_data_included": false,
+    "production_intervention_log_included": false
+  },
+  "synthetic_scenario": {
+    "scenario_id": "synthetic_dyadic_output_comparison_001",
+    "scenario_label": "minor_escalating_misunderstanding",
+    "scenario_type": "synthetic_dyadic_tension",
+    "description": "A synthetic two-person interaction context used only to compare two AI output conditions through synthetic consequence fields. No real conversation, recording, transcript, participant data, clinical data, Sal-Meter input, or CAIS trace data is included."
+  },
+  "ai_outputs": {
+    "condition_a": {
+      "output_condition_id": "generic_ai_response",
+      "comparison_role": "condition_a",
+      "output_type": "synthetic_ai_output_summary",
+      "output_summary": "A generic de-escalation response that acknowledges conflict but does not explicitly support recovery burden reduction or relational stabilization.",
+      "synthetic_consequence_fields": {
+        "overload_delta": 0.32,
+        "recovery_delta": -0.18,
+        "relational_stability_delta": -0.22,
+        "termination_gate_status": "hold"
+      }
+    },
+    "condition_b": {
+      "output_condition_id": "recovery_aware_response",
+      "comparison_role": "condition_b",
+      "output_type": "synthetic_ai_output_summary",
+      "output_summary": "A recovery-aware response that narrows scope, reduces escalation load, supports pause/repair language, and favors clean session closure.",
+      "synthetic_consequence_fields": {
+        "overload_delta": -0.1,
+        "recovery_delta": 0.28,
+        "relational_stability_delta": 0.35,
+        "termination_gate_status": "pass"
+      }
+    }
+  },
+  "quality": {
+    "confidence_score": 0.84,
+    "data_quality_flag": "synthetic_demo_usable",
+    "raw_data_excluded": true,
+    "notes": "All consequence values are synthetic helper values. They are not derived from real participants, real conversations, phone recordings, call transcripts, session logs, clinical data, Sal-Meter input, or CAIS trace data."
+  },
+  "expected_evaluator_result": {
+    "expected_preferred_condition": "condition_b",
+    "expected_preferred_output_condition_id": "recovery_aware_response",
+    "expected_preference_reason": "Condition B has lower synthetic overload burden, higher synthetic recovery delta, higher synthetic relational stability delta, and a pass termination gate status.",
+    "expected_termination_gate_summary": "condition_b_pass"
+  },
+  "expected_demo_report": {
+    "report_id": "ai_output_ab_demo_report_001",
+    "expected_output_file": "evaluation-baseline/demo_output/ai_output_ab_demo_report_001.json",
+    "expected_condition_a_id": "generic_ai_response",
+    "expected_condition_b_id": "recovery_aware_response",
+    "expected_preferred_synthetic_condition": "condition_b"
+  },
+  "boundary_statement": "This synthetic AI Output A/B comparison is a public-helper demo input only. It is not real participant data, not a real conversation, not a real phone recording, not a real call transcript, not a real session log, not clinical data, not diagnostic data, not therapeutic data, not counseling data, not surveillance data, not Sal-Meter input, not CAIS trace data, not validation, not benchmark validation, not mediation effectiveness validation, not scientific truth validation, not certification, not device readiness, not production readiness, and not production authority. A synthetic score must not be converted into a real human judgment."
+}
