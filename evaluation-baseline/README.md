@@ -1117,6 +1117,57 @@ Correct boundary sentence:
 A P4-3 evaluator result is a synthetic termination-gate helper consistency signal, not benchmark evidence.
 ```
 
+**AI Output A/B consequence evaluator boundary**
+
+The AI Output A/B evaluator reads:
+
+```text
+evaluation-baseline/ai_output_ab_consequence_config.json
+evaluation-baseline/synthetic_ab_inputs/synthetic_ai_output_ab_001.json
+```
+
+It may report:
+
+- synthetic score A;
+- synthetic score B;
+- preferred synthetic condition;
+- overload delta comparison;
+- recovery delta comparison;
+- relational stability delta comparison;
+- termination gate comparison;
+- public boundary preserved.
+
+It must not report:
+
+- real AI superiority;
+- real human-state impact;
+- real emotional recovery;
+- real relationship repair;
+- real mediation success;
+- clinical usefulness;
+- diagnostic readiness;
+- therapeutic readiness;
+- counseling readiness;
+- surveillance readiness;
+- benchmark validation;
+- scientific validation;
+- mediation effectiveness validation;
+- dyadic recovery validation;
+- termination-gate accuracy validation;
+- Sal-Meter validation;
+- CAIS compliance;
+- certification readiness;
+- device readiness;
+- production readiness;
+- relationship verdict;
+- human ranking.
+
+Correct boundary sentence:
+
+```text
+An AI Output A/B evaluator result is a synthetic consequence comparison signal, not benchmark evidence.
+```
+
 ---
 
 ## 13. Boundary language lint
