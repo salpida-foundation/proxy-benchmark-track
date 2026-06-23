@@ -1,0 +1,382 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://salpida.foundation/schemas/dyadic_recovery_event.schema.json",
+  "title": "Dyadic Recovery Event Helper Schema",
+  "description": "Public helper schema for recording synthetic or consent-bound minimal-summary dyadic recovery events in the Proxy Benchmark Track. This schema supports AI Output → Human-State Delta → Dyadic Recovery evaluation under research-stage, non-clinical, non-diagnostic, non-therapeutic, non-surveillance conditions. It does not authorize raw human data publication, clinical interpretation, certification, CAIS compliance, or Sal-Meter designation claims.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_type",
+    "event_id",
+    "session_id",
+    "dyad_id",
+    "scenario_id",
+    "event_timestamp",
+    "data_boundary",
+    "ai_output_reference",
+    "human_state_delta",
+    "dyadic_recovery_assessment",
+    "false_recovery_check",
+    "leakage_and_holdout_check",
+    "audit"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "event_type": {
+      "type": "string",
+      "const": "dyadic_recovery_event"
+    },
+    "event_id": {
+      "type": "string",
+      "description": "Unique event identifier. Recommended prefix: dre_.",
+      "pattern": "^dre_[A-Za-z0-9._-]+$"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Pseudonymous session identifier."
+    },
+    "dyad_id": {
+      "type": "string",
+      "description": "Pseudonymous dyad identifier. Must not contain real names, emails, phone numbers, medical record numbers, or direct identifiers."
+    },
+    "scenario_id": {
+      "type": "string",
+      "description": "Scenario or synthetic conflict-case identifier."
+    },
+    "event_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_stage": {
+      "type": "string",
+      "description": "Pipeline stage that generated this event.",
+      "enum": [
+        "post_output_delta",
+        "recovery_gate",
+        "termination_gate",
+        "synthetic_evaluator",
+        "manual_review_helper"
+      ]
+    },
+    "data_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "data_class",
+        "public_release_class",
+        "raw_human_data_included",
+        "personally_identifiable_data_included",
+        "clinical_interpretation_included",
+        "diagnostic_or_therapeutic_claim_included",
+        "surveillance_or_ranking_use_included",
+        "sal_meter_or_cais_compliance_claim_included"
+      ],
+      "properties": {
+        "data_class": {
+          "type": "string",
+          "enum": [
+            "synthetic",
+            "sample_non_identifiable",
+            "private_consent_bound_minimal_summary"
+          ]
+        },
+        "public_release_class": {
+          "type": "string",
+          "enum": [
+            "public_synthetic_only",
+            "public_sample_non_identifiable",
+            "private_not_for_public_release"
+          ]
+        },
+        "raw_human_data_included": {
+          "type": "boolean",
+          "const": false
+        },
+        "personally_identifiable_data_included": {
+          "type": "boolean",
+          "const": false
+        },
+        "clinical_interpretation_included": {
+          "type": "boolean",
+          "const": false
+        },
+        "diagnostic_or_therapeutic_claim_included": {
+          "type": "boolean",
+          "const": false
+        },
+        "surveillance_or_ranking_use_included": {
+          "type": "boolean",
+          "const": false
+        },
+        "sal_meter_or_cais_compliance_claim_included": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    },
+    "ai_output_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ai_output_id",
+        "model_condition"
+      ],
+      "properties": {
+        "ai_output_id": {
+          "type": "string",
+          "description": "Identifier for the AI output or intervention candidate being evaluated."
+        },
+        "model_condition": {
+          "type": "string",
+          "enum": [
+            "no_intervention",
+            "generic_ai",
+            "rule_based_mediation",
+            "human_state_aware_ai",
+            "human_mediator_reference",
+            "synthetic_stub"
+          ]
+        },
+        "output_quality_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Optional helper score for output quality. This score is not sufficient evidence of dyadic recovery."
+        }
+      }
+    },
+    "human_state_delta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "participant_a_direction",
+        "participant_b_direction",
+        "dyadic_direction",
+        "recovery_asymmetry"
+      ],
+      "properties": {
+        "participant_a_direction": {
+          "type": "string",
+          "enum": [
+            "improved",
+            "worsened",
+            "stable",
+            "unknown"
+          ]
+        },
+        "participant_b_direction": {
+          "type": "string",
+          "enum": [
+            "improved",
+            "worsened",
+            "stable",
+            "unknown"
+          ]
+        },
+        "participant_a_delta_score": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1,
+          "description": "Optional normalized helper-scale delta. Negative means deterioration, positive means improvement. Not a clinical score."
+        },
+        "participant_b_delta_score": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1,
+          "description": "Optional normalized helper-scale delta. Negative means deterioration, positive means improvement. Not a clinical score."
+        },
+        "dyadic_direction": {
+          "type": "string",
+          "enum": [
+            "toward_recovery",
+            "away_from_recovery",
+            "mixed",
+            "stable",
+            "unknown"
+          ]
+        },
+        "dyadic_tension_delta_score": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1,
+          "description": "Optional normalized helper-scale change in dyadic tension. Positive means movement toward lower tension under this helper convention."
+        },
+        "turn_taking_balance_delta_score": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "interruption_delta_score": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "mutual_restatement_success": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Whether both sides successfully restated the other's position in the synthetic/session structure."
+        },
+        "post_intervention_stability_delta_score": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "recovery_asymmetry": {
+          "type": "string",
+          "enum": [
+            "none_detected",
+            "participant_a_only_improved",
+            "participant_b_only_improved",
+            "one_improved_one_worsened",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "dyadic_recovery_assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recovery_label",
+        "recovery_confidence",
+        "gate_decision"
+      ],
+      "properties": {
+        "recovery_label": {
+          "type": "string",
+          "enum": [
+            "recovery_candidate",
+            "no_recovery",
+            "false_recovery",
+            "indeterminate"
+          ]
+        },
+        "recovery_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "gate_decision": {
+          "type": "string",
+          "enum": [
+            "continue_mediation",
+            "hold_no_termination",
+            "allow_termination",
+            "escalate_to_human_review",
+            "invalid_event"
+          ]
+        },
+        "termination_allowed": {
+          "type": "boolean",
+          "description": "Helper flag indicating whether the recovery/termination gate allows session closure. Must not be interpreted as clinical or counseling advice."
+        }
+      }
+    },
+    "false_recovery_check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "false_recovery_flags",
+        "false_recovery_detected"
+      ],
+      "properties": {
+        "false_recovery_detected": {
+          "type": "boolean"
+        },
+        "false_recovery_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "one_sided_recovery",
+              "one_improved_one_worsened",
+              "silence_misclassified_as_recovery",
+              "synchrony_overinterpreted",
+              "ai_output_quality_treated_as_sufficient",
+              "single_self_report_only",
+              "missing_post_state_summary",
+              "unresolved_recovery_asymmetry",
+              "coercive_or_surveillance_context",
+              "consent_boundary_missing",
+              "raw_data_boundary_violation",
+              "leakage_safe_holdout_not_satisfied"
+            ]
+          }
+        }
+      }
+    },
+    "leakage_and_holdout_check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "leakage_check_passed",
+        "holdout_tags"
+      ],
+      "properties": {
+        "leakage_check_passed": {
+          "type": "boolean"
+        },
+        "holdout_tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "person_holdout",
+              "dyad_holdout",
+              "scenario_holdout",
+              "session_date_holdout",
+              "ai_output_template_holdout",
+              "not_applicable_synthetic_demo"
+            ]
+          }
+        },
+        "leakage_notes": {
+          "type": "string"
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_by",
+        "created_at",
+        "schema_role",
+        "boundary_note"
+      ],
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "Human or script identifier. Must not include private participant identity."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "generator": {
+          "type": "string",
+          "description": "Optional script, evaluator, or manual helper name."
+        },
+        "schema_role": {
+          "type": "string",
+          "const": "public_helper_schema"
+        },
+        "boundary_note": {
+          "type": "string",
+          "const": "This event is a research-stage proxy benchmark helper object. It is not raw human data, not a diagnosis, not therapy, not counseling, not surveillance, not certification, not CAIS compliance, and not a Sal-Meter validation record."
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
