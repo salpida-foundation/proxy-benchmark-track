@@ -1,0 +1,187 @@
+{
+  "file_id": "expected_evaluator_output",
+  "package": "p2-ai-output-ab",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "surface": "public-helper",
+  "mode": "synthetic-only",
+  "expected_output_id": "p2_expected_evaluator_output_001",
+  "expected_output_type": "synthetic_ai_output_ab_consequence_helper_result",
+  "boundary_flags": {
+    "synthetic_only": true,
+    "public_helper_only": true,
+    "real_participant_data": false,
+    "raw_human_data_included": false,
+    "identifiable_human_data_included": false,
+    "real_conversation_included": false,
+    "real_phone_recording_included": false,
+    "real_call_transcript_included": false,
+    "real_session_log_included": false,
+    "clinical_data_included": false,
+    "diagnostic_data_included": false,
+    "therapeutic_data_included": false,
+    "counseling_data_included": false,
+    "surveillance_data_included": false,
+    "sal_meter_raw_input_included": false,
+    "cais_trace_data_included": false,
+    "production_intervention_log_included": false
+  },
+  "input_files_expected": [
+    "README.md",
+    "generic_ai_baseline.json",
+    "rule_based_mediation_baseline.json",
+    "state_aware_output_candidate.json",
+    "synthetic_baseline_packet.json",
+    "synthetic_post_output_packet_A.json",
+    "synthetic_post_output_packet_B.json",
+    "expected_evaluator_output.json"
+  ],
+  "comparison_conditions": {
+    "condition_A": {
+      "condition_id": "generic_ai_baseline",
+      "source_file": "generic_ai_baseline.json",
+      "role": "generic_ai_baseline"
+    },
+    "condition_B": {
+      "condition_id": "state_aware_output_candidate",
+      "source_file": "state_aware_output_candidate.json",
+      "role": "state_aware_candidate"
+    },
+    "secondary_baseline": {
+      "condition_id": "rule_based_mediation_baseline",
+      "source_file": "rule_based_mediation_baseline.json",
+      "role": "rule_based_baseline"
+    }
+  },
+  "expected_proxy_only_metrics": {
+    "generic_ai_baseline": {
+      "overload_delta": 0.32,
+      "recovery_burden_delta": -0.18,
+      "relational_stability_delta": -0.22,
+      "asymmetry_risk": "medium",
+      "false_recovery_risk": "medium",
+      "termination_readiness": "hold",
+      "audit_status": "synthetic_helper_complete"
+    },
+    "rule_based_mediation_baseline": {
+      "overload_delta": 0.12,
+      "recovery_burden_delta": 0.04,
+      "relational_stability_delta": 0.08,
+      "asymmetry_risk": "medium",
+      "false_recovery_risk": "medium",
+      "termination_readiness": "narrow",
+      "audit_status": "synthetic_helper_complete"
+    },
+    "state_aware_output_candidate": {
+      "overload_delta": -0.14,
+      "recovery_burden_delta": 0.34,
+      "relational_stability_delta": 0.38,
+      "asymmetry_risk": "low",
+      "false_recovery_risk": "low",
+      "termination_readiness": "close",
+      "audit_status": "synthetic_helper_complete"
+    }
+  },
+  "expected_comparison_result": {
+    "helper_result": "PASS",
+    "preferred_synthetic_condition": "state_aware_output_candidate",
+    "preferred_condition_source_file": "state_aware_output_candidate.json",
+    "secondary_position": "rule_based_mediation_baseline",
+    "lowest_position": "generic_ai_baseline",
+    "reason": "The state-aware output candidate shows lower synthetic overload direction, higher synthetic recovery-burden improvement, higher synthetic relational-stability direction, lower asymmetry risk, lower false-recovery risk, and stronger termination-readiness direction under this synthetic public-helper example."
+  },
+  "expected_metric_direction": {
+    "overload_delta": "lower_is_better",
+    "recovery_burden_delta": "higher_is_better",
+    "relational_stability_delta": "higher_is_better",
+    "asymmetry_risk": "lower_is_better",
+    "false_recovery_risk": "lower_is_better",
+    "termination_readiness": "closer_to_close_or_audit_only_is_better_when_session_scope_is_satisfied",
+    "audit_status": "synthetic_helper_complete_required"
+  },
+  "expected_output_fields_allowed": [
+    "overload_delta",
+    "recovery_burden_delta",
+    "relational_stability_delta",
+    "asymmetry_risk",
+    "false_recovery_risk",
+    "termination_readiness",
+    "audit_status"
+  ],
+  "prohibited_output_fields": [
+    "OE",
+    "RE",
+    "EE",
+    "VCE",
+    "CRI",
+    "CFI",
+    "clinical_score",
+    "diagnostic_score",
+    "therapeutic_score",
+    "emotion_score",
+    "person_score",
+    "relationship_score",
+    "relationship_verdict",
+    "Sal-Meter readiness",
+    "CAIS compliance",
+    "validated benchmark",
+    "validated mediation",
+    "certified status",
+    "production readiness"
+  ],
+  "regression_check_expectations": {
+    "all_required_files_present": true,
+    "all_boundary_flags_synthetic_only": true,
+    "all_boundary_flags_raw_human_data_false": true,
+    "all_boundary_flags_real_participant_data_false": true,
+    "all_outputs_proxy_only": true,
+    "no_oe_re_ee_terms": true,
+    "no_vce_cri_cfi_terms": true,
+    "no_sal_meter_claim": true,
+    "no_cais_compliance_claim": true,
+    "no_validation_claim": true,
+    "no_certification_claim": true,
+    "no_production_readiness_claim": true
+  },
+  "interpretation_boundary": {
+    "meaning": "This file represents the expected synthetic helper output for P2 AI Output A/B regression checking.",
+    "not_real_ai_impact_validation": true,
+    "not_real_human_state_measurement": true,
+    "not_dyadic_recovery_validation": true,
+    "not_mediation_validation": true,
+    "not_termination_gate_accuracy_validation": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_certification": true,
+    "not_device_readiness": true,
+    "not_production_readiness": true,
+    "not_production_authority": true
+  },
+  "prohibited_use": {
+    "must_not_be_used_for": [
+      "real participant interpretation",
+      "clinical interpretation",
+      "diagnostic interpretation",
+      "therapeutic recommendation",
+      "counseling recommendation",
+      "surveillance",
+      "emotion diagnosis",
+      "person scoring",
+      "relationship verdict",
+      "employment decision",
+      "insurance decision",
+      "legal decision",
+      "educational decision",
+      "Sal-Meter validation",
+      "CAIS compliance",
+      "benchmark validation",
+      "mediation validation",
+      "dyadic recovery validation",
+      "termination-gate accuracy validation",
+      "certification",
+      "device readiness",
+      "production readiness",
+      "production closed-loop authority"
+    ]
+  },
+  "correct_boundary_sentence": "This expected evaluator output is a synthetic public-helper regression object only; it does not create evidence, validation, certification, Sal-Meter status, CAIS compliance, mediation authority, phone monitoring authority, replay validation authority, production authority, relationship verdicts, or human-ranking authority."
+}
