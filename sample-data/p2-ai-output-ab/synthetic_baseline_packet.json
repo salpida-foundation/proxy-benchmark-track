@@ -1,0 +1,141 @@
+{
+  "file_id": "synthetic_baseline_packet",
+  "package": "p2-ai-output-ab",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "surface": "public-helper",
+  "mode": "synthetic-only",
+  "packet_id": "p2_synthetic_baseline_packet_001",
+  "packet_type": "synthetic_baseline_state_summary",
+  "packet_scope": "dyadic_pre_output_baseline",
+  "boundary_flags": {
+    "synthetic_only": true,
+    "public_helper_only": true,
+    "real_participant_data": false,
+    "raw_human_data_included": false,
+    "identifiable_human_data_included": false,
+    "real_conversation_included": false,
+    "real_phone_recording_included": false,
+    "real_call_transcript_included": false,
+    "real_session_log_included": false,
+    "clinical_data_included": false,
+    "diagnostic_data_included": false,
+    "therapeutic_data_included": false,
+    "counseling_data_included": false,
+    "surveillance_data_included": false,
+    "sal_meter_raw_input_included": false,
+    "cais_trace_data_included": false,
+    "production_intervention_log_included": false
+  },
+  "synthetic_context": {
+    "scenario_id": "p2_synthetic_dyadic_tension_001",
+    "scenario_label": "minor_escalating_misunderstanding",
+    "scenario_type": "synthetic_dyadic_tension",
+    "description": "A synthetic dyadic baseline context used only for public-helper AI Output A/B consequence comparison. No real participant, phone, transcript, clinical, Sal-Meter, CAIS, or production data is included."
+  },
+  "packet_constraints": {
+    "consent_bound": true,
+    "permission_bound": true,
+    "expiry_bound": true,
+    "session_scoped": true,
+    "sharing_scoped": true,
+    "raw_data_excluding": true,
+    "non_identifying": true,
+    "confidence_aware": true,
+    "data_quality_aware": true
+  },
+  "baseline_state_summary": {
+    "baseline_overload_level": "medium",
+    "baseline_recovery_burden_level": "medium_high",
+    "baseline_relational_stability_level": "low_medium",
+    "baseline_asymmetry_risk": "medium",
+    "baseline_false_recovery_risk": "medium",
+    "baseline_termination_readiness": "not_ready",
+    "baseline_audit_status": "synthetic_helper_complete"
+  },
+  "participant_proxy_summaries": {
+    "participant_A": {
+      "synthetic_participant_id": "synthetic_A",
+      "raw_data_excluded": true,
+      "identifiable_data_excluded": true,
+      "baseline_overload_level": "medium",
+      "baseline_recovery_burden_level": "medium_high",
+      "baseline_stability_direction": "unstable",
+      "baseline_private_state_exposure_risk": "medium"
+    },
+    "participant_B": {
+      "synthetic_participant_id": "synthetic_B",
+      "raw_data_excluded": true,
+      "identifiable_data_excluded": true,
+      "baseline_overload_level": "medium_high",
+      "baseline_recovery_burden_level": "medium",
+      "baseline_stability_direction": "unstable",
+      "baseline_private_state_exposure_risk": "medium"
+    }
+  },
+  "dyadic_proxy_summary": {
+    "dyadic_tension_level": "medium_high",
+    "turn_taking_balance": "uneven",
+    "repair_signal_presence": "weak",
+    "misunderstanding_persistence": "present",
+    "silence_as_recovery_risk": "medium",
+    "one_sided_relief_risk": "medium",
+    "coercion_or_erasure_risk": "low_medium",
+    "recommended_session_posture": "compare_outputs_before_intervention_claims"
+  },
+  "allowed_proxy_only_evaluator_fields": [
+    "overload_delta",
+    "recovery_burden_delta",
+    "relational_stability_delta",
+    "asymmetry_risk",
+    "false_recovery_risk",
+    "termination_readiness",
+    "audit_status"
+  ],
+  "interpretation_boundary": {
+    "meaning": "This file represents a synthetic pre-output baseline state-summary packet for public-helper regression checking.",
+    "not_the_person": true,
+    "not_the_body": true,
+    "not_raw_signal": true,
+    "not_diagnosis": true,
+    "not_therapy": true,
+    "not_counseling": true,
+    "not_emotion_reading": true,
+    "not_person_scoring": true,
+    "not_relationship_verdict": true,
+    "not_real_ai_impact_validation": true,
+    "not_real_human_state_measurement": true,
+    "not_dyadic_recovery_validation": true,
+    "not_mediation_validation": true,
+    "not_termination_gate_accuracy_validation": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_certification": true,
+    "not_device_readiness": true,
+    "not_production_readiness": true
+  },
+  "prohibited_use": {
+    "must_not_be_used_for": [
+      "real participant interpretation",
+      "clinical interpretation",
+      "diagnostic interpretation",
+      "therapeutic recommendation",
+      "counseling recommendation",
+      "surveillance",
+      "emotion diagnosis",
+      "person scoring",
+      "relationship verdict",
+      "employment decision",
+      "insurance decision",
+      "legal decision",
+      "educational decision",
+      "Sal-Meter validation",
+      "CAIS compliance",
+      "benchmark validation",
+      "mediation validation",
+      "certification",
+      "device readiness",
+      "production readiness"
+    ]
+  },
+  "correct_boundary_sentence": "This synthetic baseline packet is a public-helper pre-output state-summary object only; it does not expose raw human data, identify a person, diagnose a state, score a human, judge a relationship, validate mediation, create Sal-Meter status, grant CAIS compliance, certify a benchmark, or authorize production use."
+}
