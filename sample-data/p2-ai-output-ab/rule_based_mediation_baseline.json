@@ -1,0 +1,100 @@
+{
+  "file_id": "rule_based_mediation_baseline",
+  "package": "p2-ai-output-ab",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "surface": "public-helper",
+  "mode": "synthetic-only",
+  "condition_id": "rule_based_mediation_baseline",
+  "condition_role": "rule_based_baseline",
+  "condition_type": "fixed_rule_mediation_script_baseline",
+  "boundary_flags": {
+    "synthetic_only": true,
+    "public_helper_only": true,
+    "real_participant_data": false,
+    "raw_human_data_included": false,
+    "real_conversation_included": false,
+    "real_phone_recording_included": false,
+    "real_call_transcript_included": false,
+    "real_session_log_included": false,
+    "clinical_data_included": false,
+    "diagnostic_data_included": false,
+    "therapeutic_data_included": false,
+    "counseling_data_included": false,
+    "surveillance_data_included": false,
+    "sal_meter_raw_input_included": false,
+    "cais_trace_data_included": false,
+    "production_intervention_log_included": false
+  },
+  "synthetic_context": {
+    "scenario_id": "p2_synthetic_dyadic_tension_001",
+    "scenario_label": "minor_escalating_misunderstanding",
+    "scenario_type": "synthetic_dyadic_tension",
+    "description": "A synthetic dyadic interaction context used only for public-helper AI Output A/B consequence comparison. No real participant, phone, transcript, clinical, Sal-Meter, CAIS, or production data is included."
+  },
+  "ai_output": {
+    "output_id": "rule_based_mediation_baseline_output_001",
+    "output_label": "fixed rule-based mediation script",
+    "output_type": "synthetic_ai_output_summary",
+    "output_summary": "A fixed rule-based mediation script that asks each side to restate the other side's concern, reduce interruption, and pause before continuing, but does not use packet-informed recovery burden, asymmetry, false-recovery, or termination-readiness review.",
+    "intended_role": "comparison baseline only"
+  },
+  "proxy_only_consequence_fields": {
+    "overload_delta": 0.12,
+    "recovery_burden_delta": 0.04,
+    "relational_stability_delta": 0.08,
+    "asymmetry_risk": "medium",
+    "false_recovery_risk": "medium",
+    "termination_readiness": "narrow",
+    "audit_status": "synthetic_helper_complete"
+  },
+  "interpretation_boundary": {
+    "meaning": "This file represents a synthetic fixed-rule mediation baseline condition for public-helper regression checking.",
+    "not_legal_mediation": true,
+    "not_counseling": true,
+    "not_therapy": true,
+    "not_real_ai_impact_validation": true,
+    "not_real_human_state_measurement": true,
+    "not_dyadic_recovery_validation": true,
+    "not_mediation_validation": true,
+    "not_termination_gate_accuracy_validation": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_certification": true,
+    "not_device_readiness": true,
+    "not_production_readiness": true
+  },
+  "expected_use": {
+    "evaluator_role": "rule_based_baseline",
+    "allowed_comparison": "Compare against generic_ai_baseline and state_aware_output_candidate using proxy-only helper metrics.",
+    "allowed_metric_fields": [
+      "overload_delta",
+      "recovery_burden_delta",
+      "relational_stability_delta",
+      "asymmetry_risk",
+      "false_recovery_risk",
+      "termination_readiness",
+      "audit_status"
+    ]
+  },
+  "prohibited_use": {
+    "must_not_be_used_for": [
+      "real participant interpretation",
+      "clinical interpretation",
+      "diagnostic interpretation",
+      "therapeutic recommendation",
+      "counseling recommendation",
+      "legal mediation authority",
+      "surveillance",
+      "person scoring",
+      "relationship verdict",
+      "Sal-Meter validation",
+      "CAIS compliance",
+      "benchmark validation",
+      "mediation validation",
+      "certification",
+      "device readiness",
+      "production readiness"
+    ]
+  },
+  "correct_boundary_sentence": "This rule-based mediation baseline is a synthetic public-helper comparison condition only; it does not create evidence, validation, certification, legal mediation authority, Sal-Meter status, CAIS compliance, mediation authority, phone monitoring authority, replay validation authority, production authority, relationship verdicts, or human-ranking authority."
+}
