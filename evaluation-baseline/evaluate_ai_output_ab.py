@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """
 SICS Human-State Proxy Benchmark Track
-AI Output A/B consequence evaluator demo v0.1
+AI Output A/B consequence evaluator v0.2
 
-This script reads one synthetic-only AI Output A/B comparison JSON file,
-checks required public-boundary flags, computes placeholder synthetic
-consequence scores, selects a synthetic preferred condition, and writes
-a bounded demo report.
+This script reads the canonical synthetic P2 AI Output A/B package:
+
+  sample-data/p2-ai-output-ab/
+
+It checks required public-helper files, verifies boundary flags, extracts
+proxy-only consequence fields, compares the synthetic expected evaluator output,
+writes a bounded helper report, and prints a terminal summary.
 
 This is public-helper-only.
 
@@ -34,15 +37,36 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, List, Tuple
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = REPO_ROOT / "evaluation-baseline" / "ai_output_ab_consequence_config.json"
 
 
+RISK_ORDER = {
+    "low": 0,
+    "low_medium": 0.5,
+    "medium": 1,
+    "medium_high": 1.5,
+    "high": 2,
+    "unknown": 1,
+    "unresolved": 1
+}
+
+TERMINATION_ORDER = {
+    "continue": 0,
+    "hold": 0,
+    "narrow": 1,
+    "pause": 1,
+    "close": 2,
+    "audit_only": 2,
+    "terminate": 2,
+    "refresh_packet": 1
+}
+
+
 def load_json(path: Path) -> Dict[str, Any]:
-    """Load a JSON file as a dictionary."""
     if not path.exists():
         raise FileNotFoundError(f"Required file not found: {path}")
 
@@ -51,7 +75,6 @@ def load_json(path: Path) -> Dict[str, Any]:
 
 
 def write_json(path: Path, data: Dict[str, Any]) -> None:
-    """Write a dictionary as pretty-printed JSON."""
     path.parent.mkdir(parents=True, exist_ok=True)
 
     with path.open("w", encoding="utf-8") as file:
@@ -59,276 +82,435 @@ def write_json(path: Path, data: Dict[str, Any]) -> None:
         file.write("\n")
 
 
-def assert_required_boundary_flags(
-    comparison: Dict[str, Any],
-    required_flags: Dict[str, Any],
-) -> None:
-    """Confirm required safety / public-boundary flags."""
-    comparison_flags = comparison.get("boundary_flags", {})
-    missing_or_mismatched = []
+def assert_required_files(package_dir: Path, required_files: List[str]) -> List[str]:
+    missing = []
 
-    for key, expected_value in required_flags.items():
-        actual_value = comparison_flags.get(key)
+    for filename in required_files:
+        path = package_dir / filename
+        if not path.exists():
+            missing.append(filename)
 
-        if actual_value != expected_value:
-            missing_or_mismatched.append(
+    if missing:
+        raise FileNotFoundError(
+            "P2 package missing required files: " + ", ".join(missing)
+        )
+
+    return required_files
+
+
+def assert_boundary_flags(filename: str, data: Dict[str, Any]) -> None:
+    flags = data.get("boundary_flags", {})
+
+    required_true = {
+        "synthetic_only": True,
+        "public_helper_only": True
+    }
+
+    required_false = {
+        "real_participant_data": False,
+        "raw_human_data_included": False,
+        "real_conversation_included": False,
+        "real_phone_recording_included": False,
+        "real_call_transcript_included": False,
+        "real_session_log_included": False,
+        "clinical_data_included": False,
+        "diagnostic_data_included": False,
+        "therapeutic_data_included": False,
+        "counseling_data_included": False,
+        "surveillance_data_included": False,
+        "sal_meter_raw_input_included": False,
+        "cais_trace_data_included": False,
+        "production_intervention_log_included": False
+    }
+
+    errors = []
+
+    for key, expected in required_true.items():
+        actual = flags.get(key)
+        if actual is not expected:
+            errors.append(
                 {
+                    "file": filename,
                     "flag": key,
-                    "expected": expected_value,
-                    "actual": actual_value,
+                    "expected": expected,
+                    "actual": actual
                 }
             )
 
-    if missing_or_mismatched:
+    for key, expected in required_false.items():
+        actual = flags.get(key)
+        if actual is not expected:
+            errors.append(
+                {
+                    "file": filename,
+                    "flag": key,
+                    "expected": expected,
+                    "actual": actual
+                }
+            )
+
+    if errors:
         raise ValueError(
             "Boundary flag check failed: "
-            + json.dumps(missing_or_mismatched, indent=2)
+            + json.dumps(errors, indent=2, ensure_ascii=False)
         )
 
 
-def compute_synthetic_score(
-    consequence_fields: Dict[str, Any],
-    weights: Dict[str, float],
-) -> float:
-    """
-    Compute a synthetic helper score.
+def load_package(config: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
+    package_dir = REPO_ROOT / config["input_package_dir"]
+    required_files = config["required_files"]
 
-    Default formula:
-    score = (-1 * overload_delta) + recovery_delta + relational_stability_delta
+    assert_required_files(package_dir, required_files)
 
-    This score is not a validated psychological, clinical, therapeutic,
-    counseling, mediation, or human-state metric.
+    loaded = {}
+
+    for filename in required_files:
+        path = package_dir / filename
+
+        if filename.endswith(".json"):
+            loaded[filename] = load_json(path)
+
+    for filename, data in loaded.items():
+        assert_boundary_flags(filename, data)
+
+    return loaded
+
+
+def extract_condition_metrics(
+    package_data: Dict[str, Dict[str, Any]],
+    condition_files: Dict[str, str]
+) -> Dict[str, Dict[str, Any]]:
+    metrics = {}
+
+    for condition_id, filename in condition_files.items():
+        data = package_data[filename]
+        fields = data.get("proxy_only_consequence_fields")
+
+        if not isinstance(fields, dict):
+            raise ValueError(
+                f"{filename} does not contain proxy_only_consequence_fields"
+            )
+
+        metrics[condition_id] = fields
+
+    return metrics
+
+
+def assert_allowed_fields_only(
+    metrics: Dict[str, Dict[str, Any]],
+    allowed_fields: List[str]
+) -> None:
+    allowed = set(allowed_fields)
+    errors = []
+
+    for condition_id, fields in metrics.items():
+        field_set = set(fields.keys())
+
+        extra = sorted(field_set - allowed)
+        missing = sorted(allowed - field_set)
+
+        if extra or missing:
+            errors.append(
+                {
+                    "condition": condition_id,
+                    "extra_fields": extra,
+                    "missing_fields": missing
+                }
+            )
+
+    if errors:
+        raise ValueError(
+            "Proxy-only field check failed: "
+            + json.dumps(errors, indent=2, ensure_ascii=False)
+        )
+
+
+def assert_no_prohibited_output_fields(
+    metrics: Dict[str, Dict[str, Any]],
+    prohibited_fields: List[str]
+) -> None:
+    prohibited = set(prohibited_fields)
+    violations = []
+
+    for condition_id, fields in metrics.items():
+        for key in fields.keys():
+            if key in prohibited:
+                violations.append(
+                    {
+                        "condition": condition_id,
+                        "prohibited_field": key
+                    }
+                )
+
+    if violations:
+        raise ValueError(
+            "Prohibited output field detected: "
+            + json.dumps(violations, indent=2, ensure_ascii=False)
+        )
+
+
+def numeric(value: Any) -> float:
+    return float(value)
+
+
+def risk_penalty(value: Any) -> float:
+    return float(RISK_ORDER.get(str(value), 1))
+
+
+def termination_score(value: Any) -> float:
+    return float(TERMINATION_ORDER.get(str(value), 0))
+
+
+def compute_condition_score(fields: Dict[str, Any]) -> float:
     """
-    overload_delta = float(consequence_fields.get("overload_delta", 0.0))
-    recovery_delta = float(consequence_fields.get("recovery_delta", 0.0))
-    relational_stability_delta = float(
-        consequence_fields.get("relational_stability_delta", 0.0)
+    Synthetic helper score.
+
+    Higher is better.
+
+    This is not a validated psychological, clinical, therapeutic,
+    counseling, mediation, dyadic-recovery, or human-state metric.
+    """
+    overload_component = -1.0 * numeric(fields.get("overload_delta", 0.0))
+    recovery_component = numeric(fields.get("recovery_burden_delta", 0.0))
+    stability_component = numeric(fields.get("relational_stability_delta", 0.0))
+    asymmetry_component = -0.2 * risk_penalty(fields.get("asymmetry_risk"))
+    false_recovery_component = -0.2 * risk_penalty(
+        fields.get("false_recovery_risk")
+    )
+    termination_component = 0.1 * termination_score(
+        fields.get("termination_readiness")
     )
 
     return (
-        float(weights.get("overload_delta", -1.0)) * overload_delta
-        + float(weights.get("recovery_delta", 1.0)) * recovery_delta
-        + float(weights.get("relational_stability_delta", 1.0))
-        * relational_stability_delta
+        overload_component
+        + recovery_component
+        + stability_component
+        + asymmetry_component
+        + false_recovery_component
+        + termination_component
     )
 
 
-def compare_conditions(
-    condition_a: Dict[str, Any],
-    condition_b: Dict[str, Any],
-    score_a: float,
-    score_b: float,
-) -> Tuple[str, str]:
-    """Select a synthetic preferred condition using deterministic helper logic."""
-    fields_a = condition_a.get("synthetic_consequence_fields", {})
-    fields_b = condition_b.get("synthetic_consequence_fields", {})
+def rank_conditions(
+    metrics: Dict[str, Dict[str, Any]]
+) -> Tuple[List[Dict[str, Any]], str]:
+    ranked = []
 
-    if score_b > score_a:
-        return (
-            "condition_b",
-            "Condition B has a higher synthetic helper score than Condition A.",
+    for condition_id, fields in metrics.items():
+        score = compute_condition_score(fields)
+        ranked.append(
+            {
+                "condition_id": condition_id,
+                "synthetic_helper_score": round(score, 6),
+                "metrics": fields
+            }
         )
 
-    if score_a > score_b:
-        return (
-            "condition_a",
-            "Condition A has a higher synthetic helper score than Condition B.",
-        )
-
-    # Deterministic tie-breakers.
-    overload_a = float(fields_a.get("overload_delta", 0.0))
-    overload_b = float(fields_b.get("overload_delta", 0.0))
-
-    if overload_b < overload_a:
-        return (
-            "condition_b",
-            "Scores tied; Condition B has lower synthetic overload delta.",
-        )
-
-    if overload_a < overload_b:
-        return (
-            "condition_a",
-            "Scores tied; Condition A has lower synthetic overload delta.",
-        )
-
-    recovery_a = float(fields_a.get("recovery_delta", 0.0))
-    recovery_b = float(fields_b.get("recovery_delta", 0.0))
-
-    if recovery_b > recovery_a:
-        return (
-            "condition_b",
-            "Scores tied; Condition B has higher synthetic recovery delta.",
-        )
-
-    if recovery_a > recovery_b:
-        return (
-            "condition_a",
-            "Scores tied; Condition A has higher synthetic recovery delta.",
-        )
-
-    termination_a = fields_a.get("termination_gate_status")
-    termination_b = fields_b.get("termination_gate_status")
-
-    if termination_b == "pass" and termination_a != "pass":
-        return (
-            "condition_b",
-            "Scores tied; Condition B has pass termination gate status.",
-        )
-
-    if termination_a == "pass" and termination_b != "pass":
-        return (
-            "condition_a",
-            "Scores tied; Condition A has pass termination gate status.",
-        )
-
-    return (
-        "tie",
-        "Synthetic helper scores and deterministic tie-breakers did not identify a preferred condition.",
+    ranked.sort(
+        key=lambda item: item["synthetic_helper_score"],
+        reverse=True
     )
 
+    preferred = ranked[0]["condition_id"] if ranked else "unresolved"
 
-def build_demo_report(
-    config: Dict[str, Any],
-    comparison: Dict[str, Any],
-    score_a: float,
-    score_b: float,
+    return ranked, preferred
+
+
+def compare_expected(
+    metrics: Dict[str, Dict[str, Any]],
     preferred_condition: str,
-    preference_reason: str,
+    expected: Dict[str, Any]
+) -> Tuple[str, List[str]]:
+    messages = []
+
+    expected_metrics = expected.get("expected_proxy_only_metrics", {})
+    expected_result = expected.get("expected_comparison_result", {})
+    expected_preferred = expected_result.get("preferred_synthetic_condition")
+
+    for condition_id, expected_fields in expected_metrics.items():
+        actual_fields = metrics.get(condition_id)
+
+        if actual_fields is None:
+            messages.append(f"Missing actual metrics for {condition_id}")
+            continue
+
+        for field_name, expected_value in expected_fields.items():
+            actual_value = actual_fields.get(field_name)
+
+            if actual_value != expected_value:
+                messages.append(
+                    f"{condition_id}.{field_name} expected "
+                    f"{expected_value!r}, got {actual_value!r}"
+                )
+
+    if preferred_condition != expected_preferred:
+        messages.append(
+            f"Preferred condition expected {expected_preferred!r}, "
+            f"got {preferred_condition!r}"
+        )
+
+    if messages:
+        return "REVISE", messages
+
+    return "PASS", ["Expected synthetic helper output matched."]
+
+
+def build_report(
+    config: Dict[str, Any],
+    metrics: Dict[str, Dict[str, Any]],
+    ranked: List[Dict[str, Any]],
+    preferred_condition: str,
+    helper_result: str,
+    result_messages: List[str],
+    expected: Dict[str, Any]
 ) -> Dict[str, Any]:
-    """Build a bounded synthetic A/B consequence demo report."""
-    ai_outputs = comparison.get("ai_outputs", {})
-    condition_a = ai_outputs.get("condition_a", {})
-    condition_b = ai_outputs.get("condition_b", {})
-
-    fields_a = condition_a.get("synthetic_consequence_fields", {})
-    fields_b = condition_b.get("synthetic_consequence_fields", {})
-    quality = comparison.get("quality", {})
-
     return {
-        "report_id": "ai_output_ab_demo_report_001",
-        "evaluator_name": config.get(
-            "evaluator_name", "AI Output A/B consequence evaluator"
-        ),
-        "evaluator_version": config.get("evaluator_version", "v0.1"),
-        "track": config.get("track", "SICS Human-State Proxy Benchmark Track"),
-        "repository_surface": config.get("repository_surface", "public-helper"),
-        "mode": config.get("mode", "synthetic-only"),
-        "comparison_id": comparison.get("comparison_id"),
-        "synthetic_only": comparison.get("boundary_flags", {}).get("synthetic_only"),
-        "condition_a_id": condition_a.get("output_condition_id"),
-        "condition_b_id": condition_b.get("output_condition_id"),
-        "overload_delta_a": fields_a.get("overload_delta"),
-        "overload_delta_b": fields_b.get("overload_delta"),
-        "recovery_delta_a": fields_a.get("recovery_delta"),
-        "recovery_delta_b": fields_b.get("recovery_delta"),
-        "relational_stability_delta_a": fields_a.get("relational_stability_delta"),
-        "relational_stability_delta_b": fields_b.get("relational_stability_delta"),
-        "termination_gate_status_a": fields_a.get("termination_gate_status"),
-        "termination_gate_status_b": fields_b.get("termination_gate_status"),
-        "synthetic_score_a": round(score_a, 6),
-        "synthetic_score_b": round(score_b, 6),
+        "report_id": "p2_ai_output_ab_evaluator_result",
+        "evaluator_name": config.get("evaluator_name"),
+        "evaluator_version": config.get("evaluator_version"),
+        "track": config.get("track"),
+        "repository_surface": config.get("repository_surface"),
+        "mode": config.get("mode"),
+        "input_package_dir": config.get("input_package_dir"),
+        "helper_result": helper_result,
         "preferred_synthetic_condition": preferred_condition,
-        "preference_reason": preference_reason,
-        "data_quality_flag": quality.get("data_quality_flag"),
-        "raw_data_excluded": quality.get("raw_data_excluded"),
-        "boundary_statement": config.get(
-            "final_boundary_statement",
-            "This evaluator is synthetic-only and public-helper-only. It is not validation.",
-        ),
+        "ranked_conditions": ranked,
+        "proxy_only_metrics": metrics,
+        "expected_preferred_synthetic_condition": expected
+        .get("expected_comparison_result", {})
+        .get("preferred_synthetic_condition"),
+        "result_messages": result_messages,
+        "allowed_proxy_only_fields": config.get("allowed_proxy_only_fields"),
         "non_claims": {
             "not_validation": True,
+            "not_real_ai_impact_validation": True,
+            "not_real_human_state_measurement": True,
             "not_benchmark_validation": True,
-            "not_mediation_effectiveness_validation": True,
-            "not_scientific_truth_validation": True,
-            "not_sal_meter_validation": True,
+            "not_mediation_validation": True,
+            "not_dyadic_recovery_validation": True,
+            "not_termination_gate_accuracy_validation": True,
+            "not_sal_meter": True,
             "not_cais_compliance": True,
             "not_certification": True,
             "not_device_readiness": True,
             "not_production_readiness": True,
-            "not_production_closed_loop_authority": True
-        }
+            "not_production_authority": True
+        },
+        "boundary_statement": (
+            "This evaluator reads a synthetic public-helper P2 AI Output A/B "
+            "package and compares proxy-only helper metrics. It does not create "
+            "evidence, validation, certification, Sal-Meter status, CAIS "
+            "compliance, mediation authority, phone monitoring authority, "
+            "replay validation authority, production authority, relationship "
+            "verdicts, or human-ranking authority."
+        )
     }
 
 
 def print_terminal_summary(report: Dict[str, Any]) -> None:
-    """Print the short public-helper terminal summary."""
     print("SICS Human-State Proxy Benchmark Track")
-    print("AI Output A/B consequence evaluator demo v0.1")
+    print("AI Output A/B consequence evaluator v0.2")
     print()
-    print(f"Synthetic-only: {str(report.get('synthetic_only')).lower()}")
-    print("Real participant data: false")
-    print(f"Raw human data included: {str(not report.get('raw_data_excluded')).lower()}")
+    print(f"Input package: {report.get('input_package_dir')}")
+    print(f"Helper result: {report.get('helper_result')}")
+    print(
+        "Preferred synthetic condition: "
+        f"{report.get('preferred_synthetic_condition')}"
+    )
     print()
-    print(f"Comparison: {report.get('comparison_id')}")
-    print(f"Condition A: {report.get('condition_a_id')}")
-    print(f"Condition B: {report.get('condition_b_id')}")
-    print()
-    print(f"Synthetic score A: {report.get('synthetic_score_a')}")
-    print(f"Synthetic score B: {report.get('synthetic_score_b')}")
-    print(f"Preferred synthetic condition: {report.get('preferred_synthetic_condition')}")
-    print(f"Reason: {report.get('preference_reason')}")
-    print(f"Termination gate A: {report.get('termination_gate_status_a')}")
-    print(f"Termination gate B: {report.get('termination_gate_status_b')}")
+    print("Ranked conditions:")
+
+    for item in report.get("ranked_conditions", []):
+        print(
+            "- "
+            + item["condition_id"]
+            + f" | synthetic_helper_score={item['synthetic_helper_score']}"
+        )
+
     print()
     print("This evaluator is public-helper-only.")
+    print("It is synthetic-only.")
     print("It is not validation.")
+    print("It is not Sal-Meter.")
+    print("It is not CAIS compliance.")
+    print("It is not production readiness.")
 
 
 def main() -> int:
-    """Run the v0.1 synthetic-only AI Output A/B consequence evaluator."""
     try:
         config = load_json(CONFIG_PATH)
 
-        input_file = REPO_ROOT / config["input_file"]
-        output_report_file = REPO_ROOT / config["output_report_file"]
+        package_data = load_package(config)
 
-        comparison = load_json(input_file)
+        condition_files = config["condition_files"]
+        expected_output_file = config["expected_output_file"]
+        allowed_fields = config["allowed_proxy_only_fields"]
+        prohibited_fields = config.get("prohibited_output_fields", [])
 
-        assert_required_boundary_flags(
-            comparison=comparison,
-            required_flags=config.get("required_boundary_flags", {}),
+        metrics = extract_condition_metrics(
+            package_data=package_data,
+            condition_files=condition_files
         )
 
-        ai_outputs = comparison.get("ai_outputs", {})
-        condition_a = ai_outputs.get("condition_a", {})
-        condition_b = ai_outputs.get("condition_b", {})
+        assert_allowed_fields_only(metrics, allowed_fields)
+        assert_no_prohibited_output_fields(metrics, prohibited_fields)
 
-        fields_a = condition_a.get("synthetic_consequence_fields", {})
-        fields_b = condition_b.get("synthetic_consequence_fields", {})
+        expected = package_data[expected_output_file]
 
-        weights = config.get("scoring_rule", {}).get("weights", {})
+        ranked, preferred_condition = rank_conditions(metrics)
 
-        score_a = compute_synthetic_score(fields_a, weights)
-        score_b = compute_synthetic_score(fields_b, weights)
-
-        preferred_condition, preference_reason = compare_conditions(
-            condition_a=condition_a,
-            condition_b=condition_b,
-            score_a=score_a,
-            score_b=score_b,
-        )
-
-        report = build_demo_report(
-            config=config,
-            comparison=comparison,
-            score_a=score_a,
-            score_b=score_b,
+        helper_result, result_messages = compare_expected(
+            metrics=metrics,
             preferred_condition=preferred_condition,
-            preference_reason=preference_reason,
+            expected=expected
         )
 
+        report = build_report(
+            config=config,
+            metrics=metrics,
+            ranked=ranked,
+            preferred_condition=preferred_condition,
+            helper_result=helper_result,
+            result_messages=result_messages,
+            expected=expected
+        )
+
+        output_report_file = REPO_ROOT / config["output_report_file"]
         write_json(output_report_file, report)
 
-        if config.get("terminal_summary", {}).get("print_header", True):
-            print_terminal_summary(report)
-
+        print_terminal_summary(report)
         print()
-        print(f"Demo report written to: {output_report_file.relative_to(REPO_ROOT)}")
+        print(f"Report written to: {output_report_file.relative_to(REPO_ROOT)}")
+
+        if helper_result != "PASS":
+            return 1
 
         return 0
 
     except Exception as error:
-        print("AI Output A/B consequence evaluator demo failed.", file=sys.stderr)
+        failure_report = {
+            "report_id": "p2_ai_output_ab_evaluator_result",
+            "helper_result": "FAIL",
+            "error": str(error),
+            "boundary_statement": (
+                "Failure indicates helper-structure or regression inconsistency "
+                "only. It does not create evidence, validation, certification, "
+                "Sal-Meter status, CAIS compliance, device readiness, or "
+                "production readiness."
+            )
+        }
+
+        try:
+            config = load_json(CONFIG_PATH)
+            output_report_file = REPO_ROOT / config.get(
+                "output_report_file",
+                "evaluation-baseline/demo_output/p2_ai_output_ab_evaluator_result.json"
+            )
+            write_json(output_report_file, failure_report)
+        except Exception:
+            pass
+
+        print("AI Output A/B consequence evaluator failed.", file=sys.stderr)
         print(str(error), file=sys.stderr)
         return 1
 
