@@ -1,0 +1,158 @@
+{
+  "file_id": "synthetic_post_output_packet_B",
+  "package": "p2-ai-output-ab",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "surface": "public-helper",
+  "mode": "synthetic-only",
+  "packet_id": "p2_synthetic_post_output_packet_B_001",
+  "packet_type": "synthetic_post_output_state_summary",
+  "packet_scope": "dyadic_post_output_condition_B",
+  "linked_condition": {
+    "condition_id": "state_aware_output_candidate",
+    "condition_role": "candidate",
+    "source_file": "state_aware_output_candidate.json"
+  },
+  "boundary_flags": {
+    "synthetic_only": true,
+    "public_helper_only": true,
+    "real_participant_data": false,
+    "raw_human_data_included": false,
+    "identifiable_human_data_included": false,
+    "real_conversation_included": false,
+    "real_phone_recording_included": false,
+    "real_call_transcript_included": false,
+    "real_session_log_included": false,
+    "clinical_data_included": false,
+    "diagnostic_data_included": false,
+    "therapeutic_data_included": false,
+    "counseling_data_included": false,
+    "surveillance_data_included": false,
+    "sal_meter_raw_input_included": false,
+    "cais_trace_data_included": false,
+    "production_intervention_log_included": false
+  },
+  "synthetic_context": {
+    "scenario_id": "p2_synthetic_dyadic_tension_001",
+    "scenario_label": "minor_escalating_misunderstanding",
+    "scenario_type": "synthetic_dyadic_tension",
+    "description": "A synthetic post-output helper packet for Condition B after a state-aware output candidate. No real participant, phone, transcript, clinical, Sal-Meter, CAIS, or production data is included."
+  },
+  "packet_constraints": {
+    "consent_bound": true,
+    "permission_bound": true,
+    "expiry_bound": true,
+    "session_scoped": true,
+    "sharing_scoped": true,
+    "raw_data_excluding": true,
+    "non_identifying": true,
+    "confidence_aware": true,
+    "data_quality_aware": true
+  },
+  "post_output_state_summary": {
+    "condition_id": "state_aware_output_candidate",
+    "post_output_overload_level": "low_medium",
+    "post_output_recovery_burden_level": "low_medium",
+    "post_output_relational_stability_level": "medium_high",
+    "post_output_asymmetry_risk": "low",
+    "post_output_false_recovery_risk": "low",
+    "post_output_termination_readiness": "close",
+    "post_output_audit_status": "synthetic_helper_complete"
+  },
+  "proxy_only_delta_from_baseline": {
+    "overload_delta": -0.14,
+    "recovery_burden_delta": 0.34,
+    "relational_stability_delta": 0.38,
+    "asymmetry_risk": "low",
+    "false_recovery_risk": "low",
+    "termination_readiness": "close",
+    "audit_status": "synthetic_helper_complete"
+  },
+  "participant_proxy_summaries": {
+    "participant_A": {
+      "synthetic_participant_id": "synthetic_A",
+      "raw_data_excluded": true,
+      "identifiable_data_excluded": true,
+      "post_output_overload_level": "low_medium",
+      "post_output_recovery_burden_level": "low_medium",
+      "post_output_stability_direction": "more_stable",
+      "private_state_exposure_risk": "low",
+      "silence_as_recovery_risk": "low"
+    },
+    "participant_B": {
+      "synthetic_participant_id": "synthetic_B",
+      "raw_data_excluded": true,
+      "identifiable_data_excluded": true,
+      "post_output_overload_level": "medium",
+      "post_output_recovery_burden_level": "low_medium",
+      "post_output_stability_direction": "more_stable",
+      "private_state_exposure_risk": "low",
+      "silence_as_recovery_risk": "low"
+    }
+  },
+  "dyadic_proxy_summary": {
+    "dyadic_tension_level": "medium_low",
+    "turn_taking_balance": "improving",
+    "repair_signal_presence": "present",
+    "misunderstanding_persistence": "reduced",
+    "one_sided_relief_risk": "low",
+    "coercion_or_erasure_risk": "low",
+    "false_recovery_note": "The state-aware output candidate reduces overload, improves recovery burden direction, lowers asymmetry risk, and avoids treating silence alone as recovery in this synthetic helper example.",
+    "recommended_session_posture": "close_or_audit_only"
+  },
+  "allowed_proxy_only_evaluator_fields": [
+    "overload_delta",
+    "recovery_burden_delta",
+    "relational_stability_delta",
+    "asymmetry_risk",
+    "false_recovery_risk",
+    "termination_readiness",
+    "audit_status"
+  ],
+  "interpretation_boundary": {
+    "meaning": "This file represents a synthetic post-output state-summary packet for Condition B in public-helper regression checking.",
+    "not_the_person": true,
+    "not_the_body": true,
+    "not_raw_signal": true,
+    "not_diagnosis": true,
+    "not_therapy": true,
+    "not_counseling": true,
+    "not_emotion_reading": true,
+    "not_person_scoring": true,
+    "not_relationship_verdict": true,
+    "not_real_ai_impact_validation": true,
+    "not_real_human_state_measurement": true,
+    "not_dyadic_recovery_validation": true,
+    "not_mediation_validation": true,
+    "not_termination_gate_accuracy_validation": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_certification": true,
+    "not_device_readiness": true,
+    "not_production_readiness": true
+  },
+  "prohibited_use": {
+    "must_not_be_used_for": [
+      "real participant interpretation",
+      "clinical interpretation",
+      "diagnostic interpretation",
+      "therapeutic recommendation",
+      "counseling recommendation",
+      "surveillance",
+      "emotion diagnosis",
+      "person scoring",
+      "relationship verdict",
+      "employment decision",
+      "insurance decision",
+      "legal decision",
+      "educational decision",
+      "Sal-Meter validation",
+      "CAIS compliance",
+      "benchmark validation",
+      "mediation validation",
+      "certification",
+      "device readiness",
+      "production readiness"
+    ]
+  },
+  "correct_boundary_sentence": "This synthetic post-output packet for Condition B is a public-helper state-summary object only; it does not expose raw human data, identify a person, diagnose a state, score a human, judge a relationship, validate mediation, create Sal-Meter status, grant CAIS compliance, certify a benchmark, or authorize production use."
+}
