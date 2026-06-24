@@ -1,0 +1,69 @@
+{
+  "packet_id": "p3_true_recovery_candidate_001_post_output_B",
+  "session_id": "p3_true_recovery_candidate_001",
+  "participant_role": "participant_B",
+  "timestamp_created": "2026-06-24T11:10:00Z",
+  "timestamp_expiry": "2026-06-24T11:40:00Z",
+  "time_window": {
+    "start_time": "2026-06-24T11:05:00Z",
+    "end_time": "2026-06-24T11:10:00Z",
+    "duration_sec": 300
+  },
+  "state_summary": {
+    "arousal_band": "medium",
+    "regulation_trend": "improving",
+    "recovery_trend": "toward_recovery",
+    "overload_risk": "low",
+    "withdrawal_risk": "low",
+    "engagement_band": "present",
+    "uncertainty_state": "low_uncertainty"
+  },
+  "confidence_band": "medium",
+  "data_quality": {
+    "quality_band": "synthetic_demo",
+    "artifact_flag": false,
+    "missingness": "none",
+    "sensor_availability": [
+      "synthetic_source",
+      "self_check",
+      "interaction_timing"
+    ],
+    "packet_completeness": "complete",
+    "review_required": false
+  },
+  "permission_scope": "synthetic_example_only",
+  "sharing_scope": "synthetic_public_example",
+  "output_mode": "recovery_check",
+  "session_scope": {
+    "session_type": "synthetic_demo",
+    "session_phase": "post_output",
+    "permitted_use": "schema_validation",
+    "closure_required": true,
+    "reuse_allowed": false
+  },
+  "synthetic_flag": true,
+  "raw_data_excluded": true,
+  "audit_timestamp": "2026-06-24T11:10:00Z",
+  "boundary": {
+    "research_stage": true,
+    "non_clinical": true,
+    "non_diagnostic": true,
+    "non_therapeutic": true,
+    "non_surveillance": true,
+    "non_counseling": true,
+    "raw_data_non_public": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_validated_mediation": true,
+    "not_production_intervention": true,
+    "no_human_ranking": true,
+    "no_relationship_verdict": true
+  },
+  "references": {
+    "ai_output_reference": "p3_true_recovery_candidate_001_ai_output",
+    "pre_output_reference": "p3_true_recovery_candidate_001_baseline_B",
+    "delta_reference": "p3_true_recovery_candidate_001_delta_B",
+    "recovery_gate_reference": "p3_true_recovery_candidate_001_recovery_event"
+  },
+  "public_notes": "Synthetic post-output packet for participant B in a true-recovery-candidate case. Compared with the baseline packet, this helper object represents lower burden and movement toward recovery while preserving engagement. It does not create a person score, diagnosis, therapy claim, or relationship verdict."
+}
