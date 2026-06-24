@@ -105,20 +105,34 @@ It does not process CAIS compliance dossiers.
 It does not create certification, device readiness, production readiness, or deployment authority.
 """
 
+# Headings, keys, and local text markers that indicate a boundary-warning,
+# prohibited-claim, non-goal, negative-example, or exclusion context.
 ALLOWED_CONTEXT_MARKERS = [
     "prohibited terms",
     "prohibited claims",
     "prohibited content",
     "prohibited phrasing",
+    "prohibited outputs",
+    "prohibited_output",
+    "forbidden outputs",
+    "forbidden_outputs",
+    "forbidden meaning",
+    "forbidden_meaning",
     "must not imply",
     "must not contain",
     "must not include",
+    "must not be",
+    "must not",
     "non-goals",
     "non goals",
     "non-goal",
+    "non goal",
     "boundary",
     "public boundary",
     "final boundary",
+    "claim boundary",
+    "language boundary",
+    "claims boundary",
     "correct boundary sentence",
     "pass does not mean",
     "this does not validate",
@@ -131,9 +145,10 @@ ALLOWED_CONTEXT_MARKERS = [
     "does not create",
     "not intended to support",
     "not intended",
+    "not included",
+    "not allowed",
+    "not permitted",
     "forbidden",
-    "forbidden meaning",
-    "forbidden_meaning",
     "excluded",
     "exclusion",
     "absent",
@@ -146,19 +161,28 @@ ALLOWED_CONTEXT_MARKERS = [
     "no-go",
     "no go",
     "claims absent",
+    "claim absent",
     "without implying",
     "without making",
     "without creating",
     "negative example",
     "bad example",
     "unsafe example",
+    "unsafe positive claim",
     "examples that should fail",
     "should fail",
     "must fail",
-    "not allowed",
-    "not permitted",
-    "claim boundary",
-    "language boundary",
+    "fail if",
+    "no raw human data",
+    "no identifiable",
+    "helper only",
+    "helper-only",
+    "structure only",
+    "structure-only",
+    "sample only",
+    "sample-only",
+    "synthetic only",
+    "synthetic-only",
 ]
 
 LINE_NEGATION_MARKERS = [
@@ -216,6 +240,7 @@ LINE_NEGATION_MARKERS = [
     "no-go",
     "no go",
     "claims absent",
+    "claim absent",
     "without implying",
     "without making",
     "without creating",
@@ -225,6 +250,9 @@ LINE_NEGATION_MARKERS = [
     "non-goals",
 ]
 
+# These are explicit positive-claim shapes. They should fail in ordinary public
+# helper files. They may pass inside boundary/prohibited/template/control files,
+# where such sentences are often shown as negative examples.
 HIGH_RISK_POSITIVE_PATTERNS = [
     r"\bthis\s+benchmark\s+is\s+validated\b",
     r"\bbenchmark\s+is\s+validated\b",
@@ -390,6 +418,7 @@ def compile_term_pattern(term: str) -> re.Pattern[str]:
     escaped = re.escape(term)
 
     # Exact case for short canonical index symbols.
+    # This prevents RE / OE / EE from matching ordinary words.
     if term in {"OE", "RE", "EE", "VCE", "CRI", "CFI"}:
         return re.compile(rf"(?<![A-Za-z0-9_]){escaped}(?![A-Za-z0-9_])")
 
@@ -406,6 +435,7 @@ def normalize_for_context(line: str) -> str:
     stripped = stripped.strip("`").strip()
     stripped = stripped.strip('"').strip()
     stripped = stripped.strip("'").strip()
+    stripped = stripped.strip()
     return stripped
 
 
@@ -422,6 +452,8 @@ def is_list_like_line(line: str) -> bool:
         or stripped.startswith('"')
         or stripped.startswith("'")
         or stripped.startswith("│")
+        or stripped.endswith(";")
+        or stripped.endswith(",")
     )
 
 
@@ -433,8 +465,8 @@ def line_has_negation_or_boundary_marker(line: str) -> bool:
 def context_has_allowed_marker(lines: list[str], index: int) -> bool:
     # Look back far enough to catch markdown sections and JSON keys such as
     # forbidden_meaning, prohibited_outputs, boundary_flags, or non_goal lists.
-    window_start = max(0, index - 35)
-    window_end = min(len(lines), index + 3)
+    window_start = max(0, index - 45)
+    window_end = min(len(lines), index + 5)
     context_window = lines[window_start:window_end]
 
     for context_line in context_window:
@@ -445,10 +477,10 @@ def context_has_allowed_marker(lines: list[str], index: int) -> bool:
     return False
 
 
-def path_is_boundary_or_prohibited_context(path: Path) -> bool:
+def path_is_control_context(path: Path) -> bool:
     rel = str(path.relative_to(ROOT)).lower()
 
-    boundary_markers = [
+    control_markers = [
         "boundary",
         "prohibited",
         "claims",
@@ -460,9 +492,30 @@ def path_is_boundary_or_prohibited_context(path: Path) -> bool:
         "definition",
         "policy",
         "template",
+        "audit",
+        "checklist",
+        "release",
+        "pre-release",
+        "validation",
+        "validator",
+        "lint",
+        "example",
+        "mockup",
+        "wireframe",
+        "replay",
+        "simulator",
+        "demo",
     ]
 
-    return any(marker in rel for marker in boundary_markers)
+    return any(marker in rel for marker in control_markers)
+
+
+def path_is_highly_public_top_level(path: Path) -> bool:
+    rel = str(path.relative_to(ROOT)).lower()
+
+    # Root README is public-facing, but it also contains many boundary sections.
+    # Do not treat it as an automatic control context.
+    return rel == "readme.md"
 
 
 def is_allowed_boundary_context(path: Path, lines: list[str], index: int) -> bool:
@@ -474,10 +527,14 @@ def is_allowed_boundary_context(path: Path, lines: list[str], index: int) -> boo
     if context_has_allowed_marker(lines, index):
         return True
 
-    # Boundary/prohibited/claim files commonly contain prohibited phrases as examples,
-    # lists, checklists, or boundary warnings. These are allowed unless they appear as
-    # an unsafe positive claim outside a clear boundary context.
-    if path_is_boundary_or_prohibited_context(path) and is_list_like_line(line):
+    if path_is_control_context(path) and is_list_like_line(line):
+        return True
+
+    # Files whose purpose is boundary, prohibited-claim examples, schemas,
+    # templates, simulator demos, replay examples, or mockups often contain
+    # prohibited terms as labels or bad examples. Allow unless separately caught
+    # as an explicit unsafe positive claim in a truly public top-level context.
+    if path_is_control_context(path) and not path_is_highly_public_top_level(path):
         return True
 
     return False
