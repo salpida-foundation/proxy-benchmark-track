@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1.0",
+  "event_type": "dyadic_recovery_event",
+  "event_id": "dre_p3_true_recovery_candidate_001",
+  "session_id": "p3_true_recovery_candidate_001",
+  "dyad_id": "synthetic_dyad_p3_true_recovery_candidate_001",
+  "scenario_id": "p3_true_recovery_candidate_001",
+  "event_timestamp": "2026-06-24T11:12:00Z",
+  "source_stage": "recovery_gate",
+  "data_boundary": {
+    "data_class": "synthetic",
+    "public_release_class": "public_synthetic_only",
+    "raw_human_data_included": false,
+    "personally_identifiable_data_included": false,
+    "clinical_interpretation_included": false,
+    "diagnostic_or_therapeutic_claim_included": false,
+    "surveillance_or_ranking_use_included": false,
+    "sal_meter_or_cais_compliance_claim_included": false
+  },
+  "ai_output_reference": {
+    "ai_output_id": "p3_true_recovery_candidate_001_ai_output",
+    "model_condition": "rule_based_mediation",
+    "output_quality_score": 0.74
+  },
+  "human_state_delta": {
+    "participant_a_direction": "improved",
+    "participant_b_direction": "improved",
+    "participant_a_delta_score": 0.42,
+    "participant_b_delta_score": 0.39,
+    "dyadic_direction": "toward_recovery",
+    "dyadic_tension_delta_score": 0.44,
+    "turn_taking_balance_delta_score": 0.36,
+    "interruption_delta_score": 0.31,
+    "mutual_restatement_success": true,
+    "post_intervention_stability_delta_score": 0.41,
+    "recovery_asymmetry": "none_detected"
+  },
+  "dyadic_recovery_assessment": {
+    "recovery_label": "recovery_candidate",
+    "recovery_confidence": 0.72,
+    "gate_decision": "allow_termination",
+    "termination_allowed": true
+  },
+  "false_recovery_check": {
+    "false_recovery_detected": false,
+    "false_recovery_flags": []
+  },
+  "leakage_and_holdout_check": {
+    "leakage_check_passed": true,
+    "holdout_tags": [
+      "not_applicable_synthetic_demo"
+    ],
+    "leakage_notes": "Synthetic true-recovery-candidate example only. No real dyad, no real participant, no raw human data, and no private session content are included."
+  },
+  "audit": {
+    "created_by": "synthetic_helper_author",
+    "created_at": "2026-06-24T11:12:00Z",
+    "generator": "manual_synthetic_example",
+    "schema_role": "public_helper_schema",
+    "boundary_note": "This event is a research-stage proxy benchmark helper object. It is not raw human data, not a diagnosis, not therapy, not counseling, not surveillance, not certification, not CAIS compliance, and not a Sal-Meter validation record.",
+    "notes": "Synthetic dyadic recovery event for the true-recovery-candidate case. Both participants show bounded improvement and the dyadic direction moves toward recovery without treating silence, politeness, synchrony, or one-sided relief as sufficient evidence."
+  }
+}
