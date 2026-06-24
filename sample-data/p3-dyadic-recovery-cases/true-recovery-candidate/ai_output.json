@@ -1,0 +1,65 @@
+{
+  "ai_output_id": "p3_true_recovery_candidate_001_ai_output",
+  "session_id": "p3_true_recovery_candidate_001",
+  "case_id": "p3_true_recovery_candidate_001",
+  "case_type": "true_recovery_candidate",
+  "created_at": "2026-06-24T11:05:00Z",
+  "model_condition": "rule_based_mediation",
+  "output_stage": "post_baseline_mediation_prompt",
+  "synthetic_flag": true,
+  "public_helper_only": true,
+  "raw_human_data_excluded": true,
+  "identifiable_human_data_excluded": true,
+  "input_references": {
+    "baseline_packet_A": "p3_true_recovery_candidate_001_baseline_A",
+    "baseline_packet_B": "p3_true_recovery_candidate_001_baseline_B"
+  },
+  "output_text": {
+    "speaker": "synthetic_ai_helper",
+    "visible_to": [
+      "participant_A",
+      "participant_B"
+    ],
+    "text": "Let us slow the exchange down. First, each side should restate what they heard from the other side before adding a new argument. The goal of this step is not to decide who is right. The goal is to reduce escalation, preserve both voices, and check whether both participants can continue without one side being erased."
+  },
+  "intended_helper_function": {
+    "primary_function": "de_escalation_and_mutual_restatement",
+    "secondary_function": "reduce_turn_pressure",
+    "not_a_success_claim": true
+  },
+  "expected_effect_hypothesis": {
+    "participant_A_expected_direction": "lower_burden",
+    "participant_B_expected_direction": "lower_burden",
+    "dyadic_expected_direction": "toward_stabilization",
+    "false_recovery_guard_required": true
+  },
+  "recovery_guardrails": {
+    "agreement_alone_is_not_recovery": true,
+    "silence_alone_is_not_recovery": true,
+    "politeness_alone_is_not_recovery": true,
+    "synchrony_alone_is_not_recovery": true,
+    "one_sided_relief_is_not_dyadic_recovery": true,
+    "ai_output_quality_is_not_sufficient_evidence": true
+  },
+  "boundary_flags": {
+    "research_stage": true,
+    "synthetic_sample_only": true,
+    "non_clinical": true,
+    "non_diagnostic": true,
+    "non_therapeutic": true,
+    "non_surveillance": true,
+    "non_counseling": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_mediation_validation": true,
+    "not_device_readiness": true,
+    "not_production_readiness": true,
+    "no_human_ranking": true,
+    "no_relationship_verdict": true
+  },
+  "audit": {
+    "created_by": "synthetic_helper_author",
+    "audit_status": "structure_check_pending",
+    "notes": "Synthetic AI output candidate for a true-recovery-candidate case. This object records a helper output only. It does not prove recovery, effectiveness, accuracy, readiness, compliance, or real-world suitability."
+  }
+}
