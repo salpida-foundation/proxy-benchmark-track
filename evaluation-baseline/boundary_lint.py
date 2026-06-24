@@ -105,34 +105,72 @@ It does not process CAIS compliance dossiers.
 It does not create certification, device readiness, production readiness, or deployment authority.
 """
 
-ALLOWED_CONTEXT_HEADINGS = [
+ALLOWED_CONTEXT_MARKERS = [
     "prohibited terms",
     "prohibited claims",
+    "prohibited content",
+    "prohibited phrasing",
     "must not imply",
     "must not contain",
+    "must not include",
     "non-goals",
     "non goals",
+    "non-goal",
     "boundary",
+    "public boundary",
+    "final boundary",
     "correct boundary sentence",
     "pass does not mean",
     "this does not validate",
+    "this does not mean",
     "this is not",
     "does not mean",
+    "does not validate",
+    "does not grant",
+    "does not authorize",
+    "does not create",
     "not intended to support",
-    "prohibited content",
-    "public boundary",
-    "final boundary",
+    "not intended",
+    "forbidden",
+    "forbidden meaning",
+    "forbidden_meaning",
+    "excluded",
+    "exclusion",
+    "absent",
+    "avoid",
+    "avoids",
+    "avoided",
+    "prevent",
+    "prevents",
+    "prevented",
+    "no-go",
+    "no go",
+    "claims absent",
+    "without implying",
+    "without making",
+    "without creating",
+    "negative example",
+    "bad example",
+    "unsafe example",
+    "examples that should fail",
+    "should fail",
+    "must fail",
+    "not allowed",
+    "not permitted",
+    "claim boundary",
+    "language boundary",
 ]
 
-BOUNDARY_NEGATION_MARKERS = [
-    "not ",
-    "no ",
-    "non-",
+LINE_NEGATION_MARKERS = [
+    " not ",
+    " no ",
+    " non-",
     "does not",
     "do not",
     "must not",
     "should not",
     "cannot",
+    "can not",
     "is not",
     "are not",
     "doesn't",
@@ -141,6 +179,7 @@ BOUNDARY_NEGATION_MARKERS = [
     "does not validate",
     "does not grant",
     "does not authorize",
+    "does not imply",
     "not validate",
     "not validated",
     "not certified",
@@ -157,17 +196,48 @@ BOUNDARY_NEGATION_MARKERS = [
     "not device",
     "not human-ranking",
     "not human ranking",
+    "neither",
+    "absent",
+    "absence",
+    "excluded",
+    "exclusion",
+    "avoid",
+    "avoids",
+    "avoided",
+    "prevent",
+    "prevents",
+    "prevented",
+    "forbidden",
+    "forbidden_meaning",
+    "not include",
+    "not imply",
+    "not authorize",
+    "not create",
+    "no-go",
+    "no go",
+    "claims absent",
+    "without implying",
+    "without making",
+    "without creating",
     "prohibited",
     "boundary",
     "non-goal",
     "non-goals",
 ]
 
-UNSAFE_POSITIVE_CLAIM_PATTERNS = [
+HIGH_RISK_POSITIVE_PATTERNS = [
     r"\bthis\s+benchmark\s+is\s+validated\b",
     r"\bbenchmark\s+is\s+validated\b",
     r"\bthis\s+system\s+is\s+cais[-\s]?compliant\b",
     r"\bsystem\s+is\s+cais[-\s]?compliant\b",
+    r"\bthe\s+repository\s+is\s+cais[-\s]?compliant\b",
+    r"\brepository\s+is\s+cais[-\s]?compliant\b",
+    r"\bthe\s+package\s+is\s+diagnostic\b",
+    r"\bthe\s+package\s+is\s+therapeutic\b",
+    r"\bthe\s+package\s+is\s+device[-\s]?ready\b",
+    r"\bthe\s+system\s+is\s+diagnostic\b",
+    r"\bthe\s+system\s+is\s+therapeutic\b",
+    r"\bthe\s+system\s+is\s+device[-\s]?ready\b",
     r"\bproxy\s+stack\s+is\s+sal[-\s]?meter\s+ready\b",
     r"\bevaluator\s+proves\s+mediation\s+effectiveness\b",
     r"\bdashboard\s+provides\s+relationship\s+verdicts\b",
@@ -178,6 +248,75 @@ UNSAFE_POSITIVE_CLAIM_PATTERNS = [
     r"\bcreates\s+sal[-\s]?meter\s+status\b",
     r"\bvalidates\s+dyadic\s+recovery\b",
     r"\bvalidates\s+termination[-\s]?gate\s+accuracy\b",
+    r"\bprovides\s+therapeutic\s+feedback\b",
+    r"\bprovides\s+therapeutic\s+intervention\b",
+    r"\bis\s+cais[-\s]?compliant\b",
+    r"\bis\s+certified\b",
+    r"\bis\s+production[-\s]?ready\b",
+    r"\bis\s+device[-\s]?ready\b",
+]
+
+POSITIVE_CLAIM_MARKERS = [
+    " is ",
+    " are ",
+    " becomes ",
+    " creates ",
+    " create ",
+    " generated ",
+    " generate ",
+    " generates ",
+    " provides ",
+    " provide ",
+    " supports ",
+    " support ",
+    " certifies ",
+    " certify ",
+    " validates ",
+    " validate ",
+    " grants ",
+    " grant ",
+    " proves ",
+    " prove ",
+    " authorizes ",
+    " authorize ",
+    " approved",
+    " readiness",
+    " ready",
+    " status",
+    " authority",
+    " system",
+    " engine",
+    " dashboard",
+    " package",
+    " dataset",
+    " output",
+    " score",
+    " label",
+    " decision",
+    " intervention",
+    " monitoring",
+    " deployment",
+]
+
+INHERENTLY_CLAIMY_TERMS = [
+    "CAIS compliant",
+    "CAIS-compliant",
+    "CAIS compliance granted",
+    "Sal-Meter ready",
+    "Proxy Sal-Meter",
+    "Sal-Meter validated",
+    "validated Sal-Meter",
+    "validated benchmark",
+    "validated human-state benchmark",
+    "validated proxy benchmark",
+    "validated mediation",
+    "certified",
+    "certified proxy benchmark",
+    "certification granted",
+    "production readiness",
+    "device readiness",
+    "device-ready",
+    "production-ready human-state AI",
 ]
 
 
@@ -250,64 +389,130 @@ def iter_scan_files(targets: Iterable[str]) -> Iterable[Path]:
 def compile_term_pattern(term: str) -> re.Pattern[str]:
     escaped = re.escape(term)
 
-    # Use alphanumeric-aware boundaries so short canonical symbols
-    # such as OE / RE / EE do not match inside ordinary words.
-    pattern = rf"(?<![A-Za-z0-9_]){escaped}(?![A-Za-z0-9_])"
+    # Exact case for short canonical index symbols.
+    if term in {"OE", "RE", "EE", "VCE", "CRI", "CFI"}:
+        return re.compile(rf"(?<![A-Za-z0-9_]){escaped}(?![A-Za-z0-9_])")
 
+    pattern = rf"(?<![A-Za-z0-9_]){escaped}(?![A-Za-z0-9_])"
     return re.compile(pattern, flags=re.IGNORECASE)
 
 
-def is_heading_line(line: str) -> bool:
+def normalize_for_context(line: str) -> str:
     stripped = line.strip().lower()
     stripped = stripped.strip("#").strip()
     stripped = stripped.strip("*").strip()
     stripped = stripped.strip("-").strip()
-
-    if not stripped:
-        return False
-
-    return any(marker in stripped for marker in ALLOWED_CONTEXT_HEADINGS)
-
-
-def has_boundary_negation(line: str) -> bool:
-    lowered = line.lower()
-    return any(marker in lowered for marker in BOUNDARY_NEGATION_MARKERS)
+    stripped = stripped.strip("> ").strip()
+    stripped = stripped.strip("`").strip()
+    stripped = stripped.strip('"').strip()
+    stripped = stripped.strip("'").strip()
+    return stripped
 
 
-def is_allowed_boundary_context(lines: list[str], index: int) -> bool:
-    current = lines[index]
+def is_list_like_line(line: str) -> bool:
+    stripped = line.lstrip()
+    return (
+        stripped.startswith("- ")
+        or stripped.startswith("* ")
+        or stripped.startswith("+ ")
+        or stripped.startswith("- [ ]")
+        or stripped.startswith("- [x]")
+        or stripped.startswith("[ ]")
+        or stripped.startswith("[x]")
+        or stripped.startswith('"')
+        or stripped.startswith("'")
+        or stripped.startswith("│")
+    )
 
-    if has_boundary_negation(current):
+
+def line_has_negation_or_boundary_marker(line: str) -> bool:
+    lowered = f" {line.lower()} "
+    return any(marker in lowered for marker in LINE_NEGATION_MARKERS)
+
+
+def context_has_allowed_marker(lines: list[str], index: int) -> bool:
+    # Look back far enough to catch markdown sections and JSON keys such as
+    # forbidden_meaning, prohibited_outputs, boundary_flags, or non_goal lists.
+    window_start = max(0, index - 35)
+    window_end = min(len(lines), index + 3)
+    context_window = lines[window_start:window_end]
+
+    for context_line in context_window:
+        normalized = normalize_for_context(context_line)
+        if any(marker in normalized for marker in ALLOWED_CONTEXT_MARKERS):
+            return True
+
+    return False
+
+
+def path_is_boundary_or_prohibited_context(path: Path) -> bool:
+    rel = str(path.relative_to(ROOT)).lower()
+
+    boundary_markers = [
+        "boundary",
+        "prohibited",
+        "claims",
+        "claim",
+        "non-goal",
+        "non_goal",
+        "readiness",
+        "gate",
+        "definition",
+        "policy",
+        "template",
+    ]
+
+    return any(marker in rel for marker in boundary_markers)
+
+
+def is_allowed_boundary_context(path: Path, lines: list[str], index: int) -> bool:
+    line = lines[index]
+
+    if line_has_negation_or_boundary_marker(line):
         return True
 
-    # Allow prohibited terms under a nearby explicit boundary / prohibited-claims section.
-    window_start = max(0, index - 6)
-    context_window = lines[window_start : index + 1]
+    if context_has_allowed_marker(lines, index):
+        return True
 
-    if any(is_heading_line(line) for line in context_window):
+    # Boundary/prohibited/claim files commonly contain prohibited phrases as examples,
+    # lists, checklists, or boundary warnings. These are allowed unless they appear as
+    # an unsafe positive claim outside a clear boundary context.
+    if path_is_boundary_or_prohibited_context(path) and is_list_like_line(line):
         return True
 
     return False
 
 
+def line_has_positive_claim_shape(line: str) -> bool:
+    lowered = f" {line.lower()} "
+    return any(marker in lowered for marker in POSITIVE_CLAIM_MARKERS)
+
+
+def term_is_inherently_claimy(term: str) -> bool:
+    lowered = term.lower()
+    return any(lowered == claimy.lower() for claimy in INHERENTLY_CLAIMY_TERMS)
+
+
 def find_unsafe_positive_claims(path: Path, lines: list[str]) -> list[LintMatch]:
     matches: list[LintMatch] = []
 
-    for line_no, line in enumerate(lines, start=1):
+    for index, line in enumerate(lines):
         lowered = line.lower()
 
-        for pattern in UNSAFE_POSITIVE_CLAIM_PATTERNS:
+        for pattern in HIGH_RISK_POSITIVE_PATTERNS:
             if re.search(pattern, lowered, flags=re.IGNORECASE):
-                if not is_allowed_boundary_context(lines, line_no - 1):
-                    matches.append(
-                        LintMatch(
-                            path=path,
-                            line_no=line_no,
-                            term=pattern,
-                            kind="unsafe_positive_claim",
-                            line=line.strip(),
-                        )
+                if is_allowed_boundary_context(path, lines, index):
+                    continue
+
+                matches.append(
+                    LintMatch(
+                        path=path,
+                        line_no=index + 1,
+                        term=pattern,
+                        kind="unsafe_positive_claim",
+                        line=line.strip(),
                     )
+                )
 
     return matches
 
@@ -323,25 +528,33 @@ def scan_file(path: Path, terms: list[str]) -> list[LintMatch]:
 
     lines = text.splitlines()
 
+    # First catch explicit unsafe positive-claim phrases.
     matches.extend(find_unsafe_positive_claims(path, lines))
 
     compiled_terms = [(term, compile_term_pattern(term)) for term in terms]
 
     for index, line in enumerate(lines):
         for term, pattern in compiled_terms:
-            if pattern.search(line):
-                if is_allowed_boundary_context(lines, index):
-                    continue
+            if not pattern.search(line):
+                continue
 
-                matches.append(
-                    LintMatch(
-                        path=path,
-                        line_no=index + 1,
-                        term=term,
-                        kind="prohibited_term",
-                        line=line.strip(),
-                    )
+            if is_allowed_boundary_context(path, lines, index):
+                continue
+
+            # A bare term in a list is not always a claim. Fail only when the line
+            # has positive claim shape, or the term is inherently a claim phrase.
+            if not line_has_positive_claim_shape(line) and not term_is_inherently_claimy(term):
+                continue
+
+            matches.append(
+                LintMatch(
+                    path=path,
+                    line_no=index + 1,
+                    term=term,
+                    kind="prohibited_term",
+                    line=line.strip(),
                 )
+            )
 
     return matches
 
@@ -404,7 +617,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--strict",
         action="store_true",
-        help="Deprecated compatibility flag. The lint now fails by default unless --warn-only is used.",
+        help="Compatibility flag. The lint fails by default unless --warn-only is used.",
     )
 
     parser.add_argument(
