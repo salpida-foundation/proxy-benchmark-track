@@ -1,0 +1,73 @@
+{
+  "ai_output_id": "p3_asymmetric_recovery_001_ai_output",
+  "session_id": "p3_asymmetric_recovery_001",
+  "case_id": "p3_asymmetric_recovery_001",
+  "case_type": "asymmetric_recovery",
+  "created_at": "2026-06-24T11:25:00Z",
+  "model_condition": "rule_based_mediation",
+  "output_stage": "post_baseline_mediation_prompt",
+  "synthetic_flag": true,
+  "public_helper_only": true,
+  "raw_human_data_excluded": true,
+  "identifiable_human_data_excluded": true,
+  "input_references": {
+    "baseline_packet_A": "p3_asymmetric_recovery_001_baseline_A",
+    "baseline_packet_B": "p3_asymmetric_recovery_001_baseline_B"
+  },
+  "output_text": {
+    "speaker": "synthetic_ai_helper",
+    "visible_to": [
+      "participant_A",
+      "participant_B"
+    ],
+    "text": "To reduce escalation quickly, participant B should first acknowledge participant A's concern and pause any new objections until participant A confirms they feel heard. Participant A may then restate what they need from the exchange before the discussion continues."
+  },
+  "intended_helper_function": {
+    "primary_function": "rapid_de_escalation",
+    "secondary_function": "narrow_turn_sequence",
+    "not_a_success_claim": true
+  },
+  "expected_effect_hypothesis": {
+    "participant_A_expected_direction": "lower_burden",
+    "participant_B_expected_direction": "higher_burden_or_reduced_voice",
+    "dyadic_expected_direction": "mixed_or_asymmetric",
+    "false_recovery_guard_required": true
+  },
+  "asymmetry_risk_notes": {
+    "one_side_given_priority": true,
+    "other_side_may_pause_objections": true,
+    "visible_conflict_may_drop_without_dyadic_recovery": true,
+    "participant_b_voice_may_be_narrowed": true
+  },
+  "recovery_guardrails": {
+    "agreement_alone_is_not_recovery": true,
+    "silence_alone_is_not_recovery": true,
+    "politeness_alone_is_not_recovery": true,
+    "synchrony_alone_is_not_recovery": true,
+    "one_sided_relief_is_not_dyadic_recovery": true,
+    "ai_output_quality_is_not_sufficient_evidence": true,
+    "reduced_conflict_volume_is_not_sufficient_evidence": true,
+    "session_closure_is_not_sufficient_evidence": true
+  },
+  "boundary_flags": {
+    "research_stage": true,
+    "synthetic_sample_only": true,
+    "non_clinical": true,
+    "non_diagnostic": true,
+    "non_therapeutic": true,
+    "non_surveillance": true,
+    "non_counseling": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_mediation_validation": true,
+    "not_device_readiness": true,
+    "not_production_readiness": true,
+    "no_human_ranking": true,
+    "no_relationship_verdict": true
+  },
+  "audit": {
+    "created_by": "synthetic_helper_author",
+    "audit_status": "structure_check_pending",
+    "notes": "Synthetic AI output candidate for an asymmetric-recovery case. This helper output may reduce visible conflict for one participant while increasing burden or reducing voice for the other participant. It does not prove recovery, effectiveness, accuracy, readiness, compliance, or real-world suitability."
+  }
+}
