@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1.0",
+  "event_type": "dyadic_recovery_event",
+  "event_id": "dre_synthetic_001_recovery_001",
+  "session_id": "synthetic-dyadic-session-001",
+  "dyad_id": "synthetic-dyad-001",
+  "scenario_id": "synthetic-conflict-scenario-001",
+  "event_timestamp": "2026-06-23T10:45:00Z",
+  "source_stage": "recovery_gate",
+  "data_boundary": {
+    "data_class": "synthetic",
+    "public_release_class": "public_synthetic_only",
+    "raw_human_data_included": false,
+    "personally_identifiable_data_included": false,
+    "clinical_interpretation_included": false,
+    "diagnostic_or_therapeutic_claim_included": false,
+    "surveillance_or_ranking_use_included": false,
+    "sal_meter_or_cais_compliance_claim_included": false
+  },
+  "ai_output_reference": {
+    "ai_output_id": "synthetic_ai_output_001",
+    "model_condition": "rule_based_mediation",
+    "output_quality_score": 0.72
+  },
+  "human_state_delta": {
+    "participant_a_direction": "improved",
+    "participant_b_direction": "stable",
+    "participant_a_delta_score": 0.34,
+    "participant_b_delta_score": 0.05,
+    "dyadic_direction": "mixed",
+    "dyadic_tension_delta_score": 0.18,
+    "turn_taking_balance_delta_score": 0.22,
+    "interruption_delta_score": 0.15,
+    "mutual_restatement_success": true,
+    "post_intervention_stability_delta_score": 0.12,
+    "recovery_asymmetry": "participant_a_only_improved"
+  },
+  "dyadic_recovery_assessment": {
+    "recovery_label": "indeterminate",
+    "recovery_confidence": 0.58,
+    "gate_decision": "hold_no_termination",
+    "termination_allowed": false
+  },
+  "false_recovery_check": {
+    "false_recovery_detected": true,
+    "false_recovery_flags": [
+      "one_sided_recovery",
+      "unresolved_recovery_asymmetry"
+    ]
+  },
+  "leakage_and_holdout_check": {
+    "leakage_check_passed": true,
+    "holdout_tags": [
+      "not_applicable_synthetic_demo"
+    ],
+    "leakage_notes": "Synthetic helper example only. No real dyad, no real participant, no raw human data, and no private session content are included."
+  },
+  "audit": {
+    "created_by": "synthetic_helper_author",
+    "created_at": "2026-06-23T10:45:00Z",
+    "generator": "manual_synthetic_example",
+    "schema_role": "public_helper_schema",
+    "boundary_note": "This event is a research-stage proxy benchmark helper object. It is not raw human data, not a diagnosis, not therapy, not counseling, not surveillance, not certification, not CAIS compliance, and not a Sal-Meter validation record.",
+    "notes": "This sample demonstrates a false-recovery / asymmetric-recovery case where one participant appears improved but dyadic recovery remains unresolved. It is structure-only synthetic data."
+  }
+}
