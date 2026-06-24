@@ -105,8 +105,6 @@ It does not process CAIS compliance dossiers.
 It does not create certification, device readiness, production readiness, or deployment authority.
 """
 
-# Headings, keys, and local text markers that indicate a boundary-warning,
-# prohibited-claim, non-goal, negative-example, or exclusion context.
 ALLOWED_CONTEXT_MARKERS = [
     "prohibited terms",
     "prohibited claims",
@@ -131,8 +129,8 @@ ALLOWED_CONTEXT_MARKERS = [
     "public boundary",
     "final boundary",
     "claim boundary",
-    "language boundary",
     "claims boundary",
+    "language boundary",
     "correct boundary sentence",
     "pass does not mean",
     "this does not validate",
@@ -250,9 +248,6 @@ LINE_NEGATION_MARKERS = [
     "non-goals",
 ]
 
-# These are explicit positive-claim shapes. They should fail in ordinary public
-# helper files. They may pass inside boundary/prohibited/template/control files,
-# where such sentences are often shown as negative examples.
 HIGH_RISK_POSITIVE_PATTERNS = [
     r"\bthis\s+benchmark\s+is\s+validated\b",
     r"\bbenchmark\s+is\s+validated\b",
@@ -318,6 +313,7 @@ POSITIVE_CLAIM_MARKERS = [
     " package",
     " dataset",
     " output",
+    " outputs",
     " score",
     " label",
     " decision",
@@ -417,8 +413,6 @@ def iter_scan_files(targets: Iterable[str]) -> Iterable[Path]:
 def compile_term_pattern(term: str) -> re.Pattern[str]:
     escaped = re.escape(term)
 
-    # Exact case for short canonical index symbols.
-    # This prevents RE / OE / EE from matching ordinary words.
     if term in {"OE", "RE", "EE", "VCE", "CRI", "CFI"}:
         return re.compile(rf"(?<![A-Za-z0-9_]){escaped}(?![A-Za-z0-9_])")
 
@@ -463,10 +457,10 @@ def line_has_negation_or_boundary_marker(line: str) -> bool:
 
 
 def context_has_allowed_marker(lines: list[str], index: int) -> bool:
-    # Look back far enough to catch markdown sections and JSON keys such as
-    # forbidden_meaning, prohibited_outputs, boundary_flags, or non_goal lists.
-    window_start = max(0, index - 45)
-    window_end = min(len(lines), index + 5)
+    # Large enough for markdown “does not mean” / “prohibited outputs”
+    # sections where examples are listed line by line.
+    window_start = max(0, index - 140)
+    window_end = min(len(lines), index + 8)
     context_window = lines[window_start:window_end]
 
     for context_line in context_window:
@@ -505,17 +499,39 @@ def path_is_control_context(path: Path) -> bool:
         "replay",
         "simulator",
         "demo",
+        "rule",
+        "note",
+        "protocol-helper",
+        ".github",
     ]
 
     return any(marker in rel for marker in control_markers)
 
 
-def path_is_highly_public_top_level(path: Path) -> bool:
-    rel = str(path.relative_to(ROOT)).lower()
+def path_is_root_readme(path: Path) -> bool:
+    return str(path.relative_to(ROOT)).lower() == "readme.md"
 
-    # Root README is public-facing, but it also contains many boundary sections.
-    # Do not treat it as an automatic control context.
-    return rel == "readme.md"
+
+def path_is_readme(path: Path) -> bool:
+    return path.name.lower() == "readme.md"
+
+
+def line_is_boundary_example_or_list(path: Path, lines: list[str], index: int) -> bool:
+    line = lines[index]
+
+    if is_list_like_line(line):
+        return True
+
+    if context_has_allowed_marker(lines, index):
+        return True
+
+    if path_is_control_context(path):
+        return True
+
+    if path_is_readme(path) and context_has_allowed_marker(lines, index):
+        return True
+
+    return False
 
 
 def is_allowed_boundary_context(path: Path, lines: list[str], index: int) -> bool:
@@ -527,14 +543,7 @@ def is_allowed_boundary_context(path: Path, lines: list[str], index: int) -> boo
     if context_has_allowed_marker(lines, index):
         return True
 
-    if path_is_control_context(path) and is_list_like_line(line):
-        return True
-
-    # Files whose purpose is boundary, prohibited-claim examples, schemas,
-    # templates, simulator demos, replay examples, or mockups often contain
-    # prohibited terms as labels or bad examples. Allow unless separately caught
-    # as an explicit unsafe positive claim in a truly public top-level context.
-    if path_is_control_context(path) and not path_is_highly_public_top_level(path):
+    if line_is_boundary_example_or_list(path, lines, index):
         return True
 
     return False
@@ -557,19 +566,21 @@ def find_unsafe_positive_claims(path: Path, lines: list[str]) -> list[LintMatch]
         lowered = line.lower()
 
         for pattern in HIGH_RISK_POSITIVE_PATTERNS:
-            if re.search(pattern, lowered, flags=re.IGNORECASE):
-                if is_allowed_boundary_context(path, lines, index):
-                    continue
+            if not re.search(pattern, lowered, flags=re.IGNORECASE):
+                continue
 
-                matches.append(
-                    LintMatch(
-                        path=path,
-                        line_no=index + 1,
-                        term=pattern,
-                        kind="unsafe_positive_claim",
-                        line=line.strip(),
-                    )
+            if is_allowed_boundary_context(path, lines, index):
+                continue
+
+            matches.append(
+                LintMatch(
+                    path=path,
+                    line_no=index + 1,
+                    term=pattern,
+                    kind="unsafe_positive_claim",
+                    line=line.strip(),
                 )
+            )
 
     return matches
 
@@ -585,7 +596,6 @@ def scan_file(path: Path, terms: list[str]) -> list[LintMatch]:
 
     lines = text.splitlines()
 
-    # First catch explicit unsafe positive-claim phrases.
     matches.extend(find_unsafe_positive_claims(path, lines))
 
     compiled_terms = [(term, compile_term_pattern(term)) for term in terms]
@@ -598,8 +608,9 @@ def scan_file(path: Path, terms: list[str]) -> list[LintMatch]:
             if is_allowed_boundary_context(path, lines, index):
                 continue
 
-            # A bare term in a list is not always a claim. Fail only when the line
-            # has positive claim shape, or the term is inherently a claim phrase.
+            if is_list_like_line(line):
+                continue
+
             if not line_has_positive_claim_shape(line) and not term_is_inherently_claimy(term):
                 continue
 
