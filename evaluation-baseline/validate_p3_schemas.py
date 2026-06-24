@@ -12,6 +12,8 @@ Boundary:
 - not Sal-Meter validation
 - not CAIS compliance
 - not mediation validation
+- not dyadic recovery validation
+- not termination-gate accuracy validation
 - no raw human data processing
 """
 
@@ -38,6 +40,8 @@ It does not validate scientific truth.
 It does not validate Sal-Meter.
 It does not grant CAIS compliance.
 It does not validate mediation effectiveness.
+It does not validate dyadic recovery.
+It does not validate termination-gate accuracy.
 It does not validate human-state measurement.
 It does not process raw human data.
 It does not process identifiable human data.
@@ -61,6 +65,11 @@ TARGETS = [
         "label": "Dyadic Session Event",
         "schema": SCHEMA_DIR / "dyadic_session_event.schema.json",
         "sample": SAMPLE_DIR / "dyadic_session_event.json",
+    },
+    {
+        "label": "Dyadic Recovery Event",
+        "schema": SCHEMA_DIR / "dyadic_recovery_event.schema.json",
+        "sample": SAMPLE_DIR / "dyadic_recovery_event.json",
     },
     {
         "label": "Benchmark Session Container",
@@ -131,11 +140,13 @@ def run_required_file_checks() -> list[str]:
     required_files = [
         SCHEMA_DIR / "human_state_packet.schema.json",
         SCHEMA_DIR / "dyadic_session_event.schema.json",
+        SCHEMA_DIR / "dyadic_recovery_event.schema.json",
         SCHEMA_DIR / "benchmark_session.schema.json",
         SAMPLE_DIR / "README.md",
         SAMPLE_DIR / "human_state_packet_A.json",
         SAMPLE_DIR / "human_state_packet_B.json",
         SAMPLE_DIR / "dyadic_session_event.json",
+        SAMPLE_DIR / "dyadic_recovery_event.json",
         SAMPLE_DIR / "benchmark_session_container.json",
     ]
 
@@ -170,6 +181,8 @@ def print_pass() -> None:
     print("- no CAIS compliance validation")
     print("- no benchmark performance validation")
     print("- no mediation effectiveness validation")
+    print("- no dyadic recovery validation")
+    print("- no termination-gate accuracy validation")
     print()
     print("A successful P3 helper-schema validation means only:")
     print()
@@ -181,6 +194,7 @@ def print_pass() -> None:
     print("The science is validated.")
     print("The mediation system works.")
     print("The dyadic recovery is real.")
+    print("The termination gate is accurate.")
     print("The repository is Sal-Meter.")
     print("The repository is CAIS-compliant.")
     print("The package is clinical, diagnostic, therapeutic, certified, device-ready, or production-ready.")
@@ -201,6 +215,8 @@ def print_fail(errors: list[str]) -> None:
     print("- FAIL is not Sal-Meter failure")
     print("- FAIL is not CAIS compliance failure")
     print("- FAIL is not mediation effectiveness failure")
+    print("- FAIL is not dyadic recovery failure")
+    print("- FAIL is not termination-gate accuracy failure")
 
 
 def main() -> int:
