@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/salpida-foundation/proxy-benchmark-track/p0-session-infrastructure/session_state_machine.json",
+  "title": "P0 Root Synthetic Session State Machine",
+  "description": "Root session engine state definition for P0-Technical Check. Synthetic-only. NOT the phone-only simulator (see phone-only-simulator/phone-session-state-machine.json). NOT a human-subject protocol. NOT validated mediation behavior.",
+  "version": "0.1.0",
+  "scope": "synthetic-only",
+  "boundary": {
+    "note": "This state machine operates exclusively on synthetic/mock data. No real participant data enters this engine. Human-subject research (P1-P3) operates outside this repository under separate IRB governance.",
+    "distinct_from": "phone-only-simulator/phone-session-state-machine.json",
+    "phone_simulator_scope": "Phone app UX flow for P4-4 synthetic phone demo",
+    "this_scope": "Root synthetic session engine for P0 Technical Check infrastructure"
+  },
+  "states": {
+    "INIT": {
+      "description": "Session initialised. participant_id and condition_id auto-assigned. No human present.",
+      "entry_actions": ["assign_participant_id", "assign_condition_id", "init_audit_log"],
+      "transitions": ["CONSENT"],
+      "forbidden_from": [],
+      "metadata_required": ["participant_id", "condition_id", "session_timestamp"]
+    },
+    "CONSENT": {
+      "description": "Synthetic consent acknowledgement placeholder. In real P1+ studies this maps to actual informed consent under IRB. Here it is a mock gate only.",
+      "entry_actions": ["log_consent_gate", "validate_metadata_completeness"],
+      "transitions": ["BASELINE"],
+      "forbidden_from": ["AUDIT", "CLOSURE"],
+      "metadata_required": ["consent_mock_flag"]
+    },
+    "BASELINE": {
+      "description": "Baseline state capture (T0). Human-State Packet mock generated. SAM/VAS slots initialised with null values.",
+      "entry_actions": ["generate_mock_hsp_t0", "open_measurement_window"],
+      "transitions": ["AI_OUTPUT"],
+      "forbidden_from": ["CLOSURE"],
+      "metadata_required": ["t0_timestamp", "hsp_packet_id"]
+    },
+    "AI_OUTPUT": {
+      "description": "AI response delivery gate. condition_id determines which of A/B/C/D response type is routed. Timestamp recorded.",
+      "entry_actions": ["route_by_condition_id", "log_ai_output_timestamp", "validate_condition_schema"],
+      "transitions": ["DELTA"],
+      "condition_routing": {
+        "A": "validating_regulatory_response",
+        "B": "information_only_neutral_response",
+        "C": "over_validation_comparator",
+        "D": "minimizing_dismissive_response"
+      },
+      "forbidden_from": ["CLOSURE", "AUDIT"],
+      "metadata_required": ["ai_output_id", "condition_label", "output_timestamp"]
+    },
+    "DELTA": {
+      "description": "Delta state computation (T1 - T0). ΔState calculated across SAM/VAS/clarity/stability/trust slots. Missing-data auto-detection runs here.",
+      "entry_actions": ["compute_delta_state", "flag_missing_fields", "log_delta_event"],
+      "transitions": ["RECOVERY_GATE"],
+      "missing_data_action": "emit_warning_and_continue",
+      "metadata_required": ["t1_timestamp", "delta_state_vector", "missing_field_flags"]
+    },
+    "RECOVERY_GATE": {
+      "description": "5-minute persistence window (T2). Checks whether state improvement from T1 persists. In synthetic mode this is mock-computed from pre-defined decay curves.",
+      "entry_actions": ["compute_t2_mock", "evaluate_persistence_condition", "log_recovery_gate_event"],
+      "transitions": ["TERMINATION"],
+      "persistence_logic": "t2_delta = T2 - T1; sustained = t2_delta >= 0",
+      "metadata_required": ["t2_timestamp", "persistence_flag", "recovery_gate_result"]
+    },
+    "TERMINATION": {
+      "description": "Session end gate. Distress-check placeholder (always PASS in synthetic mode). Debrief mock logged. Session marked complete.",
+      "entry_actions": ["mock_distress_check", "log_debrief_placeholder", "mark_session_complete"],
+      "transitions": ["CLOSURE"],
+      "distress_check_threshold": 5,
+      "synthetic_distress_value": 1,
+      "metadata_required": ["termination_timestamp", "distress_check_result", "session_complete_flag"]
+    },
+    "CLOSURE": {
+      "description": "Final state. Full audit log sealed. Replay manifest generated. No further transitions permitted.",
+      "entry_actions": ["seal_audit_log", "generate_replay_manifest", "emit_session_summary"],
+      "transitions": [],
+      "metadata_required": ["closure_timestamp", "audit_log_path", "replay_manifest_path"]
+    },
+    "AUDIT": {
+      "description": "Out-of-band audit state. Can be entered from any non-CLOSURE state for inspection. Does not modify session state.",
+      "entry_actions": ["snapshot_current_state", "emit_audit_report"],
+      "transitions": ["__RESUME_PRIOR_STATE__"],
+      "readonly": true,
+      "metadata_required": ["audit_trigger", "audit_timestamp"]
+    }
+  },
+  "forbidden_transitions": [
+    {"from": "CLOSURE", "to": "*", "reason": "CLOSURE is a terminal state. No transition out is permitted."},
+    {"from": "DELTA", "to": "BASELINE", "reason": "Backward re-measurement not allowed in a single session."},
+    {"from": "RECOVERY_GATE", "to": "AI_OUTPUT", "reason": "Re-exposure to AI output after recovery gate is not permitted."},
+    {"from": "AUDIT", "to": "CLOSURE", "reason": "AUDIT must return to prior state, not jump to CLOSURE."}
+  ],
+  "boundary_flags": {
+    "no_real_participant_data": true,
+    "no_irb_required_for_this_file": true,
+    "synthetic_only": true,
+    "phone_simulator_distinct": true,
+    "human_subject_research_outside_repo": true
+  },
+  "p0_technical_check_map": {
+    "participant_id_auto_attach": "INIT.assign_participant_id",
+    "condition_id_auto_attach": "INIT.assign_condition_id",
+    "ai_output_timestamp_alignment": "AI_OUTPUT.log_ai_output_timestamp",
+    "mock_hsp_generation": "BASELINE.generate_mock_hsp_t0",
+    "audit_log_generation": "INIT.init_audit_log + CLOSURE.seal_audit_log",
+    "missing_metadata_detection": "DELTA.flag_missing_fields",
+    "full_session_replay": "CLOSURE.generate_replay_manifest"
+  },
+  "metadata": {
+    "created": "2026-06-26",
+    "repo": "salpida-foundation/proxy-benchmark-track",
+    "stage": "P0-Technical Check",
+    "not_applicable_stages": ["P1", "P2", "P3"],
+    "related_files": [
+      "phone-only-simulator/phone-session-state-machine.json",
+      "schemas/",
+      "sample-data/synthetic-session-001/"
+    ]
+  }
+}
