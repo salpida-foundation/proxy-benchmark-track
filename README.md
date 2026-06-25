@@ -562,8 +562,8 @@ A replay must not reopen a closed session.
 | Phone monitoring authority | Not present | The P4-4 phone-only simulator and P4-5 replay scaffold are not real phone monitoring systems and do not process real calls, raw audio, transcripts, or identifiable participant data |
 | Replay validation authority | Not present | The P4-5 synthetic session replay scaffold does not validate replay, mediation, dyadic recovery, termination-gate accuracy, Sal-Meter, CAIS compliance, device readiness, or production readiness |
 | Production closed-loop authority | Not present | No phone-only simulator file or replay scaffold file authorizes production mediation, monitoring, intervention, relationship verdicts, or human ranking |
-| P0 session infrastructure | Present | `p0-session-infrastructure/` contains `README.md` (synthetic-only scope boundary) and `session_state_machine.json` (root synthetic session engine for P0 Technical Check; distinct from `phone-only-simulator/phone-session-state-machine.json` which covers P4-4 phone app UX flow only) |
-| Pilot design reference (P0→P3) | Present / Research-design-only | `docs/pilot-design/proxy-benchmark-pilot-design-v1.1.md` documents the full P0→P3 research design; this repository executable scope covers P0 synthetic infrastructure only; P1–P3 human-subject research operates outside this repository under separate IRB governance |
+| P0 session infrastructure | Present / synthetic-only root scaffold | `p0-session-infrastructure/session_state_machine.json` defines root P0 synthetic session states and transitions. It is NOT the P4-4 phone-only simulator (`phone-only-simulator/phone-session-state-machine.json`) and does not validate human-subject research, mediation, or benchmark performance. |
+| P0→P3 lean pilot design reference | Present / research-design-only | `docs/pilot-design/proxy-benchmark-pilot-design-v1.1.md` documents the future IRB-governed research pathway (P0 synthetic lock → P1 individual delta → P2 A/B consequence benchmark → P3 dyadic recovery). This repository covers public-safe synthetic/sample helper infrastructure only. P1–P3 human-subject research operates under separate IRB governance outside this repository. |
 | Release status | `v0.1.2` published as bounded public helper pre-release | `v0.1.2` is the current bounded public helper pre-release; `v0.1.1` is now a prior post-validator-pass helper release |
 
 ---
@@ -3318,7 +3318,7 @@ Dashboard mockups must not present:
 - production-readiness status
 - production closed-loop status
 - Sal-Meter output
-- Sal-Meter validation statush
+- Sal-Meter validation status
 - CAIS compliance
 
 ### P4-4 dashboard boundary
