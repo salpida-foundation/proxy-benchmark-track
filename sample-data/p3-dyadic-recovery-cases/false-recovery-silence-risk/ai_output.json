@@ -1,0 +1,76 @@
+{
+"ai_output_id": "p3_false_recovery_silence_risk_001_ai_output",
+"session_id": "p3_false_recovery_silence_risk_001",
+"case_id": "p3_false_recovery_silence_risk_001",
+"case_type": "false_recovery_silence_risk",
+"created_at": "2026-06-24T11:45:00Z",
+"model_condition": "rule_based_mediation",
+"output_stage": "post_baseline_mediation_prompt",
+"synthetic_flag": true,
+"public_helper_only": true,
+"raw_human_data_excluded": true,
+"identifiable_human_data_excluded": true,
+"input_references": {
+"baseline_packet_A": "p3_false_recovery_silence_risk_001_baseline_A",
+"baseline_packet_B": "p3_false_recovery_silence_risk_001_baseline_B"
+},
+"output_text": {
+"speaker": "synthetic_ai_helper",
+"visible_to": [
+"participant_A",
+"participant_B"
+],
+"text": "To lower visible tension, both participants should pause objections for the next turn and keep the exchange calm. Participant A may briefly state the main concern, and participant B may simply acknowledge that they heard it before the session moves toward closure."
+},
+"intended_helper_function": {
+"primary_function": "surface_de_escalation",
+"secondary_function": "short_turn_closure_prompt",
+"not_a_success_claim": true
+},
+"expected_effect_hypothesis": {
+"participant_A_expected_direction": "stable_or_superficially_lower_burden",
+"participant_B_expected_direction": "stable_worsened_or_hidden_burden",
+"dyadic_expected_direction": "false_recovery_risk",
+"false_recovery_guard_required": true
+},
+"silence_as_recovery_risk_notes": {
+"visible_conflict_may_decrease": true,
+"participant_quietness_may_increase": true,
+"surface_politeness_may_increase": true,
+"underlying_burden_may_remain": true,
+"participant_b_voice_may_be_reduced": true,
+"closure_may_be_premature": true
+},
+"recovery_guardrails": {
+"agreement_alone_is_not_recovery": true,
+"silence_alone_is_not_recovery": true,
+"politeness_alone_is_not_recovery": true,
+"synchrony_alone_is_not_recovery": true,
+"one_sided_relief_is_not_dyadic_recovery": true,
+"ai_output_quality_is_not_sufficient_evidence": true,
+"reduced_conflict_volume_is_not_sufficient_evidence": true,
+"session_closure_is_not_sufficient_evidence": true,
+"compliance_under_pressure_is_not_recovery": true
+},
+"boundary_flags": {
+"research_stage": true,
+"synthetic_sample_only": true,
+"non_clinical": true,
+"non_diagnostic": true,
+"non_therapeutic": true,
+"non_surveillance": true,
+"non_counseling": true,
+"not_sal_meter": true,
+"not_cais_compliance": true,
+"not_mediation_validation": true,
+"not_device_readiness": true,
+"not_production_readiness": true,
+"no_human_ranking": true,
+"no_relationship_verdict": true
+},
+"audit": {
+"created_by": "synthetic_helper_author",
+"audit_status": "structure_check_pending",
+"notes": "Synthetic AI output candidate for a false-recovery / silence-as-recovery risk case. This helper output may lower visible conflict while leaving unresolved burden, withdrawal, pressure, or erasure risk. It does not prove recovery, effectiveness, accuracy, readiness, compliance, or real-world suitability."
+}
+}
