@@ -50,6 +50,7 @@
       "description": "Delta state computation (T1 - T0). ΔState calculated across SAM/VAS/clarity/stability/trust slots. Missing-data auto-detection runs here.",
       "entry_actions": ["compute_delta_state", "flag_missing_fields", "log_delta_event"],
       "transitions": ["RECOVERY_GATE"],
+      "forbidden_from": ["CLOSURE", "AUDIT"],
       "missing_data_action": {
         "required_metadata_missing": "HALT_AND_FLAG",
         "optional_metadata_missing": "WARN_AND_CONTINUE"
@@ -60,6 +61,7 @@
       "description": "5-minute persistence window (T2). Checks whether state improvement from T1 persists. In synthetic mode this is mock-computed from pre-defined decay curves.",
       "entry_actions": ["compute_t2_mock", "evaluate_persistence_condition", "log_recovery_gate_event"],
       "transitions": ["TERMINATION"],
+      "forbidden_from": ["CLOSURE", "AUDIT"],
       "persistence_logic": "t2_delta = T2 - T1; sustained = t2_delta >= 0",
       "metadata_required": ["t2_timestamp", "persistence_flag", "recovery_gate_result"]
     },
@@ -67,6 +69,7 @@
       "description": "Session end gate. Distress-check placeholder (always PASS in synthetic mode). Debrief mock logged. Session marked complete.",
       "entry_actions": ["mock_distress_check", "log_debrief_placeholder", "mark_session_complete"],
       "transitions": ["CLOSURE"],
+      "forbidden_from": ["AUDIT"],
       "distress_check_threshold": 5,
       "synthetic_distress_value": 1,
       "metadata_required": ["termination_timestamp", "distress_check_result", "session_complete_flag"]
@@ -75,12 +78,14 @@
       "description": "Final state. Full audit log sealed. Replay manifest generated. No further transitions permitted.",
       "entry_actions": ["seal_audit_log", "generate_replay_manifest", "emit_session_summary"],
       "transitions": [],
+      "forbidden_from": [],
       "metadata_required": ["closure_timestamp", "audit_log_path", "replay_manifest_path"]
     },
     "AUDIT": {
       "description": "Out-of-band audit state. Can be entered from any non-CLOSURE state for inspection. Does not modify session state.",
       "entry_actions": ["snapshot_current_state", "emit_audit_report"],
       "transitions": ["__RESUME_PRIOR_STATE__"],
+      "forbidden_from": ["CLOSURE"],
       "readonly": true,
       "metadata_required": ["audit_trigger", "audit_timestamp"]
     }
@@ -92,6 +97,7 @@
     {"from": "AUDIT", "to": "CLOSURE", "reason": "AUDIT must return to prior state, not jump to CLOSURE."}
   ],
   "boundary_flags": {
+    "real_participant_data_prohibited": true,
     "no_real_participant_data": true,
     "no_human_subjects_in_this_file": true,
     "future_human_subject_research_requires_irb": true,
@@ -100,13 +106,13 @@
     "human_subject_research_outside_repo": true
   },
   "p0_technical_check_map": {
-    "participant_id_auto_attach": "INIT.assign_participant_id",
-    "condition_id_auto_attach": "INIT.assign_condition_id",
-    "ai_output_timestamp_alignment": "AI_OUTPUT.log_ai_output_timestamp",
-    "mock_hsp_generation": "BASELINE.generate_mock_hsp_t0",
-    "audit_log_generation": "INIT.init_audit_log + CLOSURE.seal_audit_log",
-    "missing_metadata_detection": "DELTA.flag_missing_fields",
-    "full_session_replay": "CLOSURE.generate_replay_manifest"
+    "check_1_participant_id_auto_attachment": "INIT.assign_participant_id",
+    "check_2_condition_id_auto_attachment": "INIT.assign_condition_id",
+    "check_3_ai_output_timestamp_alignment": "AI_OUTPUT.log_ai_output_timestamp",
+    "check_4_mock_hsp_generation": "BASELINE.generate_mock_hsp_t0",
+    "check_5_audit_log_generation": "INIT.init_audit_log + CLOSURE.seal_audit_log",
+    "check_6_missing_metadata_detection": "DELTA.flag_missing_fields",
+    "check_7_full_session_replay": "CLOSURE.generate_replay_manifest"
   },
   "metadata": {
     "created": "2026-06-26",
