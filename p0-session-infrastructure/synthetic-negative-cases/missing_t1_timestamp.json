@@ -1,0 +1,31 @@
+{
+  "_fixture_meta": {
+    "fixture_type": "synthetic_negative_case",
+    "fixture_id": "neg-003",
+    "contains_real_participant_data": false,
+    "expected_outcome": "HALT_AND_FLAG",
+p0-infra: add neg-003 missing_t1_timestamp fixture (expected: HALT_AND_FLAG)      "check_3_ai_output_timestamp_alignment"
+    ],
+    "description": "ai_output_timestamp is null — timestamp alignment check must trigger HALT_AND_FLAG; T1 cannot be computed without T0-to-T1 anchor"
+  },
+  "session_id": "mock-neg-session-003",
+  "participant_id": "mock-p-003",
+  "condition_id": "D_minimizing_dismissive",
+  "timestamp_start": "2026-06-26T00:00:00Z",
+  "schema_version": "0.1.0",
+  "baseline_state_packet": {
+    "sam_valence": 5,
+    "sam_arousal": 4,
+    "state_clarity_vas": 60,
+    "distress_check": 2
+  },
+  "ai_output_timestamp": null,
+  "delta_timestamp_t1": null,
+  "_lint_expectation": {
+    "state": "AI_OUTPUT",
+    "field": "ai_output_timestamp",
+    "missing_data_action_triggered": "required_metadata_missing",
+    "expected_system_response": "HALT_AND_FLAG",
+    "must_not_continue": true
+  }
+}
