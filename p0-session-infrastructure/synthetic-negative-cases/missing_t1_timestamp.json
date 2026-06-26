@@ -4,7 +4,8 @@
     "fixture_id": "neg-003",
     "contains_real_participant_data": false,
     "expected_outcome": "HALT_AND_FLAG",
-p0-infra: add neg-003 missing_t1_timestamp fixture (expected: HALT_AND_FLAG)      "check_3_ai_output_timestamp_alignment"
+    "checks_tested": [
+      "check_3_ai_output_timestamp_alignment"
     ],
     "description": "ai_output_timestamp is null — timestamp alignment check must trigger HALT_AND_FLAG; T1 cannot be computed without T0-to-T1 anchor"
   },
