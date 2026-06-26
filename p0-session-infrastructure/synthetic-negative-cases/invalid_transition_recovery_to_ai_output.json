@@ -1,0 +1,21 @@
+{
+  "_fixture_meta": {
+    "fixture_type": "synthetic_negative_case",
+    "fixture_id": "neg-004",
+    "contains_real_participant_data": false,
+    "expected_outcome": "TRANSITION_REJECTED",
+    "checks_tested": [
+      "forbidden_transitions"
+    ],
+    "description": "RECOVERY_GATE to AI_OUTPUT is a forbidden transition — system must reject this and not proceed"
+  },
+  "session_id": "mock-neg-session-004",
+  "current_state": "RECOVERY_GATE",
+  "attempted_transition_to": "AI_OUTPUT",
+  "_lint_expectation": {
+    "state": "RECOVERY_GATE",
+    "rule": "AI_OUTPUT is listed in RECOVERY_GATE.forbidden_from",
+    "expected_system_response": "TRANSITION_REJECTED",
+    "must_not_continue": true
+  }
+}
