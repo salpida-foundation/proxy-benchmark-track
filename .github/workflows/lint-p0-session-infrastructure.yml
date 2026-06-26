@@ -1,0 +1,33 @@
+name: Lint P0 Session Infrastructure
+
+# Schema hygiene and boundary lint only.
+# Not research validation. Not human-state measurement validation.
+
+on:
+  push:
+    paths:
+      - "p0-session-infrastructure/**"
+      - "evaluation-baseline/lint_p0_session_state_machine.py"
+      - ".github/workflows/lint-p0-session-infrastructure.yml"
+  pull_request:
+    paths:
+      - "p0-session-infrastructure/**"
+      - "evaluation-baseline/lint_p0_session_state_machine.py"
+      - ".github/workflows/lint-p0-session-infrastructure.yml"
+  workflow_dispatch:
+
+jobs:
+  lint-p0-session-infrastructure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run P0 session infrastructure lint (schema hygiene + boundary, not research validation)
+        run: python evaluation-baseline/lint_p0_session_state_machine.py
