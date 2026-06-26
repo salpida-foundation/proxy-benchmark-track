@@ -50,7 +50,10 @@
       "description": "Delta state computation (T1 - T0). ΔState calculated across SAM/VAS/clarity/stability/trust slots. Missing-data auto-detection runs here.",
       "entry_actions": ["compute_delta_state", "flag_missing_fields", "log_delta_event"],
       "transitions": ["RECOVERY_GATE"],
-      "missing_data_action": "emit_warning_and_continue",
+      "missing_data_action": {
+        "required_metadata_missing": "HALT_AND_FLAG",
+        "optional_metadata_missing": "WARN_AND_CONTINUE"
+      },
       "metadata_required": ["t1_timestamp", "delta_state_vector", "missing_field_flags"]
     },
     "RECOVERY_GATE": {
@@ -90,7 +93,8 @@
   ],
   "boundary_flags": {
     "no_real_participant_data": true,
-    "no_irb_required_for_this_file": true,
+    "no_human_subjects_in_this_file": true,
+    "future_human_subject_research_requires_irb": true,
     "synthetic_only": true,
     "phone_simulator_distinct": true,
     "human_subject_research_outside_repo": true
