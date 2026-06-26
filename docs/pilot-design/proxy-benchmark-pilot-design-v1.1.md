@@ -2,7 +2,7 @@
 
 > **Version:** v1.1 (v1.0 → GPT review → Claude judgment → integrated revision)
 > **Date:** 2026-06-26
-> **Status:** Conditional Go — IRB submission ready
+> **Status:** Conditional Go — IRB-preparation reference only (not yet IRB-approved; not yet OSF-registered)
 > **Research stage:** Non-clinical · Non-diagnostic · Non-therapeutic · Non-surveillance · Non-coercive
 
 ---
@@ -121,7 +121,7 @@ P0 pass criteria: Technical Check 7 ALL PASS + Human Readiness Check 6 draft com
 
 | Dimension | Tool | Licence |
 |---|---|---|
-| Momentary affect | SAM (9-point pictorial scale) | Public, free |
+| Momentary affect | SAM (9-point pictorial scale) | Publicly available; licence/figure-use/translation must be confirmed before human-subject deployment |
 | State clarity | Single-item VAS 0-100 | Self-created |
 | Emotional stability | Single-item VAS | Self-created |
 | Relational trust | Single-item 1-7 | Self-created |
