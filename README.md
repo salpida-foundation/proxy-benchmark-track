@@ -568,6 +568,24 @@ A replay must not reopen a closed session.
 
 ---
 
+## Evidence Ladder
+
+This ladder records how far the Proxy Benchmark Track has actually been demonstrated. It is a position record only; it does not validate benchmark performance, mediation, human-state measurement, Sal-Meter, or CAIS compliance. The current position is **Level 0**. Level 1 requires a completed and signed P0 replay report (`p0-session-infrastructure/P0_REPLAY_REPORT_TEMPLATE.md`); the presence of the template is not itself a Level 1 position.
+
+| Level | Milestone | Status |
+|-------|-----------|--------|
+| 0 | Public helper scaffold present (schemas, synthetic/sample data, P0 session infrastructure) | CURRENT |
+| 1 | Synthetic P0 replay report completed | pending |
+| 2 | IRB-approved P1 micro pilot completed | future |
+| 3 | P2 A/B consequence benchmark completed | future |
+| 4 | P3 dyadic recovery gate completed | future |
+| 5 | Independent replication completed | future |
+| 6 | Peer-reviewed publication | future |
+
+Levels 1 through 6 involve human-subject research that operates under separate IRB governance outside this repository. No level above 0 is claimed by this repository.
+
+---
+
 ## Current P1 milestone state
 
 | Milestone | Status | Notes |
