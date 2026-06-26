@@ -79,11 +79,12 @@
 *(Complete if negative-case test package was run.)*
 
 | File | Expected outcome | Actual outcome | PASS/FAIL |
-p0-infra: add P0 replay report template (7 tech checks + 6 human-readiness + negative case + sign-off)| missing_participant_id.json | HALT_AND_FLAG | | |
+|------|-----------------|----------------|----------|
+| missing_participant_id.json | HALT_AND_FLAG | | |
 | missing_condition_id.json | HALT_AND_FLAG | | |
 | missing_t1_timestamp.json | HALT_AND_FLAG | | |
-| invalid_transition.json | Transition rejected | | |
-| boundary_violation_flag.json | Flag detected | | |
+| invalid_transition_recovery_to_ai_output.json | TRANSITION_REJECTED | | |
+| boundary_violation_real_data_flag.json | BOUNDARY_VIOLATION_FLAGGED | | |
 
 ---
 
