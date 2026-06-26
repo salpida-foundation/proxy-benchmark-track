@@ -1,0 +1,24 @@
+{
+  "_fixture_meta": {
+    "fixture_type": "synthetic_negative_case",
+    "fixture_id": "neg-001",
+    "contains_real_participant_data": false,
+    "expected_outcome": "HALT_AND_FLAG",
+    "checks_tested": [
+      "check_1_participant_id_auto_attachment"
+    ],
+    "description": "participant_id is null — INIT state must trigger HALT_AND_FLAG via missing_data_action.required_metadata_missing"
+  },
+  "session_id": "mock-neg-session-001",
+  "participant_id": null,
+  "condition_id": "A_validating_regulatory",
+  "timestamp_start": "2026-06-26T00:00:00Z",
+  "schema_version": "0.1.0",
+  "_lint_expectation": {
+    "state": "INIT",
+    "field": "participant_id",
+    "missing_data_action_triggered": "required_metadata_missing",
+    "expected_system_response": "HALT_AND_FLAG",
+    "must_not_continue": true
+  }
+}
