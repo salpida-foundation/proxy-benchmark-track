@@ -165,6 +165,17 @@ Permitted: "uncritical agreement condition", "over-validating response style", "
 4. **Distress check:** After each condition, 1-7 discomfort measure. If ≥5, halt session + connect coordinator.
 5. **Session-end debrief:** Explain research purpose and experimental nature of C + provide psychological support information if needed.
 
+
+### ⚠️ Condition D Safety Boundary
+
+Condition D (Minimizing-dismissive response) is a **low-validation comparator**, NOT an intentional harm condition.
+
+It must NOT include: ridicule, blame, humiliation, crisis dismissal, medical/legal/financial advice, or personally targeted negative language.
+
+D may provide minimal acknowledgement or redirect, but must remain low-risk and bounded to the approved low-intensity scenario set.
+
+All distress-check rules (score ≥5 → halt + notify coordinator) apply equally to D.
+
 ### Key Findings Goals
 
 **Finding 1:** A vs D significant difference — validating responses improve state significantly more than dismissive responses.
