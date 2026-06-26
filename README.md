@@ -1,7 +1,7 @@
 # Proxy Benchmark Track
 
-> **Current public helper release:** `v0.1.2 — Bounded Public Helper Pre-Release`  
-> `v0.1.2` supersedes `v0.1.1` as the current public helper route.  
+> **Current public helper release:** `v0.1.3 — P0 Synthetic Execution Infrastructure Patch`  
+> `v0.1.3` supersedes `v0.1.2` as the current bounded public helper pre-release.  
 > This release is research-stage, public-helper-only, synthetic/sample-data-first, raw-data-non-public, non-clinical, non-diagnostic, non-therapeutic, non-surveillance, not Sal-Meter, not CAIS compliance, not a validated benchmark, and not production readiness.
 
 **A research-stage public helper repository for measuring what AI leaves behind in the human state.**
@@ -20,16 +20,16 @@
 
 ## Current public helper release
 
-**Current release:** `v0.1.2 — Bounded Public Helper Pre-Release`
+**Current release:** `v0.1.3 — P0 Synthetic Execution Infrastructure Patch`
 
-`v0.1.2` is the current bounded public helper pre-release for the Human-State Proxy Benchmark Track.
+`v0.1.3` is the current bounded public helper pre-release for the Human-State Proxy Benchmark Track.
 
-It supersedes `v0.1.1` for the current public helper route.
+It supersedes `v0.1.2` for the current public helper route.
 
 Release route:
 
 ```text
-https://github.com/salpida-foundation/proxy-benchmark-track/releases/tag/v0.1.2
+https://github.com/salpida-foundation/proxy-benchmark-track/releases/tag/v0.1.3
 ```
 
 This release is a **research-stage public helper release**.
@@ -354,13 +354,26 @@ https://doi.org/10.5281/zenodo.19908378
 
 ## Repository release history
 
-### v0.1.2 — Bounded Public Helper Pre-Release
+### v0.1.3 — P0 Synthetic Execution Infrastructure Patch
 
 **Current public helper release.**
 
-`v0.1.2` is the current bounded public helper pre-release for the Human-State Proxy Benchmark Track.
+`v0.1.3` is the current bounded public helper pre-release for the Human-State Proxy Benchmark Track.
 
-It supersedes `v0.1.1` for the current public helper route.
+It supersedes `v0.1.2` for the current public helper route.
+
+This release adds the P0 synthetic session infrastructure (root session state machine, replay report template, synthetic negative-case fixtures), the P0 session infrastructure lint and its CI workflow, and the README Evidence Ladder. It is a public-helper-only patch: no human data, no benchmark validation, no mediation validation, not Sal-Meter, not CAIS compliance, and not production readiness.
+
+**Release route:**  
+https://github.com/salpida-foundation/proxy-benchmark-track/releases/tag/v0.1.3
+
+### v0.1.2 — Prior bounded public helper pre-release
+
+**Prior public helper release.**
+
+`v0.1.2` was the prior bounded public helper pre-release before the P0 Synthetic Execution Infrastructure Patch.
+
+It is no longer the current public helper route after publication of `v0.1.3`.
 
 **Release route:**  
 https://github.com/salpida-foundation/proxy-benchmark-track/releases/tag/v0.1.2
@@ -564,7 +577,7 @@ A replay must not reopen a closed session.
 | Production closed-loop authority | Not present | No phone-only simulator file or replay scaffold file authorizes production mediation, monitoring, intervention, relationship verdicts, or human ranking |
 | P0 session infrastructure | Present / synthetic-only root scaffold | `p0-session-infrastructure/session_state_machine.json` defines root P0 synthetic session states and transitions. It is NOT the P4-4 phone-only simulator (`phone-only-simulator/phone-session-state-machine.json`) and does not validate human-subject research, mediation, or benchmark performance. |
 | P0→P3 lean pilot design reference | Present / research-design-only | `docs/pilot-design/proxy-benchmark-pilot-design-v1.1.md` documents the future IRB-governed research pathway (P0 synthetic lock → P1 individual delta → P2 A/B consequence benchmark → P3 dyadic recovery). This repository covers public-safe synthetic/sample helper infrastructure only. P1–P3 human-subject research operates under separate IRB governance outside this repository. |
-| Release status | `v0.1.2` published as bounded public helper pre-release | `v0.1.2` is the current bounded public helper pre-release; `v0.1.1` is now a prior post-validator-pass helper release |
+| Release status | `v0.1.3` published as bounded public helper pre-release | `v0.1.3 — P0 Synthetic Execution Infrastructure Patch` is the current bounded public helper pre-release; `v0.1.2` is now a prior bounded public helper pre-release |
 
 ---
 
@@ -594,7 +607,7 @@ Levels 1 through 6 involve human-subject research that operates under separate I
 | P1-2 Synthetic sample package validator | Done | Validator file exists under `evaluation-baseline/validate_sample_package.py` |
 | P1-3 Evaluation baseline README and validator usability | Done | Evaluation baseline README explains local usage, PASS / FAIL meaning, dependency installation, and validator boundaries |
 | P1-4 GitHub Actions validator workflow | Done | Workflow completed successfully after GitHub Actions access was restored |
-| P1-5 v0.1.0 release readiness package | Done | `v0.1.0` was published as the initial bounded public helper pre-release; `v0.1.1` superseded it for post-validator-pass helper-structure status; `v0.1.2` is now the current bounded public helper pre-release |
+| P1-5 v0.1.0 release readiness package | Done | `v0.1.0` was published as the initial bounded public helper pre-release; `v0.1.1` superseded it for post-validator-pass helper-structure status; `v0.1.2` was the current bounded public helper pre-release and is now superseded by `v0.1.3` |
 
 ---
 
