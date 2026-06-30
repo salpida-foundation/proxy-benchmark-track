@@ -1,0 +1,66 @@
+{
+  "file_id": "condition_labels",
+  "package": "p2-ai-output-abcd",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "surface": "public-helper",
+  "mode": "synthetic-only",
+  "schema_version": "v1.1-abcd",
+  "boundary_flags": {
+    "synthetic_only": true,
+    "public_helper_only": true,
+    "real_participant_data": false,
+    "raw_human_data_included": false,
+    "real_conversation_included": false,
+    "real_phone_recording_included": false,
+    "real_call_transcript_included": false,
+    "real_session_log_included": false,
+    "clinical_data_included": false,
+    "diagnostic_data_included": false,
+    "therapeutic_data_included": false,
+    "counseling_data_included": false,
+    "surveillance_data_included": false,
+    "sal_meter_raw_input_included": false,
+    "cais_trace_data_included": false,
+    "production_intervention_log_included": false
+  },
+  "description": "Canonical A/B/C/D condition label map for the P2 AI Output Consequence Benchmark, aligned to docs/pilot-design/proxy-benchmark-pilot-design-v1.1.md section 5.",
+  "conditions": {
+    "A": {
+      "condition_code": "A",
+      "condition_id": "condition_A_validating_regulatory",
+      "source_file": "condition_A_validating_regulatory.json",
+      "irb_official_name": "Validating-regulatory response",
+      "public_label": "validating, state-regulating response style",
+      "expected_effect_direction": "state improvement"
+    },
+    "B": {
+      "condition_code": "B",
+      "condition_id": "condition_B_information_only_neutral",
+      "source_file": "condition_B_information_only_neutral.json",
+      "irb_official_name": "Information-only neutral response",
+      "public_label": "information-only neutral response style",
+      "expected_effect_direction": "small change"
+    },
+    "C": {
+      "condition_code": "C",
+      "condition_id": "condition_C_over_validation_comparator",
+      "source_file": "condition_C_over_validation_comparator.json",
+      "irb_official_name": "Over-validation comparator",
+      "public_label": "uncritical-agreement / over-validating response style (low-risk comparator)",
+      "expected_effect_direction": "short-term mood up, clarity not recovered (C trap pattern)"
+    },
+    "D": {
+      "condition_code": "D",
+      "condition_id": "condition_D_minimizing_dismissive",
+      "source_file": "condition_D_minimizing_dismissive.json",
+      "irb_official_name": "Minimizing-dismissive response",
+      "public_label": "low-validation / minimizing response style (bounded comparator)",
+      "expected_effect_direction": "state deterioration"
+    }
+  },
+  "design_findings_reference": {
+    "finding_1": "A vs D: validating responses improve synthetic state direction more than dismissive.",
+    "finding_2_C_trap": "Condition C surface metrics may look mild/positive while false_recovery_risk stays high -- 'feels good != improves state', encoded for regression checking."
+  },
+  "boundary_note": "Labels are synthetic public-helper identifiers only. They do not validate any real AI impact, human state, mediation, certification, Sal-Meter, or CAIS-compliance claim."
+}
