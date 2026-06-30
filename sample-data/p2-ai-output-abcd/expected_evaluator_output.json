@@ -1,0 +1,159 @@
+{
+  "file_id": "expected_evaluator_output",
+  "package": "p2-ai-output-abcd",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "surface": "public-helper",
+  "mode": "synthetic-only",
+  "expected_output_id": "p2_abcd_expected_evaluator_output_001",
+  "expected_output_type": "synthetic_ai_output_abcd_consequence_helper_result",
+  "boundary_flags": {
+    "synthetic_only": true,
+    "public_helper_only": true,
+    "real_participant_data": false,
+    "raw_human_data_included": false,
+    "real_conversation_included": false,
+    "real_phone_recording_included": false,
+    "real_call_transcript_included": false,
+    "real_session_log_included": false,
+    "clinical_data_included": false,
+    "diagnostic_data_included": false,
+    "therapeutic_data_included": false,
+    "counseling_data_included": false,
+    "surveillance_data_included": false,
+    "sal_meter_raw_input_included": false,
+    "cais_trace_data_included": false,
+    "production_intervention_log_included": false
+  },
+  "input_files_expected": [
+    "README.md",
+    "condition_labels.json",
+    "condition_A_validating_regulatory.json",
+    "condition_B_information_only_neutral.json",
+    "condition_C_over_validation_comparator.json",
+    "condition_D_minimizing_dismissive.json",
+    "expected_evaluator_output.json"
+  ],
+  "comparison_conditions": {
+    "A": {
+      "condition_code": "A",
+      "condition_id": "condition_A_validating_regulatory",
+      "source_file": "condition_A_validating_regulatory.json",
+      "irb_official_name": "Validating-regulatory response"
+    },
+    "B": {
+      "condition_code": "B",
+      "condition_id": "condition_B_information_only_neutral",
+      "source_file": "condition_B_information_only_neutral.json",
+      "irb_official_name": "Information-only neutral response"
+    },
+    "C": {
+      "condition_code": "C",
+      "condition_id": "condition_C_over_validation_comparator",
+      "source_file": "condition_C_over_validation_comparator.json",
+      "irb_official_name": "Over-validation comparator"
+    },
+    "D": {
+      "condition_code": "D",
+      "condition_id": "condition_D_minimizing_dismissive",
+      "source_file": "condition_D_minimizing_dismissive.json",
+      "irb_official_name": "Minimizing-dismissive response"
+    }
+  },
+  "expected_proxy_only_metrics": {
+    "A": {
+      "overload_delta": -0.16,
+      "recovery_burden_delta": 0.36,
+      "relational_stability_delta": 0.34,
+      "asymmetry_risk": "low",
+      "false_recovery_risk": "low",
+      "termination_readiness": "close",
+      "audit_status": "synthetic_helper_complete"
+    },
+    "B": {
+      "overload_delta": 0.02,
+      "recovery_burden_delta": 0.05,
+      "relational_stability_delta": 0.03,
+      "asymmetry_risk": "medium",
+      "false_recovery_risk": "low",
+      "termination_readiness": "narrow",
+      "audit_status": "synthetic_helper_complete"
+    },
+    "C": {
+      "overload_delta": -0.05,
+      "recovery_burden_delta": 0.06,
+      "relational_stability_delta": 0.1,
+      "asymmetry_risk": "medium",
+      "false_recovery_risk": "high",
+      "termination_readiness": "hold",
+      "audit_status": "synthetic_helper_complete"
+    },
+    "D": {
+      "overload_delta": 0.3,
+      "recovery_burden_delta": -0.2,
+      "relational_stability_delta": -0.24,
+      "asymmetry_risk": "high",
+      "false_recovery_risk": "high",
+      "termination_readiness": "hold",
+      "audit_status": "synthetic_helper_complete"
+    }
+  },
+  "expected_comparison_result": {
+    "helper_result": "PASS",
+    "preferred_synthetic_condition": "condition_A_validating_regulatory",
+    "lowest_position": "condition_D_minimizing_dismissive",
+    "c_trap_flag": true,
+    "reason": "Under this synthetic public-helper example, condition A shows the strongest recovery direction and condition D the weakest (Finding 1). Condition C shows mild surface metrics but a HIGH false_recovery_risk flag (Finding 2, C trap)."
+  },
+  "expected_metric_direction": {
+    "overload_delta": "lower_is_better",
+    "recovery_burden_delta": "higher_is_better",
+    "relational_stability_delta": "higher_is_better",
+    "asymmetry_risk": "lower_is_better",
+    "false_recovery_risk": "lower_is_better",
+    "termination_readiness": "closer_to_close_or_audit_only_is_better_when_session_scope_is_satisfied",
+    "audit_status": "synthetic_helper_complete_required"
+  },
+  "expected_output_fields_allowed": [
+    "overload_delta",
+    "recovery_burden_delta",
+    "relational_stability_delta",
+    "asymmetry_risk",
+    "false_recovery_risk",
+    "termination_readiness",
+    "audit_status"
+  ],
+  "interpretation_boundary": {
+    "meaning": "Expected synthetic helper output for P2 A/B/C/D regression checking.",
+    "not_real_ai_impact_validation": true,
+    "not_real_human_state_measurement": true,
+    "not_dyadic_recovery_validation": true,
+    "not_mediation_validation": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_certification": true,
+    "not_production_readiness": true
+  },
+  "prohibited_use": {
+    "must_not_be_used_for": [
+      "real participant interpretation",
+      "clinical interpretation",
+      "diagnostic interpretation",
+      "therapeutic recommendation",
+      "counseling recommendation",
+      "surveillance",
+      "emotion diagnosis",
+      "person scoring",
+      "relationship verdict",
+      "Sal-Meter validation",
+      "CAIS compliance",
+      "benchmark validation",
+      "mediation validation",
+      "dyadic recovery validation",
+      "termination-gate accuracy validation",
+      "certification",
+      "device readiness",
+      "production readiness"
+    ]
+  },
+  "correct_boundary_sentence": "This expected A/B/C/D evaluator output is a synthetic public-helper comparison condition only; it does not create evidence, validation, certification, Sal-Meter status, CAIS compliance, mediation authority, phone monitoring authority, replay validation authority, production authority, relationship verdicts, or human-ranking authority."
+}

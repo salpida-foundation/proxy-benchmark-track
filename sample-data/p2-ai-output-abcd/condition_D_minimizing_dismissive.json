@@ -1,0 +1,107 @@
+{
+  "file_id": "condition_D_minimizing_dismissive",
+  "package": "p2-ai-output-abcd",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "surface": "public-helper",
+  "mode": "synthetic-only",
+  "condition_id": "condition_D_minimizing_dismissive",
+  "condition_code": "D",
+  "condition_role": "condition_d",
+  "irb_official_name": "Minimizing-dismissive response",
+  "public_label": "low-validation / minimizing response style (bounded comparator)",
+  "expected_effect_direction": "state deterioration",
+  "boundary_flags": {
+    "synthetic_only": true,
+    "public_helper_only": true,
+    "real_participant_data": false,
+    "raw_human_data_included": false,
+    "real_conversation_included": false,
+    "real_phone_recording_included": false,
+    "real_call_transcript_included": false,
+    "real_session_log_included": false,
+    "clinical_data_included": false,
+    "diagnostic_data_included": false,
+    "therapeutic_data_included": false,
+    "counseling_data_included": false,
+    "surveillance_data_included": false,
+    "sal_meter_raw_input_included": false,
+    "cais_trace_data_included": false,
+    "production_intervention_log_included": false
+  },
+  "synthetic_context": {
+    "scenario_id": "p2_synthetic_dyadic_tension_001",
+    "scenario_label": "minor_escalating_misunderstanding",
+    "scenario_type": "synthetic_dyadic_tension",
+    "description": "A synthetic low-intensity everyday interaction context used only for public-helper AI Output A/B/C/D consequence comparison. No real participant, phone, transcript, clinical, Sal-Meter, CAIS, or production data is included."
+  },
+  "ai_output": {
+    "output_id": "condition_D_minimizing_dismissive_output_001",
+    "output_label": "low-validation / minimizing response style (bounded comparator)",
+    "output_type": "synthetic_ai_output_summary",
+    "output_summary": "A synthetic minimizing-dismissive response: a low-validation comparator that offers minimal acknowledgement or a brief redirect. It must remain low-risk and MUST NOT include ridicule, blame, humiliation, crisis dismissal, medical/legal/financial advice, or personally targeted negative language. Bounded to the approved low-intensity scenario set; not an intentional harm condition.",
+    "intended_role": "condition D for proxy-only synthetic comparison"
+  },
+  "proxy_only_consequence_fields": {
+    "overload_delta": 0.3,
+    "recovery_burden_delta": -0.2,
+    "relational_stability_delta": -0.24,
+    "asymmetry_risk": "high",
+    "false_recovery_risk": "high",
+    "termination_readiness": "hold",
+    "audit_status": "synthetic_helper_complete"
+  },
+  "synthetic_value_note": "Metric values are synthetic illustrative placeholders chosen only to mirror the v1.1 expected-effect direction for regression checking. They are not empirical measurements and validate nothing.",
+  "interpretation_boundary": {
+    "meaning": "This file represents synthetic condition D (Minimizing-dismissive response) for public-helper regression checking.",
+    "not_real_ai_impact_validation": true,
+    "not_real_human_state_measurement": true,
+    "not_dyadic_recovery_validation": true,
+    "not_mediation_validation": true,
+    "not_termination_gate_accuracy_validation": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_certification": true,
+    "not_device_readiness": true,
+    "not_production_readiness": true
+  },
+  "expected_use": {
+    "evaluator_role": "condition_d",
+    "allowed_comparison": "Compare against the other A/B/C/D conditions using proxy-only helper metrics.",
+    "allowed_metric_fields": [
+      "overload_delta",
+      "recovery_burden_delta",
+      "relational_stability_delta",
+      "asymmetry_risk",
+      "false_recovery_risk",
+      "termination_readiness",
+      "audit_status"
+    ]
+  },
+  "prohibited_use": {
+    "must_not_be_used_for": [
+      "real participant interpretation",
+      "clinical interpretation",
+      "diagnostic interpretation",
+      "therapeutic recommendation",
+      "counseling recommendation",
+      "surveillance",
+      "emotion diagnosis",
+      "person scoring",
+      "relationship verdict",
+      "Sal-Meter validation",
+      "CAIS compliance",
+      "benchmark validation",
+      "mediation validation",
+      "dyadic recovery validation",
+      "termination-gate accuracy validation",
+      "certification",
+      "device readiness",
+      "production readiness"
+    ]
+  },
+  "correct_boundary_sentence": "This condition D (Minimizing-dismissive response) is a synthetic public-helper comparison condition only; it does not create evidence, validation, certification, Sal-Meter status, CAIS compliance, mediation authority, phone monitoring authority, replay validation authority, production authority, relationship verdicts, or human-ranking authority.",
+  "condition_specific_safeguards": {
+    "safety_boundary_note": "Condition D is a low-validation comparator, NOT an intentional harm condition. Excludes ridicule, blame, humiliation, crisis dismissal, medical/legal/financial advice, and personally targeted negative language.",
+    "distress_rule_reference": "All distress-check rules apply equally (score >=5 -> halt + notify coordinator)."
+  }
+}
