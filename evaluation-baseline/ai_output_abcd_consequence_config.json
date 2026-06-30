@@ -1,0 +1,56 @@
+{
+  "evaluator_name": "AI Output A/B/C/D consequence evaluator",
+  "evaluator_version": "v0.3",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "repository_surface": "public-helper",
+  "mode": "synthetic-only",
+  "input_package_dir": "sample-data/p2-ai-output-abcd",
+  "output_report_file": "evaluation-baseline/demo_output/p2_ai_output_abcd_evaluator_result.json",
+  "required_files": [
+    "README.md",
+    "condition_labels.json",
+    "condition_A_validating_regulatory.json",
+    "condition_B_information_only_neutral.json",
+    "condition_C_over_validation_comparator.json",
+    "condition_D_minimizing_dismissive.json",
+    "expected_evaluator_output.json"
+  ],
+  "condition_files": {
+    "A": "condition_A_validating_regulatory.json",
+    "B": "condition_B_information_only_neutral.json",
+    "C": "condition_C_over_validation_comparator.json",
+    "D": "condition_D_minimizing_dismissive.json"
+  },
+  "condition_label_file": "condition_labels.json",
+  "expected_output_file": "expected_evaluator_output.json",
+  "allowed_proxy_only_fields": [
+    "overload_delta",
+    "recovery_burden_delta",
+    "relational_stability_delta",
+    "asymmetry_risk",
+    "false_recovery_risk",
+    "termination_readiness",
+    "audit_status"
+  ],
+  "prohibited_output_fields": [
+    "OE",
+    "RE",
+    "EE",
+    "VCE",
+    "CRI",
+    "CFI",
+    "clinical_score",
+    "diagnostic_score",
+    "therapeutic_score",
+    "emotion_score",
+    "person_score",
+    "relationship_score",
+    "relationship_verdict",
+    "Sal-Meter readiness",
+    "CAIS compliance",
+    "validated benchmark",
+    "validated mediation",
+    "certified status",
+    "production readiness"
+  ]
+}

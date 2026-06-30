@@ -1,3 +1,19 @@
+> ## ⚠️ DEPRECATED — superseded by the A/B/C/D package
+> This A/B (two-condition) package is **retained for backward compatibility only**.
+> The current P2 design uses **four conditions (A/B/C/D)**, aligned to
+> `docs/pilot-design/proxy-benchmark-pilot-design-v1.1.md` (section 5).
+>
+> - Current package: `sample-data/p2-ai-output-abcd/`
+> - Current evaluator: `evaluation-baseline/evaluate_ai_output_abcd.py`
+> - Current config: `evaluation-baseline/ai_output_abcd_consequence_config.json`
+>
+> This folder, its `evaluate_ai_output_ab.py` evaluator, and its config are **not deleted**;
+> they remain runnable for regression history. New work should target the A/B/C/D package.
+> This deprecation notice is wording/pointer hygiene only. It is **not** validation,
+> certification, Sal-Meter status, CAIS compliance, or production readiness.
+
+---
+
 # P2 AI Output A/B Synthetic Comparison Package
 
 This folder contains a synthetic-only public helper package for AI Output A/B consequence comparison.

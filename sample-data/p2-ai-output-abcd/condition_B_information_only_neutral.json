@@ -1,0 +1,103 @@
+{
+  "file_id": "condition_B_information_only_neutral",
+  "package": "p2-ai-output-abcd",
+  "track": "SICS Human-State Proxy Benchmark Track",
+  "surface": "public-helper",
+  "mode": "synthetic-only",
+  "condition_id": "condition_B_information_only_neutral",
+  "condition_code": "B",
+  "condition_role": "condition_b",
+  "irb_official_name": "Information-only neutral response",
+  "public_label": "information-only neutral response style",
+  "expected_effect_direction": "small change",
+  "boundary_flags": {
+    "synthetic_only": true,
+    "public_helper_only": true,
+    "real_participant_data": false,
+    "raw_human_data_included": false,
+    "real_conversation_included": false,
+    "real_phone_recording_included": false,
+    "real_call_transcript_included": false,
+    "real_session_log_included": false,
+    "clinical_data_included": false,
+    "diagnostic_data_included": false,
+    "therapeutic_data_included": false,
+    "counseling_data_included": false,
+    "surveillance_data_included": false,
+    "sal_meter_raw_input_included": false,
+    "cais_trace_data_included": false,
+    "production_intervention_log_included": false
+  },
+  "synthetic_context": {
+    "scenario_id": "p2_synthetic_dyadic_tension_001",
+    "scenario_label": "minor_escalating_misunderstanding",
+    "scenario_type": "synthetic_dyadic_tension",
+    "description": "A synthetic low-intensity everyday interaction context used only for public-helper AI Output A/B/C/D consequence comparison. No real participant, phone, transcript, clinical, Sal-Meter, CAIS, or production data is included."
+  },
+  "ai_output": {
+    "output_id": "condition_B_information_only_neutral_output_001",
+    "output_label": "information-only neutral response style",
+    "output_type": "synthetic_ai_output_summary",
+    "output_summary": "A synthetic information-only neutral response that provides plain factual content without explicit validation, regulation support, or relational framing. Bounded to the approved low-intensity scenario set.",
+    "intended_role": "condition B for proxy-only synthetic comparison"
+  },
+  "proxy_only_consequence_fields": {
+    "overload_delta": 0.02,
+    "recovery_burden_delta": 0.05,
+    "relational_stability_delta": 0.03,
+    "asymmetry_risk": "medium",
+    "false_recovery_risk": "low",
+    "termination_readiness": "narrow",
+    "audit_status": "synthetic_helper_complete"
+  },
+  "synthetic_value_note": "Metric values are synthetic illustrative placeholders chosen only to mirror the v1.1 expected-effect direction for regression checking. They are not empirical measurements and validate nothing.",
+  "interpretation_boundary": {
+    "meaning": "This file represents synthetic condition B (Information-only neutral response) for public-helper regression checking.",
+    "not_real_ai_impact_validation": true,
+    "not_real_human_state_measurement": true,
+    "not_dyadic_recovery_validation": true,
+    "not_mediation_validation": true,
+    "not_termination_gate_accuracy_validation": true,
+    "not_sal_meter": true,
+    "not_cais_compliance": true,
+    "not_certification": true,
+    "not_device_readiness": true,
+    "not_production_readiness": true
+  },
+  "expected_use": {
+    "evaluator_role": "condition_b",
+    "allowed_comparison": "Compare against the other A/B/C/D conditions using proxy-only helper metrics.",
+    "allowed_metric_fields": [
+      "overload_delta",
+      "recovery_burden_delta",
+      "relational_stability_delta",
+      "asymmetry_risk",
+      "false_recovery_risk",
+      "termination_readiness",
+      "audit_status"
+    ]
+  },
+  "prohibited_use": {
+    "must_not_be_used_for": [
+      "real participant interpretation",
+      "clinical interpretation",
+      "diagnostic interpretation",
+      "therapeutic recommendation",
+      "counseling recommendation",
+      "surveillance",
+      "emotion diagnosis",
+      "person scoring",
+      "relationship verdict",
+      "Sal-Meter validation",
+      "CAIS compliance",
+      "benchmark validation",
+      "mediation validation",
+      "dyadic recovery validation",
+      "termination-gate accuracy validation",
+      "certification",
+      "device readiness",
+      "production readiness"
+    ]
+  },
+  "correct_boundary_sentence": "This condition B (Information-only neutral response) is a synthetic public-helper comparison condition only; it does not create evidence, validation, certification, Sal-Meter status, CAIS compliance, mediation authority, phone monitoring authority, replay validation authority, production authority, relationship verdicts, or human-ranking authority."
+}
