@@ -1,7 +1,7 @@
 # Proxy Benchmark Track
 
 > **Current release:** `v0.1.4 — P2 A/B/C/D Synthetic Consequence Package Patch`  
-> `v0.1.3` supersedes `v0.1.2` as the current bounded public helper pre-release.  
+> `v0.1.4` supersedes `v0.1.3` as the current bounded public helper pre-release.
 > This release is research-stage, public-helper-only, synthetic/sample-data-first, raw-data-non-public, non-clinical, non-diagnostic, non-therapeutic, non-surveillance, not Sal-Meter, not CAIS compliance, not a validated benchmark, and not production readiness.
 
 **A research-stage public helper repository for measuring what AI leaves behind in the human state.**
@@ -22,14 +22,14 @@
 
 > **Current public helper release:** `v0.1.4 — P2 A/B/C/D Synthetic Consequence Package Patch`
 
-`v0.1.3` is the current bounded public helper pre-release for the Human-State Proxy Benchmark Track.
+`v0.1.4` is the current bounded public helper pre-release for the Human-State Proxy Benchmark Track.
 
-It supersedes `v0.1.2` for the current public helper route.
+It supersedes `v0.1.3` for the current public helper route.
 
 Release route:
 
 ```text
-https://github.com/salpida-foundation/proxy-benchmark-track/releases/tag/v0.1.3
+https://github.com/salpida-foundation/proxy-benchmark-track/releases/tag/v0.1.4
 ```
 
 This release is a **research-stage public helper release**.
@@ -54,12 +54,6 @@ It is:
 This release may be used to understand the current public helper structure, synthetic evaluator direction, schema boundary, sample-data boundary, and public/private data separation.
 
 It must not be cited or described as validation of real human-state measurement, dyadic recovery, AI mediation effectiveness, clinical readiness, commercial readiness, device readiness, Sal-Meter readiness, or CAIS compliance.
-
-### Post-v0.1.3 main-branch update (not yet a tagged release)
-
-After `v0.1.3`, the `main` branch additionally includes the P2 v1.1 A/B/C/D synthetic consequence package (`sample-data/p2-ai-output-abcd/`), a parallel A/B/C/D consequence evaluator (`evaluation-baseline/evaluate_ai_output_abcd.py`) wired into the validation workflow, and P1/P2/P3 public design summaries. The older A/B package is retained as deprecated for regression history only.
-
-These `main`-branch additions are public-helper-only and synthetic-only. They must not be cited or described as validation, certification, Sal-Meter readiness, CAIS compliance, benchmark evidence, mediation evidence, or production readiness. A corresponding `v0.1.4` tag is not yet published.
 
 Public examples in this repository must remain limited to:
 
