@@ -54,6 +54,9 @@ jobs:
       - name: Run synthetic AI Output A/B consequence evaluator
         run: python evaluation-baseline/evaluate_ai_output_ab.py
 
+      - name: Run P2 A/B/C/D package validator
+        run: python evaluation-baseline/validate_p2_abcd_package.py
+
       - name: Run synthetic AI Output A/B/C/D consequence evaluator
         run: python evaluation-baseline/evaluate_ai_output_abcd.py
 
