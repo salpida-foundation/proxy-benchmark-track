@@ -125,14 +125,14 @@ evaluation-baseline/
 **Current public helper release:**
 
 ```text
-v0.1.1 — Post-Validator-Pass Public Helper Package for Human-State Proxy Benchmark Track
+v0.1.4 — P2 A/B/C/D Synthetic Consequence Package Patch
 ```
 
 **Release posture:**
 
 - bounded public helper pre-release;
 - post-validator-pass helper-structure package;
-- supersedes v0.1.0 for helper-structure validation status;
+- supersedes v0.1.3 for the current public helper route;
 - manual binary assets: none;
 - GitHub may automatically provide source code archives.
 
