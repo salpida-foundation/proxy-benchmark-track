@@ -88,9 +88,11 @@ evaluation-baseline/
   evaluate_dyadic_recovery_demo.py
   evaluate_termination_gate_demo.py
   ai_output_ab_consequence_config.json
+  ai_output_abcd_consequence_config.json
   synthetic_ab_inputs/
     synthetic_ai_output_ab_001.json
   evaluate_ai_output_ab.py
+  evaluate_ai_output_abcd.py
   demo_output/
     ai_output_ab_demo_report_001.json
   prohibited_terms.json
@@ -109,6 +111,8 @@ evaluation-baseline/
 | `ai_output_ab_consequence_config.json` | Configuration for the synthetic AI Output A/B consequence evaluator | Present |
 | `synthetic_ab_inputs/synthetic_ai_output_ab_001.json` | Synthetic-only A/B input object for AI output consequence comparison | Present |
 | `evaluate_ai_output_ab.py` | Synthetic AI Output A/B consequence evaluator | Present |
+| `ai_output_abcd_consequence_config.json` | Configuration for the synthetic AI Output A/B/C/D consequence evaluator | Present |
+| `evaluate_ai_output_abcd.py` | Synthetic AI Output A/B/C/D consequence evaluator (current P2 v1.1 route) | Present |
 | `demo_output/ai_output_ab_demo_report_001.json` | Example bounded A/B consequence evaluator demo report | Present |
 | `prohibited_terms.json` | Public boundary prohibited / risky wording list | Present |
 | `boundary_lint.py` | Public boundary language lint helper | Present |
