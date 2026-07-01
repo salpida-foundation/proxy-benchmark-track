@@ -1,6 +1,6 @@
 # Proxy Benchmark Track
 
-> **Current public helper release:** `v0.1.3 — P0 Synthetic Execution Infrastructure Patch`  
+> **Current release:** `v0.1.4 — P2 A/B/C/D Synthetic Consequence Package Patch`  
 > `v0.1.3` supersedes `v0.1.2` as the current bounded public helper pre-release.  
 > This release is research-stage, public-helper-only, synthetic/sample-data-first, raw-data-non-public, non-clinical, non-diagnostic, non-therapeutic, non-surveillance, not Sal-Meter, not CAIS compliance, not a validated benchmark, and not production readiness.
 
@@ -20,7 +20,7 @@
 
 ## Current public helper release
 
-**Current release:** `v0.1.3 — P0 Synthetic Execution Infrastructure Patch`
+> **Current public helper release:** `v0.1.4 — P2 A/B/C/D Synthetic Consequence Package Patch`
 
 `v0.1.3` is the current bounded public helper pre-release for the Human-State Proxy Benchmark Track.
 
