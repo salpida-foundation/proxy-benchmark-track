@@ -102,6 +102,15 @@ sample-data/
     termination_gate.json
     audit_log.json
     termination_gate_cases.json
+
+  p2-ai-output-abcd/
+    README.md
+    condition_labels.json
+    condition_A_validating_regulatory.json
+    condition_B_information_only_neutral.json
+    condition_C_over_validation_comparator.json
+    condition_D_minimizing_dismissive.json
+    expected_evaluator_output.json
 ```
 
 The current public sample package map includes:
@@ -111,6 +120,7 @@ Original synthetic session package
 P3 synthetic dyadic helper package
 P4-0 / P4-1 synthetic dyadic demo-flow package
 P4-3 synthetic termination-gate helper case package
+P2 v1.1 A/B/C/D synthetic consequence package
 ```
 
 All listed files are public helper examples only.
