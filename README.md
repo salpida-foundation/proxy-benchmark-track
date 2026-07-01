@@ -55,6 +55,12 @@ This release may be used to understand the current public helper structure, synt
 
 It must not be cited or described as validation of real human-state measurement, dyadic recovery, AI mediation effectiveness, clinical readiness, commercial readiness, device readiness, Sal-Meter readiness, or CAIS compliance.
 
+### Post-v0.1.3 main-branch update (not yet a tagged release)
+
+After `v0.1.3`, the `main` branch additionally includes the P2 v1.1 A/B/C/D synthetic consequence package (`sample-data/p2-ai-output-abcd/`), a parallel A/B/C/D consequence evaluator (`evaluation-baseline/evaluate_ai_output_abcd.py`) wired into the validation workflow, and P1/P2/P3 public design summaries. The older A/B package is retained as deprecated for regression history only.
+
+These `main`-branch additions are public-helper-only and synthetic-only. They must not be cited or described as validation, certification, Sal-Meter readiness, CAIS compliance, benchmark evidence, mediation evidence, or production readiness. A corresponding `v0.1.4` tag is not yet published.
+
 Public examples in this repository must remain limited to:
 
 - synthetic data
