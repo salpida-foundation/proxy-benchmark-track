@@ -99,6 +99,19 @@ This section does not validate human-state measurement, dyadic recovery, mediati
 
 ---
 
+## Core milestone map
+
+For the current public-helper routing map from signal synchronization through
+individual delta, AI-output consequence divergence, dyadic recovery, mediation
+policy, and recovery/termination control, see:
+
+- [P0–P5 Core Milestone & Routing Map](docs/program/proxy-benchmark-p0-p5-core-milestone-map.md)
+
+This map is a research-stage public helper only. It is not an IRB protocol,
+scientific validation, Sal-Meter status, or CAIS compliance.
+
+---
+
 ## Current status boundary
 
 **Status:** research-stage · public-helper-only · synthetic/sample-data-first · raw-data-non-public · non-clinical · non-diagnostic · non-therapeutic · non-surveillance · non-counseling · non-coercive · pre-validation · pre-device · pre-certification · pre-compliance · benchmark-support-only
