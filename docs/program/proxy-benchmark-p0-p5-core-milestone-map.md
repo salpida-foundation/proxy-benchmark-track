@@ -291,16 +291,17 @@ A public GitHub helper may improve findability, structure, auditability, and rep
 
 ## 11. Related public-helper routes
 
-- `../pilot-design/p1-individual-delta-micro-pilot-summary.md`
-- `../pilot-design/p2-ai-output-abcd-consequence-benchmark-summary.md`
-- `../pilot-design/p3-dyadic-recovery-detection-gate-summary.md`
-- `../dyadic-recovery-baseline-suite.md`
-- `../dyadic-mediation-session-flow.md`
-- `../recovery-gate-definition.md`
-- `../termination-gate-definition.md`
-- `../../prompts/mediation_policy_v0.1.json`
+- [P1 — Individual Delta Micro Pilot](../pilot-design/p1-individual-delta-micro-pilot-summary.md)
+- [P2 — AI Output A/B/C/D Consequence Benchmark](../pilot-design/p2-ai-output-abcd-consequence-benchmark-summary.md)
+- [P3 — Dyadic Recovery Detection Gate](../pilot-design/p3-dyadic-recovery-detection-gate-summary.md)
+- [Dyadic Recovery Baseline Suite](../dyadic-recovery-baseline-suite.md)
+- [Dyadic Mediation Session Flow](../dyadic-mediation-session-flow.md)
+- [Recovery Gate Definition](../recovery-gate-definition.md)
+- [Termination Gate Definition](../termination-gate-definition.md)
+- [Mediation Policy Prompt Pack](../../prompts/mediation_policy_v0.1.json)
 
-These linked resources are public-helper documents or synthetic scaffolds. They do not by themselves authorize or validate a human-subject experiment.
+These linked resources are public-helper documents or synthetic scaffolds.
+They do not by themselves authorize or validate a human-subject experiment.
 
 ---
 
