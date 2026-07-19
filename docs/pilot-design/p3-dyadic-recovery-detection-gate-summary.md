@@ -16,7 +16,18 @@ behavioural recovery** or only **surface self-reported recovery**.
 
 ## Design
 
-- 2-person dyads, within-dyad, **M1 vs M2**, n = 30–40 pairs.
+> **⚠️ Design under revision (2026-07):** The line below (`within-dyad`, n = 30–40)
+> reflects the original pilot-design draft (`proxy-benchmark-pilot-design-v1.1.md`,
+> section 6) and predates a methodological correction. Having the same dyad
+> experience both M1 and M2 risks relational learning carryover — trust and
+> interaction patterns learned in one condition do not wash out before the next.
+> This is a more severe version of the crossover-contamination issue already
+> corrected in P1 and P2. Design is being revised to **between-dyad** (each dyad
+> experiences exactly one condition, M1 or M2), with sample size recalculated for
+> a parallel-group design. This notice will be replaced once IRB review locks
+> the between-dyad protocol.
+
+- 2-person dyads, within-dyad, **M1 vs M2**, n = 30–40 pairs. *(historical — see notice above)*
 - IRB applied **separately** from P2; stricter review expected.
 
 | Code | IRB official name | Content |
