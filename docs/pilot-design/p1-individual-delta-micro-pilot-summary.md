@@ -13,8 +13,17 @@ Confirm that an individual's ΔState before and after an AI response is **measur
 
 ## Design
 
-- Within-subject, **2 conditions: A (Validating-regulatory) vs D (Minimizing-dismissive)**.
-- n = 20–30.
+> **⚠️ Design under revision (2026-07):** The A-versus-D within-subject design
+> below is a historical design reference (source of record:
+> `proxy-benchmark-pilot-design-v1.1.md`, section 4) and predates a methodological
+> correction. The active internal human-subject design has moved to an
+> **R (standardized AI guidance) versus Q (matched self-reflection)** comparison in
+> a **between-subject** parallel structure (one participant = one condition), using
+> real low-intensity conflict recall. This public file does not authorize a
+> human-subject protocol; the full rewrite lands when IRB review locks the design.
+
+- Within-subject, **2 conditions: A (Validating-regulatory) vs D (Minimizing-dismissive)**. *(historical — see notice above)*
+- n = 20–30. *(historical)*
 - IRB required; applied for expedited review as non-clinical, minimal risk.
 - Low-intensity everyday scenarios only. Excludes trauma, self-harm, domestic
   violence, and medical / legal / financial / crisis content.
