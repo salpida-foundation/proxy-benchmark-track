@@ -15,7 +15,16 @@ human state. IRB required; P1 data attached as supporting evidence.
 
 ## Design
 
-- Within-subject, **4 conditions A/B/C/D**, n = 45–60.
+> **⚠️ Design under revision (2026-07):** The within-subject A/B/C/D design below is
+> a historical design reference (source of record:
+> `proxy-benchmark-pilot-design-v1.1.md`, section 5) and predates a methodological
+> correction. The active internal design uses a **randomized four-arm parallel
+> structure** (one participant = one condition), with **C-versus-A consequence
+> divergence as the primary question**, A-versus-D as a manipulation/sanity check,
+> and B as a neutral anchor. This public file does not authorize a human-subject
+> protocol; the full rewrite lands when IRB review locks the design.
+
+- Within-subject, **4 conditions A/B/C/D**, n = 45–60. *(historical — see notice above)*
 
 | Code | IRB official name | Expected effect |
 |---|---|---|
