@@ -69,7 +69,7 @@ P2  ──── AI Output A/B Consequence Benchmark
          └── GO (A vs D significant + C trap pattern) → P3
 
 P3  ──── Dyadic Recovery Detection Gate
-         [Separate enhanced IRB / M1 vs M2 / 30-40 pairs]
+         [Separate enhanced IRB / M1 vs M2 / between-dyad, N TBD — see §6 note]
 ```
 
 Gate principle: No data, no next stage.
@@ -194,8 +194,12 @@ P2 pass criteria: A vs D significant (p<.05, d≥0.4) + C trap pattern observed.
 
 ## 6. P3 — Dyadic Recovery Detection Gate
 
+> **Note (2026-07):** Original within-dyad design superseded — see between-dyad
+> correction rationale in P3 Master Handoff (Part 4.2). Sample size to be
+> recalculated by EStL for parallel-group design.
+
 **IRB:** Apply separately from P2. Stricter review expected.
-**Design:** 2-person dyads, within-dyad, M1 vs M2, n=30-40 pairs.
+**Design:** 2-person dyads, within-dyad, M1 vs M2, n=30-40 pairs. *(historical)*
 
 ### Mediation Types
 
