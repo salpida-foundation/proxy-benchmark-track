@@ -294,6 +294,7 @@ A public GitHub helper may improve findability, structure, auditability, and rep
 - [P1 — Individual Delta Micro Pilot](../pilot-design/p1-individual-delta-micro-pilot-summary.md)
 - [P2 — AI Output A/B/C/D Consequence Benchmark](../pilot-design/p2-ai-output-abcd-consequence-benchmark-summary.md)
 - [P3 — Dyadic Recovery Detection Gate](../pilot-design/p3-dyadic-recovery-detection-gate-summary.md)
+- [P4 — Human-State-Aware Mediation Policy and Bounded Output](../pilot-design/p4-human-state-aware-mediation-policy-summary.md)
 - [Dyadic Recovery Baseline Suite](../dyadic-recovery-baseline-suite.md)
 - [Dyadic Mediation Session Flow](../dyadic-mediation-session-flow.md)
 - [Recovery Gate Definition](../recovery-gate-definition.md)
