@@ -310,6 +310,23 @@ They do not by themselves authorize or validate a human-subject experiment.
 
 The Proxy Benchmark Track is not successful because AI sounds empathetic, polite, or intelligent. It is successful only if the research can show, under bounded and auditable conditions, that AI output creates measurable human-state consequences; that immediate relief can be distinguished from regulated clarity; that real dyadic recovery can be distinguished from silence, compliance, and one-sided burden; that a state-aware policy selects less intrusive and more appropriate actions than simpler baselines; and that the system knows when to reduce, pause, defer, or stop.
 
+---
+## Canonical records and public research hub
+
+This document is a public technical helper surface. It is subordinate to the following DOI-registered records and the OSF public research hub.
+
+**SICS Human-State Proxy Benchmark Track: Public Boundary and Program Charter v0.1**
+- Version DOI: https://doi.org/10.5281/zenodo.19837423
+- Concept DOI (all versions): https://doi.org/10.5281/zenodo.19837422
+
+**SICS Human-State Proxy Benchmark Track: Scientific Rationale and Research Value v0.1**
+- Version DOI: https://doi.org/10.5281/zenodo.19837971
+- Concept DOI (all versions): https://doi.org/10.5281/zenodo.19837970
+
+**Research hub (OSF):** https://osf.io/k6crh/
+
+**Authority rule.** Zenodo DOI-registered records govern; OSF routes and indexes; GitHub provides public technical helper materials. If a GitHub helper conflicts with a higher-level DOI-registered record, the DOI-registered record prevails.
+
 The central principle is:
 
 > Measure what AI leaves behind in the human state and the dyad, not only what the AI says.
