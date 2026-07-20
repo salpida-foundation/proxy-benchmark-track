@@ -29,7 +29,7 @@ Naming note: "Freeze" is used rather than "Lock" to keep these distinct from the
 
 ## Scenario families
 
-Conflict, general stress, and meditation move state in different directions and are not collapsed into one unified score. The conflict P1–P3 baseline is locked first; stress and meditation are treated as separate benchmark families for later expansion.
+Conflict, general stress, and meditation move state in different directions and are not collapsed into one unified score. The conflict P1–P3 reference baseline is established first; stress and meditation are treated as separate benchmark families for later expansion.
 
 ## The Sal-Meter Bridge (future comparison)
 
