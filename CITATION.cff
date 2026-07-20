@@ -12,8 +12,8 @@ authors:
     orcid: "https://orcid.org/0009-0005-3809-4588"
     affiliation: "Salpida Institute of Consciousness Science (SICS)"
 
-version: "0.1.0"
-date-released: "2026-04-28"
+version: "0.1.4"
+date-released: "<v0.1.4 릴리스 실제 날짜, 예: 2026-05-12>"
 
 license: "CC-BY-SA-4.0"
 
