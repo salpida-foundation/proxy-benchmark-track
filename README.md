@@ -424,7 +424,7 @@ It must not be cited or described as validation of real human-state measurement,
 
 It superseded `v0.1.0` for helper-structure validation status, but it is no longer the current public helper route after publication of `v0.1.2`.
 
-Use `v0.1.2` for the current bounded public helper pre-release boundary.
+`v0.1.2` is a prior bounded public helper pre-release and is no longer the current route.
 
 `v0.1.1` confirmed only that the public synthetic/sample package validator could run and report helper-structure PASS / FAIL.
 
@@ -593,7 +593,7 @@ A replay must not reopen a closed session.
 | Production closed-loop authority | Not present | No phone-only simulator file or replay scaffold file authorizes production mediation, monitoring, intervention, relationship verdicts, or human ranking |
 | P0 session infrastructure | Present / synthetic-only root scaffold | `p0-session-infrastructure/session_state_machine.json` defines root P0 synthetic session states and transitions. It is NOT the P4-4 phone-only simulator (`phone-only-simulator/phone-session-state-machine.json`) and does not validate human-subject research, mediation, or benchmark performance. |
 | P0→P3 lean pilot design reference | Present / research-design-only | `docs/pilot-design/proxy-benchmark-pilot-design-v1.1.md` documents the future IRB-governed research pathway (P0 synthetic lock → P1 individual delta → P2 A/B consequence benchmark → P3 dyadic recovery). This repository covers public-safe synthetic/sample helper infrastructure only. P1–P3 human-subject research operates under separate IRB governance outside this repository. |
-| Release status | `v0.1.3` published as bounded public helper pre-release | `v0.1.3 — P0 Synthetic Execution Infrastructure Patch` is the current bounded public helper pre-release; `v0.1.2` is now a prior bounded public helper pre-release |
+| Release status | `v0.1.4` published as bounded public helper pre-release | `v0.1.4 — P2 A/B/C/D Synthetic Consequence Package Patch` is the current bounded public helper pre-release; `v0.1.3` is now a prior bounded public helper pre-release |
 
 ---
 
@@ -672,7 +672,7 @@ It is not CAIS compliance.
 | P3-14 v0.1.0 public helper release package | Done | `docs/v0.1.0-public-helper-release-package.md` prepares the bounded release package |
 | P3-15 GitHub pre-release notes and publication gate | Done | `docs/v0.1.0-github-pre-release-notes-and-publication-gate.md` preserves release notes and publication gate language |
 | P3-16 GitHub pre-release draft correction | Done | GitHub draft dependence was treated as unreliable; publication proceeded through a separate authorization gate |
-| P3-17 Public pre-release publication authorization | Done | `v0.1.0` was published as the initial public helper pre-release; `v0.1.1` superseded it for post-validator-pass helper status; `v0.1.2` is now the current bounded public helper pre-release |
+| P3-17 Public pre-release publication authorization | Done | `v0.1.0` was published as the initial public helper pre-release; later pre-releases superseded it; `v0.1.4` is now the current bounded public helper pre-release |
 
 ---
 
