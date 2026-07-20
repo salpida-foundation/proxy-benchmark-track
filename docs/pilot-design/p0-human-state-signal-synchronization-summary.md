@@ -95,6 +95,18 @@ Raw human data is not published. Public repositories carry only synthetic/sample
 | Sal-Meter Internal Phase 0 (SM-P0) | G-only internal core state-separation phase | No — separate core track |
 | External Layer-0 | iodine-redox / thiol interface external feasibility | No — separate chemistry track |
 
-## Canonical records
+## Canonical records and public research hub
 
-This helper surface routes to, and is subordinate to, the DOI-registered records and the OSF research hub, which hold canonical authority. GitHub helps builders; DOI/OSF records define authority.
+This document is a public technical helper surface. It is subordinate to the following DOI-registered records and the OSF public research hub.
+
+**SICS Human-State Proxy Benchmark Track: Public Boundary and Program Charter v0.1**
+- Version DOI: https://doi.org/10.5281/zenodo.19837423
+- Concept DOI (all versions): https://doi.org/10.5281/zenodo.19837422
+
+**SICS Human-State Proxy Benchmark Track: Scientific Rationale and Research Value v0.1**
+- Version DOI: https://doi.org/10.5281/zenodo.19837971
+- Concept DOI (all versions): https://doi.org/10.5281/zenodo.19837970
+
+**Research hub (OSF):** https://osf.io/k6crh/
+
+**Authority rule.** Zenodo DOI-registered records govern; OSF routes and indexes; GitHub provides public technical helper materials. If a GitHub helper conflicts with a higher-level DOI-registered record, the DOI-registered record prevails.
