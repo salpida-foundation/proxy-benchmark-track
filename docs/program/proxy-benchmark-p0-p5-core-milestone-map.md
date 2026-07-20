@@ -331,3 +331,10 @@ The central principle is:
 
 > Measure what AI leaves behind in the human state and the dyad, not only what the AI says.
 
+### Related canonical mediation records
+
+- Human-State Mediation Boundary Standard v0.1 — Version https://doi.org/10.5281/zenodo.19904289 · Concept https://doi.org/10.5281/zenodo.19904288
+- Human-State Packet Minimal Data-Sharing Standard v0.1 — Version https://doi.org/10.5281/zenodo.19905541 · Concept https://doi.org/10.5281/zenodo.19905540
+- Dyadic Human-State Mediation Benchmark Charter v0.1 — Version https://doi.org/10.5281/zenodo.19906725 · Concept https://doi.org/10.5281/zenodo.19906724
+- Human-State Session Protocol v0.1 — Structural Declaration — Version https://doi.org/10.5281/zenodo.19908379 · Concept https://doi.org/10.5281/zenodo.19908378
+
