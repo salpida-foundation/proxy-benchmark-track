@@ -84,7 +84,7 @@ Any future Sal-Meter comparison happens later, on this fixed baseline, and only 
 
 ## Scenario families (concept)
 
-Conflict, general stress, and meditation change state in different directions and are **not** collapsed into a single unified HSD score. The conflict P1–P3 baseline is locked first; stress and meditation are treated as separate benchmark families for later expansion.
+Conflict, general stress, and meditation change state in different directions and are **not** collapsed into a single unified HSD score. The conflict P1–P3 reference baseline is established first; stress and meditation are treated as separate benchmark families for later expansion.
 
 ## Data boundary
 
