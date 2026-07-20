@@ -1,7 +1,13 @@
 # P0 Session Infrastructure
 
-> **Scope:** Root synthetic session infrastructure for P0 Technical Readiness.
+> **Scope:** Public-safe **Stage 0A synthetic synchronization helper** used *inside* Proxy-P0.
 > This folder is NOT the phone-only simulator. NOT a human-subject protocol. NOT validated mediation.
+>
+> **This folder is not Proxy-P0 itself.** Proxy-P0 — Human-State Signal Synchronization is the
+> broader phone-first, multi-reference, human-state signal-synchronization research stage
+> (see [`docs/pilot-design/p0-human-state-signal-synchronization-summary.md`](../docs/pilot-design/p0-human-state-signal-synchronization-summary.md)).
+> This folder provides only the root synthetic session state machine (**Stage 0A**) that Proxy-P0
+> uses for non-human dry-run verification of synchronization, metadata, and replay.
 
 ---
 
