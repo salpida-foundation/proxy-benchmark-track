@@ -18,7 +18,7 @@ Its purpose is to make later signals comparable. If a new signal appears — inc
 
 ## Two end-of-P3 artifacts
 
-The Measurement Stack Validation Subtrack (see the companion summary) issues two distinct artifacts at the end of P3. They have different jobs:
+The Measurement Stack Validation Subtrack (see the companion summary, [Measurement Stack Validation Subtrack](measurement-stack-validation-subtrack.md)) issues two distinct artifacts at the end of P3. They have different jobs:
 
 - **Proxy Measurement Stack Freeze** — fixes *which* devices and signals are used: deployment profiles (e.g., phone-only, phone-plus-wearable, room-assisted, high-assurance research), per-modality confidence and abstention rules, and out-of-scope conditions.
 - **Proxy Reference Benchmark** — fixes *what is compared and how*: standardized scenarios, event timelines, personal baselines, HSD feature families, genuine/false/asymmetric recovery definitions, behavioral outcomes, quality/missingness/abstention rules, analysis metrics, and holdout/repeatability criteria.
@@ -35,10 +35,10 @@ Conflict, general stress, and meditation move state in different directions and 
 
 A Sal-Meter signal, once available, is added onto the frozen baseline rather than replacing it. The comparison is framed as a same-session, four-view design:
 
-- **A. Phone-only**
-- **B. Frozen Proxy Stack**
-- **C. Sal-Meter-only bounded signal view**
-- **D. Frozen Proxy Stack + Sal-Meter**
+- **View 1 — Phone-only**
+- **View 2 — Frozen Proxy Stack**
+- **View 3 — Sal-Meter-only bounded signal view**
+- **View 4 — Frozen Proxy Stack + Sal-Meter**
 
 Two comparisons matter:
 
