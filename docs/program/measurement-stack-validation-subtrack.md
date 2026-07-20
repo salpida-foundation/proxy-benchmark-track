@@ -66,3 +66,39 @@ The naming uses "Freeze" (not "Lock") to keep this distinct from the Sal-Meter c
 ## Boundary
 
 Public material for this subtrack is limited to the cross-phase design concept, the per-stage sensor questions, deployment-profile categories, and the freeze/benchmark concept. Not published: internal statistics and power/sample-size criteria, sensor-reduction cutoffs, feature-fusion internals, model weights, device operating values, per-participant contributions, and any raw human data. GitHub helps builders; the DOI/OSF records define authority.
+
+---
+
+## Canonical records and public research hub
+
+This GitHub document is a public technical helper surface.
+It is subordinate to the following DOI-registered records and the OSF public research hub.
+
+### SICS Human-State Proxy Benchmark Track:
+### Public Boundary and Program Charter v0.1
+
+- Version DOI:
+  https://doi.org/10.5281/zenodo.19837423
+- Concept DOI / All Versions DOI:
+  https://doi.org/10.5281/zenodo.19837422
+
+### SICS Human-State Proxy Benchmark Track:
+### Scientific Rationale and Research Value v0.1
+
+- Version DOI:
+  https://doi.org/10.5281/zenodo.19837971
+- Concept DOI / All Versions DOI:
+  https://doi.org/10.5281/zenodo.19837970
+
+### SICS Human-State Proxy Benchmark Track — Research Hub
+
+- OSF:
+  https://osf.io/k6crh/
+
+### Authority rule
+
+Zenodo DOI-registered records govern.
+OSF routes and indexes.
+GitHub provides public technical helper materials.
+If a GitHub helper conflicts with a higher-level DOI-registered record,
+the DOI-registered record prevails.
