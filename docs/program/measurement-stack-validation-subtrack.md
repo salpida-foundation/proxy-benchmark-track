@@ -56,7 +56,7 @@ HSD has no single absolute ground-truth device. The output is therefore not one 
 
 ## End-of-P3 outputs
 
-At the end of P3, MSV issues two distinct artifacts (see the companion summary, *Proxy Reference Benchmark and Sal-Meter Bridge*):
+At the end of P3, MSV issues two distinct artifacts (see the companion summary, [Proxy Reference Benchmark and Sal-Meter Bridge](proxy-reference-benchmark-and-sal-meter-bridge.md)):
 
 - **Proxy Measurement Stack Freeze** — fixes *which* devices/signals are used.
 - **Proxy Reference Benchmark** — fixes *what is compared and how*.
