@@ -370,6 +370,17 @@ https://doi.org/10.5281/zenodo.19908378
 
 ## Repository release history
 
+### v0.1.4 — P2 A/B/C/D Synthetic Consequence Package Patch
+
+**Current bounded public helper pre-release.**
+
+`v0.1.4` supersedes `v0.1.3` as the current public helper release route.
+
+This release adds the bounded P2 A/B/C/D synthetic consequence package and its parallel consequence evaluator. It remains public-helper-only, synthetic/sample-data-first, raw-data-non-public, non-clinical, non-diagnostic, non-therapeutic, non-surveillance, not Sal-Meter, not CAIS compliance, not benchmark validation, and not production readiness.
+
+**Release route:**  
+https://github.com/salpida-foundation/proxy-benchmark-track/releases/tag/v0.1.4
+
 ### v0.1.3 — P0 Synthetic Execution Infrastructure Patch
 
 **Prior public helper release.**
