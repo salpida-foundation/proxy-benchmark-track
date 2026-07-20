@@ -82,6 +82,23 @@ Two further stages exist in the internal program plan but are **out of scope for
 
 ---
 
+## 3a. Proxy-P0 clarifications and the measurement-stack axis
+
+The P0 row above is deliberately minimal. Four clarifications from the internal Proxy-P0 master are load-bearing and are documented in the dedicated P0 summary:
+
+- **Phone-first, not phone-only.** Every P0 human session includes the smartphone stream, but a phone-only P0 without reference proxies is out of scope.
+- **Three views from one session.** Full-Reference, Deployment-Realistic, and Phone-Only views are generated from the same session.
+- **The Full-Reference view is not a ground truth** of human state; no single sensor is.
+- **The optimal sensor combination is not decided at P0.** It is evaluated across P1–P3 (the Measurement Stack Validation Subtrack) and frozen only after P3.
+
+See:
+
+- [Proxy-P0 — Human-State Signal Synchronization](../pilot-design/p0-human-state-signal-synchronization-summary.md)
+- [Measurement Stack Validation Subtrack](measurement-stack-validation-subtrack.md)
+- [Proxy Reference Benchmark & Sal-Meter Bridge](proxy-reference-benchmark-and-sal-meter-bridge.md)
+
+---
+
 ## 4. What each stage must prove
 
 ### P0 — Human-State Signal Synchronization
@@ -291,6 +308,9 @@ A public GitHub helper may improve findability, structure, auditability, and rep
 
 ## 11. Related public-helper routes
 
+- [P0 — Human-State Signal Synchronization](../pilot-design/p0-human-state-signal-synchronization-summary.md)
+- [Measurement Stack Validation Subtrack](measurement-stack-validation-subtrack.md)
+- [Proxy Reference Benchmark & Sal-Meter Bridge](proxy-reference-benchmark-and-sal-meter-bridge.md)
 - [P1 — Individual Delta Micro Pilot](../pilot-design/p1-individual-delta-micro-pilot-summary.md)
 - [P2 — AI Output A/B/C/D Consequence Benchmark](../pilot-design/p2-ai-output-abcd-consequence-benchmark-summary.md)
 - [P3 — Dyadic Recovery Detection Gate](../pilot-design/p3-dyadic-recovery-detection-gate-summary.md)
