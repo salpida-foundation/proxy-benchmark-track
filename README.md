@@ -106,6 +106,9 @@ individual delta, AI-output consequence divergence, dyadic recovery, mediation
 policy, and recovery/termination control, see:
 
 - [P0–P5 Core Milestone & Routing Map](docs/program/proxy-benchmark-p0-p5-core-milestone-map.md)
+- [Proxy-P0 — Human-State Signal Synchronization](docs/pilot-design/p0-human-state-signal-synchronization-summary.md)
+- [Measurement Stack Validation Subtrack](docs/program/measurement-stack-validation-subtrack.md)
+- [Proxy Reference Benchmark & Sal-Meter Bridge](docs/program/proxy-reference-benchmark-and-sal-meter-bridge.md)
 
 This map is a research-stage public helper only. It is not an IRB protocol,
 scientific validation, Sal-Meter status, or CAIS compliance.
