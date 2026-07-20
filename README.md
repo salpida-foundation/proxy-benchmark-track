@@ -372,11 +372,11 @@ https://doi.org/10.5281/zenodo.19908378
 
 ### v0.1.3 — P0 Synthetic Execution Infrastructure Patch
 
-**Current public helper release.**
+**Prior public helper release.**
 
-`v0.1.3` is the current bounded public helper pre-release for the Human-State Proxy Benchmark Track.
+`v0.1.3` was the bounded public helper pre-release before the P2 A/B/C/D Synthetic Consequence Package Patch.
 
-It supersedes `v0.1.2` for the current public helper route.
+It is no longer the current public helper route after publication of `v0.1.4`.
 
 This release adds the P0 synthetic session infrastructure (root session state machine, replay report template, synthetic negative-case fixtures), the P0 session infrastructure lint and its CI workflow, and the README Evidence Ladder. It is a public-helper-only patch: no human data, no benchmark validation, no mediation validation, not Sal-Meter, not CAIS compliance, and not production readiness.
 
