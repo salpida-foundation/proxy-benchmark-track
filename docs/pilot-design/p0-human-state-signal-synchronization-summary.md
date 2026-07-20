@@ -56,6 +56,8 @@ Phone-only is not a late product question — it is a core question from P0 onwa
 
 ## Measurement Stack Validation Subtrack (P0 → P3)
 
+> Full method summary: [Measurement Stack Validation Subtrack](../program/measurement-stack-validation-subtrack.md).
+
 Which sensor/device combination best captures HSD and best distinguishes genuine from false recovery is **not fixed at P0**. It is evaluated progressively as a cross-phase subtrack that runs alongside each phase's primary question:
 
 | Stage | Primary phase milestone | Cross-cutting measurement milestone |
@@ -68,6 +70,8 @@ Which sensor/device combination best captures HSD and best distinguishes genuine
 Sensor analysis is a **secondary analysis** at each phase; it does not replace that phase's primary gate. **No premature sensor reduction before the end of P3.**
 
 ## Proxy Reference Benchmark and the Sal-Meter Bridge (concept)
+
+> Full concept summary: [Proxy Reference Benchmark and Sal-Meter Bridge](../program/proxy-reference-benchmark-and-sal-meter-bridge.md).
 
 At the end of P3 the subtrack issues two distinct artifacts:
 
