@@ -45,7 +45,7 @@ This folder supports verification of all 7 P0-Technical Check items:
 | 6 | missing metadata auto-detection | `session_state_machine.json` → validation_flags |
 | 7 | full session replay capability | `session_state_machine.json` → replay_enabled flag |
 
-All 7 items must reach PASS before any human-subject research begins.
+All seven synthetic technical-check items should reach helper-level PASS before progression to an internally approved human-capture calibration gate. Actual human-subject research remains subject to the applicable representative-approved protocol, IRB determination, consent process, and controlled-data governance.
 
 ---
 
@@ -55,7 +55,7 @@ All 7 items must reach PASS before any human-subject research begins.
 |---|---|---|
 | **Purpose** | Root session engine (P0) | Phone UI flow (P4-4) |
 | **Data** | Synthetic/mock only | Synthetic/mock only |
-| **Stage** | P0 infrastructure lock | P4-4 device scaffold |
+| **Stage** | Stage 0A synthetic helper | P4-4 device scaffold |
 | **Human data** | Never | Never |
 | **Inherits from** | None (root) | This folder |
 
