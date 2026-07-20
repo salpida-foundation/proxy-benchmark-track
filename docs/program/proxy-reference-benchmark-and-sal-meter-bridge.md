@@ -63,3 +63,20 @@ The proxy track is not a temporary stand-in until Sal-Meter arrives. It is the t
 ## Boundary
 
 Public material is limited to the rationale, the freeze/benchmark concepts, scenario-family separation, and the four-view comparison structure. Not published: OE/EE/RE internal formulas, model weights, real cutoffs, Sal-Meter signal-processing internals, feature-fusion internals, operating thresholds, per-participant mappings, and any raw human data. GitHub helps builders; the DOI/OSF records define authority.
+
+---
+## Canonical records and public research hub
+
+This document is a public technical helper surface. It is subordinate to the following DOI-registered records and the OSF public research hub.
+
+**SICS Human-State Proxy Benchmark Track: Public Boundary and Program Charter v0.1**
+- Version DOI: https://doi.org/10.5281/zenodo.19837423
+- Concept DOI (all versions): https://doi.org/10.5281/zenodo.19837422
+
+**SICS Human-State Proxy Benchmark Track: Scientific Rationale and Research Value v0.1**
+- Version DOI: https://doi.org/10.5281/zenodo.19837971
+- Concept DOI (all versions): https://doi.org/10.5281/zenodo.19837970
+
+**Research hub (OSF):** https://osf.io/k6crh/
+
+**Authority rule.** Zenodo DOI-registered records govern; OSF routes and indexes; GitHub provides public technical helper materials. If a GitHub helper conflicts with a higher-level DOI-registered record, the DOI-registered record prevails.
